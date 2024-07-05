@@ -4,13 +4,21 @@
   "description": "A book search and recommendation plan creator web app",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist",
+    "prepare": "husky"
   },
   "author": "Pranav Patani",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.6.0",
     "@parcel/transformer-sass": "^2.12.0",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "husky": "^9.0.11",
     "parcel": "2.12",
+    "prettier": "^3.3.2",
     "sass": "^1.77.6"
   }
 }
