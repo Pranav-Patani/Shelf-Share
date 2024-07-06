@@ -17,8 +17,19 @@
     "eslint": "^9.6.0",
     "globals": "^15.8.0",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "parcel": "2.12",
     "prettier": "^3.3.2",
     "sass": "^1.77.6"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
   }
 }
