@@ -1,10 +1,8 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
+import globals from "globals";
+import pluginJs from "@eslint/js";
 
-export default {
-  languageOptions: {
-    ecmaVersion: 2023,
-    globals: globals.browser,
-  },
-  ...pluginJs.configs.recommended,
-};
+
+export default [
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+];

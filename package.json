@@ -20,14 +20,19 @@
     "lint-staged": "^15.2.7",
     "parcel": "2.12",
     "prettier": "^3.3.2",
-    "sass": "^1.77.6"
+    "sass": "^1.77.6",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0"
   },
   "lint-staged": {
     "*.js": [
       "prettier --write",
       "eslint --fix"
     ],
-    "*.{json, scss}": [
+
+    "*.scss": [
+      "stylelint **/*.scss",
       "prettier --write"
     ]
   }
