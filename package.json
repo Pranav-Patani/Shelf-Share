@@ -5,7 +5,8 @@
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
   },
   "author": "Pranav Patani",
   "license": "ISC",
@@ -30,9 +31,11 @@
       "prettier --write",
       "eslint --fix"
     ],
-
+    "*.json": [
+      "prettier --write"
+    ],
     "*.scss": [
-      "stylelint **/*.scss",
+      "stylelint --fix",
       "prettier --write"
     ]
   }
