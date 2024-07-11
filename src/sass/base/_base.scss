@@ -13,8 +13,8 @@ html {
 
 body {
   font-family: $font-primary;
-  color: $color-gray-dark;
+  color: var(--color-gray-dark);
   font-weight: 400;
   line-height: 1.6;
-  background-color: $color-white-dark;
+  background-color: var(--color-white-dark);
 }
