@@ -6,7 +6,8 @@
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --edit"
   },
   "author": "Pranav Patani",
   "license": "ISC",
