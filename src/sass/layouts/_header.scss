@@ -1,6 +1,7 @@
 .header {
-  margin-bottom: -5rem;
   display: flex;
+  position: fixed;
+  z-index: 100;
   max-height: 10rem;
   width: 100%;
   padding: 2rem 4rem;
