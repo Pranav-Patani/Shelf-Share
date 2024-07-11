@@ -1,30 +1,61 @@
 %heading {
   font-weight: 400;
-  color: var(--color-gray-dark);
+  line-height: 1.4;
 }
 
 %clipped-heading {
   background-image: linear-gradient(
     to right,
-    var(--color-primary-light), 40%,
+    var(--color-primary-light),
+    40%,
     var(--color-primary-dark)
   );
   background-clip: text;
   color: transparent;
 }
 
-.heading-1 {
+.heading-1,
+.heading-1--white {
   @extend %heading;
-  @extend %clipped-heading;
   font-size: 4.5rem;
-  line-height: 1;
+  text-transform: capitalize;
+}
+
+.heading-1 {
+  @extend %clipped-heading;
+}
+
+.heading-1--white {
+  color: var(--color-white);
 }
 
 .heading-2 {
   @extend %heading;
   @extend %clipped-heading;
   font-size: 4rem;
-  line-height: 1;
+}
+
+.heading-3 {
+  @extend %heading;
+  font-size: 3rem;
+  color: var(--color-gray-dark);
+}
+
+.heading-4,
+.heading-4--white {
+  @extend %heading;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+
+.heading-4 {
+  color: var(--color-gray-dark);
+}
+
+.heading-4--white {
+  color: var(--color-white);
 }
 
 .paragraph {

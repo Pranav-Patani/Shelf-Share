@@ -1,0 +1,26 @@
+%btn-primary {
+  border: none;
+  padding: 2rem 4rem;
+  border-radius: 2.5rem;
+  color: var(--color-white);
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-size: var(--default-font-size);
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba(3, 7, 18, 0.2);
+    transform: translateY(-0.3rem);
+  }
+}
+
+.btn-primary {
+  @extend %btn-primary;
+  background-color: var(--color-primary);
+
+  &--complement {
+    @extend %btn-primary;
+    background-color: var(--color-secondary);
+  }
+}

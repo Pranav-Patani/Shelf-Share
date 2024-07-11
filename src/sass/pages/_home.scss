@@ -1,0 +1,60 @@
+.hero {
+  display: flex;
+  height: 75vh;
+  background-image: linear-gradient(
+      60deg,
+      rgba(24, 100, 171, 0.7) 50%,
+      rgba(156, 163, 175, 0.7) 50%
+    ),
+    url('../img/hero-bg.jpg');
+  background-size: cover;
+
+  &__cta-container {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 50%;
+    justify-content: center;
+    padding: 0 7rem;
+
+    &__text {
+      flex: 0.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &__btns {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &__img-container {
+    flex: 0 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__img--1,
+    &__img--2 {
+      display: block;
+      max-width: 100%;
+      box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+    }
+
+    &__img--2 {
+      width: 90%;
+    }
+
+    &__fig--1 {
+      position: relative;
+      left: 20%;
+      top: -10%;
+    }
+
+    &__fig--2 {
+      position: relative;
+      top: 18%;
+      left: -5%;
+    }
+  }
+}

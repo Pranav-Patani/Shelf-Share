@@ -4,7 +4,7 @@
   "description": "A book search and recommendation plan creator web app",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist",
+    "build": "parcel build index.html",
     "prepare": "husky"
   },
   "author": "Pranav Patani",
