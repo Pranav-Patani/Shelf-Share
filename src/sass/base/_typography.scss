@@ -1,13 +1,13 @@
 %heading {
   font-weight: 400;
-  color: $color-gray-dark;
+  color: var(--color-gray-dark);
 }
 
 %clipped-heading {
   background-image: linear-gradient(
     to right,
-    $color-primary-light, 40%,
-    $color-primary-dark
+    var(--color-primary-light), 40%,
+    var(--color-primary-dark)
   );
   background-clip: text;
   color: transparent;
