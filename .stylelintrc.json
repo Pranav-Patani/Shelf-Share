@@ -1,3 +1,15 @@
 {
-  "extends": "stylelint-config-standard-scss"
+  "extends": "stylelint-config-standard-scss",
+  "plugins": ["stylelint-selector-bem-pattern"],
+  "rules": {
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "componentName": "[a-z]+(?:-[a-z]+)*",
+      "componentSelectors": {
+        "initial": "^\\.{componentName}(?:-[a-z]+)*(?:--[a-z]+)?$"
+      },
+      "utilitySelectors": "^\\.util-[a-z]+$"
+    },
+    "selector-class-pattern": null
+  }
 }
