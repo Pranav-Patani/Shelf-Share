@@ -9,17 +9,19 @@
   align-items: center;
   background-image: linear-gradient(
     to right,
-    rgba(55, 65, 81, 0.2),
-    rgba(55, 65, 81, 0.2)
+    rgb(55 65 81 / 30%),
+    rgb(55 65 81 / 60%)
   );
 
   &__logo-container {
     flex: 0 0 5%;
+
     &__img {
       height: 100%;
       max-width: 100%;
     }
   }
+
   &__btn-container {
     display: flex;
     justify-content: space-between;
@@ -31,7 +33,7 @@
       background-color: inherit;
       border: none;
       font-size: 1.6rem;
-      color: var(--color-primary);
+      color: var(--color-white);
       font-weight: bold;
       cursor: pointer;
 
@@ -40,13 +42,12 @@
         width: 0;
         background-image: linear-gradient(
           to right,
-          var(--color-primary-light),
-          60%,
-          var(--color-primary-dark)
+          var(--color-white),
+          40% var(--color-white-dark)
         );
         display: block;
         margin-top: 0.2rem;
-        height: 0.15rem;
+        height: 0.1rem;
         transition: all 0.2s;
         border-radius: 50rem;
       }
