@@ -4,13 +4,41 @@
   "description": "A book search and recommendation plan creator web app",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist",
+    "prepare": "husky",
+    "lint-staged": "lint-staged",
+    "commitlint": "commitlint --edit"
   },
   "author": "Pranav Patani",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.6.0",
     "@parcel/transformer-sass": "^2.12.0",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "parcel": "2.12",
-    "sass": "^1.77.6"
+    "prettier": "^3.3.2",
+    "sass": "^1.77.6",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-selector-bem-pattern": "^4.0.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
   }
 }
