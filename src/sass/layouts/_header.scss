@@ -42,12 +42,12 @@
         width: 0;
         background-image: linear-gradient(
           to right,
-          var(--color-white) 20%,
+          var(--color-white) 40%,
           var(--color-white-dark)
         );
         display: block;
         margin-top: 0.2rem;
-        height: 0.11rem;
+        height: 0.1rem;
         transition: all 0.2s;
         border-radius: 50rem;
       }
