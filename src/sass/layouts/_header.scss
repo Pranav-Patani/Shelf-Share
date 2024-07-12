@@ -42,8 +42,8 @@
         width: 0;
         background-image: linear-gradient(
           to right,
-          var(--color-white),
-          40% var(--color-white-dark)
+          var(--color-white) 40%,
+          var(--color-white-dark)
         );
         display: block;
         margin-top: 0.2rem;
