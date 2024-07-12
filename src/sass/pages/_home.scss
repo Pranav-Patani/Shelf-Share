@@ -3,8 +3,8 @@
   height: 75vh;
   background-image: linear-gradient(
       60deg,
-      rgba(24, 100, 171, 0.7) 50%,
-      rgba(156, 163, 175, 0.7) 50%
+      rgb(24 100 171 / 70%) 50%,
+      rgb(156 163 175 / 70%) 50%
     ),
     url('../img/hero-bg.jpg');
   background-size: cover;
@@ -22,6 +22,7 @@
       flex-direction: column;
       justify-content: center;
     }
+
     &__btns {
       display: flex;
       justify-content: space-around;
@@ -55,6 +56,36 @@
       position: relative;
       top: 18%;
       left: -5%;
+    }
+  }
+}
+
+.section-plan {
+  display: flex;
+  padding: 10rem 0;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+
+  &__plan-info-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 6rem 2rem;
+    width: 75%;
+    background-color: var(--color-white);
+
+    &__text {
+      flex: 0 0 35%;
+      align-self: center;
+    }
+
+    &__img {
+      flex: 0 0 40%;
+
+      & img {
+        display: block;
+        max-width: 100%;
+      }
     }
   }
 }

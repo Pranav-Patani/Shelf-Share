@@ -17,6 +17,7 @@
 .heading-1,
 .heading-1--white {
   @extend %heading;
+
   font-size: 4.5rem;
   text-transform: capitalize;
 }
@@ -29,14 +30,25 @@
   color: var(--color-white);
 }
 
-.heading-2 {
+.heading-2,
+.heading-2--white {
   @extend %heading;
-  @extend %clipped-heading;
+
   font-size: 4rem;
+  text-transform: capitalize;
+}
+
+.heading-2 {
+  @extend %clipped-heading;
+}
+
+.heading-2--white {
+  color: var(--color-white);
 }
 
 .heading-3 {
   @extend %heading;
+
   font-size: 3rem;
   color: var(--color-gray-dark);
 }
@@ -44,6 +56,7 @@
 .heading-4,
 .heading-4--white {
   @extend %heading;
+
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -59,5 +72,9 @@
 }
 
 .paragraph {
-  font-size: 1.6rem;
+  font-size: var(--default-font-size);
+}
+
+.paragraph--big {
+  font-size: 1.8rem;
 }

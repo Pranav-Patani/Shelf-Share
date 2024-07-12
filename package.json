@@ -25,7 +25,8 @@
     "sass": "^1.77.6",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.1",
-    "stylelint-config-standard-scss": "^13.1.0"
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-selector-bem-pattern": "^4.0.0"
   },
   "lint-staged": {
     "*.js": [
