@@ -76,7 +76,7 @@
   background-color: var(--color-primary);
 
   &__container {
-    background-color: var(--color-white);
+    background-color: var(--color-text-light);
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -89,7 +89,7 @@
     justify-content: space-around;
     padding: 6rem 2rem;
     width: 100%;
-    background-color: var(--color-white);
+    background-color: var(--color-text-light);
 
     &__text {
       flex: 0 0 35%;
@@ -118,7 +118,7 @@
   align-items: center;
 
   &__container {
-    background-color: var(--color-white);
+    background-color: var(--color-background-light);
     width: 85%;
     padding: 8rem 0;
   }
