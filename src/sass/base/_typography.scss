@@ -17,6 +17,7 @@
 .heading-1,
 .heading-1--white {
   @extend %heading;
+
   font-size: 4.5rem;
   text-transform: capitalize;
 }
@@ -26,17 +27,19 @@
 }
 
 .heading-1--white {
-  color: var(--color-white);
+  color: var(--color-text-light);
 }
 
 .heading-2 {
   @extend %heading;
   @extend %clipped-heading;
+
   font-size: 4rem;
 }
 
 .heading-3 {
   @extend %heading;
+
   font-size: 3rem;
   color: var(--color-gray-dark);
 }
@@ -44,6 +47,7 @@
 .heading-4,
 .heading-4--white {
   @extend %heading;
+
   font-size: 2rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -55,7 +59,7 @@
 }
 
 .heading-4--white {
-  color: var(--color-white);
+  color: var(--color-text-light);
 }
 
 .paragraph {
