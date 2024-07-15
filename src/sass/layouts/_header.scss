@@ -33,7 +33,7 @@
       background-color: inherit;
       border: none;
       font-size: 1.6rem;
-      color: var(--color-white);
+      color: var(--color-text-light);
       font-weight: bold;
       cursor: pointer;
       transition: all 0.2s;
@@ -43,8 +43,8 @@
         width: 0;
         background-image: linear-gradient(
           to right,
-          var(--color-white) 40%,
-          var(--color-white-dark)
+          var(--color-background-light) 40%,
+          var(--color-background)
         );
         display: block;
         margin-top: 0.2rem;
@@ -68,7 +68,7 @@
       }
 
       &:last-child:hover &__svg {
-        fill: var(--color-white-dark);
+        fill: var(--color-background);
       }
     }
   }
