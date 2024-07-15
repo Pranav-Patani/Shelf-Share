@@ -2,7 +2,7 @@
   display: flex;
   position: fixed;
   z-index: 100;
-  max-height: 10rem;
+  max-height: 8rem;
   width: 100%;
   padding: 2rem 4rem;
   justify-content: space-between;
@@ -15,6 +15,7 @@
 
   &__logo-container {
     flex: 0 0 5%;
+    min-width: 5.5rem;
 
     &__img {
       height: 100%;
@@ -26,17 +27,44 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    list-style: none;
+
+    @include respond(phone) {
+      flex-direction: column;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      top: 100rem;
+      left: 0;
+      background-image: linear-gradient(
+        to right,
+        rgb(55 65 81 / 30%),
+        rgb(55 65 81 / 60%)
+      );
+      transition: all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -10;
+    }
 
     &__btn {
+      font-family: var(--font-family);
+      text-decoration: none;
       padding: 1rem 2rem;
       margin-left: 2rem;
       background-color: inherit;
-      border: none;
-      font-size: 1.6rem;
+      font-size: 1.9rem;
       color: var(--color-text-light);
       font-weight: bold;
       cursor: pointer;
       transition: all 0.2s;
+
+      @include respond(phone) {
+        position: relative;
+        margin-bottom: 1.6rem;
+        top: -10rem;
+      }
 
       &:not(:last-child)::after {
         content: '';
@@ -53,14 +81,26 @@
         border-radius: 50rem;
       }
 
-      &:hover::after {
-        width: 100%;
+      &:active {
+        color: var(--color-gray-light);
+      }
+
+      &:hover {
+        transform: translateY(-0.2rem);
+
+        &::after {
+          width: 100%;
+        }
       }
 
       &__svg {
         height: 3.5rem;
         width: 3.5rem;
         fill: var(--color-primary-light);
+
+        @include respond(phone) {
+          display: none;
+        }
       }
 
       &:last-child:hover {
@@ -69,6 +109,98 @@
 
       &:last-child:hover &__svg {
         fill: var(--color-background);
+      }
+
+      &:last-child:active {
+        transform: translateY(0.1rem);
+      }
+
+      & a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    &__btn-bk {
+      display: none;
+
+      @include respond(phone) {
+        display: block;
+      }
+    }
+  }
+
+  &__hamburger-container {
+    display: none;
+    position: relative;
+    cursor: pointer;
+    background-color: var(--color-background);
+    clip-path: circle(50% at 50% 50%);
+    padding: 3rem;
+
+    @include respond(phone) {
+      display: block;
+    }
+
+    &__hamburger,
+    &__hamburger::before,
+    &__hamburger::after {
+      height: 2px;
+      width: 3.2rem;
+      background-color: var(--color-primary-dark);
+    }
+
+    &__hamburger {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        position: relative;
+        transition: all 0.5s;
+      }
+
+      &::after {
+        top: 0.8rem;
+        left: 0;
+      }
+
+      &::before {
+        top: -1rem;
+        left: 0;
+      }
+    }
+  }
+
+  &__check {
+    display: none;
+
+    &:checked + .header__hamburger-container + .header__btn-container {
+      top: 8rem;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &:checked
+      + .header__hamburger-container
+      .header__hamburger-container__hamburger {
+      visibility: hidden;
+      transition: all 0s;
+
+      &::after {
+        visibility: visible;
+        transform: rotate(135deg);
+        top: 0;
+      }
+
+      &::before {
+        visibility: visible;
+        transform: rotate(-135deg);
+        top: 0.25rem;
       }
     }
   }
