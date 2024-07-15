@@ -9,6 +9,18 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 10px / 16px = 62.5% -> 1rem = 10px
+
+  @include respond(large-screen) {
+    font-size: 75%; // 1rem = 12px
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px;
+  }
 }
 
 body {

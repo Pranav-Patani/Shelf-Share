@@ -14,22 +14,38 @@
     <title>BookWise || Read, Discover, and Share</title>
   </head>
   <body>
-    <div class="container-home">
-      <nav class="header">
-        <div class="header__logo-container">
-          <img
-            src="./src/img/logo.png"
-            alt="logo"
-            class="header__logo-container__img"
-          />
-        </div>
-        <div class="header__btn-container">
-          <button class="header__btn-container__btn">Find Books</button>
-          <button class="header__btn-container__btn">Create Plan</button>
-          <button class="header__btn-container__btn">Home</button>
-          <button class="header__btn-container__btn"><svg class="header__btn-container__btn__svg"><use xlink:href="./src/img/sprite.svg#icon-bookmark"></use></svg></button>
-        </div>
-      </nav>
-    </div>
+    <nav class="header">
+      <div class="header__logo-container">
+        <img
+          src="./src/img/logo.png"
+          alt="logo"
+          class="header__logo-container__img"
+        />
+      </div>
+      <input type="checkbox" class="header__check" id="header-check" />
+      <label for="header-check" class="header__hamburger-container">
+        <div class="header__hamburger-container__hamburger"></div>
+      </label>
+      <ul class="header__btn-container">
+        <li class="header__btn-container__btn" ><a href="#">Find Books</a></li>
+        <li class="header__btn-container__btn" ><a href="#">Create Plan</a></li>
+
+        <li class="header__btn-container__btn" ><a href="#">Home</a></li>
+        <li class="header__btn-container__btn header__btn-container__btn-bk">
+          <a
+            href="#"
+          >
+            Bookmarks
+          </a>
+        </li>
+        <li class="header__btn-container__btn">
+           <a href="#">
+            <svg class="header__btn-container__btn__svg">
+              <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use></svg
+          ></a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-home"></div>
   </body>
 </html>
