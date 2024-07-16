@@ -4,8 +4,16 @@
 
 .mb-lg {
   margin-bottom: 6rem;
+
+  @include respond(phone) {
+    margin-bottom: 4rem;
+  }
 }
 
 .mb-hg {
   margin-bottom: 8rem;
+
+  @include respond(phone) {
+    margin-bottom: 6rem;
+  }
 }
