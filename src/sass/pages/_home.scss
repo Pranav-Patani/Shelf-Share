@@ -214,22 +214,45 @@
     background-color: var(--color-background-light);
     width: 85%;
     padding: 8rem 0;
+
+    @include respond(tab-land) {
+      padding: 6rem 0;
+      width: 95%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 
   &__search-info-container {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 0 4rem 8rem;
+    padding: 2rem 4rem;
     width: 100%;
+
+    @include respond(tab-land) {
+      padding: 2rem;
+    }
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
 
     &__vid {
       flex: 0 0 55%;
 
       & video {
+        display: block;
         width: 100%;
         border-radius: 6rem;
         box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+
+        @include respond(phone) {
+          width: 90%;
+          margin: 0 auto;
+        }
       }
     }
 
@@ -237,6 +260,14 @@
       flex: 0 0 40%;
       display: flex;
       flex-direction: column;
+
+      @include respond(tab-port) {
+        flex: 0 0 45%;
+      }
+
+      @include respond(phone) {
+        margin-top: 3rem;
+      }
 
       &__icon-box {
         display: flex;
@@ -246,11 +277,20 @@
         margin-bottom: 2rem;
         padding: 1rem;
 
+        @include respond(phone) {
+          width: 85%;
+        }
+
         &__icon {
           height: 4.5rem;
           width: 4.5rem;
           margin-right: 4rem;
           fill: var(--color-primary);
+
+          @include respond(phone) {
+            height: 4rem;
+            width: 4rem;
+          }
         }
 
         &__text {
