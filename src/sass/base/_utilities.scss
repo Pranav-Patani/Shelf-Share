@@ -2,14 +2,18 @@
   margin-bottom: 2rem;
 }
 
-.mb-md {
-  margin-bottom: 4rem;
-}
-
 .mb-lg {
   margin-bottom: 6rem;
+
+  @include respond(phone) {
+    margin-bottom: 4rem;
+  }
 }
 
 .mb-hg {
   margin-bottom: 8rem;
+
+  @include respond(phone) {
+    margin-bottom: 6rem;
+  }
 }
