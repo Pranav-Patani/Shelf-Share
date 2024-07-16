@@ -210,6 +210,10 @@
   flex-direction: column;
   align-items: center;
 
+  @include respond(phone) {
+    margin: 0;
+  }
+
   &__container {
     background-color: var(--color-background-light);
     width: 85%;
