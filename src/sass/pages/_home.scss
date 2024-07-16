@@ -121,7 +121,7 @@
 
   @include respond(phone) {
     padding: 6rem 0;
-    background-color: var(--color-background-light);
+    background-color: var(--color-background);
   }
 
   &__heading {
@@ -149,7 +149,7 @@
     }
 
     @include respond(phone) {
-      padding: 0;
+      padding: 2rem;
       width: 100%;
     }
   }
@@ -308,5 +308,9 @@
   &__btn {
     display: block;
     margin: 0 auto;
+
+    @include respond(phone) {
+      margin-top: 2rem;
+    }
   }
 }
