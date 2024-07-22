@@ -5,6 +5,7 @@ import homeCreatePlansImg from 'url:../../img/home_create-plans.jpg';
 import homeSavePlansImg from 'url:../../img/home_save-plans.jpg';
 import homeSharePlansImg from 'url:../../img/home_share-plans.jpg';
 import homeSearchVideo from 'url:../../video/home_search-vid.mp4';
+import sprite from 'url:../../img/sprite.svg';
 
 class HomeView extends View {
   _parentElement = document.querySelector('.container');
@@ -113,7 +114,7 @@ class HomeView extends View {
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
                   <use
-                    xlink:href="./src/img/sprite.svg#icon-magnifying-glass"
+                    xlink:href="${sprite}#icon-magnifying-glass"
                   ></use>
                 </svg>
                 <p
@@ -126,7 +127,7 @@ class HomeView extends View {
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-funnel"></use>
+                  <use xlink:href="${sprite}#icon-funnel"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text paragraph"
@@ -138,7 +139,7 @@ class HomeView extends View {
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                  <use xlink:href="${sprite}#icon-bookmark"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text paragraph"
@@ -150,7 +151,7 @@ class HomeView extends View {
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-share"></use>
+                  <use xlink:href="${sprite}#icon-share"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text"
