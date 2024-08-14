@@ -1,6 +1,5 @@
 :root {
   // COLOR-VARIABLES
-
   --color-primary: #228be6; // Blue 6 -Open Colors
   --color-primary-dark: #1864ab; // Blue 9 -Open Colors
   --color-primary-light: #4dabf7; // Blue 4 -Open Colors
@@ -12,6 +11,32 @@
   --color-background: #dbeafe; // Blue 100 -Tailwind
 
   // FONT-VARIABLES
-
+  --font-size-s: 1.4rem;
+  --font-size-m: 1.6rem;
+  --font-size-l: 1.8rem;
+  --font-size-xl: 2rem;
+  --font-size-2xl: 2.4rem;
+  --font-size-3xl: 3.2rem;
+  --font-size-4xl: 4rem;
+  --font-size-5xl: 4.4rem;
   --font-primary: 'Dosis', sans-serif;
+
+  // Space Variables -> base unit: 8px
+  // space-1*8=8px
+  --space-0: 0rem;
+  --space-05: 0.4rem;
+  --space-1: 0.8rem;
+  --space-2: 1.6rem;
+  --space-3: 2.4rem;
+  --space-4: 3.2rem;
+  --space-5: 4rem;
+  --space-7: 5.6rem;
+  --space-10: 8rem;
+  --space-12: 9.6rem;
+
+  // Z-index
+  --stack-content-1: 1;
+  --stack-content-2: 2;
+  --stack-higher: 10;
+  --stack-highest: 50;
 }
