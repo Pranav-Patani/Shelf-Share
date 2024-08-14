@@ -22,16 +22,17 @@
   --font-primary: 'Dosis', sans-serif;
 
   // Space Variables -> base unit: 8px
+  // space-1*8=8px
   --space-0: 0rem;
-  --space-xs: 0.4rem;
-  --space-s: 0.8rem;
-  --space-m: 1.6rem;
-  --space-l: 2.4rem;
-  --space-xl: 3.2rem;
-  --space-2xl: 4rem;
-  --space-3xl: 5.6rem;
-  --space-4xl: 8rem;
-  --space-5xl: 9.6rem;
+  --space-05: 0.4rem;
+  --space-1: 0.8rem;
+  --space-2: 1.6rem;
+  --space-3: 2.4rem;
+  --space-4: 3.2rem;
+  --space-5: 4rem;
+  --space-7: 5.6rem;
+  --space-10: 8rem;
+  --space-12: 9.6rem;
 
   // Z-index
   --stack-content-1: 1;
