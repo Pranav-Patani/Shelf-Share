@@ -2,7 +2,7 @@
   backdrop-filter: blur(1rem);
   display: flex;
   position: fixed;
-  z-index: var(--stack-higher);
+  z-index: var(--z-index-lvl-3);
   max-height: var(--space-10);
   width: 100%;
   padding: var(--space-3) var(--space-5);
@@ -142,7 +142,7 @@
     background-color: var(--color-background);
     clip-path: circle(50% at 50% 50%);
     padding: var(--space-4);
-    z-index: var(--stack-highest);
+    z-index: var(--z-index-lvl-4);
 
     @include respond(phone) {
       display: block;
