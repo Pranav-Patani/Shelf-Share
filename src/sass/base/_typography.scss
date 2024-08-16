@@ -1,0 +1,32 @@
+%heading {
+  font-weight: 400;
+  color: var(--color-gray-dark);
+}
+
+%clipped-heading {
+  background-image: linear-gradient(
+    to right,
+    var(--color-primary-light), 40%,
+    var(--color-primary-dark)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.heading-1 {
+  @extend %heading;
+  @extend %clipped-heading;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.heading-2 {
+  @extend %heading;
+  @extend %clipped-heading;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+}
