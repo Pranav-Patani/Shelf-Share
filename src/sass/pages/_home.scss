@@ -25,7 +25,7 @@
     content: '';
     height: 95vh;
     width: 100%;
-    z-index: -100;
+    z-index: var(--z-index-lvl-neg-1);
     position: absolute;
     top: 0;
     left: 0;
@@ -39,10 +39,10 @@
     flex: 0 0 47%;
     justify-content: center;
     align-items: center;
-    padding: 0 7rem;
+    padding: 0 var(--space-7);
 
     @include respond(tab-land) {
-      padding: 0 3rem;
+      padding: 0 var(--space-4);
     }
 
     @include respond(tab-port) {
@@ -51,7 +51,7 @@
 
     @include respond(phone) {
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 var(--space-3);
     }
 
     &__text {
@@ -68,7 +68,7 @@
       margin: 0 auto;
 
       & button {
-        margin-top: 2rem;
+        margin-top: var(--space-3);
       }
     }
   }
