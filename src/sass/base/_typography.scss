@@ -6,7 +6,8 @@
 %clipped-heading {
   background-image: linear-gradient(
     to right,
-    var(--color-primary-light), 40%,
+    var(--color-primary-light),
+    40%,
     var(--color-primary-dark)
   );
   background-clip: text;
@@ -16,17 +17,19 @@
 .heading-1 {
   @extend %heading;
   @extend %clipped-heading;
-  font-size: 4.5rem;
+
+  font-size: var(--font-size-5xl);
   line-height: 1;
 }
 
 .heading-2 {
   @extend %heading;
   @extend %clipped-heading;
-  font-size: 4rem;
+
+  font-size: var(--font-size-4xl);
   line-height: 1;
 }
 
 .paragraph {
-  font-size: 1.6rem;
+  font-size: var(--font-size-m);
 }
