@@ -1,21 +1,11 @@
 %heading {
   font-weight: 400;
   line-height: 1.4;
-
-  @include respond(tab-land) {
-    line-height: 1.2;
-  }
-
-  @include respond(phone) {
-    line-height: 1;
-  }
 }
 
 %clipped-heading {
   background-image: linear-gradient(
     to right,
-    var(--color-primary-light),
-    40%,
     var(--color-primary-light),
     40%,
     var(--color-primary-dark)
@@ -28,11 +18,11 @@
 .heading-1--white {
   @extend %heading;
 
-  font-size: 4.5rem;
+  font-size: var(--font-size-5xl);
   text-transform: capitalize;
 
   @include respond(phone) {
-    font-size: 4rem;
+    font-size: var(--font-size-4xl);
   }
 }
 
@@ -44,25 +34,34 @@
   color: var(--color-text-light);
 }
 
-.heading-2 {
+.heading-2,
+.heading-2--white {
   @extend %heading;
-  @extend %clipped-heading;
 
-  font-size: 4rem;
+  font-size: var(--font-size-4xl);
+  text-transform: capitalize;
 
   @include respond(phone) {
-    font-size: 3.5rem;
+    font-size: var(--font-size-3xl);
   }
+}
+
+.heading-2 {
+  @extend %clipped-heading;
+}
+
+.heading-2--white {
+  color: var(--color-text-light);
 }
 
 .heading-3 {
   @extend %heading;
 
-  font-size: 3rem;
+  font-size: var(--font-size-3xl);
   color: var(--color-gray-dark);
 
   @include respond(phone) {
-    font-size: 2.5rem;
+    font-size: var(--font-size-2xl);
   }
 }
 
@@ -70,13 +69,13 @@
 .heading-4--white {
   @extend %heading;
 
-  font-size: 2rem;
+  font-size: var(--font-size-2xl);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 
   @include respond(phone) {
-    font-size: 1.6rem;
+    font-size: var(--font-size-l);
   }
 }
 
@@ -90,4 +89,12 @@
 
 .paragraph {
   font-size: var(--font-size-m);
+}
+
+.paragraph--big {
+  font-size: var(--font-size-l);
+
+  @include respond(phone) {
+    font-size: var(--font-size-m);
+  }
 }
