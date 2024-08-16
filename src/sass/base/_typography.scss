@@ -16,6 +16,8 @@
     to right,
     var(--color-primary-light),
     40%,
+    var(--color-primary-light),
+    40%,
     var(--color-primary-dark)
   );
   background-clip: text;
@@ -87,5 +89,5 @@
 }
 
 .paragraph {
-  font-size: 1.6rem;
+  font-size: var(--font-size-m);
 }
