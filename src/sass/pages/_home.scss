@@ -106,7 +106,7 @@
 
 .section-plan {
   display: flex;
-  padding: 8rem 0;
+  padding: var(--space-10) 0;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-primary);
@@ -117,8 +117,10 @@
   }
 
   &__heading {
+    margin-bottom: var(--space-10);
+
     @include respond(phone) {
-      padding: 0 2rem;
+      padding: 0 var(--space-3);
       text-align: center;
       color: var(--color-primary-dark);
     }
@@ -130,7 +132,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6rem 0;
+    padding: var(--space-7) 0;
 
     @include respond(tab-land) {
       width: 80%;
@@ -141,7 +143,7 @@
     }
 
     @include respond(phone) {
-      padding: 2rem;
+      padding: var(--space-3);
       width: 100%;
     }
   }
@@ -149,13 +151,13 @@
   &__plan-info-container {
     display: flex;
     justify-content: space-around;
-    padding: 6rem 2rem;
+    padding: var(--space-7) var(--space-3);
     width: 100%;
     background-color: var(--color-text-light);
 
     @include respond(phone) {
       flex-direction: column-reverse;
-      padding: 2rem 1rem;
+      padding: var(--space-3) var(--space-1);
 
       &:nth-child(2) {
         flex-direction: column;
@@ -172,7 +174,7 @@
 
       @include respond(phone) {
         width: 78%;
-        margin-top: 1.5rem;
+        margin-top: var(--space-2);
       }
     }
 
@@ -185,17 +187,17 @@
 
         @include respond(phone) {
           width: 80%;
-          margin: 0 auto;
+          margin: var(--space-0) auto;
         }
       }
     }
   }
 
   &__btn {
-    margin-top: 1rem;
+    margin-top: var(--space-1);
 
     @include respond(phone) {
-      margin-top: 2rem;
+      margin-top: var(--space-3);
     }
   }
 }
