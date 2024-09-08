@@ -1,3 +1,7 @@
+// ------------------------
+// Section Hero
+// ------------------------
+
 .hero {
   display: flex;
   height: 95vh;
@@ -104,6 +108,10 @@
   }
 }
 
+// ------------------------
+// Section Plan
+// ------------------------
+
 .section-plan {
   display: flex;
   padding: var(--space-10) 0;
@@ -192,8 +200,124 @@
       }
     }
   }
+}
+
+// ------------------------
+// Section Find
+// ------------------------
+
+.section-find {
+  display: flex;
+  margin: var(--space-10) var(--space-0);
+  flex-direction: column;
+  align-items: center;
+
+  @include respond(phone) {
+    margin: var(--space-0);
+  }
+
+  &__heading {
+    margin-bottom: var(--space-10);
+  }
+
+  &__container {
+    background-color: var(--color-background-light);
+    width: 85%;
+    padding: var(--space-10) var(--space-0);
+
+    @include respond(tab-land) {
+      padding: var(--space-7) var(--space-0);
+      width: 95%;
+    }
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+  }
+
+  &__search-info-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: var(--space-3) var(--space-5);
+    width: 100%;
+
+    @include respond(tab-land) {
+      padding: var(--space-3);
+    }
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+
+    &__vid {
+      flex: 0 0 55%;
+
+      & video {
+        display: block;
+        width: 100%;
+        border-radius: 6rem;
+        box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+
+        @include respond(phone) {
+          width: 90%;
+          margin: var(--space-0) auto;
+        }
+      }
+    }
+
+    &__text {
+      flex: 0 0 40%;
+      display: flex;
+      flex-direction: column;
+
+      @include respond(tab-port) {
+        flex: 0 0 45%;
+      }
+
+      @include respond(phone) {
+        margin-top: var(--space-4);
+      }
+
+      &__icon-box {
+        display: flex;
+        align-items: center;
+        margin: var(--space-0) auto;
+        width: 70%;
+        margin-bottom: var(--space-3);
+        padding: var(--space-1);
+
+        @include respond(phone) {
+          width: 85%;
+        }
+
+        &__icon {
+          height: 4.5rem;
+          width: 4.5rem;
+          margin-right: var(--space-5);
+          fill: var(--color-primary);
+
+          @include respond(phone) {
+            height: 4rem;
+            width: 4rem;
+          }
+        }
+
+        &__text {
+          flex: 1 0 0;
+          font-size: var(--font-size-m);
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          font-weight: bold;
+          color: var(--color-primary-dark);
+        }
+      }
+    }
+  }
 
   &__btn {
+    display: block;
+    margin: var(--space-0) auto;
     margin-top: var(--space-1);
 
     @include respond(phone) {
