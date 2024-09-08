@@ -103,3 +103,101 @@
     }
   }
 }
+
+.section-plan {
+  display: flex;
+  padding: var(--space-10) 0;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+
+  @include respond(phone) {
+    padding: 6rem 0;
+    background-color: var(--color-background);
+  }
+
+  &__heading {
+    margin-bottom: var(--space-10);
+
+    @include respond(phone) {
+      padding: 0 var(--space-3);
+      text-align: center;
+      color: var(--color-primary-dark);
+    }
+  }
+
+  &__container {
+    background-color: var(--color-text-light);
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-7) 0;
+
+    @include respond(tab-land) {
+      width: 80%;
+    }
+
+    @include respond(tab-port) {
+      width: 90%;
+    }
+
+    @include respond(phone) {
+      padding: var(--space-3);
+      width: 100%;
+    }
+  }
+
+  &__plan-info-container {
+    display: flex;
+    justify-content: space-around;
+    padding: var(--space-7) var(--space-3);
+    width: 100%;
+    background-color: var(--color-text-light);
+
+    @include respond(phone) {
+      flex-direction: column-reverse;
+      padding: var(--space-3) var(--space-1);
+
+      &:nth-child(2) {
+        flex-direction: column;
+      }
+    }
+
+    &__text {
+      flex: 0 0 35%;
+      align-self: center;
+
+      @include respond(tab-land) {
+        flex: 0 0 40%;
+      }
+
+      @include respond(phone) {
+        width: 78%;
+        margin-top: var(--space-2);
+      }
+    }
+
+    &__img {
+      flex: 0 0 40%;
+
+      & img {
+        display: block;
+        max-width: 100%;
+
+        @include respond(phone) {
+          width: 80%;
+          margin: var(--space-0) auto;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    margin-top: var(--space-1);
+
+    @include respond(phone) {
+      margin-top: var(--space-3);
+    }
+  }
+}
