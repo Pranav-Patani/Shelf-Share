@@ -9,6 +9,7 @@
   --color-text-light: #eff6ff; // Blue 50 -Tailwind
   --color-background-light: #eff6ff; // Blue 50 -Tailwind
   --color-background: #dbeafe; // Blue 100 -Tailwind
+  --color-shadow: #030712; // Gray 950 -Tailwind
 
   // FONT-VARIABLES
   --font-size-s: 1.4rem;
@@ -35,6 +36,7 @@
   --space-12: 9.6rem;
 
   // Z-index
+  --z-index-lvl-neg-1: -1;
   --z-index-lvl-1: 1;
   --z-index-lvl-2: 2;
   --z-index-lvl-3: 10;
