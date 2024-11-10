@@ -1,20 +1,22 @@
-const header = document.querySelector('.header');
-const navObs = new IntersectionObserver(
-  entries => {
-    header.classList.toggle('header__active', !entries[0].isIntersecting);
-  },
-  { threshold: 0.75 },
-);
+import Router from './router';
+import HomeView from './views/homeView';
 
-navObs.observe(document.querySelector('.hero'));
+// eslint-disable-next-line no-undef
+if (module.hot) {
+  // eslint-disable-next-line no-undef
+  module.hot.accept();
+}
 
-// Below code will be shifted to router.js later
+// Router
+const controlRouter = function () {
+  const routes = [{ path: '/', callback: () => HomeView.render() }];
 
-const links = document.querySelectorAll('.router-link');
-links.forEach(a =>
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    links.forEach(link => link.classList.remove('nav-active'));
-    a.classList.add('nav-active');
-  }),
-);
+  const router = new Router(routes);
+  router.addHandlerRouter();
+};
+
+const init = function () {
+  controlRouter();
+};
+
+init();

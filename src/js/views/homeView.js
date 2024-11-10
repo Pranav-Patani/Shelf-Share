@@ -1,69 +1,18 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="src/sass/main.scss" />
-    <script type="module" src="src/js/controller.js"></script>
-    <title>BookWise || Read, Discover, and Share</title>
-  </head>
-  <body>
-    <nav class="header">
-      <div class="header__logo-container">
-        <img
-          src="./src/img/logo.png"
-          alt="bookwise"
-          class="header__logo-container__img"
-        />
-      </div>
-      <input type="checkbox" class="header__check" id="header-check" />
-      <label for="header-check" class="header__hamburger-container">
-        <div class="header__hamburger-container__hamburger"></div>
-      </label>
-      <ul class="header__btn-container">
-        <li class="header__btn-container__btn">
-          <a class="router-link" data-route="/findBooks" href="/findBooks"
-            >Find Books</a
-          >
-        </li>
-        <li class="header__btn-container__btn">
-          <a class="router-link" data-route="/createPlan" href="/createPlan"
-            >Create Plan</a
-          >
-        </li>
+import View from './View';
+import bookSearchImg from 'url:../../img/book-search.png';
+import planSectionImg from 'url:../../img/plan-section.png';
+import homeCreatePlansImg from 'url:../../img/home_create-plans.jpg';
+import homeSavePlansImg from 'url:../../img/home_save-plans.jpg';
+import homeSharePlansImg from 'url:../../img/home_share-plans.jpg';
+import homeSearchVideo from 'url:../../video/home_search-vid.mp4';
+import sprite from 'url:../../img/sprite.svg';
 
-        <li class="header__btn-container__btn">
+class HomeView extends View {
+  _parentElement = document.querySelector('.container');
 
-          <a class="router-link" data-route="/" href="/">Home</a>
-
-          <a class="router-link nav-active" data-route="/" href="/">Home</a>
-
-        </li>
-        <li class="header__btn-container__btn header__btn-container__btn-bk">
-          <a class="router-link" data-route="/bookmarks" href="/bookmarks">
-            Bookmarks
-          </a>
-        </li>
-        <li class="header__btn-container__btn">
-          <a class="router-link" data-route="/bookmarks" href="/bookmarks">
-            <svg class="header__btn-container__btn__svg">
-              <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use></svg
-          ></a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="container">
-      <!-- HTML renders through Javascript -->
-
-    <div class="container-home">
-      <section class="hero">
+  _generateMarkup() {
+    return `
+          <section class="hero">
         <div class="hero__cta-container">
           <div class="hero__cta-container__text">
             <h1 class="heading-1--white mb-sm">
@@ -82,14 +31,14 @@
           <figure class="hero__img-container__fig--1">
             <img
               class="hero__img-container__img--1"
-              src="./src/img/book-search.png"
+              src="${bookSearchImg}"
               alt="book-search"
             />
           </figure>
           <figure class="hero__img-container__fig--2">
             <img
               class="hero__img-container__img--2"
-              src="./src/img/plan-section.png"
+              src="${planSectionImg}"
               alt="plan-section"
             />
           </figure>
@@ -97,29 +46,29 @@
       </section>
 
       <section class="section-plan">
-        <h1 class="section-plan__heading heading-2--white">
+        <h1 class="section-plan__heading heading-2--white mb-hg">
           Create Your Recommendation Plans
         </h1>
         <div class="section-plan__container">
           <div class="section-plan__plan-info-container">
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Create Your Own Collection</h4>
-              <p class="paragraph--big">
+              <p class="paragraph-big">
                 Browse through our vast collection of a variety of books and
                 handpick them for your personalized recommendation plans.
               </p>
             </div>
             <div class="section-plan__plan-info-container__img">
-              <img src="./src/img/home_create-plans.jpg" alt="create-plans" />
+              <img src="${homeCreatePlansImg}" alt="create-plans" />
             </div>
           </div>
           <div class="section-plan__plan-info-container">
             <div class="section-plan__plan-info-container__img">
-              <img src="./src/img/home_save-plans.jpg" alt="create-plans" />
+              <img src="${homeSavePlansImg}" alt="create-plans" />
             </div>
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Save Your Plans</h4>
-              <p class="paragraph--big">
+              <p class="paragraph-big">
                 Bookmark your recommendation plans to access them in future.
                 Once you bookmark a plan, it will be available under a separate
                 tab in the bookmarks section.
@@ -129,14 +78,14 @@
           <div class="section-plan__plan-info-container">
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Share With Your Friends</h4>
-              <p class="paragraph--big">
+              <p class="paragraph-big">
                 You can use our share feature to share your recommendation plans
                 with your peers. You get a unique URL for each of your
                 recommendation plan that you can share with anyone!
               </p>
             </div>
             <div class="section-plan__plan-info-container__img">
-              <img src="./src/img/home_share-plans.jpg" alt="create-plans" />
+              <img src="${homeSharePlansImg} " alt="create-plans" />
             </div>
           </div>
           <button class="btn-primary section-plan__btn">
@@ -146,7 +95,7 @@
       </section>
 
       <section class="section-find">
-        <h2 class="section-find__heading heading-2">
+        <h2 class="section-find__heading heading-2 mb-hg">
           Find the best books for you
         </h2>
         <div class="section-find__container">
@@ -154,8 +103,7 @@
             <div class="section-find__search-info-container__vid">
               <video autoplay loop muted>
                 <source
-                  src="./src/video/home_search-vid.mp4"
-                  type="video/mp4"
+                  src="${homeSearchVideo} "
                 />
                 Your browser does not support the video tag.
               </video>
@@ -166,7 +114,7 @@
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
                   <use
-                    xlink:href="./src/img/sprite.svg#icon-magnifying-glass"
+                    xlink:href="${sprite}#icon-magnifying-glass"
                   ></use>
                 </svg>
                 <p
@@ -179,7 +127,7 @@
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-funnel"></use>
+                  <use xlink:href="${sprite}#icon-funnel"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text paragraph"
@@ -191,7 +139,7 @@
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+                  <use xlink:href="${sprite}#icon-bookmark"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text paragraph"
@@ -203,7 +151,7 @@
                 <svg
                   class="section-find__search-info-container__text__icon-box__icon"
                 >
-                  <use xlink:href="./src/img/sprite.svg#icon-share"></use>
+                  <use xlink:href="${sprite}#icon-share"></use>
                 </svg>
                 <p
                   class="section-find__search-info-container__text__icon-box__text"
@@ -216,33 +164,8 @@
           <button class="section-find__btn btn-primary">Find Books</button>
         </div>
       </section>
+    `;
+  }
+}
 
-    </div>
-    <footer class="footer">
-      <div class="footer__heading heading-2">Book Wise</div>
-      <div class="footer__social-links">
-        <div class="footer__social-links__author">
-          <h4 class="heading-4--white">Connect with author</h4>
-          <div class="footer__social-links__author__links">
-            <a href="https://github.com/Pranav-Patani" target="_blank"
-              ><svg>
-                <use xlink:href="./src/img/sprite.svg#icon-github"></use></svg
-            ></a>
-            <a href="https://www.linkedin.com/in/pranavpatani/" target="_blank"
-              ><svg>
-                <use xlink:href="./src/img/sprite.svg#icon-linkedin"></use></svg
-            ></a>
-          </div>
-        </div>
-
-        <div class="footer__social-links__site">
-          <h4 class="heading-4--white">Source Code</h4>
-          <a href="https://github.com/Pranav-Patani/BookWise" target="_blank"
-            ><svg><use xlink:href="./src/img/sprite.svg#icon-github"></use></svg
-          ></a>
-        </div>
-      </div>
-      <div class="footer__text">BookWise &#169; 2024</div>
-    </footer>
-  </body>
-</html>
+export default new HomeView();
