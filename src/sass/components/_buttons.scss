@@ -1,17 +1,21 @@
 %btn-primary {
   border: none;
-  padding: 2rem 4rem;
-  border-radius: 2.5rem;
+  padding: var(--space-3) var(--space-5);
+  border-radius: 2.4rem;
   color: var(--color-text-light);
   transition: all 0.2s;
   text-transform: uppercase;
-  font-size: var(--default-font-size);
+  font-size: var(--font-size-m);
   font-weight: bold;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 1rem 2rem rgb(3 7 18 / 20%);
-    transform: translateY(-0.3rem);
+    box-shadow: 0 0.8rem 2.4rem rgb(3 7 18 / 20%);
+    transform: translateY(-0.4rem);
+  }
+
+  &:active {
+    transform: translateY(-0.1rem);
   }
 
   &:active {
