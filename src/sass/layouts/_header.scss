@@ -2,10 +2,10 @@
   backdrop-filter: blur(1rem);
   display: flex;
   position: fixed;
-  z-index: 100;
-  max-height: 8rem;
+  z-index: var(--z-index-lvl-3);
+  max-height: var(--space-10);
   width: 100%;
-  padding: 2rem 4rem;
+  padding: var(--space-3) var(--space-5);
   justify-content: space-between;
   align-items: center;
   background-image: linear-gradient(
@@ -20,9 +20,17 @@
     opacity: 1;
   }
 
+  @include respond(tab-port) {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  @include respond(phone) {
+    padding: var(--space-3);
+  }
+
   &__logo-container {
     flex: 0 0 5%;
-    min-width: 5.5rem;
+    min-width: var(--space-7);
 
     &__img {
       height: 100%;
@@ -44,20 +52,18 @@
       position: absolute;
       left: 100%;
       top: 0;
-      z-index: 101;
       background-image: linear-gradient(to right, rgb(55 65 81), rgb(55 65 81));
       transition: all 0.5s;
       visibility: hidden;
-      opacity: 0;
     }
 
     &__btn {
       font-family: var(--font-family);
       text-decoration: none;
-      padding: 1rem 2rem;
-      margin-left: 2rem;
+      padding: var(--space-1) var(--space-3);
+      margin-left: var(--space-3);
       background-color: inherit;
-      font-size: 1.9rem;
+      font-size: var(--font-size-xl);
       color: var(--color-text-light);
       font-weight: bold;
       cursor: pointer;
@@ -65,20 +71,19 @@
 
       @include respond(phone) {
         position: relative;
-        margin-bottom: 1.6rem;
+        margin-bottom: var(--space-2);
       }
 
       &:not(:last-child)::after {
         content: '';
-        width: 0;
+        width: var(--space-0);
         background-image: linear-gradient(
           to right,
           var(--color-background-light) 40%,
           var(--color-background)
         );
         display: block;
-        margin-top: 0.2rem;
-        height: 0.1rem;
+        margin-top: var(--space-05);
         transition: all 0.2s;
         border-radius: 50rem;
       }
@@ -96,9 +101,9 @@
       }
 
       &__svg {
-        height: 3.5rem;
-        width: 3.5rem;
-        fill: var(--color-primary-light);
+        height: 3.2rem;
+        width: 3.2rem;
+        fill: var(--color-text-light);
 
         @include respond(phone) {
           display: none;
@@ -110,7 +115,7 @@
       }
 
       &:last-child:hover &__svg {
-        fill: var(--color-background);
+        fill: var(--color-primary-light);
       }
 
       &:last-child:active {
@@ -120,6 +125,10 @@
       & a {
         text-decoration: none;
         color: inherit;
+
+        &.nav-active {
+          color: var(--color-primary-dark);
+        }
       }
     }
 
@@ -138,8 +147,8 @@
     cursor: pointer;
     background-color: var(--color-background);
     clip-path: circle(50% at 50% 50%);
-    padding: 3rem;
-    z-index: 500;
+    padding: var(--space-4);
+    z-index: var(--z-index-lvl-4);
 
     @include respond(phone) {
       display: block;
@@ -185,7 +194,6 @@
     &:checked + .header__hamburger-container + .header__btn-container {
       left: 40%;
       visibility: visible;
-      opacity: 1;
     }
 
     &:checked

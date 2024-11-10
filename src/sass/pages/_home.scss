@@ -29,7 +29,7 @@
     content: '';
     height: 95vh;
     width: 100%;
-    z-index: -100;
+    z-index: var(--z-index-lvl-neg-1);
     position: absolute;
     top: 0;
     left: 0;
@@ -43,10 +43,10 @@
     flex: 0 0 47%;
     justify-content: center;
     align-items: center;
-    padding: 0 7rem;
+    padding: 0 var(--space-7);
 
     @include respond(tab-land) {
-      padding: 0 3rem;
+      padding: 0 var(--space-4);
     }
 
     @include respond(tab-port) {
@@ -55,7 +55,7 @@
 
     @include respond(phone) {
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 var(--space-3);
     }
 
     &__text {
@@ -72,7 +72,7 @@
       margin: 0 auto;
 
       & button {
-        margin-top: 2rem;
+        margin-top: var(--space-3);
       }
     }
   }
@@ -114,7 +114,7 @@
 
 .section-plan {
   display: flex;
-  padding: 8rem 0;
+  padding: var(--space-10) 0;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-primary);
@@ -125,8 +125,10 @@
   }
 
   &__heading {
+    margin-bottom: var(--space-10);
+
     @include respond(phone) {
-      padding: 0 2rem;
+      padding: 0 var(--space-3);
       text-align: center;
       color: var(--color-primary-dark);
     }
@@ -138,7 +140,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6rem 0;
+    padding: var(--space-7) 0;
 
     @include respond(tab-land) {
       width: 80%;
@@ -149,7 +151,7 @@
     }
 
     @include respond(phone) {
-      padding: 2rem;
+      padding: var(--space-3);
       width: 100%;
     }
   }
@@ -157,13 +159,13 @@
   &__plan-info-container {
     display: flex;
     justify-content: space-around;
-    padding: 6rem 2rem;
+    padding: var(--space-7) var(--space-3);
     width: 100%;
     background-color: var(--color-text-light);
 
     @include respond(phone) {
       flex-direction: column-reverse;
-      padding: 2rem 1rem;
+      padding: var(--space-3) var(--space-1);
 
       &:nth-child(2) {
         flex-direction: column;
@@ -180,7 +182,7 @@
 
       @include respond(phone) {
         width: 78%;
-        margin-top: 1.5rem;
+        margin-top: var(--space-2);
       }
     }
 
@@ -193,7 +195,7 @@
 
         @include respond(phone) {
           width: 80%;
-          margin: 0 auto;
+          margin: var(--space-0) auto;
         }
       }
     }
@@ -206,21 +208,25 @@
 
 .section-find {
   display: flex;
-  margin: 8rem 0;
+  margin: var(--space-10) var(--space-0);
   flex-direction: column;
   align-items: center;
 
   @include respond(phone) {
-    margin: 0;
+    margin: var(--space-0);
+  }
+
+  &__heading {
+    margin-bottom: var(--space-10);
   }
 
   &__container {
     background-color: var(--color-background-light);
     width: 85%;
-    padding: 8rem 0;
+    padding: var(--space-10) var(--space-0);
 
     @include respond(tab-land) {
-      padding: 6rem 0;
+      padding: var(--space-7) var(--space-0);
       width: 95%;
     }
 
@@ -233,11 +239,11 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 2rem 4rem;
+    padding: var(--space-3) var(--space-5);
     width: 100%;
 
     @include respond(tab-land) {
-      padding: 2rem;
+      padding: var(--space-3);
     }
 
     @include respond(phone) {
@@ -255,7 +261,7 @@
 
         @include respond(phone) {
           width: 90%;
-          margin: 0 auto;
+          margin: var(--space-0) auto;
         }
       }
     }
@@ -270,16 +276,16 @@
       }
 
       @include respond(phone) {
-        margin-top: 3rem;
+        margin-top: var(--space-4);
       }
 
       &__icon-box {
         display: flex;
         align-items: center;
-        margin: 0 auto;
+        margin: var(--space-0) auto;
         width: 70%;
-        margin-bottom: 2rem;
-        padding: 1rem;
+        margin-bottom: var(--space-3);
+        padding: var(--space-1);
 
         @include respond(phone) {
           width: 85%;
@@ -288,7 +294,7 @@
         &__icon {
           height: 4.5rem;
           width: 4.5rem;
-          margin-right: 4rem;
+          margin-right: var(--space-5);
           fill: var(--color-primary);
 
           @include respond(phone) {
@@ -299,7 +305,7 @@
 
         &__text {
           flex: 1 0 0;
-          font-size: 1.6rem;
+          font-size: var(--font-size-m);
           text-transform: uppercase;
           letter-spacing: 0.2rem;
           font-weight: bold;
@@ -311,10 +317,11 @@
 
   &__btn {
     display: block;
-    margin: 0 auto;
+    margin: var(--space-0) auto;
+    margin-top: var(--space-1);
 
     @include respond(phone) {
-      margin-top: 2rem;
+      margin-top: var(--space-3);
     }
   }
 }
