@@ -10,9 +10,15 @@
   align-items: center;
   background-image: linear-gradient(
     to right,
-    rgb(55 65 81 / 30%),
-    rgb(55 65 81 / 60%)
+    rgb(55 65 81 / 60%),
+    rgb(55 65 81 / 80%)
   );
+  opacity: 0.2;
+  transition: all 1.5s;
+
+  &__active {
+    opacity: 1;
+  }
 
   @include respond(tab-port) {
     padding: var(--space-3) var(--space-4);
