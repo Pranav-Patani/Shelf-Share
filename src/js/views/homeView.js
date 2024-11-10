@@ -53,7 +53,7 @@ class HomeView extends View {
           <div class="section-plan__plan-info-container">
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Create Your Own Collection</h4>
-              <p class="paragraph-big">
+              <p class="paragraph--big">
                 Browse through our vast collection of a variety of books and
                 handpick them for your personalized recommendation plans.
               </p>
@@ -68,7 +68,7 @@ class HomeView extends View {
             </div>
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Save Your Plans</h4>
-              <p class="paragraph-big">
+              <p class="paragraph--big">
                 Bookmark your recommendation plans to access them in future.
                 Once you bookmark a plan, it will be available under a separate
                 tab in the bookmarks section.
@@ -78,7 +78,7 @@ class HomeView extends View {
           <div class="section-plan__plan-info-container">
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Share With Your Friends</h4>
-              <p class="paragraph-big">
+              <p class="paragraph--big">
                 You can use our share feature to share your recommendation plans
                 with your peers. You get a unique URL for each of your
                 recommendation plan that you can share with anyone!

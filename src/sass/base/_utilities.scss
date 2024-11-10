@@ -1,0 +1,55 @@
+.mb-sm {
+  margin-bottom: 2.4rem;
+}
+
+.mb-lg {
+  margin-bottom: 5.6rem;
+
+  @include respond(phone) {
+    margin-bottom: 4rem;
+  }
+}
+
+.mb-hg {
+  margin-bottom: 8rem;
+
+  @include respond(phone) {
+    margin-bottom: 5.6rem;
+  }
+}
+
+.svg-fill {
+  fill: var(--color-primary);
+}
+
+.svg-empty {
+  fill: var(--color-background-light);
+  stroke: var(--color-gray-light);
+  stroke-width: 0.15rem;
+}
+
+.message-container {
+  padding: var(--space-12) var(--space-5) var(--space-10);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+    padding: var(--space-4);
+    background-color: var(--color-background-light);
+  }
+}
+
+.center-element {
+  margin: auto;
+  vertical-align: center;
+  font-size: var(--font-size-l);
+}

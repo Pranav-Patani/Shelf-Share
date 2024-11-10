@@ -10,6 +10,8 @@
   --color-background-light: #eff6ff; // Blue 50 -Tailwind
   --color-background: #dbeafe; // Blue 100 -Tailwind
   --color-shadow: #030712; // Gray 950 -Tailwind
+  --color-border-light: #eff6ff; // Blue 50 -Tailwind
+  --color-red: #f87171; // Red 400 -Tailwind
 
   // FONT-VARIABLES
   --font-size-s: 1.4rem;
@@ -24,6 +26,7 @@
 
   // Space Variables -> base unit: 8px
   // space-1*8=8px
+  --space-neg-1: -1rem;
   --space-0: 0rem;
   --space-05: 0.4rem;
   --space-1: 0.8rem;
