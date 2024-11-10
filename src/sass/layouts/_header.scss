@@ -10,8 +10,8 @@
   align-items: center;
   background-image: linear-gradient(
     to right,
-    rgb(55 65 81 / 60%),
-    rgb(55 65 81 / 80%)
+    rgb(55 65 81 / 30%),
+    rgb(55 65 81 / 60%)
   );
 
   @include respond(tab-port) {
@@ -83,7 +83,7 @@
       }
 
       &:active {
-        color: var(--color-gray-light);
+        opacity: 0.6;
       }
 
       &:hover {
@@ -109,19 +109,19 @@
       }
 
       &:last-child:hover &__svg {
-        fill: var(--color-primary-light);
+        fill: var(--color-primary-contrast);
       }
 
       &:last-child:active {
         transform: translateY(0.1rem);
       }
 
-      & a {
+      &__link {
         text-decoration: none;
         color: inherit;
 
         &.nav-active {
-          color: var(--color-primary-dark);
+          color: var(--color-primary-contrast);
         }
       }
     }

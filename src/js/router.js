@@ -1,5 +1,9 @@
 class Router {
-  constructor(routes) {
+  constructor() {
+    this.routes = [];
+  }
+
+  setRoutes(routes) {
     this.routes = routes;
     this._loadInitialRoute();
   }
@@ -21,7 +25,7 @@ class Router {
     matchedRoute.callback();
   }
 
-  _navigateTo(path) {
+  navigateTo(path) {
     window.history.pushState({}, '', path);
     const pathNameSplit = path.split('/');
     const pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
@@ -34,7 +38,7 @@ class Router {
       a.getAttribute('data-route')
         ? a.addEventListener('click', e => {
             e.preventDefault();
-            this._navigateTo(a.getAttribute('data-route'));
+            this.navigateTo(a.dataset.route);
           })
         : '',
     );
@@ -44,4 +48,4 @@ class Router {
   }
 }
 
-export default Router;
+export default new Router();

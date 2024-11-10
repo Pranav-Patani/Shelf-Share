@@ -94,16 +94,26 @@
       box-shadow: 0 2rem 5rem rgba(#000, 0.2);
     }
 
-    &__fig--1 {
-      position: relative;
-      top: -5rem;
-      left: 2rem;
-    }
-
+    &__fig--1,
     &__fig--2 {
       position: relative;
-      left: -10rem;
-      top: 10rem;
+      transition: all 0.2s;
+
+      &__fig--1 {
+        top: -5rem;
+        left: 2rem;
+      }
+
+      &__fig--2 {
+        left: -10rem;
+        top: 10rem;
+      }
+
+      &:hover {
+        z-index: var(--z-index-lvl-1);
+        transform: scale(1.01) translateY(-0.5rem);
+        box-shadow: 0.2rem 0.4rem 1.2rem rgba(#030712, 0.5);
+      }
     }
   }
 }

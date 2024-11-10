@@ -17,10 +17,6 @@
   &:active {
     transform: translateY(-0.1rem);
   }
-
-  &:active {
-    transform: translateY(-0.1rem);
-  }
 }
 
 .btn-primary {
@@ -32,5 +28,48 @@
     @extend %btn-primary;
 
     background-color: var(--color-primary-contrast);
+  }
+}
+
+.btn-secondary {
+  font-size: var(--font-size-s);
+  border: none;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 1.6rem;
+  color: var(--color-text-light);
+  transition: all 0.2s;
+  background-color: var(--color-primary-dark);
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0.8rem 2.4rem rgb(3 7 18 / 20%);
+    transform: translateY(-0.25rem);
+  }
+
+  &:active {
+    transform: translateY(-0.05rem);
+  }
+}
+
+.btn-tertiary {
+  font-size: var(--font-size-s);
+  border: none;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text-light);
+  transition: all 0.2s;
+  background-color: var(--color-primary-light);
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 1rem;
+
+  &:hover {
+    box-shadow: 0 0.4rem 1.8rem rgb(3 7 18 / 20%);
+    transform: translateY(-0.2rem);
+  }
+
+  &:active {
+    transform: translateY(-0.05rem);
   }
 }
