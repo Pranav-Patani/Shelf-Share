@@ -181,7 +181,11 @@ const controlCollectionView = function (collectionId) {
 const controlDeleteCollection = function (collectionId) {
   if (confirm('Are you sure you want to delete this collection?')) {
     model.deleteCollection(collectionId);
+
+    // Find a more optimal way to achieve the below functionality
+
     CollectionsView.render(model.state.collections);
+    CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
   }
 };
 

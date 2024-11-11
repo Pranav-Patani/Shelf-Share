@@ -38,7 +38,6 @@ class BookmarksView extends View {
   }
 
   addHandlerRemoveBookmark(handler) {
-    console.log('Remove bookmark handler called');
     const container = document.querySelector('.section-bookmarks__content');
     container.addEventListener('click', e => {
       const btn = e.target.closest('.remove-bookmark-btn');
@@ -48,7 +47,6 @@ class BookmarksView extends View {
   }
 
   _generateMarkupBookmarkCards() {
-    console.log(this._data);
     return this._data
       .map(bookmark =>
         PreviewViewIndividual.render(bookmark, false, 'remove-bookmark-btn'),
