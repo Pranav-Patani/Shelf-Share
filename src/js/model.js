@@ -126,10 +126,28 @@ export const deleteCollection = collectionId => {
   const index = state.collections.findIndex(
     collection => collection.id === Number(collectionId),
   );
-  if (index !== -1) {
-    state.collections.splice(index, 1);
-    persistCollections();
-  }
+  if (index === -1) return;
+  state.collections.splice(index, 1);
+  persistCollections();
+};
+
+export const deleteIndividualCollectionBook = (bookId, collectionId) => {
+  state.collections.map(collection => {
+    console.log('Collection id from model ', collectionId);
+    console.log('Book id from model ', bookId);
+    if (collection.id === Number(collectionId)) {
+      const bookIndex = collection.books.findIndex(book => book.id === bookId);
+      console.log('book index: ', bookIndex);
+      if (bookIndex === -1) return;
+      collection.books.splice(bookIndex, 1);
+      console.log(collection.books.length);
+      if (collection.books.length === 0) {
+        deleteCollection(collectionId);
+      }
+    }
+  });
+  persistCollections();
+  console.log('From deleteCollectionBook: ', state.collections);
 };
 
 const persistCollections = function () {

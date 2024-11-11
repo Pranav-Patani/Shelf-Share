@@ -6,21 +6,25 @@ class individualCollectionView extends View {
   _errorMessage = 'Collection is empty :(';
   _message = '';
 
-  addHandlerRemoveBookmark(handler) {
-    this._parentElement.removeEventListener('click', this._bookmarkHandler);
+  get id() {
+    return this._id;
+  }
 
-    this._bookmarkHandler = function (e) {
-      const btn = e.target.closest('.remove-bookmark-btn');
+  set id(id) {
+    this._id = id;
+  }
+
+  addHandlerRemoveBook(handler) {
+    console.log('RemoveBook Called');
+    this._parentElement.addEventListener('click', e => {
+      // Arrow function to preserve the "this" keyword of the class
+      const btn = e.target.closest('.remove-collection-btn');
       if (!btn) return;
       const bookId = btn.dataset.bookId;
-      if (!bookId) {
-        console.error('Book ID is missing from the bookmark button');
-        return;
-      }
-      handler(bookId);
-    };
-
-    this._parentElement.addEventListener('click', this._bookmarkHandler);
+      console.log('bookId ', bookId);
+      console.log('Id sent from view ', this.id);
+      handler(bookId, this.id);
+    });
   }
 
   addHandlerShare(handler) {
@@ -31,8 +35,6 @@ class individualCollectionView extends View {
     btn.addEventListener('click', () => {
       handler(this._data, true);
     });
-    // const collectionId = btn.dataset.collectionId;
-    // if(!collectionId) return;
   }
 
   addHandlerRenderShare(handler) {
@@ -48,10 +50,11 @@ class individualCollectionView extends View {
   }
 
   _generateMarkup(markupClass) {
-    console.log('From collections View: ', markupClass);
     const collectionCards = this._generateMarkupCollectionCards(markupClass);
+    this.id = this._data.id;
 
-    return `
+    return this._data.books
+      ? `
       <section class="section-collection">
         <div class="section-collection__container">
         ${
@@ -69,7 +72,8 @@ class individualCollectionView extends View {
           </div>
         </div>
       </section>
-    `;
+    `
+      : `<div class="center-element">This collection is empty :(</div>`;
   }
 }
 

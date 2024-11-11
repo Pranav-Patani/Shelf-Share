@@ -120,7 +120,6 @@ const controlAddBookmark = function () {
 };
 
 const controlRemoveBookmark = function (bookId) {
-  console.log('Remove Bookmark Called');
   model.deleteBookmark(bookId);
 
   // Find a more optimal way to render the below part
@@ -169,13 +168,14 @@ const controlCreateCollection = function () {
   }
 };
 
+// Individual Collection
+
 const controlCollectionView = function (collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
   // IndividualCollectionView.render(collection, true, 'remove-collection-btn');
-  controlCollectionConstructShareUrl(collection);
-  IndividualCollectionView.addHandlerShare(controlCollectionConstructShareUrl);
+  constructIndividualCollectionShareUrl(collection);
 };
 
 const controlDeleteCollection = function (collectionId) {
@@ -189,7 +189,22 @@ const controlDeleteCollection = function (collectionId) {
   }
 };
 
-const controlCollectionShare = function () {
+const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
+  console.log('From controller ', collectionId);
+  model.deleteIndividualCollectionBook(bookId, collectionId);
+  const collection = model.state.collections.find(
+    collection => collection.id === Number(collectionId),
+  );
+  if (collection)
+    constructIndividualCollectionShareUrl(
+      model.state.collections.find(
+        collection => collection.id === Number(collectionId),
+      ),
+    );
+  else CollectionsView.render(model.state.collections);
+};
+
+const controlIndividualCollectionShare = function () {
   const keys = window.location.search;
   const urlParams = new URLSearchParams(keys);
   const data = urlParams.get('data');
@@ -201,18 +216,24 @@ const controlCollectionShare = function () {
       true,
       'remove-collection-btn',
     );
+    IndividualCollectionView.addHandlerShare(
+      constructIndividualCollectionShareUrl,
+    );
+    IndividualCollectionView.addHandlerRemoveBook(
+      controlIndividualCollectionRemoveBook,
+    );
   } else {
     console.log('No data params found.');
   }
 };
 
-const controlCollectionConstructShareUrl = function (collection, btn) {
+const constructIndividualCollectionShareUrl = function (collection, btn) {
   const encodedData = encodeURIComponent(JSON.stringify(collection));
   const shareableUrl = `${window.location.origin}?data=${encodedData}`;
 
   window.history.pushState(model.state, '', shareableUrl);
   if (!btn) {
-    controlCollectionShare();
+    controlIndividualCollectionShare();
     return;
   }
   const copyToClipboard = async function () {
@@ -232,7 +253,9 @@ const init = function () {
   controlRouter();
   BookView.addHandlerRender(controlBooks);
   BookView.addHandlerAddBookmark(controlAddBookmark);
-  IndividualCollectionView.addHandlerRenderShare(controlCollectionShare);
+  IndividualCollectionView.addHandlerRenderShare(
+    controlIndividualCollectionShare,
+  );
 };
 
 init();
