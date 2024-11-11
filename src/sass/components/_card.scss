@@ -9,6 +9,18 @@
   display: block;
   align-self: flex-start;
 
+  @include respond(tab-land) {
+    width: 18.5rem;
+  }
+
+  @include respond(tab-port) {
+    margin: var(--space-1) var(--space-2);
+  }
+
+  @include respond(phone) {
+    margin: var(--space-1) var(--space-2);
+  }
+
   &--1 {
     &__link {
       text-decoration: none;

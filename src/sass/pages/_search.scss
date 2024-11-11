@@ -1,10 +1,18 @@
 .section-search {
-  padding: 9.6rem 4rem 7.2rem;
+  padding: var(--space-12) var(--space-5) var(--space-7);
   background-image: linear-gradient(
     to bottom,
     var(--color-primary-light),
     var(--color-primary)
   );
+
+  @include respond(tab-land) {
+    padding: var(--space-12) var(--space-3) var(--space-4);
+  }
+
+  @include respond(tab-port) {
+    padding: var(--space-12) var(--space-0) var(--space-7);
+  }
 
   &__heading {
     text-align: center;
@@ -19,9 +27,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3.2rem 2.4rem;
+      padding: var(--space-4) var(--space-3);
       background-color: var(--color-background-light);
       width: 100%;
+
+      @include respond(tab-land) {
+        padding: var(--space-4) var(--space-2);
+      }
+
+      @include respond(tab-port) {
+        padding: var(--space-3) var(--space-1);
+      }
+
+      @include respond(phone) {
+        padding: var(--space-2) var(--space-05);
+      }
 
       &__search-bar-container {
         display: flex;
@@ -29,21 +49,33 @@
         align-items: center;
         justify-content: space-between;
         width: 70%;
-        margin-bottom: 0.8rem;
+        margin-bottom: var(--space-1);
+
+        @include respond(tab-port) {
+          width: 80%;
+        }
+
+        @include respond(phone) {
+          width: 95%;
+        }
 
         & input {
           border: none;
           border-radius: 4rem;
-          padding: 2.4rem;
+          padding: var(--space-3);
           width: 90%;
           transition: all 0.3s;
           box-shadow: 0 0.3rem 0.5rem rgba(#000, 0.2);
-          font-size: 1.9rem;
+          font-size: var(--font-size-xl);
           color: var(--color-gray-dark);
           font-family: var(--font-primary);
 
+          @include respond(phone) {
+            width: 100%;
+          }
+
           &::placeholder {
-            font-size: 1.9rem;
+            font-size: var(--font-size-xl);
             text-transform: capitalize;
             color: var(--color-gray-light);
           }
@@ -57,9 +89,9 @@
         & button {
           border: none;
           border-radius: 4rem;
-          padding: 2.4rem;
+          padding: var(--space-3);
           width: 14%;
-          font-size: 1.6rem;
+          font-size: var(--space-2);
           background-image: linear-gradient(
             to right,
             var(--color-primary-light),
@@ -70,6 +102,14 @@
           position: absolute;
           transition: all 0.2s;
           cursor: pointer;
+
+          @include respond(tab-port) {
+            width: 16%;
+          }
+
+          @include respond(phone) {
+            width: 22%;
+          }
 
           &:hover {
             transform: scale(1.05);
@@ -84,16 +124,25 @@
       &__search-results-container {
         display: flex;
         flex-wrap: wrap;
-        padding: 0 2.4rem;
-        margin-top: 3.2rem;
+        justify-content: center;
+        padding: var(--space-0) var(--space-3);
+        margin-top: var(--space-4);
         width: 100%;
         height: 100vh;
         overflow-y: auto;
         list-style: none;
 
+        @include respond(phone) {
+          padding: var(--space-0);
+        }
+
         &::-webkit-scrollbar {
           background-color: var(--color-background);
           width: 0.8rem;
+
+          @include respond(phone) {
+            width: 0.5rem;
+          }
 
           &-track {
             background: var(--color-primary-light);

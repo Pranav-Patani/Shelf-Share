@@ -1,5 +1,5 @@
 .section-book-view {
-  padding: 9.6rem 0 8rem;
+  padding: var(--space-12) var(--space-0) var(--space-10);
   background-image: linear-gradient(
     to bottom,
     var(--color-primary-light),
@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem;
+    padding: var(--space-5);
   }
 
   &__main-info-container {
@@ -26,7 +26,7 @@
       var(--color-background-light) 60%,
       var(--color-background)
     );
-    padding: 4rem;
+    padding: var(--space-5);
 
     &__img {
       flex: 0 0 45%;
@@ -34,7 +34,7 @@
       img {
         max-width: 100%;
         min-width: 75%;
-        box-shadow: 0.8rem 0.8rem 1.6rem rgba(#000, 0.2);
+        box-shadow: 0.8rem 0.8rem 1.6rem rgba(#030712, 0.2);
       }
     }
 
@@ -45,7 +45,7 @@
 
       &--up {
         &__rating {
-          margin-top: 0.8rem;
+          margin-top: var(--space-1);
         }
       }
 
@@ -58,10 +58,10 @@
           );
           color: var(--color-text-light);
           font-weight: 900;
-          font-size: 1.5rem;
+          font-size: var(--font-size-m);
           display: inline-block;
-          padding: 0.4rem 0.8rem;
-          margin: 0.4rem 0;
+          padding: var(--space-05) var(--space-1);
+          margin: var(--space-05) var(--space-0);
           border-radius: 1rem;
         }
       }
@@ -75,7 +75,7 @@
       &--button {
         display: block;
         align-self: flex-start;
-        margin-top: 0.8rem;
+        margin-top: var(--space-1);
         text-decoration: none;
       }
 
@@ -114,8 +114,8 @@
       var(--color-background)
     );
     width: 80%;
-    padding: 4rem;
-    margin-top: 4rem;
+    padding: var(--space-5);
+    margin-top: var(--space-5);
 
     &__heading {
       text-align: center;
@@ -125,8 +125,8 @@
     &__text {
       width: 75%;
       display: block;
-      margin: 1.6rem auto;
-      padding: 0 4rem;
+      margin: var(--space-2) auto;
+      padding: 0 var(--space-4);
       max-height: 50vh;
       overflow-y: auto;
 
@@ -154,8 +154,8 @@
 
   &__details {
     background-color: var(--color-background-light);
-    padding: 4rem 5.6rem;
-    margin-top: 4rem;
+    padding: var(--space-5) var(--space-7);
+    margin-top: var(--space-5);
 
     &__heading {
       color: var(--color-primary-dark);
@@ -165,14 +165,14 @@
     &__table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 1.6rem;
+      font-size: var(--font-size-m);
       text-align: left;
-      margin: 0.8rem 0;
+      margin: var(--space-1) var(--space-0);
       display: table;
 
       & td {
-        padding: 0.8rem;
-        margin: 9.6rem;
+        padding: var(--space-1);
+        margin: var(--space-12);
         border-bottom: 1px solid var(--color-gray-light);
         color: var(--color-gray-dark);
       }
@@ -180,7 +180,7 @@
       & th {
         border-bottom: 1px solid var(--color-gray-light);
         color: var(--color-primary);
-        padding: 0.8rem;
+        padding: var(--space-1);
       }
     }
   }
