@@ -7,24 +7,6 @@ class BookmarksView extends View {
   _errorMessage = 'No bookmarks yet. Find a nice book and bookmark it ;)';
   _message = '';
 
-  addHandlerTabs() {
-    const tabs = document.querySelectorAll(
-      `.section-bookmarks__tab-container__tab`,
-    );
-    const tabsContainer = document.querySelector(
-      `.section-bookmarks__tab-container`,
-    );
-
-    tabsContainer.addEventListener('click', e => {
-      const tab = e.target.closest('.section-bookmarks__tab-container__tab');
-      if (!tab) return;
-      tabs.forEach(tab =>
-        tab.classList.remove('section-bookmarks__tab-container__tab--active'),
-      );
-      tab.classList.add('section-bookmarks__tab-container__tab--active');
-    });
-  }
-
   addHandlerLinks() {
     const links = document.querySelectorAll(
       '.section-bookmarks__tab-container__link',

@@ -132,7 +132,6 @@ const setUpBookmarksView = function () {
   BookmarksView.render(model.state.bookmarks);
   BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
   BookmarksView.addHandlerLinks();
-  BookmarksView.addHandlerTabs();
 };
 
 // Collections
@@ -142,7 +141,6 @@ const setUpCollectionsView = function () {
   CollectionsView.addHandlerViewCollection(controlCollectionView);
   CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
   CollectionsView.addHandlerLinks();
-  CollectionsView.addHandlerTabs();
 };
 
 const controlAddToCollection = function (bookId) {

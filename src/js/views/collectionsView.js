@@ -16,25 +16,6 @@ class CollectionsView extends View {
     );
   }
 
-  addHandlerTabs() {
-    const tabs = document.querySelectorAll(
-      `.section-bookmarks__tab-container__tab`,
-    );
-
-    const tabsContainer = document.querySelector(
-      `.section-bookmarks__tab-container`,
-    );
-
-    tabsContainer.addEventListener('click', e => {
-      const tab = e.target.closest('.section-bookmarks__tab-container__tab');
-      if (!tab) return;
-      tabs.forEach(tab =>
-        tab.classList.remove('section-bookmarks__tab-container__tab--active'),
-      );
-      tab.classList.add('section-bookmarks__tab-container__tab--active');
-    });
-  }
-
   addHandlerViewCollection(handler) {
     const container = document.querySelector('.section-bookmarks__content');
 
@@ -100,7 +81,7 @@ class CollectionsView extends View {
         <div class="section-bookmarks__tab-container">
         <a class="section-bookmarks__tab-container__link router-link" href="/bookmarks" data-route="/bookmarks">
                  <button
-            class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1 section-bookmarks__tab-container__tab--active"
+            class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1"
             data-tab="1"
           >
             Books
@@ -110,7 +91,7 @@ class CollectionsView extends View {
 
         <a class="section-bookmarks__tab-container__link router-link" href="/collections" data-route="/collections">
           <button
-              class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2"
+              class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2 section-bookmarks__tab-container__tab--active"
               data-tab="2"
             >
               Collections
