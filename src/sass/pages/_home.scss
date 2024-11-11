@@ -10,7 +10,7 @@
       rgb(24 100 171 / 55%) 50%,
       rgb(156 163 175 / 55%) 50%
     ),
-    url('../img/hero-bg.jpg');
+    url('../img/hero-bg.webp');
   background-size: cover;
   justify-content: space-around;
   position: relative;
@@ -22,7 +22,7 @@
         rgb(24 100 171 / 55%) 50%,
         rgb(156 163 175 / 55%) 50%
       ),
-      url('../img/hero-bg.jpg');
+      url('../img/hero-bg.webp');
   }
 
   &::after {
