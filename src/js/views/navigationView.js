@@ -1,6 +1,6 @@
 import View from './View';
 import Router from '../router';
-import logo from 'url:../../img/logo.png';
+import logo from 'url:../../img/logo.webp';
 import sprite from 'url:../../img/sprite.svg';
 
 class NavigationView extends View {

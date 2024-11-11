@@ -1,9 +1,9 @@
 import View from './View';
-import bookSearchImg from 'url:../../img/book-search.png';
-import planSectionImg from 'url:../../img/plan-section.png';
-import homeCreatePlansImg from 'url:../../img/home_create-plans.jpg';
-import homeSavePlansImg from 'url:../../img/home_save-plans.jpg';
-import homeSharePlansImg from 'url:../../img/home_share-plans.jpg';
+import bookSearchImg from 'url:../../img/book-search.webp';
+import planSectionImg from 'url:../../img/plan-section.webp';
+import homeCreatePlansImg from 'url:../../img/home_create-plans.webp';
+import homeSavePlansImg from 'url:../../img/home_save-plans.webp';
+import homeSharePlansImg from 'url:../../img/home_share-plans.webp';
 import homeSearchVideo from 'url:../../video/home_search-vid.mp4';
 import sprite from 'url:../../img/sprite.svg';
 
