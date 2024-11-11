@@ -38,6 +38,7 @@ class BookmarksView extends View {
   }
 
   addHandlerRemoveBookmark(handler) {
+    console.log('Remove bookmark handler called');
     const container = document.querySelector('.section-bookmarks__content');
     container.addEventListener('click', e => {
       const btn = e.target.closest('.remove-bookmark-btn');
