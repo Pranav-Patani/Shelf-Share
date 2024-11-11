@@ -94,20 +94,20 @@
       box-shadow: 0 2rem 5rem rgba(#000, 0.2);
     }
 
+    &__fig--1 {
+      top: -5rem;
+      left: 2rem;
+    }
+
+    &__fig--2 {
+      left: -10rem;
+      top: 10rem;
+    }
+
     &__fig--1,
     &__fig--2 {
       position: relative;
       transition: all 0.2s;
-
-      &__fig--1 {
-        top: -5rem;
-        left: 2rem;
-      }
-
-      &__fig--2 {
-        left: -10rem;
-        top: 10rem;
-      }
 
       &:hover {
         z-index: var(--z-index-lvl-1);
