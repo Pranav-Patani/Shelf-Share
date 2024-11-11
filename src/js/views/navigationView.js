@@ -1,9 +1,21 @@
 import View from './View';
+import Router from '../router';
 import logo from 'url:../../img/logo.png';
 import sprite from 'url:../../img/sprite.svg';
 
 class NavigationView extends View {
   _parentElement = document.querySelector('.navigation');
+
+  addHandlerNavigationLinks() {
+    const container = document.querySelector('.header__btn-container');
+    container.addEventListener('click', e => {
+      const link = e.target.closest('.router-link');
+      console.log(link);
+      if (!link) return;
+      e.preventDefault();
+      Router.navigateTo(link.dataset.route);
+    });
+  }
 
   addHandlerActiveLink() {
     const container = document.querySelector('.header__btn-container');
@@ -30,36 +42,31 @@ class NavigationView extends View {
         <label for="header-check" class="header__hamburger-container">
           <div class="header__hamburger-container__hamburger"></div>
         </label>
-        <ul class="header__btn-container">
-          <li class="header__btn-container__btn">
-            <a class="header__btn-container__btn__link router-link" data-route="/findBooks" href="/findBooks"
-              >Find Books</a
-            >
-          </li>
-          <li class="header__btn-container__btn">
-            <a
-              class="header__btn-container__btn__link router-link"
-              data-route="/createCollections"
-              href="/createCollections"
-              >Create Collections</a
-            >
-          </li>
-
-          <li class="nav-active header__btn-container__btn">
-            <a class="nav-active header__btn-container__btn__link router-link" data-route="/" href="/">Home</a>
-          </li>
-          <li class="header__btn-container__btn header__btn-container__btn-bk">
-            <a class="header__btn-container__btn__link router-link" data-route="/bookmarks" href="/bookmarks">
-              Bookmarks
-            </a>
-          </li>
-          <li class="header__btn-container__btn">
-            <a class="header__btn-container__btn__link router-link" data-route="/bookmarks" href="/bookmarks">
-              <svg class="header__btn-container__btn__svg">
-                <use xlink:href="${sprite}#icon-bookmark"></use></svg
-            ></a>
-          </li>
-        </ul>
+        <div class="header__btn-container">
+          <a href="/findBooks" class="header__btn-container__btn-link router-link" data-route="/findBooks">
+            <button class="header__btn-container__btn-link__btn">Find Books</button>
+          </a>
+          
+          <a href="/createCollections" class="header__btn-container__btn-link router-link" data-route="/createCollections">
+            <button class="header__btn-container__btn-link__btn">Create Collections</button>
+          </a>
+          
+          <a href="/" class="nav-active header__btn-container__btn-link router-link" data-route="/">
+            <button class="header__btn-container__btn-link__btn">Home</button>
+          </a>
+          
+          <a href="/bookmarks" class="header__btn-container__btn-link router-link" data-route="/bookmarks">
+            <button class="header__btn-container__btn-link__btn header__btn-container__btn-link__btn-bm">Bookmarks</button>
+          </a>
+          
+          <a href="/bookmarks" class="header__btn-container__btn-link router-link" data-route="/bookmarks">
+            <button class="header__btn-container__btn-link__btn">
+              <svg class="header__btn-container__btn-link__btn__svg">
+                <use xlink:href="${sprite}#icon-bookmark"></use>
+              </svg>
+            </button>
+          </a>
+        </div>
       </nav>
     `;
   }

@@ -34,13 +34,13 @@ const controlRouter = function () {
 
   Router.setRoutes(routes);
   Router.addHandlerRouter();
-  //Later pass routes to one function and from there pass to all other for better readability
 };
 
 // Initial View
 
 const setUpInitialView = function () {
   NavigationView.render();
+  NavigationView.addHandlerNavigationLinks();
   NavigationView.addHandlerActiveLink();
   FooterView.render();
 };
@@ -126,6 +126,7 @@ const controlRemoveBookmark = function (bookId) {
 
   BookmarksView.render(model.state.bookmarks);
   BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
+  BookmarksView.addHandlerLinks();
 };
 
 const setUpBookmarksView = function () {
@@ -184,6 +185,7 @@ const controlDeleteCollection = function (collectionId) {
 
     CollectionsView.render(model.state.collections);
     CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
+    CollectionsView.addHandlerLinks();
   }
 };
 

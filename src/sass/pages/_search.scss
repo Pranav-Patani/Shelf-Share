@@ -14,21 +14,6 @@
     display: flex;
     max-height: 75vh;
 
-    &__filters-section {
-      flex: 0 0 20%;
-      padding: 3.2rem 2.4rem;
-      background-image: linear-gradient(
-        to right,
-        var(--color-background) 80%,
-        var(--color-background-light) 100%
-      );
-      text-align: center;
-
-      &__filters {
-        margin-top: 0.8rem;
-      }
-    }
-
     &__search-section {
       position: relative;
       display: flex;
@@ -83,7 +68,6 @@
           color: var(--color-text-light);
           font-weight: bold;
           position: absolute;
-          z-index: 10;
           transition: all 0.2s;
           cursor: pointer;
 
