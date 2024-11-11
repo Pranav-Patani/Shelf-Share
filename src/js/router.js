@@ -33,15 +33,7 @@ class Router {
   }
 
   addHandlerRouter() {
-    const links = document.querySelectorAll('.router-link');
-    links.forEach(a =>
-      a.getAttribute('data-route')
-        ? a.addEventListener('click', e => {
-            e.preventDefault();
-            this.navigateTo(a.dataset.route);
-          })
-        : '',
-    );
+    // For popstate event, when user choose to navigate through browser's back and forward buttons, rather than the Router's navigateTo method
     window.addEventListener('popstate', () => {
       this._loadInitialRoute();
     });

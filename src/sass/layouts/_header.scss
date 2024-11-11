@@ -51,86 +51,56 @@
       visibility: hidden;
     }
 
-    &__btn {
-      font-family: var(--font-family);
+    &__btn-link {
       text-decoration: none;
-      padding: var(--space-1) var(--space-3);
-      margin-left: var(--space-3);
-      background-color: inherit;
-      font-size: var(--font-size-xl);
       color: var(--color-text-light);
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.2s;
+      margin-left: var(--space-3);
 
-      @include respond(phone) {
-        position: relative;
-        margin-bottom: var(--space-2);
+      &.nav-active {
+        color: var(--color-primary-contrast);
       }
 
-      &:not(:last-child)::after {
-        content: '';
-        width: var(--space-0);
-        background-image: linear-gradient(
-          to right,
-          var(--color-background-light) 40%,
-          var(--color-background)
-        );
-        display: block;
-        margin-top: var(--space-05);
+      &__btn {
+        font-family: var(--font-family);
+        border: none;
+        padding: var(--space-1) var(--space-1);
+        background-color: inherit;
+        font-size: var(--font-size-xl);
+        color: inherit;
+        font-weight: bold;
+        cursor: pointer;
         transition: all 0.2s;
-        border-radius: 50rem;
-      }
-
-      &:active {
-        opacity: 0.6;
-      }
-
-      &:hover {
-        transform: translateY(-0.2rem);
-
-        &::after {
-          width: 100%;
-        }
-      }
-
-      &__svg {
-        height: 3.2rem;
-        width: 3.2rem;
-        fill: var(--color-text-light);
 
         @include respond(phone) {
+          position: relative;
+          margin-bottom: var(--space-2);
+        }
+
+        &:active {
+          opacity: 0.6;
+        }
+
+        &:hover {
+          transform: translateY(-0.2rem);
+        }
+
+        &__svg {
+          height: 3.2rem;
+          width: 3.2rem;
+          fill: var(--color-text-light);
+
+          @include respond(phone) {
+            display: none;
+          }
+        }
+
+        &-bm {
           display: none;
+
+          @include respond(phone) {
+            display: block;
+          }
         }
-      }
-
-      &:last-child:hover {
-        transform: scale(1.1);
-      }
-
-      &:last-child:hover &__svg {
-        fill: var(--color-primary-contrast);
-      }
-
-      &:last-child:active {
-        transform: translateY(0.1rem);
-      }
-
-      &__link {
-        text-decoration: none;
-        color: inherit;
-
-        &.nav-active {
-          color: var(--color-primary-contrast);
-        }
-      }
-    }
-
-    &__btn-bk {
-      display: none;
-
-      @include respond(phone) {
-        display: block;
       }
     }
   }
