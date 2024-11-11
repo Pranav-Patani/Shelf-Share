@@ -83,7 +83,7 @@ class BookmarksView extends View {
         </div>
         <div class="section-bookmarks__container">
           <div
-            class="section-bookmarks__content section-bookmarks__content section-bookmarks__content--active"
+            class="section-bookmarks__content section-bookmarks__content--active"
           >
             ${bookmarkCards ? bookmarkCards : '<div class="center-element">You did not bookmark any books yet :(</div>'}
           </div>

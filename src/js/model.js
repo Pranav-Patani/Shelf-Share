@@ -122,16 +122,9 @@ export const createCollection = collectionName => {
   persistCollections();
 };
 
-export const getCollection = collectionId => {
-  console.log('Getting collection with ID:', collectionId);
-  return state.collections.find(
-    collection => collection.id === parseInt(collectionId, 10),
-  );
-};
-
 export const deleteCollection = collectionId => {
   const index = state.collections.findIndex(
-    collection => collection.id === parseInt(collectionId),
+    collection => collection.id === Number(collectionId),
   );
   if (index !== -1) {
     state.collections.splice(index, 1);

@@ -3,7 +3,7 @@ import BookView from './views/bookView';
 import SearchView from './views/searchView';
 import FindBooksView from './views/findBooksView';
 import CreateCollectionsView from './views/createCollectionsView';
-import CollectionView from './views/individualCollectionView';
+import IndividualCollectionView from './views/individualCollectionView';
 import BookmarksView from './views/bookmarksView';
 import CollectionsView from './views/collectionsView';
 import Router from './router';
@@ -172,23 +172,16 @@ const controlCollectionView = function (collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
-  CollectionView.render(collection, true, 'remove-collection-btn');
-  CollectionView.addHandlerGoBack(controlCollectionBackBtn);
-  CollectionView.addHandlerShare(controlCollectionShareUrl);
+  // IndividualCollectionView.render(collection, true, 'remove-collection-btn');
+  controlCollectionConstructShareUrl(collection);
+  IndividualCollectionView.addHandlerShare(controlCollectionConstructShareUrl);
 };
 
 const controlDeleteCollection = function (collectionId) {
   if (confirm('Are you sure you want to delete this collection?')) {
     model.deleteCollection(collectionId);
-    BookmarksView.render({
-      bookmarks: model.state.bookmarks,
-      collections: model.state.collections,
-    });
+    CollectionsView.render(model.state.collections);
   }
-};
-
-const controlCollectionBackBtn = function () {
-  setUpBookmarksView();
 };
 
 const controlCollectionShare = function () {
@@ -198,16 +191,25 @@ const controlCollectionShare = function () {
 
   if (data) {
     const collectionData = JSON.parse(decodeURIComponent(data));
-    CollectionView.render(collectionData, true, 'shared-view');
+    IndividualCollectionView.render(
+      collectionData,
+      true,
+      'remove-collection-btn',
+    );
   } else {
     console.log('No data params found.');
   }
 };
 
-const controlCollectionShareUrl = function (collection) {
+const controlCollectionConstructShareUrl = function (collection, btn) {
   const encodedData = encodeURIComponent(JSON.stringify(collection));
   const shareableUrl = `${window.location.origin}?data=${encodedData}`;
-  console.log(shareableUrl);
+
+  window.history.pushState(model.state, '', shareableUrl);
+  if (!btn) {
+    controlCollectionShare();
+    return;
+  }
   const copyToClipboard = async function () {
     try {
       await navigator.clipboard.writeText(shareableUrl);
@@ -225,7 +227,7 @@ const init = function () {
   controlRouter();
   BookView.addHandlerRender(controlBooks);
   BookView.addHandlerAddBookmark(controlAddBookmark);
-  CollectionView.addHandlerRenderShare(controlCollectionShare);
+  IndividualCollectionView.addHandlerRenderShare(controlCollectionShare);
 };
 
 init();

@@ -23,20 +23,13 @@ class individualCollectionView extends View {
     this._parentElement.addEventListener('click', this._bookmarkHandler);
   }
 
-  addHandlerGoBack(handler) {
-    const btn = document.querySelector(
-      '.section-collection__container__back-btn',
-    );
-    btn.addEventListener('click', handler);
-  }
-
   addHandlerShare(handler) {
     const btn = document.querySelector(
       '.section-collection__container__share-btn',
     );
     if (!btn) return;
     btn.addEventListener('click', () => {
-      handler(this._data);
+      handler(this._data, true);
     });
     // const collectionId = btn.dataset.collectionId;
     // if(!collectionId) return;
@@ -65,7 +58,6 @@ class individualCollectionView extends View {
           markupClass === 'shared-view'
             ? ''
             : `
-           <button class="btn-tertiary section-collection__container__back-btn">Go Back</button>
         <button class="btn-tertiary section-collection__container__share-btn" data-collection-id="${this._data.id}">Share</button>
           `
         }

@@ -36,30 +36,22 @@ class CollectionsView extends View {
   }
 
   addHandlerViewCollection(handler) {
-    const tab = document.querySelector(
-      '.section-bookmarks__tab-container__tab--2',
-    );
-    tab.addEventListener('click', () => {
-      const btnList = document.querySelectorAll(
-        `.card--2__text-container__btn--view`,
-      );
-      btnList.forEach(btn =>
-        btn.addEventListener('click', () => {
-          const collectionId = btn.dataset.collectionId;
-          console.log('On click, id passed: ' + collectionId);
-          handler(collectionId);
-        }),
-      );
+    const container = document.querySelector('.section-bookmarks__content');
+
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.card--2__text-container__btn--view');
+      if (!btn) return;
+      handler(btn.dataset.collectionId);
     });
   }
 
   addHandlerDeleteCollection(handler) {
-    this._parentElement.addEventListener('click', e => {
+    const container = document.querySelector('.section-bookmarks__content');
+
+    container.addEventListener('click', e => {
       const btn = e.target.closest('.card--2__text-container__btn--delete');
-      if (btn) {
-        const collectionId = btn.dataset.collectionId;
-        handler(collectionId);
-      }
+      if (!btn) return;
+      handler(btn.dataset.collectionId);
     });
   }
 
@@ -127,7 +119,7 @@ class CollectionsView extends View {
         </div>
         <div class="section-bookmarks__container">
           <div
-            class="section-bookmarks__content section-bookmarks__content section-bookmarks__content--active"
+            class="section-bookmarks__content section-bookmarks__content--active"
           >
             ${collectionCards ? collectionCards : '<div class="center-element">You did not create any collections yet :(</div>'}
           </div>
