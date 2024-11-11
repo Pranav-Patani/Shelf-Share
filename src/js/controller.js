@@ -99,16 +99,16 @@ const controlSearchResultBookmark = async function (bookId) {
 };
 
 const setUpSearchView = function (path) {
-  if (path === 'createCollections')
-    SearchView.render('', true, 'collection-btn');
-  else SearchView.render();
-  SearchView.addHandlerSearch(() => controlSearchResults(path));
-  if (path === 'findBooks')
-    FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
   if (path === 'createCollections') {
+    SearchView.render('', true, 'collection-btn');
     CreateCollectionsView.addHandlerAddBook(controlAddToCollection);
     SearchView.addHandlerCreateCollection(controlCreateCollection);
+  } else if (path === 'findBooks') {
+    SearchView.render();
+    FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
   }
+
+  SearchView.addHandlerSearch(() => controlSearchResults(path));
 };
 
 // Bookmarks
@@ -120,12 +120,13 @@ const controlAddBookmark = function () {
 };
 
 const controlRemoveBookmark = function (bookId) {
-  try {
-    model.deleteBookmark(bookId);
-    BookmarksView.render(model.state.bookmarks);
-  } catch (err) {
-    console.error(`Error in controlRemoveBookmark: ${err.message}`);
-  }
+  console.log('Remove Bookmark Called');
+  model.deleteBookmark(bookId);
+
+  // Find a more optimal way to render the below part
+
+  BookmarksView.render(model.state.bookmarks);
+  BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
 };
 
 const setUpBookmarksView = function () {

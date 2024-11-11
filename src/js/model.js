@@ -82,7 +82,7 @@ export const addBookmark = book => {
 };
 
 export const deleteBookmark = id => {
-  const index = state.bookmarks.findIndex(el => el.id === id);
+  const index = state.bookmarks.findIndex(book => book.id === id);
 
   state.bookmarks.splice(index, 1);
 
