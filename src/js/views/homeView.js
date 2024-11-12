@@ -1,4 +1,5 @@
 import View from './View';
+import Router from '../router';
 import bookSearchImg from 'url:../../img/book-search.webp';
 import planSectionImg from 'url:../../img/plan-section.webp';
 import homeCreatePlansImg from 'url:../../img/home_create-plans.webp';
@@ -9,6 +10,16 @@ import sprite from 'url:../../img/sprite.svg';
 
 class HomeView extends View {
   _parentElement = document.querySelector('.container');
+
+  addHandlerCTALinks() {
+    const container = document.querySelector('.hero__cta-container__btns');
+    container.addEventListener('click', e => {
+      const link = e.target.closest('.router-link');
+      if (!link) return;
+      e.preventDefault();
+      Router.navigateTo(link.dataset.route);
+    });
+  }
 
   _generateMarkup() {
     return `
@@ -23,8 +34,13 @@ class HomeView extends View {
             </h4>
           </div>
           <div class="hero__cta-container__btns">
-            <button class="btn-primary--complement">Plan Recommendation</button>
+          <a class="router-link hero__cta-container__btns__link" href="/createCollections" data-route="/createCollections">
+           <button class="btn-primary--complement">Plan Recommendation</button>
+          </a> 
+            
+            <a class="router-link hero__cta-container__btns__link" href="/findBooks" data-route="/findBooks">
             <button class="btn-primary--complement">Find Books</button>
+            </a> 
           </div>
         </div>
         <div class="hero__img-container">

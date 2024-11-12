@@ -11,7 +11,6 @@ class HeaderView extends View {
     const container = document.querySelector('.header__btn-container');
     container.addEventListener('click', e => {
       const link = e.target.closest('.router-link');
-      console.log(link);
       if (!link) return;
       e.preventDefault();
       Router.navigateTo(link.dataset.route);
