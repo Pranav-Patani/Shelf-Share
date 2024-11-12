@@ -163,14 +163,11 @@ const controlAddToCollection = function (bookId) {
   }
 };
 
-const controlCreateCollection = function () {
-  const collectionName = prompt('Enter a name for your collection:');
-  if (collectionName) {
-    model.createCollection(collectionName);
-    alert('Collection created successfully!');
-    SearchView.updateSelectedBooks(model.state.selectedBooks);
-    CreateCollectionsView.update(model.state.search.results);
-  }
+const controlCreateCollection = function (collectionName) {
+  if (!collectionName) return;
+  model.createCollection(collectionName);
+  SearchView.updateSelectedBooks(model.state.selectedBooks);
+  CreateCollectionsView.update(model.state.search.results);
 };
 
 // Individual Collection
