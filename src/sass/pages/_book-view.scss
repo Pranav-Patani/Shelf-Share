@@ -6,6 +6,18 @@
     var(--color-primary)
   );
 
+  @include respond(tab-land) {
+    padding: var(--space-12) var(--space-3) var(--space-4);
+  }
+
+  @include respond(tab-port) {
+    padding: var(--space-12) var(--space-0) var(--space-7);
+  }
+
+  @include respond(phone) {
+    padding: var(--space-10) var(--space-0) var(--space-7);
+  }
+
   &__container {
     background-color: var(--color-background);
     width: 95%;
@@ -14,6 +26,14 @@
     flex-direction: column;
     align-items: center;
     padding: var(--space-5);
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    @include respond(phone) {
+      padding: var(--space-5) var(--space-2);
+    }
   }
 
   &__main-info-container {
@@ -28,12 +48,23 @@
     );
     padding: var(--space-5);
 
+    @include respond(tab-land) {
+      width: 100%;
+    }
+
+    @include respond(tab-port) {
+      padding: var(--space-2);
+    }
+
+    @include respond(phone) {
+      flex-wrap: wrap;
+    }
+
     &__img {
-      flex: 0 0 45%;
+      flex: 0 0 40%;
 
       img {
-        max-width: 100%;
-        min-width: 75%;
+        min-width: 20rem;
         box-shadow: 0.8rem 0.8rem 1.6rem rgba(#030712, 0.2);
       }
     }
@@ -43,6 +74,10 @@
       flex-direction: column;
       justify-content: space-around;
 
+      @include respond(phone) {
+        padding: var(--space-0) var(--space-2);
+      }
+
       &--up {
         &__rating {
           margin-top: var(--space-1);
@@ -50,6 +85,10 @@
       }
 
       &--down {
+        &__category-heding {
+          margin: var(--space-2) 0 var(--space-1);
+        }
+
         &__category-text {
           background-image: linear-gradient(
             to right,
@@ -63,19 +102,32 @@
           padding: var(--space-05) var(--space-1);
           margin: var(--space-05) var(--space-0);
           border-radius: 1rem;
+
+          @include respond(phone) {
+            font-size: var(--font-size-s);
+            padding: var(--space-05) var(--space-1);
+            margin: var(--space-05) var(--space-0);
+          }
         }
       }
 
       &--button-container {
         display: flex;
-        width: 60%;
+        flex-wrap: wrap;
+        max-width: 35rem;
         justify-content: space-between;
+        align-items: center;
+        margin-top: var(--space-1);
+
+        @include respond(phone) {
+          margin: var(--space-1) auto 0;
+        }
       }
 
       &--button {
         display: block;
         align-self: flex-start;
-        margin-top: var(--space-1);
+        margin: var(--space-1) var(--space-2) var(--space-2) var(--space-0);
         text-decoration: none;
       }
 
@@ -84,7 +136,8 @@
         cursor: pointer;
         border: none;
         border-radius: 10rem;
-        width: 6rem;
+        width: 5rem;
+        height: 5rem;
         transition: all 0.2s;
         background-color: inherit;
         box-shadow: 0 0.2rem 1rem rgb(3 7 18 / 20%);
@@ -100,8 +153,8 @@
         }
 
         & svg {
-          width: 3.5rem;
-          height: 2.5rem;
+          width: 3.2rem;
+          height: 2.6rem;
         }
       }
     }
@@ -117,18 +170,28 @@
     padding: var(--space-5);
     margin-top: var(--space-5);
 
+    @include respond(tab-land) {
+      width: 100%;
+    }
+
     &__heading {
       text-align: center;
       color: var(--color-primary-dark);
     }
 
-    &__text {
+    &__text,
+    & p {
       width: 75%;
       display: block;
       margin: var(--space-2) auto;
-      padding: 0 var(--space-4);
+      padding: var(--space-0) var(--space-4);
       max-height: 50vh;
       overflow-y: auto;
+
+      @include respond(phone) {
+        width: 100%;
+        padding: var(--space-0) var(--space-2);
+      }
 
       &::-webkit-scrollbar {
         background-color: var(--color-background);
