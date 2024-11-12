@@ -5,6 +5,7 @@
     var(--color-primary-light),
     var(--color-primary)
   );
+  position: relative;
 
   @include respond(tab-land) {
     padding: var(--space-12) var(--space-3) var(--space-4);
@@ -158,6 +159,117 @@
               background: var(--color-background-light);
             }
           }
+        }
+      }
+    }
+  }
+
+  &__model {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(3 7 18 / 70%);
+    z-index: var(--z-index-lvl-3);
+
+    &--active {
+      visibility: visible;
+    }
+
+    &__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--color-gray-dark);
+      height: 50vh;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-4);
+
+      @include respond(phone) {
+        height: 40vh;
+        width: 80%;
+      }
+
+      &__close-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        padding: var(--space-05) var(--space-1);
+        border: none;
+        font-size: var(--font-size-2xl);
+        background-color: var(--color-primary-contrast);
+        color: var(--color-text-light);
+        font-weight: 900;
+        cursor: pointer;
+        transition: all 0.1s;
+
+        &:hover {
+          transform: translateY(-0.15rem);
+          box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+        }
+
+        &:active {
+          transform: translateY(-0.02rem);
+          box-shadow: 0 0.8rem 1.8rem rgba(#000, 0.2);
+        }
+      }
+
+      &__heading {
+        color: var(--color-text-light);
+        margin-bottom: var(--space-4);
+      }
+
+      &__msg,
+      &__err-msg {
+        font-size: var(--font-size-l);
+        font-weight: 700;
+        margin-top: var(--space-1);
+      }
+
+      &__err-msg {
+        color: var(--color-red);
+      }
+
+      &__msg {
+        color: var(--color-primary-light);
+      }
+
+      &__form {
+        display: flex;
+        flex-direction: column;
+
+        &__input {
+          padding: var(--space-2) var(--space-4);
+          font-size: var(--font0size-l);
+          border-radius: 2rem;
+          border: none;
+          transition: box-shadow 0.2s;
+          background-color: var(--color-background-light);
+          color: var(--color-gray-dark);
+
+          &::placeholder {
+            font-size: var(--font-size-m);
+            text-transform: capitalize;
+            color: var(--color-gray-light);
+          }
+
+          &:focus {
+            outline: none;
+            box-shadow: 0 1.5rem 3rem rgba(#000, 0.2);
+          }
+        }
+
+        &__btn {
+          align-self: center;
+          margin-top: var(--space-3);
+          font-size: var(--font-size-xl);
         }
       }
     }

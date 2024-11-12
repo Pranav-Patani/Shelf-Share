@@ -18,21 +18,46 @@ class SearchView extends View {
 
   addHandlerCreateCollection(handler) {
     const doneBtn = this._parentElement.querySelector('.collection-btn');
-    if (doneBtn) {
-      doneBtn.addEventListener('click', handler);
-    }
+    if (!doneBtn) return;
+    doneBtn.addEventListener('click', () => modelSetUp());
+    const modelSetUp = () => {
+      const model = this._parentElement.querySelector('.section-search__model');
+      const form = this._parentElement.querySelector('.model-form');
+      const msg = this._parentElement.querySelector('.model-msg');
+      const errMsg = this._parentElement.querySelector('.model-err-msg');
+      const input = this._parentElement.querySelector('#model-input');
+      const closeBtn = this._parentElement.querySelector(
+        '.section-search__model__content__close-btn',
+      );
+
+      model.classList.add('section-search__model--active');
+
+      closeBtn.addEventListener('click', () => {
+        errMsg.textContent = '';
+        msg.textContent = '';
+        model.classList.remove('section-search__model--active');
+      });
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = input.value;
+        if (!name.trim()) {
+          errMsg.textContent = 'Name cannot be empty :(';
+          input.value = '';
+          return;
+        }
+        errMsg.textContent = '';
+        msg.textContent = 'Collection Created Successfully.';
+        handler(name);
+        setTimeout(
+          () => model.classList.remove('section-search__model--active'),
+          3000,
+        );
+      });
+    };
   }
 
   updateSelectedBooks(selectedBooks) {
-    const selectedBooksContainer = this._parentElement.querySelector(
-      '.selected-books-container',
-    );
-    if (selectedBooksContainer) {
-      selectedBooksContainer.innerHTML =
-        this._generateSelectedBooksMarkup(selectedBooks);
-    }
-
-    // Update the "Done" button state
     const doneBtn = this._parentElement.querySelector('.collection-btn');
     if (doneBtn) {
       doneBtn.classList.toggle(
@@ -72,14 +97,29 @@ class SearchView extends View {
             </ul>
           </div>
         </div>
+        <div class="section-search__model">
+            <div class="section-search__model__content">
+
+            <button class="section-search__model__content__close-btn">X</button>
+
+            <h3 class="heading-3 section-search__model__content__heading">Enter Collection's Name</h3>
+                         
+              <form class="section-search__model__content__form model-form">
+                <input
+                  type="text"
+                  id="model-input"
+                  class="section-search__model__content__form__input"
+                  placeholder="collection name"
+                  autocomplete="off"
+                />
+                <button class="btn-tertiary section-search__model__content__form__btn" type="submit">Create</button>
+              </form>
+            <p class="section-search__model__content__msg model-msg"></p>
+            <p class="section-search__model__content__err-msg model-err-msg"></p>
+            </div>
+        </div>
       </section>
   `;
   }
 }
 export default new SearchView();
-
-/*<div class="section-search__container__filters-section">
-            <div class="section-search__container__filters-section__filters">
-              <h4 class="heading-4">Filters</h4>
-            </div>
-          </div> */

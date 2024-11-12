@@ -11,10 +11,6 @@ class CreateCollectionsView extends View {
       const btn = e.target.closest('.add-collection-btn');
       if (!btn) return;
       const bookId = btn.dataset.bookId;
-      if (!bookId) {
-        console.error('Book ID is missing from the add button');
-        return;
-      }
       handler(bookId);
     });
   }
