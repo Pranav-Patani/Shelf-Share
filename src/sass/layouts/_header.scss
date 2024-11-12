@@ -55,9 +55,11 @@
       text-decoration: none;
       color: var(--color-text-light);
       margin-left: var(--space-3);
+      fill: var(--color-text-light);
 
       &.nav-active {
         color: var(--color-primary-contrast);
+        fill: var(--color-primary-contrast);
       }
 
       &__btn {
@@ -87,7 +89,7 @@
         &__svg {
           height: 3.2rem;
           width: 3.2rem;
-          fill: var(--color-text-light);
+          fill: inherit;
 
           @include respond(phone) {
             display: none;
