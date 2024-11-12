@@ -12,8 +12,7 @@ class HomeView extends View {
   _parentElement = document.querySelector('.container');
 
   addHandlerCTALinks() {
-    const container = document.querySelector('.hero__cta-container__btns');
-    container.addEventListener('click', e => {
+    this._parentElement.addEventListener('click', e => {
       const link = e.target.closest('.router-link');
       if (!link) return;
       e.preventDefault();
@@ -35,7 +34,7 @@ class HomeView extends View {
           </div>
           <div class="hero__cta-container__btns">
           <a class="router-link hero__cta-container__btns__link" href="/createCollections" data-route="/createCollections">
-           <button class="btn-primary--complement">Plan Recommendation</button>
+           <button class="btn-primary--complement">Create Collections</button>
           </a> 
             
             <a class="router-link hero__cta-container__btns__link" href="/findBooks" data-route="/findBooks">
@@ -63,7 +62,7 @@ class HomeView extends View {
 
       <section class="section-plan">
         <h1 class="section-plan__heading heading-2--white mb-hg">
-          Create Your Recommendation Plans
+          Create Your Collections
         </h1>
         <div class="section-plan__container">
           <div class="section-plan__plan-info-container">
@@ -71,7 +70,7 @@ class HomeView extends View {
               <h4 class="heading-4 mb-sm">Create Your Own Collection</h4>
               <p class="paragraph--big">
                 Browse through our vast collection of a variety of books and
-                handpick them for your personalized recommendation plans.
+                handpick them for your personalized collections.
               </p>
             </div>
             <div class="section-plan__plan-info-container__img">
@@ -83,10 +82,10 @@ class HomeView extends View {
               <img src="${homeSavePlansImg}" alt="create-plans" />
             </div>
             <div class="section-plan__plan-info-container__text">
-              <h4 class="heading-4 mb-sm">Save Your Plans</h4>
+              <h4 class="heading-4 mb-sm">Save Your Collections</h4>
               <p class="paragraph--big">
-                Bookmark your recommendation plans to access them in future.
-                Once you bookmark a plan, it will be available under a separate
+                Bookmark your collections to access them in future.
+                Once you bookmark a collection, it will be available under a separate
                 tab in the bookmarks section.
               </p>
             </div>
@@ -95,18 +94,21 @@ class HomeView extends View {
             <div class="section-plan__plan-info-container__text">
               <h4 class="heading-4 mb-sm">Share With Your Friends</h4>
               <p class="paragraph--big">
-                You can use our share feature to share your recommendation plans
+                You can use the share feature to share your collections
                 with your peers. You get a unique URL for each of your
-                recommendation plan that you can share with anyone!
+                collection that you can share with anyone!
               </p>
             </div>
             <div class="section-plan__plan-info-container__img">
               <img src="${homeSharePlansImg} " alt="create-plans" />
             </div>
           </div>
+
+          <a class="router-link hero__cta-container__btns__link" href="/createCollections" data-route="/createCollections">
           <button class="btn-primary section-plan__btn">
-            Plan Recommendation
+            Create Collection
           </button>
+          </a>
         </div>
       </section>
 
@@ -177,7 +179,9 @@ class HomeView extends View {
               </div>
             </div>
           </div>
-          <button class="section-find__btn btn-primary">Find Books</button>
+          <a class="router-link hero__cta-container__btns__link" href="/findBooks" data-route="/findBooks">
+            <button class="section-find__btn btn-primary">Find Books</button>
+          </a>
         </div>
       </section>
     `;

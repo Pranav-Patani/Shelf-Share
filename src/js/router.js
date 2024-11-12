@@ -30,6 +30,10 @@ class Router {
     const pathNameSplit = path.split('/');
     const pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
     this._loadRoute(...pathSegs);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
   }
 
   addHandlerRouter() {
