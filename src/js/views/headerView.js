@@ -3,10 +3,11 @@ import Router from '../router';
 import logo from 'url:../../img/logo.webp';
 import sprite from 'url:../../img/sprite.svg';
 
-class NavigationView extends View {
+class HeaderView extends View {
   _parentElement = document.querySelector('.navigation');
 
   addHandlerNavigationLinks() {
+    const checkBtn = document.querySelector('.header__check');
     const container = document.querySelector('.header__btn-container');
     container.addEventListener('click', e => {
       const link = e.target.closest('.router-link');
@@ -14,6 +15,7 @@ class NavigationView extends View {
       if (!link) return;
       e.preventDefault();
       Router.navigateTo(link.dataset.route);
+      checkBtn.checked = false;
     });
   }
 
@@ -38,6 +40,7 @@ class NavigationView extends View {
             class="header__logo-container__img"
           />
         </div>
+        
         <input type="checkbox" class="header__check" id="header-check" />
         <label for="header-check" class="header__hamburger-container">
           <div class="header__hamburger-container__hamburger"></div>
@@ -72,4 +75,4 @@ class NavigationView extends View {
   }
 }
 
-export default new NavigationView();
+export default new HeaderView();

@@ -8,7 +8,7 @@ import BookmarksView from './views/bookmarksView';
 import CollectionsView from './views/collectionsView';
 import Router from './router';
 import HomeView from './views/homeView';
-import NavigationView from './views/navigationView';
+import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
 
@@ -39,9 +39,9 @@ const controlRouter = function () {
 // Initial View
 
 const setUpInitialView = function () {
-  NavigationView.render();
-  NavigationView.addHandlerNavigationLinks();
-  NavigationView.addHandlerActiveLink();
+  HeaderView.render();
+  HeaderView.addHandlerNavigationLinks();
+  HeaderView.addHandlerActiveLink();
   FooterView.render();
 };
 
