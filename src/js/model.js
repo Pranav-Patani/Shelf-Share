@@ -50,7 +50,7 @@ export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
     const data = await getJSON(
-      `${API_URL}?q=${query}&maxResults=40&${''}&key=${API_KEY}`,
+      `${API_URL}?q=${query}&maxResults=40&key=${API_KEY}`,
     );
     state.search.results = data.items.map(cur => ({
       id: cur.id,
@@ -62,7 +62,7 @@ export const loadSearchResults = async function (query) {
       selected: state.selectedBooks.some(book => book.id === cur.id),
     }));
   } catch (err) {
-    console.err(err);
+    console.error(err);
     throw err;
   }
 };
