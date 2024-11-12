@@ -12,6 +12,11 @@ import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
 
+//Pollifilling
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime'; // For Async Functions
+
 // eslint-disable-next-line no-undef
 if (module.hot) {
   // eslint-disable-next-line no-undef
