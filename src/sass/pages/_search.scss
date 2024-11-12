@@ -177,6 +177,15 @@
   z-index: var(--z-index-lvl-1);
   font-size: var(--font-size-m);
 
+  @include respond(tab-port) {
+    position: absolute;
+    align-self: flex-end;
+    bottom: 2rem;
+    right: 2.5rem;
+    font-size: var(--font-size-l);
+    padding: var(--space-2);
+  }
+
   &__disabled {
     display: none;
   }
