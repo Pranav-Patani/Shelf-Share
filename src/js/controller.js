@@ -228,8 +228,6 @@ const controlIndividualCollectionShare = function () {
     IndividualCollectionView.addHandlerRemoveBook(
       controlIndividualCollectionRemoveBook,
     );
-  } else {
-    console.log('No data params found.');
   }
 };
 
