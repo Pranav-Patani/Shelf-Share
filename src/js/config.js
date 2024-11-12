@@ -1,3 +1,6 @@
+import 'dotenv/config';
+
 export const API_URL = 'https://www.googleapis.com/books/v1/volumes';
-export const API_KEY = 'AIzaSyDyH0_nD3BFmPon40PMKx4iuDS6L2sF03U';
+/* eslint-disable-next-line no-undef */
+export const API_KEY = process.env.API_KEY;
 export const TIMEOUT_SEC = 10;
