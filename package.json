@@ -40,5 +40,9 @@
       "stylelint --fix",
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "core-js": "^3.39.0",
+    "regenerator-runtime": "^0.14.1"
   }
 }
