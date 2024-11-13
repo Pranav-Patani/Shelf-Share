@@ -41,6 +41,20 @@ class individualCollectionView extends View {
     window.addEventListener('load', handler);
   }
 
+  renderAlter(message, error = false) {
+    const alertBox = document.createElement('div');
+    alertBox.className = error ? 'custom-alert-red' : 'custom-alert';
+    alertBox.innerText = message;
+    console.log('appending');
+    document.body.appendChild(alertBox);
+
+    alertBox.classList.add('show-alert');
+    setTimeout(() => alertBox.classList.remove('show-alert'), 2000);
+    setTimeout(() => {
+      alertBox.remove();
+    }, 3000);
+  }
+
   _generateMarkupCollectionCards(markupClass) {
     return this._data.books
       .map(bookmark =>
