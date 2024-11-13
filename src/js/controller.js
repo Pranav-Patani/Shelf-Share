@@ -181,15 +181,15 @@ const controlCollectionView = function (collectionId) {
 };
 
 const controlDeleteCollection = function (collectionId) {
-  if (confirm('Are you sure you want to delete this collection?')) {
-    model.deleteCollection(collectionId);
+  model.deleteCollection(collectionId);
 
-    // Find a more optimal way to achieve the below functionality
+  // Find a more optimal way to achieve the below functionality
 
-    CollectionsView.render(model.state.collections);
-    CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
-    CollectionsView.addHandlerLinks();
-  }
+  CollectionsView.render(model.state.collections);
+
+  CollectionsView.addHandlerViewCollection(controlCollectionView);
+  CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
+  CollectionsView.addHandlerLinks();
 };
 
 const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
@@ -240,10 +240,10 @@ const constructIndividualCollectionShareUrl = function (collection, btn) {
   const copyToClipboard = async function () {
     try {
       await navigator.clipboard.writeText(shareableUrl);
-      alert('Url copied to clipboard');
+      IndividualCollectionView.renderAlter('Url copied to clipboard');
     } catch (err) {
-      console.error("Couldn't copy the URL. Error: ", err);
-      alert("Couldn't copy the Url");
+      console.error(`Couldn't copy the URL. Error: ${err}`);
+      IndividualCollectionView.renderAlter(`Couldn't copy the URL`, true);
     }
   };
   copyToClipboard();

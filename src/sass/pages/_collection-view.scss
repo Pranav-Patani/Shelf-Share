@@ -35,11 +35,6 @@
       padding: var(--space-05) var(--space-0);
     }
 
-    &__back-btn {
-      margin-bottom: var(--space-1);
-      align-self: flex-start;
-    }
-
     &__share-btn {
       position: absolute;
       margin-bottom: var(--space-1);
@@ -89,4 +84,31 @@
       }
     }
   }
+}
+
+.custom-alert,
+.custom-alert-red {
+  position: fixed;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-light);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.4rem 0.6rem rgba(#030712, 0.2);
+  z-index: var(--z-index-lvl-4);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.custom-alert {
+  background-color: var(--color-gray-dark);
+}
+
+.custom-alert-red {
+  background-color: var(--color-red);
+}
+
+.show-alert {
+  opacity: 0.95;
 }

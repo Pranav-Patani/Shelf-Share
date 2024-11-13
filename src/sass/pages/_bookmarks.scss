@@ -106,4 +106,56 @@
       }
     }
   }
+
+  &__model {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(3 7 18 / 70%);
+    z-index: var(--z-index-lvl-3);
+
+    &--active {
+      visibility: visible;
+    }
+
+    &__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--color-gray-dark);
+      height: 40vh;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--space-4);
+
+      @include respond(phone) {
+        height: 40vh;
+        width: 80%;
+      }
+
+      &__heading {
+        color: var(--color-text-light);
+        margin-bottom: var(--space-4);
+      }
+
+      &__btn-container {
+        display: flex;
+        justify-content: space-around;
+        min-width: 20rem;
+      }
+
+      &__btn {
+        &--yes {
+          background-color: var(--color-red);
+        }
+      }
+    }
+  }
 }

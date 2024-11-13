@@ -152,7 +152,6 @@ export const deleteIndividualCollectionBook = (bookId, collectionId) => {
 
 const persistCollections = function () {
   localStorage.setItem('collections', JSON.stringify(state.collections));
-  console.log(state.collections);
 };
 
 // Initialize

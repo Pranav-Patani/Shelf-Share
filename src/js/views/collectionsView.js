@@ -32,7 +32,26 @@ class CollectionsView extends View {
     container.addEventListener('click', e => {
       const btn = e.target.closest('.card--2__text-container__btn--delete');
       if (!btn) return;
-      handler(btn.dataset.collectionId);
+      const collectionId = btn.dataset.collectionId;
+      this._handleModel(handler, collectionId);
+    });
+  }
+
+  _handleModel(handler, collectionId) {
+    const model = this._parentElement.querySelector(
+      '.section-bookmarks__model',
+    );
+    const btnContainer = this._parentElement.querySelector(
+      '.section-bookmarks__model__content__btn-container',
+    );
+    model.classList.add('section-bookmarks__model--active');
+
+    btnContainer.addEventListener('click', e => {
+      const btn = e.target.closest('.section-bookmarks__model__content__btn');
+      if (!btn) return;
+      const choice = btn.dataset.choice;
+      if (choice === 'yes') handler(collectionId);
+      model.classList.remove('section-bookmarks__model--active');
     });
   }
 
@@ -104,6 +123,16 @@ class CollectionsView extends View {
           >
             ${collectionCards ? collectionCards : '<div class="center-element">You did not create any collections yet :(</div>'}
           </div>
+        </div>
+        <div class="section-bookmarks__model">
+            <div class="section-bookmarks__model__content">
+
+            <h3 class="heading-3 section-bookmarks__model__content__heading">Delete Collection ?</h3>
+            <div class="section-bookmarks__model__content__btn-container">
+              <button class="btn-secondary section-bookmarks__model__content__btn section-bookmarks__model__content__btn--yes" data-choice="yes">Yes</button>
+              <button class="btn-secondary section-bookmarks__model__content__btn" data-choice="no">No</button>
+            </div>
+            </div>
         </div>
       </section>
     `;
