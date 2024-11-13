@@ -16,6 +16,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/js": "^9.6.0",
     "@parcel/transformer-sass": "^2.12.0",
+    "autoprefixer": "^10.4.20",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.1",
     "eslint": "^9.6.0",
@@ -26,6 +27,7 @@
     "os-browserify": "^0.3.0",
     "parcel": "^2.12.0",
     "path-browserify": "^1.0.1",
+    "postcss": "^8.4.49",
     "prettier": "^3.3.2",
     "process": "^0.11.10",
     "sass": "^1.77.6",
@@ -54,5 +56,8 @@
     "core-js": "^3.39.0",
     "dotenv": "^16.4.5",
     "regenerator-runtime": "^0.14.1"
-  }
+  },
+  "browserslist": [
+    "last 10 versions"
+  ]
 }
