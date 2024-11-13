@@ -195,7 +195,7 @@
 
       &::-webkit-scrollbar {
         background-color: var(--color-background);
-        width: 1.6rem;
+        width: 0.8rem;
 
         &-track {
           background: var(--color-primary-light);
@@ -205,7 +205,7 @@
         &-thumb {
           border-radius: 2rem;
           background: var(--color-background);
-          border: 0.4rem solid var(--color-primary-light);
+          border: 0.2rem solid var(--color-primary-light);
 
           &:hover {
             background: var(--color-background-light);
