@@ -23,8 +23,7 @@
   }
 
   &__logo-container {
-    flex: 0 0 5%;
-    min-width: var(--space-7);
+    max-width: var(--space-7);
 
     &__img {
       height: 100%;
