@@ -212,12 +212,12 @@
 
         &:hover {
           transform: translateY(-0.15rem);
-          box-shadow: 0 1rem 2rem rgba(#000, 0.2);
+          box-shadow: 0 1rem 2rem rgba(#030712, 0.2);
         }
 
         &:active {
           transform: translateY(-0.02rem);
-          box-shadow: 0 0.8rem 1.8rem rgba(#000, 0.2);
+          box-shadow: 0 0.8rem 1.8rem rgba(#030712, 0.2);
         }
       }
 
@@ -247,7 +247,7 @@
 
         &__input {
           padding: var(--space-2) var(--space-4);
-          font-size: var(--font0size-l);
+          font-size: var(--font-size-l);
           border-radius: 2rem;
           border: none;
           transition: box-shadow 0.2s;
