@@ -1,19 +1,21 @@
 .header {
   display: flex;
-  position: fixed;
   z-index: var(--z-index-lvl-3);
-  max-height: var(--space-10);
+  max-height: 6rem;
   width: 100%;
   padding: var(--space-2) var(--space-5);
   justify-content: space-between;
   align-items: center;
-  border-radius: 0 0 2.5rem 2.5rem;
-  background-color: var(--color-background);
+  background-image: linear-gradient(
+    60deg,
+    rgb(240 249 255 / 96%) 50%,
+    rgb(240 249 255 / 96%) 50%
+  );
 
   &--fixed {
     position: fixed;
-    box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 20%);
-    background-color: var(--color-background-light);
+    box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 10%);
+    border-radius: 0 0 2rem 2rem;
   }
 
   @include respond(tab-port) {
@@ -28,8 +30,9 @@
     max-width: var(--space-7);
 
     &__img {
-      height: 100%;
-      max-width: 100%;
+      display: block;
+      max-width: 4.5rem;
+      margin: auto;
     }
   }
 
@@ -66,7 +69,7 @@
         border: none;
         padding: var(--space-1) var(--space-1);
         background-color: inherit;
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-l);
         color: inherit;
         font-weight: bold;
         cursor: pointer;
