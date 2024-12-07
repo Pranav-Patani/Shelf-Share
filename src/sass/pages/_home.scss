@@ -1,5 +1,6 @@
 .homepage {
-  padding: var(--space-4) var(--space-10);
+  // padding: var(--space-4) var(--space-10);
+  background-color: var(--color-background-light);
 }
 
 // ------------------------
@@ -9,6 +10,30 @@
 .hero {
   display: flex;
   height: 60vh;
+  padding: var(--space-4) var(--space-10) var(--space-0);
+  background-image: linear-gradient(
+      60deg,
+      rgb(240 249 255 / 85%) 50%,
+      rgb(240 249 255 / 85%) 50%
+    ),
+    url('/src/img/background.webp');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(1.5rem);
+  position: relative;
+  box-shadow: 0 0 0.4rem rgb(3 7 18 / 10%);
+
+  &::after {
+    content: '';
+    height: 60vh;
+    width: 100%;
+    z-index: var(--z-index-lvl-neg-1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    backdrop-filter: blur(1.5rem);
+  }
 
   &__text {
     width: 50%;
@@ -43,7 +68,7 @@
       &__search-bar {
         padding: var(--space-2) var(--space-4);
         outline: none;
-        border: 2px solid var(--color-gray-light);
+        border: 2px solid transparent;
         border-radius: 10rem;
         font-size: var(--font-size-l);
         margin-right: 1rem;
@@ -97,6 +122,8 @@
 // ------------------------
 
 .section-collection-info {
+  padding: var(--space-0) var(--space-10);
+
   &__heading {
     text-align: center;
   }
@@ -181,6 +208,8 @@
 // ------------------------
 
 .section-find-info {
+  padding: var(--space-0) var(--space-10) var(--space-4);
+
   &__heading {
     text-align: center;
   }
