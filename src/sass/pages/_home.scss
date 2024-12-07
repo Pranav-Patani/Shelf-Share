@@ -1,5 +1,5 @@
 .homepage {
-  padding: var(--space-4) var(--space-10);
+  padding: var(--space-7) var(--space-10);
 }
 
 // ------------------------
@@ -194,6 +194,7 @@
     &__info-box {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       &__text-box {
         display: flex;
