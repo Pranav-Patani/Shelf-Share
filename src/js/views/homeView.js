@@ -52,7 +52,7 @@ class HomeView extends View {
               </div>
             </section>
 
-            <section class="section-collection-info">
+            <section class="section-collection-info mb-hg">
               <h2 class="heading-2 mb-lg section-collection-info__heading">Create Collections</h2>
               <div class="section-collection-info__content">
                 <div class="section-collection-info__content__text">
@@ -95,6 +95,55 @@ class HomeView extends View {
                     </li>
                   </ul>
                 </div>
+              </div>
+            </section>
+
+            <section class="section-find-info">
+              <h2 class="heading-2 mb-lg section-find-info__heading">Find Books</h2>
+              
+              <div class="section-find-info__content">
+                <div class="section-find-info__content__info-box">
+                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--1">
+                    <svg class="section-find-info__content__info-box__text-box__svg">
+                      <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+                    </svg>
+                    <div class="section-find-info__content__info-box__text-box__text">search from a variety of books</div>
+                  </div>
+                  <div class="section-find-info__content__info-box__img-box">
+                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--1">
+                        <use xlink:href="${sprite}#icon-right-facing"></use>
+                    </svg>
+                  </div>
+                </div>
+                
+                <div class="section-find-info__content__info-box">
+                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--2">
+                   <svg class="section-find-info__content__info-box__text-box__svg">
+                      <use xlink:href="${sprite}#icon-bookmark"></use>
+                    </svg>
+                    <div class="section-find-info__content__info-box__text-box__text">bookmark your favorite books</div>
+                  </div>
+                  <div class="section-find-info__content__info-box__img-box">
+                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--2">
+                        <use xlink:href="${sprite}#icon-center-facing"></use>
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="section-find-info__content__info-box">
+                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--3">
+                    <svg class="section-find-info__content__info-box__text-box__svg">
+                      <use xlink:href="${sprite}#icon-share"></use>
+                    </svg>
+                    <div class="section-find-info__content__info-box__text-box__text">share a book with your friends</div>
+                  </div>
+                  <div class="section-find-info__content__info-box__img-box">
+                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--3">
+                        <use xlink:href="${sprite}#icon-left-facing"></use>
+                    </svg>
+                  </div>
+                </div>
+
               </div>
             </section>
           </div>
