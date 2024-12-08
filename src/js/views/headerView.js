@@ -28,6 +28,14 @@ class HeaderView extends View {
     });
   }
 
+  addHandlerNavbarPosition() {
+    const header = this._parentElement.querySelector(`.header`);
+    const observer = new IntersectionObserver(([entry]) => {
+      header.classList.toggle('header--scrolled', !entry.isIntersecting);
+    }, {});
+    observer.observe(this._parentElement);
+  }
+
   _generateMarkup() {
     return `
      <nav class="header">

@@ -1,21 +1,28 @@
+.navigation {
+  min-height: 6rem;
+}
+
 .header {
   display: flex;
   z-index: var(--z-index-lvl-3);
-  max-height: 6rem;
+  min-height: 6rem;
   width: 100%;
   padding: var(--space-2) var(--space-5);
   justify-content: space-between;
   align-items: center;
   background-image: linear-gradient(
     60deg,
-    rgb(240 249 255 / 96%) 50%,
-    rgb(240 249 255 / 96%) 50%
+    rgb(240 249 255 / 95%) 50%,
+    rgb(240 249 255 / 95%) 50%
   );
+  transition: all 0.2s ease-in;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-  &--fixed {
-    position: fixed;
+  &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 10%);
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 0 0 1rem 1rem;
   }
 
   @include respond(tab-port) {

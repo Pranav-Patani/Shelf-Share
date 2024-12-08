@@ -47,6 +47,7 @@ const setUpInitialView = function () {
   HeaderView.render();
   HeaderView.addHandlerNavigationLinks();
   HeaderView.addHandlerActiveLink();
+  HeaderView.addHandlerNavbarPosition();
   FooterView.render();
 };
 
