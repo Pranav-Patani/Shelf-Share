@@ -1,5 +1,4 @@
 .homepage {
-  // padding: var(--space-4) var(--space-10);
   background-color: var(--color-background-light);
 }
 
@@ -131,55 +130,66 @@
   &__content {
     display: flex;
     height: 50vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 
     &__text {
+      min-width: 20rem;
       width: 50%;
-      position: relative;
 
       & > ul {
         list-style: none;
+        position: relative;
+        height: 50vh;
       }
 
       &__text-box {
         position: absolute;
         top: 46%;
-        left: 50%;
+        left: 55%;
+        width: 60%;
         transform: translate(-50%, -50%);
         opacity: 0;
         visibility: hidden;
+        transition: all 0.2s ease-in-out;
       }
     }
 
     &__img-container {
+      min-width: 20rem;
       width: 50%;
-      position: relative;
 
       & > ul {
         list-style: none;
+        position: relative;
+        height: 50vh;
       }
 
       &__img-box {
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 45%;
         transform: translate(-50%, -50%);
+        width: 60%;
         filter: blur(0.3rem);
         border-radius: 2rem;
         overflow: hidden;
+        transition: all 0.2s;
+        transform-origin: center;
 
-        &--1 {
-          top: 35%;
-          left: 40%;
+        &--front {
+          filter: blur(0);
+          z-index: var(--z-index-lvl-1);
         }
 
-        &--2 {
-          left: 60%;
-          top: 45%;
+        &--middle {
+          transform: translate(-50%, -90%) scale(0.9);
         }
 
-        &--3 {
-          top: 55%;
-          left: 45%;
+        &--back {
+          transform: translate(-50%, -10%) scale(0.9);
         }
 
         &__img {
@@ -192,6 +202,24 @@
       }
     }
   }
+
+  &__progress {
+    border: 2px solid var(--color-primary-light);
+    width: 6rem;
+    height: 0.6rem;
+    margin: auto;
+    border-radius: 10rem;
+    overflow: hidden;
+    margin-top: 1rem;
+
+    &__fill {
+      display: block;
+      width: 6rem;
+      height: 0.4rem;
+      background-color: var(--color-primary-light);
+      animation: progress-bar 5s linear infinite;
+    }
+  }
 }
 
 .text-active {
@@ -199,16 +227,12 @@
   visibility: visible;
 }
 
-.img-active {
-  filter: blur(0);
-}
-
 // ------------------------
 // Section Find
 // ------------------------
 
 .section-find-info {
-  padding: var(--space-8) var(--space-10) var(--space-4);
+  padding: var(--space-8) var(--space-10) var(--space-7);
   background-image: linear-gradient(
       60deg,
       rgb(224 242 254 / 85%) 50%,
