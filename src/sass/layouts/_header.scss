@@ -12,8 +12,8 @@
   align-items: center;
   background-image: linear-gradient(
     60deg,
-    rgb(240 249 255 / 95%) 50%,
-    rgb(240 249 255 / 95%) 50%
+    rgb(224 242 254 / 85%) 50%,
+    rgb(224 242 254 / 85%) 50%
   );
   transition: all 0.2s ease-in;
   position: fixed;
@@ -23,6 +23,11 @@
   &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 10%);
     border-radius: 0 0 1rem 1rem;
+    background-image: linear-gradient(
+      60deg,
+      rgb(240 249 255 / 95%) 50%,
+      rgb(240 249 255 / 95%) 50%
+    );
   }
 
   @include respond(tab-port) {

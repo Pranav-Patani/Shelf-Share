@@ -98,7 +98,7 @@ class HomeView extends View {
               </div>
             </section>
 
-            <section class="section-find-info">
+            <section class="section-find-info mb-sm">
               <h2 class="heading-2 mb-lg section-find-info__heading">Find Books</h2>
               
               <div class="section-find-info__content">
