@@ -22,6 +22,10 @@
   position: relative;
   box-shadow: 0 2 0.4rem rgb(3 7 18 / 5%);
 
+  @include respond(tab-port) {
+    padding: var(--space-4) var(--space-5) var(--space-0);
+  }
+
   &::after {
     content: '';
     height: 60vh;
@@ -40,6 +44,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @include respond(phone) {
+      width: 100%;
+    }
 
     &__heading {
       &--main {
@@ -109,6 +117,11 @@
     text-align: center;
     margin: auto;
 
+    @include respond(phone) {
+      display: none;
+      width: 0%;
+    }
+
     &__svg {
       width: 40rem;
       height: 35rem;
@@ -123,17 +136,24 @@
 .section-collection-info {
   padding: var(--space-0) var(--space-10);
 
+  @include respond(tab-port) {
+    padding: var(--space-0) var(--space-6);
+  }
+
   &__heading {
     text-align: center;
   }
 
   &__content {
     display: flex;
-    height: 50vh;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin: auto;
+
+    @include respond(phone) {
+      flex-direction: column-reverse;
+    }
 
     &__text {
       min-width: 20rem;
@@ -143,6 +163,10 @@
         list-style: none;
         position: relative;
         height: 50vh;
+
+        @include respond(phone) {
+          height: 35vh;
+        }
       }
 
       &__text-box {
@@ -154,6 +178,11 @@
         opacity: 0;
         visibility: hidden;
         transition: all 0.2s ease-in-out;
+
+        @include respond(phone) {
+          left: 50%;
+          width: 100%;
+        }
       }
     }
 
@@ -165,6 +194,10 @@
         list-style: none;
         position: relative;
         height: 50vh;
+
+        @include respond(phone) {
+          height: 35vh;
+        }
       }
 
       &__img-box {
@@ -179,6 +212,11 @@
         transition: all 0.2s;
         transform-origin: center;
 
+        @include respond(phone) {
+          left: 50%;
+          width: 100%;
+        }
+
         &--front {
           filter: blur(0);
           z-index: var(--z-index-lvl-1);
@@ -190,6 +228,21 @@
 
         &--back {
           transform: translate(-50%, -10%) scale(0.9);
+        }
+
+        @include respond(phone) {
+          &--front {
+            filter: blur(0);
+            z-index: var(--z-index-lvl-1);
+          }
+
+          &--middle {
+            transform: translate(-50%, -50%) scale(0.9);
+          }
+
+          &--back {
+            transform: translate(-50%, -50%) scale(0.9);
+          }
         }
 
         &__img {
@@ -207,10 +260,13 @@
     border: 2px solid var(--color-primary-light);
     width: 6rem;
     height: 0.6rem;
-    margin: auto;
+    margin: 1rem auto 0;
     border-radius: 10rem;
     overflow: hidden;
-    margin-top: 1rem;
+
+    @include respond(phone) {
+      margin: 0 auto;
+    }
 
     &__fill {
       display: block;
@@ -282,6 +338,10 @@
 
         &--2 {
           transform: translateY(-4.2rem);
+
+          @include respond(tab-port) {
+            transform: translateY(0);
+          }
         }
 
         &__svg {
@@ -309,6 +369,11 @@
           &--2 {
             height: 30rem;
             transform: translateY(-4.2rem);
+
+            @include respond(tab-port) {
+              transform: translateY(0);
+              height: 25rem;
+            }
           }
         }
       }
