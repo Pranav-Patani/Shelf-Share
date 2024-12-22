@@ -8,6 +8,8 @@
   list-style: none;
   display: block;
   align-self: flex-start;
+  border-radius: 1rem;
+  overflow: hidden;
 
   @include respond(tab-land) {
     width: 18.5rem;
