@@ -80,10 +80,10 @@
         font-size: var(--font-size-l);
         margin-right: 1rem;
         transition: all 0.2s;
+        color: var(--color-gray-dark);
 
         &::placeholder {
           color: var(--color-gray-light);
-          font-weight: 900;
         }
 
         &:focus {

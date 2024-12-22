@@ -46,11 +46,11 @@ export const loadBook = async function (id) {
 
 // Search Results
 
-export const loadSearchResults = async function (query) {
+export const loadSearchResults = async function (query, subject) {
   try {
     state.search.query = query;
     const data = await getJSON(
-      `${API_URL}?q=${query}&maxResults=40&key=${API_KEY}`,
+      `${API_URL}?q=${query && !subject ? query : !query && subject ? `''+subject:${subject}` : query && subject ? `${query}+subject:${subject}` : ``}&maxResults=40&key=${API_KEY}`,
     );
     state.search.results = data.items.map(cur => ({
       id: cur.id,
