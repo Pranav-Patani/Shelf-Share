@@ -15,6 +15,18 @@ class BookView extends View {
     return language.of(this._data.language);
   }
 
+  _generateCategories() {
+    const categories = this._data.categories;
+    const uniqueCategories = [
+      ...new Set(
+        categories.flatMap(category =>
+          category.split('/').map(cur => cur.trim()),
+        ),
+      ),
+    ];
+    return uniqueCategories;
+  }
+
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
@@ -29,8 +41,7 @@ class BookView extends View {
 
   _generateMarkup() {
     return `
-              <section class="section-book-view">
-        <div class="section-book-view__container">
+      <section class="section-book-view">
           <div class="section-book-view__main-info-container">
             <figure class="section-book-view__main-info-container__img">
               <img
@@ -61,7 +72,7 @@ class BookView extends View {
                 >
                   Category
                 </h4>
-                ${this._data.categories
+                ${this._generateCategories()
                   ?.map(
                     cur => `                <p
                   class="section-book-view__main-info-container__text--down__category-text paragraph"
@@ -85,9 +96,9 @@ class BookView extends View {
               </svg>
               </button>
             </div>
-              
             </div>
           </div>
+          
           <div class="section-book-view__description">
             <h3 class="section-book-view__description__heading heading-3">
               Description
@@ -123,7 +134,6 @@ class BookView extends View {
               </tbody>
             </table>
           </div>
-        </div>
       </section>
         `;
   }

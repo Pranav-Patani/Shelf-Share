@@ -1,51 +1,16 @@
 .section-book-view {
-  padding: var(--space-12) var(--space-0) var(--space-10);
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-primary-light),
-    var(--color-primary)
-  );
-
-  @include respond(tab-land) {
-    padding: var(--space-12) var(--space-3) var(--space-4);
-  }
-
-  @include respond(tab-port) {
-    padding: var(--space-12) var(--space-0) var(--space-7);
-  }
-
-  @include respond(phone) {
-    padding: var(--space-10) var(--space-0) var(--space-7);
-  }
-
-  &__container {
-    background-color: var(--color-background);
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--space-5);
-
-    @include respond(tab-port) {
-      width: 100%;
-    }
-
-    @include respond(phone) {
-      padding: var(--space-5) var(--space-2);
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-7) 0 var(--space-8);
 
   &__main-info-container {
     display: flex;
     align-self: center;
     justify-content: space-around;
     width: 80%;
-    background-image: linear-gradient(
-      to left,
-      var(--color-background-light) 60%,
-      var(--color-background)
-    );
+    background-color: var(--color-background-light);
     padding: var(--space-5);
 
     @include respond(tab-land) {
@@ -161,11 +126,7 @@
   }
 
   &__description {
-    background-image: linear-gradient(
-      to right,
-      var(--color-background-light) 60%,
-      var(--color-background)
-    );
+    background-color: var(--color-background-light);
     width: 80%;
     padding: var(--space-5);
     margin-top: var(--space-5);
