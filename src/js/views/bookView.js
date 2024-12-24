@@ -39,9 +39,26 @@ class BookView extends View {
     });
   }
 
+  addHandlerTabHandler() {
+    const tabContainer = document.querySelector(
+      `.section-book-view__overview__tab-container`,
+    );
+    tabContainer.addEventListener('click', e => {
+      const tab = e.target.closest(
+        'section-book-view__overview__tab-container__tab',
+      );
+      if (!tab) return;
+
+      tab.classList.add(
+        'section-book-view__overview__tab-container__tab--active',
+      );
+    });
+  }
+
   _generateMarkup() {
     return `
       <section class="section-book-view">
+      <div class="section-book-view__temp"></div>
           <div class="section-book-view__main-info-container">
             <figure class="section-book-view__main-info-container__img">
               <img
@@ -98,18 +115,29 @@ class BookView extends View {
             </div>
             </div>
           </div>
-          
-          <div class="section-book-view__description">
-            <h3 class="section-book-view__description__heading heading-3">
+        
+        <div class="section-book-view__overview">
+        
+          <div class="section-book-view__overview__tab-container">
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--1 section-book-view__overview__tab-container__tab--active">
+                  Description
+            </button>
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--2">
+                  Details
+            </button>
+          </div>
+          <div class="section-book-view__overview__content section-book-view__overview__content--1 section-book-view__overview__content--active">
+            <h3 class="section-book-view__overview__content--1__heading heading-3">
               Description
             </h3>
-            <p class="section-book-view__description__text paragraph">
+            <p class="section-book-view__overview__content--1__text paragraph">
              ${this._data.description}
             </p>
           </div>
-          <div class="section-book-view__details">
-            <h3 class="section-book-view__details__heading">Details</h3>
-            <table class="section-book-view__details__table">
+
+          <div class="section-book-view__overview__content section-book-view__overview__content--2">
+            <h3 class="section-book-view__overview__content--2__heading heading-3">Details</h3>
+            <table class="section-book-view__overview__content--2__table">
               <tbody>
                 <tr>
                   <th>Publisher</th>
@@ -134,6 +162,7 @@ class BookView extends View {
               </tbody>
             </table>
           </div>
+        </div>
       </section>
         `;
   }

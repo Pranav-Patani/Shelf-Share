@@ -3,33 +3,47 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--space-7) 0 var(--space-8);
+  padding: var(--space-7) 0 var(--space-0);
+  background-image: linear-gradient(
+      60deg,
+      rgb(224 242 254 / 85%) 50%,
+      rgb(224 242 254 / 85%) 50%
+    ),
+    url('/src/img/background.webp');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(1.5rem);
+
+  &::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    z-index: var(--z-index-lvl-neg-1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    backdrop-filter: blur(1.5rem);
+  }
 
   &__main-info-container {
+    max-width: 80%;
     display: flex;
+    flex-direction: row-reverse;
     align-self: center;
     justify-content: space-around;
-    width: 80%;
     background-color: var(--color-background-light);
     padding: var(--space-5);
-
-    @include respond(tab-land) {
-      width: 100%;
-    }
-
-    @include respond(tab-port) {
-      padding: var(--space-2);
-    }
-
-    @include respond(phone) {
-      flex-wrap: wrap;
-    }
+    border-radius: 4rem;
 
     &__img {
       flex: 0 0 40%;
+      min-height: 24rem;
+      text-align: center;
+      align-self: center;
 
       img {
-        min-width: 20rem;
+        min-width: 24rem;
         box-shadow: 0.8rem 0.8rem 1.6rem rgba(#030712, 0.2);
       }
     }
@@ -50,6 +64,8 @@
       }
 
       &--down {
+        max-width: 80%;
+
         &__category-heding {
           margin: var(--space-2) 0 var(--space-1);
         }
@@ -79,14 +95,8 @@
       &--button-container {
         display: flex;
         flex-wrap: wrap;
-        max-width: 35rem;
-        justify-content: space-between;
         align-items: center;
         margin-top: var(--space-1);
-
-        @include respond(phone) {
-          margin: var(--space-1) auto 0;
-        }
       }
 
       &--button {
@@ -125,86 +135,117 @@
     }
   }
 
-  &__description {
+  &__overview {
     background-color: var(--color-background-light);
-    width: 80%;
-    padding: var(--space-5);
-    margin-top: var(--space-5);
+    margin: var(--space-10) 0 0;
+    padding: 0 0 var(--space-8);
 
-    @include respond(tab-land) {
-      width: 100%;
-    }
+    &__tab-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    &__heading {
-      text-align: center;
-      color: var(--color-primary-dark);
-    }
-
-    &__text,
-    & p {
-      width: 75%;
-      display: block;
-      margin: var(--space-2) auto;
-      padding: var(--space-0) var(--space-4);
-      max-height: 50vh;
-      overflow-y: auto;
-
-      @include respond(phone) {
+      &__tab {
         width: 100%;
-        padding: var(--space-0) var(--space-2);
-      }
+        border: none;
+        padding: var(--space-1) var(--space-05);
+        font-size: var(--font-size-l);
+        color: var(--color-text-dark);
+        background-color: var(--color-background-light);
+        box-shadow: 0.8rem 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.1);
+        border-bottom: 3px solid rgba(var(--color-gray-light-rgb), 0);
+        cursor: pointer;
+        transition: all 0.2s;
 
-      &::-webkit-scrollbar {
-        background-color: var(--color-background);
-        width: 0.8rem;
-
-        &-track {
-          background: var(--color-primary-light);
-          border-radius: 2rem;
+        &:hover {
+          box-shadow: 0.8rem 0.3rem 1.4rem rgba(var(--color-shadow-rgb), 0.1);
         }
 
-        &-thumb {
-          border-radius: 2rem;
-          background: var(--color-background);
-          border: 0.2rem solid var(--color-primary-light);
+        &--active {
+          border-bottom: 3px solid rgba(var(--color-gray-light-rgb), 0.6);
+        }
+      }
+    }
 
-          &:hover {
-            background: var(--color-background-light);
+    &__content {
+      padding: var(--space-2) var(--space-8);
+      margin: var(--space-5) auto 0;
+      width: 75%;
+
+      &--1 {
+        &__heading {
+          text-align: center;
+          color: var(--color-primary-dark);
+        }
+
+        &__text,
+        & p {
+          display: block;
+          margin: var(--space-2) auto;
+          padding: var(--space-0) var(--space-4);
+          max-height: 50vh;
+          overflow-y: auto;
+
+          @include respond(phone) {
+            width: 100%;
+            padding: var(--space-0) var(--space-2);
+          }
+
+          &::-webkit-scrollbar {
+            background-color: var(--color-background);
+            width: 0.8rem;
+
+            &-track {
+              background: var(--color-primary-light);
+              border-radius: 2rem;
+            }
+
+            &-thumb {
+              border-radius: 2rem;
+              background: var(--color-background);
+              border: 0.2rem solid var(--color-primary-light);
+
+              &:hover {
+                background: var(--color-background-light);
+              }
+            }
           }
         }
       }
-    }
-  }
 
-  &__details {
-    background-color: var(--color-background-light);
-    padding: var(--space-5) var(--space-7);
-    margin-top: var(--space-5);
+      &--2 {
+        display: none;
 
-    &__heading {
-      color: var(--color-primary-dark);
-      text-align: center;
-    }
+        &__heading {
+          text-align: center;
+          color: var(--color-primary-dark);
+        }
 
-    &__table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--font-size-m);
-      text-align: left;
-      margin: var(--space-1) var(--space-0);
-      display: table;
+        &__table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: var(--font-size-m);
+          text-align: left;
+          margin: var(--space-1) var(--space-0);
+          display: table;
 
-      & td {
-        padding: var(--space-1);
-        margin: var(--space-12);
-        border-bottom: 1px solid var(--color-gray-light);
-        color: var(--color-gray-dark);
+          & td {
+            padding: var(--space-1);
+            margin: var(--space-12);
+            border-bottom: 1px solid var(--color-gray-light);
+            color: var(--color-gray-dark);
+          }
+
+          & th {
+            border-bottom: 1px solid var(--color-gray-light);
+            color: var(--color-primary);
+            padding: var(--space-1);
+          }
+        }
       }
 
-      & th {
-        border-bottom: 1px solid var(--color-gray-light);
-        color: var(--color-primary);
-        padding: var(--space-1);
+      &--active {
+        display: block;
       }
     }
   }
