@@ -46,7 +46,7 @@ class PreviewView extends View {
                 <p
                   class="paragraph card--1__text-container__author"
                 >
-                  ${this._data.authors?.join(', ').length <= 50 ? this._data.authors?.join(', ') : this._data.authors?.join(', ')?.substring(0, 50) + '...'}
+                  ${this._data.authors?.join(', ').length <= 20 ? this._data.authors?.join(', ') : this._data.authors?.join(', ')?.substring(0, 20) + '...'}
                 </p>
                 <p
                   class="paragraph card--1__text-container__rating"
