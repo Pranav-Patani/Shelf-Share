@@ -43,15 +43,46 @@ class BookView extends View {
     const tabContainer = document.querySelector(
       `.section-book-view__overview__tab-container`,
     );
+    const tabs = document.querySelectorAll(
+      `.section-book-view__overview__tab-container__tab`,
+    );
+    const content = document.querySelectorAll(
+      `.section-book-view__overview__content`,
+    );
+
     tabContainer.addEventListener('click', e => {
       const tab = e.target.closest(
-        'section-book-view__overview__tab-container__tab',
+        '.section-book-view__overview__tab-container__tab',
       );
       if (!tab) return;
+      tabs.forEach(tab =>
+        tab.classList.remove(
+          'section-book-view__overview__tab-container__tab--active',
+        ),
+      );
+      content.forEach(content =>
+        content.classList.remove(
+          `section-book-view__overview__content--active`,
+          `section-book-view__overview__content--active-table`,
+        ),
+      );
 
       tab.classList.add(
         'section-book-view__overview__tab-container__tab--active',
       );
+      if (tab.dataset.id == 2) {
+        document
+          .querySelector(
+            `.section-book-view__overview__content--${tab.dataset.id}`,
+          )
+          .classList.add('section-book-view__overview__content--active-table');
+      } else {
+        document
+          .querySelector(
+            `.section-book-view__overview__content--${tab.dataset.id}`,
+          )
+          .classList.add('section-book-view__overview__content--active');
+      }
     });
   }
 
@@ -119,10 +150,10 @@ class BookView extends View {
         <div class="section-book-view__overview">
         
           <div class="section-book-view__overview__tab-container">
-            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--1 section-book-view__overview__tab-container__tab--active">
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--1 section-book-view__overview__tab-container__tab--active" data-id="1">
                   Description
             </button>
-            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--2">
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--2" data-id=2>
                   Details
             </button>
           </div>

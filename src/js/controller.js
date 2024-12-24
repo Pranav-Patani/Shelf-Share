@@ -65,6 +65,7 @@ const controlBooks = async function () {
     if (!id) return;
     await model.loadBook(id);
     BookView.render(model.state.book);
+    BookView.addHandlerTabHandler();
   } catch (err) {
     console.log(err);
   }

@@ -44,7 +44,7 @@
 
       img {
         min-width: 24rem;
-        box-shadow: 0.8rem 0.8rem 1.6rem rgba(#030712, 0.2);
+        box-shadow: 0.8rem 0.8rem 1.6rem rgba(var(--color-shadow-rgb), 0.2);
       }
     }
 
@@ -115,15 +115,16 @@
         height: 5rem;
         transition: all 0.2s;
         background-color: inherit;
-        box-shadow: 0 0.2rem 1rem rgb(3 7 18 / 20%);
+        box-shadow: 0 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.2);
+        margin-left: var(--space-2);
 
         &:hover {
-          box-shadow: 0 0.8rem 2.4rem rgb(3 7 18 / 20%);
+          box-shadow: 0 0.8rem 2.4rem rgba(var(--color-shadow-rgb), 0.2);
           transform: translateY(-0.25rem);
         }
 
         &:active {
-          box-shadow: 0 0.4rem 1.4rem rgb(3 7 18 / 20%);
+          box-shadow: 0 0.4rem 1.4rem rgba(var(--color-shadow-rgb), 0.2);
           transform: translateY(-0.03rem);
         }
 
@@ -139,6 +140,7 @@
     background-color: var(--color-background-light);
     margin: var(--space-10) 0 0;
     padding: 0 0 var(--space-8);
+    width: 100%;
 
     &__tab-container {
       display: flex;
@@ -148,21 +150,41 @@
       &__tab {
         width: 100%;
         border: none;
-        padding: var(--space-1) var(--space-05);
+        padding: var(--space-1) var(--space-0);
         font-size: var(--font-size-l);
         color: var(--color-text-dark);
         background-color: var(--color-background-light);
-        box-shadow: 0.8rem 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.1);
-        border-bottom: 3px solid rgba(var(--color-gray-light-rgb), 0);
+        box-shadow: 1rem 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.1);
+        border-bottom: 0 solid rgba(var(--color-gray-light-rgb), 0);
         cursor: pointer;
         transition: all 0.2s;
+        position: relative;
 
         &:hover {
-          box-shadow: 0.8rem 0.3rem 1.4rem rgba(var(--color-shadow-rgb), 0.1);
+          box-shadow: 1rem 0.3rem 1.4rem rgba(var(--color-shadow-rgb), 0.1);
+        }
+
+        &::after {
+          display: block;
+          content: '';
+          height: 3px;
+          width: 0%;
+          background-color: rgba(var(--color-gray-light-rgb), 0.35);
+          position: absolute;
+          bottom: -0.3rem;
+          transition: all 0.3s;
         }
 
         &--active {
-          border-bottom: 3px solid rgba(var(--color-gray-light-rgb), 0.6);
+          &::after {
+            width: 100%;
+          }
+        }
+
+        &--1 {
+          &::after {
+            right: 0;
+          }
         }
       }
     }
@@ -171,6 +193,7 @@
       padding: var(--space-2) var(--space-8);
       margin: var(--space-5) auto 0;
       width: 75%;
+      display: none;
 
       &--1 {
         &__heading {
@@ -192,41 +215,30 @@
           }
 
           &::-webkit-scrollbar {
-            background-color: var(--color-background);
             width: 0.8rem;
 
             &-track {
-              background: var(--color-primary-light);
-              border-radius: 2rem;
+              background: rgba(var(--color-gray-dark-rgb), 0.75);
             }
 
             &-thumb {
-              border-radius: 2rem;
-              background: var(--color-background);
-              border: 0.2rem solid var(--color-primary-light);
-
-              &:hover {
-                background: var(--color-background-light);
-              }
+              background: rgba(var(--color-gray-light-rgb), 1);
             }
           }
         }
       }
 
       &--2 {
-        display: none;
-
         &__heading {
           text-align: center;
           color: var(--color-primary-dark);
         }
 
         &__table {
-          width: 100%;
+          width: 40%;
           border-collapse: collapse;
           font-size: var(--font-size-m);
-          text-align: left;
-          margin: var(--space-1) var(--space-0);
+          margin: var(--space-1) auto;
           display: table;
 
           & td {
@@ -246,6 +258,10 @@
 
       &--active {
         display: block;
+      }
+
+      &--active-table {
+        display: table;
       }
     }
   }
