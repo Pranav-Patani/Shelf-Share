@@ -1,7 +1,6 @@
 import View from './View';
 import Router from '../router';
 import logo from 'url:../../img/logo.webp';
-import sprite from 'url:../../img/sprite.svg';
 
 class HeaderView extends View {
   _parentElement = document.querySelector('.navigation');
@@ -27,6 +26,14 @@ class HeaderView extends View {
       links.forEach(link => link.classList.remove('nav-active'));
       clicked.classList.add('nav-active');
     });
+  }
+
+  addHandlerNavbarPosition() {
+    const header = this._parentElement.querySelector(`.header`);
+    const observer = new IntersectionObserver(([entry]) => {
+      header.classList.toggle('header--scrolled', !entry.isIntersecting);
+    }, {});
+    observer.observe(this._parentElement);
   }
 
   _generateMarkup() {
@@ -59,14 +66,6 @@ class HeaderView extends View {
           
           <a href="/bookmarks" class="header__btn-container__btn-link router-link" data-route="/bookmarks">
             <button class="header__btn-container__btn-link__btn header__btn-container__btn-link__btn-bm">Bookmarks</button>
-          </a>
-          
-          <a href="/bookmarks" class="header__btn-container__btn-link router-link" data-route="/bookmarks">
-            <button class="header__btn-container__btn-link__btn">
-              <svg class="header__btn-container__btn-link__btn__svg">
-                <use xlink:href="${sprite}#icon-bookmark"></use>
-              </svg>
-            </button>
           </a>
         </div>
       </nav>

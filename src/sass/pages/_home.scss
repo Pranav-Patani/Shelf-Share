@@ -21,7 +21,7 @@
   background-position: center;
   backdrop-filter: blur(1.5rem);
   position: relative;
-  box-shadow: 0 0 0.4rem rgb(3 7 18 / 10%);
+  box-shadow: 0 2 0.4rem rgb(3 7 18 / 5%);
 
   &::after {
     content: '';
@@ -246,6 +246,7 @@
     &__info-box {
       display: flex;
       flex-direction: column;
+      align-items: center;
 
       &__text-box {
         display: flex;

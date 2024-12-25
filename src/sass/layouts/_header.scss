@@ -1,19 +1,29 @@
-.header {
-  backdrop-filter: blur(1rem);
-  display: flex;
+.navigation {
+  min-height: 6rem;
+}
 
-  // position: fixed;
+.header {
+  display: flex;
   z-index: var(--z-index-lvl-3);
-  max-height: var(--space-10);
+  min-height: 6rem;
   width: 100%;
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-2) var(--space-5);
   justify-content: space-between;
   align-items: center;
   background-image: linear-gradient(
-    to right,
-    rgb(55 65 81 / 30%),
-    rgb(55 65 81 / 60%)
+    60deg,
+    rgb(240 249 255 / 95%) 50%,
+    rgb(240 249 255 / 95%) 50%
   );
+  transition: all 0.2s ease-in;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &--scrolled {
+    box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 10%);
+    border-radius: 0 0 1rem 1rem;
+  }
 
   @include respond(tab-port) {
     padding: var(--space-3) var(--space-4);
@@ -27,8 +37,9 @@
     max-width: var(--space-7);
 
     &__img {
-      height: 100%;
-      max-width: 100%;
+      display: block;
+      max-width: 4.5rem;
+      margin: auto;
     }
   }
 
@@ -53,13 +64,11 @@
 
     &__btn-link {
       text-decoration: none;
-      color: var(--color-text-light);
+      color: var(--color-primary);
       margin-left: var(--space-3);
-      fill: var(--color-text-light);
 
       &.nav-active {
-        color: var(--color-primary-contrast);
-        fill: var(--color-primary-contrast);
+        color: var(--color-indigo);
       }
 
       &__btn {
@@ -67,7 +76,7 @@
         border: none;
         padding: var(--space-1) var(--space-1);
         background-color: inherit;
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-l);
         color: inherit;
         font-weight: bold;
         cursor: pointer;
@@ -84,24 +93,6 @@
 
         &:hover {
           transform: translateY(-0.2rem);
-        }
-
-        &__svg {
-          height: 3.2rem;
-          width: 3.2rem;
-          fill: inherit;
-
-          @include respond(phone) {
-            display: none;
-          }
-        }
-
-        &-bm {
-          display: none;
-
-          @include respond(phone) {
-            display: block;
-          }
         }
       }
     }
