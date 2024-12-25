@@ -181,7 +181,6 @@
       &__tab {
         width: 100%;
         border: none;
-        padding: var(--space-1) var(--space-0);
         font-size: var(--font-size-l);
         color: var(--color-text-dark);
         background-color: var(--color-background-light);
@@ -190,6 +189,7 @@
         cursor: pointer;
         transition: all 0.2s;
         position: relative;
+        padding: var(--space-2) var(--space-0);
 
         &:hover {
           box-shadow: 1rem 0.3rem 1.4rem rgba(var(--color-shadow-rgb), 0.1);
