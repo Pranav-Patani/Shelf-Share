@@ -173,6 +173,14 @@
     padding: 0 0 var(--space-8);
     width: 100%;
 
+    @include respond(tab-land) {
+      margin: var(--space-8) 0 0;
+    }
+
+    @include respond(tab-port) {
+      margin: var(--space-7) 0 0;
+    }
+
     &__tab-container {
       display: flex;
       justify-content: center;
