@@ -200,7 +200,6 @@ const controlDeleteCollection = function (collectionId) {
 };
 
 const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
-  console.log('From controller ', collectionId);
   model.deleteIndividualCollectionBook(bookId, collectionId);
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
