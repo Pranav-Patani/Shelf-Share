@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--space-7) 0 var(--space-0);
+  padding: var(--space-7) var(--space-0) var(--space-0);
   background-image: linear-gradient(
       60deg,
       rgb(224 242 254 / 85%) 50%,
@@ -13,6 +13,10 @@
   background-size: cover;
   background-position: center;
   backdrop-filter: blur(1.5rem);
+
+  @include respond(phone) {
+    padding: var(--space-5) var(--space-0) var(--space-0);
+  }
 
   &::after {
     content: '';
@@ -37,15 +41,36 @@
     padding: var(--space-5);
     border-radius: 4rem;
 
+    @include respond(tab-port) {
+      min-width: 80%;
+    }
+
+    @include respond(phone) {
+      flex-wrap: wrap;
+      min-width: none;
+      padding: var(--space-5) var(--space-3);
+      width: 95%;
+      max-width: none;
+    }
+
     &__img {
       flex: 0 0 40%;
       min-height: 24rem;
       text-align: center;
       align-self: center;
 
+      @include respond(phone) {
+        min-height: 22rem;
+        margin-bottom: var(--space-4);
+      }
+
       img {
         min-width: 24rem;
         box-shadow: 0.8rem 0.8rem 1.6rem rgba(var(--color-shadow-rgb), 0.2);
+
+        @include respond(phone) {
+          min-width: 22rem;
+        }
       }
     }
 
@@ -53,10 +78,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-
-      @include respond(phone) {
-        padding: var(--space-0) var(--space-2);
-      }
 
       &--up {
         &__rating {
@@ -66,6 +87,11 @@
 
       &--down {
         max-width: 80%;
+
+        @include respond(phone) {
+          max-width: none;
+          width: 95%;
+        }
 
         &__category-heding {
           margin: var(--space-2) 0 var(--space-1);
@@ -118,6 +144,10 @@
         background-color: inherit;
         box-shadow: 0 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.2);
         margin-left: var(--space-2);
+
+        @include respond(tab-port) {
+          margin-left: var(--space-05);
+        }
 
         &:hover {
           box-shadow: 0 0.8rem 2.4rem rgba(var(--color-shadow-rgb), 0.2);
@@ -195,6 +225,15 @@
       margin: var(--space-5) auto 0;
       width: 75%;
       display: none;
+
+      @include respond(tab-port) {
+        width: 80%;
+        padding: var(--space-2) var(--space-7);
+      }
+
+      @include respond(phone) {
+        width: 100%;
+      }
 
       &--1 {
         &__heading {
