@@ -4,16 +4,81 @@ import sprite from 'url:../../img/sprite.svg';
 class SearchView extends View {
   _parentElement = document.querySelector('.container');
 
-  getQuery() {
+  _getQuery() {
     return this._parentElement.querySelector('#search-bar').value;
   }
 
+  _getCategory() {
+    let category = '';
+    const btns = document.querySelectorAll(
+      `.section-search__user-options__categories__btn`,
+    );
+    btns.forEach(btn => {
+      if (
+        btn.classList.contains(
+          `section-search__user-options__categories__btn--active`,
+        )
+      ) {
+        category = btn.textContent;
+      }
+    });
+    return category;
+  }
+
+  _categorySearch = handler => {
+    const btnContainer = document.querySelector(
+      `.section-search__user-options__categories`,
+    );
+    const btns = document.querySelectorAll(
+      `.section-search__user-options__categories__btn`,
+    );
+
+    btnContainer.addEventListener('click', e => {
+      const btn = e.target.closest(
+        `.section-search__user-options__categories__btn`,
+      );
+      if (!btn) return;
+
+      if (
+        btn.classList.contains(
+          `section-search__user-options__categories__btn--active`,
+        )
+      ) {
+        btn.classList.remove(
+          `section-search__user-options__categories__btn--active`,
+        );
+        console.log('calling handler with no category');
+        console.log(handler);
+        handler(this._getQuery(), '');
+        return;
+      }
+
+      btns.forEach(btn =>
+        btn.classList.remove(
+          `section-search__user-options__categories__btn--active`,
+        ),
+      );
+
+      btn.classList.add(
+        `section-search__user-options__categories__btn--active`,
+      );
+
+      const category = btn.textContent;
+      handler(this._getQuery(), category);
+    });
+  };
+
   addHandlerSearch(handler) {
+    this._categorySearch(handler);
     const form = this._parentElement.querySelector('.search-form');
+
     form.addEventListener('submit', e => {
       e.preventDefault();
       this._parentElement.querySelector('#search-bar').blur();
-      handler();
+      const category = this._getCategory();
+      console.log(category);
+      const query = this._getQuery();
+      handler(query, category);
     });
   }
 
@@ -76,7 +141,7 @@ class SearchView extends View {
       'Action',
       'Drama',
       'Thriller',
-      'Psycological',
+      'Fiction',
       'Mystery',
       'Horror',
     ];
@@ -101,7 +166,7 @@ class SearchView extends View {
             </form>
           </div>
           <div class="section-search__user-options__categories">
-           ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__categories__btn ${id == 2 ? `section-search__user-options__categories__btn--active` : ``}">${category}</button>`).join('')}
+           ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__categories__btn">${category}</button>`).join('')}
           </div>
         </div>
       
@@ -109,7 +174,7 @@ class SearchView extends View {
         <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disabled'}">Done</button>
           <ul class="section-search__results__results-container results-container">
             ${
-              !this._getQuery
+              !this._getQuery()
                 ? ` ${markupClass ? '<p class="paragraph--big center-element">Search books and select them to create a collection ;)</p>' : '<p class="paragraph--big center-element">Explore books by searching above ;)</p>'}
               `
                 : ''
