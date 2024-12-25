@@ -5,7 +5,8 @@ class SearchView extends View {
   _parentElement = document.querySelector('.container');
 
   _getQuery() {
-    return this._parentElement.querySelector('#search-bar').value;
+    if (this._parentElement.querySelector('#search-bar'))
+      return this._parentElement.querySelector('#search-bar').value;
   }
 
   _getCategory() {
