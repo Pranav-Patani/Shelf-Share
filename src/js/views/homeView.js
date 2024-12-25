@@ -63,6 +63,7 @@ class HomeView extends View {
   }
 
   _generateMarkup() {
+    console.log(sprite);
     return `
           <div class="homepage">
             <section class="hero mb-hg">
