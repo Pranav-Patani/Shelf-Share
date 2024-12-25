@@ -57,8 +57,10 @@ class CollectionsView extends View {
 
   _generateMarkupCollectionCards() {
     return this._data
-      .map(
-        collection => `
+      .map(collection => {
+        console.log(collection);
+        if (collection.books.length === 0) return;
+        return `
       <li class="card card--2">
         <div class="card--2__img-container">
           ${collection.books
@@ -88,8 +90,8 @@ class CollectionsView extends View {
           </button>
         </div>
       </li>
-    `,
-      )
+    `;
+      })
       .join('');
   }
 
@@ -100,7 +102,7 @@ class CollectionsView extends View {
         <div class="section-bookmarks__tab-container">
         <a class="section-bookmarks__tab-container__link router-link" href="/bookmarks" data-route="/bookmarks">
                  <button
-            class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1"
+            class="section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1"
             data-tab="1"
           >
             Books
@@ -110,20 +112,22 @@ class CollectionsView extends View {
 
         <a class="section-bookmarks__tab-container__link router-link" href="/collections" data-route="/collections">
           <button
-              class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2 section-bookmarks__tab-container__tab--active"
+              class="section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2 section-bookmarks__tab-container__tab--active"
               data-tab="2"
             >
               Collections
             </button>
         </a>
         </div>
+
         <div class="section-bookmarks__container">
           <div
             class="section-bookmarks__content section-bookmarks__content--active"
           >
             ${collectionCards ? collectionCards : '<div class="center-element">You did not create any collections yet :(</div>'}
           </div>
-        </div>
+        </div>       
+  
         <div class="section-bookmarks__model">
             <div class="section-bookmarks__model__content">
 
