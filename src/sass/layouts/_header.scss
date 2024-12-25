@@ -1,5 +1,9 @@
 .navigation {
   min-height: 6rem;
+
+  @include respond(phone) {
+    min-height: 4rem;
+  }
 }
 
 .header {
@@ -19,6 +23,10 @@
   position: fixed;
   top: 0;
   left: 0;
+
+  @include respond(phone) {
+    min-height: 4rem;
+  }
 
   &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgb(3 7 18 / 10%);
@@ -40,6 +48,7 @@
 
   &__logo-container {
     max-width: var(--space-7);
+    margin-left: var(--space-05);
 
     &__img {
       display: block;
@@ -114,6 +123,8 @@
 
     @include respond(phone) {
       display: block;
+      padding: var(--space-3) var(--space-4);
+      clip-path: circle(42%, 50% 50%);
     }
 
     &__hamburger,
@@ -122,6 +133,11 @@
       height: 2px;
       width: 3.2rem;
       background-color: var(--color-primary-dark);
+
+      @include respond(phone) {
+        height: 1.2px;
+        width: 2.6rem;
+      }
     }
 
     &__hamburger {

@@ -104,14 +104,14 @@ class HomeView extends View {
                 <div class="section-collection-info__content__text">
                   <ul>
                     <li class="section-collection-info__content__text__text-box text-active">
-                      <h4 class="heading-4 mb-sm section-collection-info__content__text__text-box__heading">Create Your Own Collection</h4>
+                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Create Your Own Collection</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         Browse through our vast collection of a variety of books and
                         handpick them for your personalized collections.
                       </p>
                     </li>
                     <li class="section-collection-info__content__text__text-box">
-                      <h4 class="heading-4 mb-sm section-collection-info__content__text__text-box__heading">Save Your Collections</h4>
+                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Save Your Collections</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         Bookmark your collections to access them in future.
                         Once you bookmark a collection, it will be available under a separate
@@ -119,7 +119,7 @@ class HomeView extends View {
                       </p>
                     </li>
                     <li class="section-collection-info__content__text__text-box">
-                      <h4 class="heading-4 mb-sm section-collection-info__content__text__text-box__heading">Share With Your Friends</h4>
+                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Share With Your Friends</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         You can use the share feature to share your collections
                         with your peers. You get a unique URL for each of your
