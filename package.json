@@ -4,7 +4,7 @@
   "description": "A book search and recommendation plan creator web app",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --dist-dir ./dist",
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "commitlint": "commitlint --edit"

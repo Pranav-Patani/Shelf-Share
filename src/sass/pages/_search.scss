@@ -133,15 +133,17 @@
   &__results {
     padding: var(--space-7) var(--space-2) var(--space-10);
     background-color: var(--color-background-light);
+    width: 100%;
 
     &__results-container {
+      width: 90%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
       margin: 0 auto;
-      width: 90%;
       min-height: 50vh;
+      gap: var(--space-5);
     }
   }
 
@@ -261,6 +263,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: var(--space-5);
 }
 
 .collection-btn {

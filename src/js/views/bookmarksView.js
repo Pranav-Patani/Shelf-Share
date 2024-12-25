@@ -43,7 +43,7 @@ class BookmarksView extends View {
         <div class="section-bookmarks__tab-container">
         <a class="router-link section-bookmarks__tab-container__link" href="/bookmarks" data-route="/bookmarks">
                  <button
-            class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1 section-bookmarks__tab-container__tab--active"
+            class="section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--1 section-bookmarks__tab-container__tab--active"
             data-tab="1"
           >
             Books
@@ -53,7 +53,7 @@ class BookmarksView extends View {
 
         <a class="router-link section-bookmarks__tab-container__link" href="/collections" data-route="/collections">
           <button
-              class="btn-secondary section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2"
+              class="section-bookmarks__tab-container__tab section-bookmarks__tab-container__tab--2"
               data-tab="2"
             >
               Collections
@@ -62,11 +62,11 @@ class BookmarksView extends View {
          
           
         </div>
-        <div class="section-bookmarks__container">
+        <div class ="section-bookmarks__container">
           <div
-            class="section-bookmarks__content section-bookmarks__content--active"
-          >
-            ${bookmarkCards ? bookmarkCards : '<div class="center-element">You did not bookmark any books yet :(</div>'}
+              class="section-bookmarks__content section-bookmarks__content--active"
+            >
+              ${bookmarkCards ? bookmarkCards : '<div class="center-element">You did not bookmark any books yet :(</div>'}
           </div>
         </div>
       </section>
