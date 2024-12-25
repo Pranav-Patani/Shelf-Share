@@ -12,12 +12,8 @@
     width: 18.5rem;
   }
 
-  @include respond(tab-port) {
-    margin: var(--space-1) var(--space-2);
-  }
-
   @include respond(phone) {
-    margin: var(--space-1) var(--space-2);
+    width: 17.5rem;
   }
 
   &--1 {
