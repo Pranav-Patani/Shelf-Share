@@ -41,7 +41,7 @@ class PreviewView extends View {
                 <p
                   class="paragraph--big card--1__text-container__title"
                 >
-                  ${this._data.title?.length <= 20 ? this._data.title : this._data.title?.substring(0, 20) + '...'}
+                  ${this._data.title?.length <= 12 ? this._data.title : this._data.title?.substring(0, 12) + '...'}
                 </p>
                 <p
                   class="paragraph card--1__text-container__author"

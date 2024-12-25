@@ -8,6 +8,8 @@
   list-style: none;
   display: block;
   align-self: flex-start;
+  border-radius: 1rem;
+  overflow: hidden;
 
   @include respond(tab-land) {
     width: 18.5rem;
@@ -80,17 +82,18 @@
     }
 
     &__text-container {
-      padding: var(--space-1);
-      text-align: center;
+      padding: var(--space-2);
       display: flex;
       flex-direction: column;
       margin-bottom: var(--space-1);
 
       &__title {
         font-weight: bold;
+        display: inline;
       }
 
       &__btn {
+        position: absolute;
         align-self: flex-end;
         display: inline-flex;
         border: none;

@@ -1,4 +1,5 @@
 import View from './View';
+import sprite from 'url:../../img/sprite.svg';
 
 class SearchView extends View {
   _parentElement = document.querySelector('.container');
@@ -69,15 +70,28 @@ class SearchView extends View {
   }
 
   _generateMarkup(markupClass) {
+    const categories = [
+      'Comedy',
+      'Romance',
+      'Action',
+      'Drama',
+      'Thriller',
+      'Psycological',
+      'Mystery',
+      'Horror',
+    ];
     return `
           <section class="section-search">
-        <div class="section-search__container">
-          
-          <div class="section-search__container__search-section">
+        <div class="section-search__user-options">
+          <div class="section-search__user-options__search">
             <form
-              class="section-search__container__search-section__search-bar-container search-form"
+              class="section-search__user-options__search__search-bar-container search-form"
             >
-              <button type="submit">Search</button>
+              <button type="submit">
+                <svg>
+                  <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+                </svg>
+              </button>
               <input
                 type="text"
                 id="search-bar"
@@ -85,19 +99,25 @@ class SearchView extends View {
                 autocomplete="off"
               />
             </form>
-            <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disabled'}">Done</button>
-            <ul
-              class="section-search__container__search-section__search-results-container results-container"
-            >
+          </div>
+          <div class="section-search__user-options__categories">
+           ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__categories__btn ${id == 2 ? `section-search__user-options__categories__btn--active` : ``}">${category}</button>`).join('')}
+          </div>
+        </div>
+      
+        <div class="section-search__results">
+        <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disabled'}">Done</button>
+          <ul class="section-search__results__results-container results-container">
             ${
               !this._getQuery
                 ? ` ${markupClass ? '<p class="paragraph--big center-element">Search books and select them to create a collection ;)</p>' : '<p class="paragraph--big center-element">Explore books by searching above ;)</p>'}
               `
                 : ''
             }
-            </ul>
-          </div>
+          </ul>
         </div>
+
+        
         <div class="section-search__model">
             <div class="section-search__model__content">
 
