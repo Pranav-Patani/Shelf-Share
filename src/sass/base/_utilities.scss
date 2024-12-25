@@ -1,20 +1,20 @@
 .mb-sm {
-  margin-bottom: 2.4rem;
+  margin-bottom: var(--space-3);
 }
 
 .mb-lg {
-  margin-bottom: 5.6rem;
+  margin-bottom: var(--space-7);
 
   @include respond(phone) {
-    margin-bottom: 4rem;
+    margin-bottom: var(--space-5);
   }
 }
 
 .mb-hg {
-  margin-bottom: 8rem;
+  margin-bottom: var(--space-10);
 
   @include respond(phone) {
-    margin-bottom: 5.6rem;
+    margin-bottom: var(--space-7);
   }
 }
 

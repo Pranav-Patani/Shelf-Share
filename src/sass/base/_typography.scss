@@ -47,7 +47,7 @@
 }
 
 .heading-2 {
-  @extend %clipped-heading;
+  color: var(--color-text-dark);
 }
 
 .heading-2--white {
