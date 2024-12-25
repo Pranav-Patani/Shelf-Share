@@ -15,6 +15,18 @@ class BookView extends View {
     return language.of(this._data.language);
   }
 
+  _generateCategories() {
+    const categories = this._data.categories;
+    const uniqueCategories = [
+      ...new Set(
+        categories.flatMap(category =>
+          category.split('/').map(cur => cur.trim()),
+        ),
+      ),
+    ];
+    return uniqueCategories;
+  }
+
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
   }
@@ -27,10 +39,57 @@ class BookView extends View {
     });
   }
 
+  addHandlerTabHandler() {
+    const tabContainer = document.querySelector(
+      `.section-book-view__overview__tab-container`,
+    );
+    const tabs = document.querySelectorAll(
+      `.section-book-view__overview__tab-container__tab`,
+    );
+    const content = document.querySelectorAll(
+      `.section-book-view__overview__content`,
+    );
+
+    tabContainer.addEventListener('click', e => {
+      const tab = e.target.closest(
+        '.section-book-view__overview__tab-container__tab',
+      );
+      if (!tab) return;
+      tabs.forEach(tab =>
+        tab.classList.remove(
+          'section-book-view__overview__tab-container__tab--active',
+        ),
+      );
+      content.forEach(content =>
+        content.classList.remove(
+          `section-book-view__overview__content--active`,
+          `section-book-view__overview__content--active-table`,
+        ),
+      );
+
+      tab.classList.add(
+        'section-book-view__overview__tab-container__tab--active',
+      );
+      if (tab.dataset.id == 2) {
+        document
+          .querySelector(
+            `.section-book-view__overview__content--${tab.dataset.id}`,
+          )
+          .classList.add('section-book-view__overview__content--active-table');
+      } else {
+        document
+          .querySelector(
+            `.section-book-view__overview__content--${tab.dataset.id}`,
+          )
+          .classList.add('section-book-view__overview__content--active');
+      }
+    });
+  }
+
   _generateMarkup() {
     return `
-              <section class="section-book-view">
-        <div class="section-book-view__container">
+      <section class="section-book-view">
+      <div class="section-book-view__temp"></div>
           <div class="section-book-view__main-info-container">
             <figure class="section-book-view__main-info-container__img">
               <img
@@ -61,7 +120,7 @@ class BookView extends View {
                 >
                   Category
                 </h4>
-                ${this._data.categories
+                ${this._generateCategories()
                   ?.map(
                     cur => `                <p
                   class="section-book-view__main-info-container__text--down__category-text paragraph"
@@ -85,20 +144,31 @@ class BookView extends View {
               </svg>
               </button>
             </div>
-              
             </div>
           </div>
-          <div class="section-book-view__description">
-            <h3 class="section-book-view__description__heading heading-3">
+        
+        <div class="section-book-view__overview">
+        
+          <div class="section-book-view__overview__tab-container">
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--1 section-book-view__overview__tab-container__tab--active" data-id="1">
+                  Description
+            </button>
+            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--2" data-id=2>
+                  Details
+            </button>
+          </div>
+          <div class="section-book-view__overview__content section-book-view__overview__content--1 section-book-view__overview__content--active">
+            <h3 class="section-book-view__overview__content--1__heading heading-3">
               Description
             </h3>
-            <p class="section-book-view__description__text paragraph">
+            <p class="section-book-view__overview__content--1__text paragraph">
              ${this._data.description}
             </p>
           </div>
-          <div class="section-book-view__details">
-            <h3 class="section-book-view__details__heading">Details</h3>
-            <table class="section-book-view__details__table">
+
+          <div class="section-book-view__overview__content section-book-view__overview__content--2">
+            <h3 class="section-book-view__overview__content--2__heading heading-3">Details</h3>
+            <table class="section-book-view__overview__content--2__table">
               <tbody>
                 <tr>
                   <th>Publisher</th>
