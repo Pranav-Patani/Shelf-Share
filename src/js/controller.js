@@ -66,6 +66,10 @@ const controlBooks = async function () {
     await model.loadBook(id);
     BookView.render(model.state.book);
     BookView.addHandlerTabHandler();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
   } catch (err) {
     console.log(err);
   }

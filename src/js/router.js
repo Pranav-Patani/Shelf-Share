@@ -37,7 +37,6 @@ class Router {
   }
 
   addHandlerRouter() {
-    // For popstate event, when user choose to navigate through browser's back and forward buttons, rather than the Router's navigateTo method
     window.addEventListener('popstate', () => {
       this._loadInitialRoute();
     });

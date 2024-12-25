@@ -106,7 +106,7 @@ class BookView extends View {
                 <h3
                   class="section-book-view__main-info-container__text--up__author heading-3"
                 >
-                  ${this._data.authors?.join(', ')} 
+                  ${this._data.authors?.join(', ').length <= 50 ? this._data.authors?.join(', ') : this._data.authors?.join(', ').substring(0, 50) + `...`} 
                 </h3>
                 <p
                   class="section-book-view__main-info-container__text--up__rating paragraph--big"
