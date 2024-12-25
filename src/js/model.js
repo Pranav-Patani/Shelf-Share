@@ -5,6 +5,7 @@ export const state = {
   book: {},
   search: {
     query: '',
+    category: '',
     results: [],
   },
   bookmarks: [],
@@ -46,12 +47,13 @@ export const loadBook = async function (id) {
 
 // Search Results
 
-export const loadSearchResults = async function (query, subject) {
+export const loadSearchResults = async function (query, category) {
   try {
     state.search.query = query;
-    const data = await getJSON(
-      `${API_URL}?q=${query && !subject ? query : !query && subject ? `''+subject:${subject}` : query && subject ? `${query}+subject:${subject}` : ``}&maxResults=40&key=${API_KEY}`,
-    );
+    state.search.category = category;
+    const url = `${API_URL}?q=${query && !category ? query : !query && category ? `''+subject:${category}` : query && category ? `${query}+subject:${category}` : ``}&maxResults=40&key=${API_KEY}`;
+    console.log(url);
+    const data = await getJSON(url);
     state.search.results = data.items.map(cur => ({
       id: cur.id,
       rating: cur.volumeInfo?.averageRating || 0,

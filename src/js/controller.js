@@ -77,11 +77,10 @@ const controlBooks = async function () {
 
 // Search Results View
 
-const controlSearchResults = async function (path) {
+const controlSearchResults = async function (path, query, category) {
   try {
-    const query = SearchView.getQuery();
-    if (!query) return;
-    await model.loadSearchResults(query);
+    if (!query && !category) return;
+    await model.loadSearchResults(query, category);
     if (path === 'findBooks') FindBooksView.render(model.state.search.results);
     if (path === 'createCollections')
       CreateCollectionsView.render(model.state.search.results);
@@ -121,7 +120,9 @@ const setUpSearchView = function (path) {
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
   }
 
-  SearchView.addHandlerSearch(() => controlSearchResults(path));
+  SearchView.addHandlerSearch((query, category) =>
+    controlSearchResults(path, query, category),
+  );
 };
 
 // Bookmarks
