@@ -54,6 +54,7 @@ const setUpInitialView = function () {
 const setUpHomeView = function () {
   HomeView.render();
   HomeView.addHandlerCTALinks();
+  HomeView.addHandlerCarousel();
 };
 
 // Individual Book View

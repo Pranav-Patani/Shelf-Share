@@ -19,6 +19,52 @@ class HomeView extends View {
     });
   }
 
+  addHandlerCarousel() {
+    const carousel = this._parentElement.querySelector(
+      `.section-collection-info__content`,
+    );
+    const textCards = carousel.querySelectorAll(
+      `.section-collection-info__content__text__text-box`,
+    );
+    const imgCards = carousel.querySelectorAll(
+      `.section-collection-info__content__img-container__img-box`,
+    );
+
+    let counter = imgCards.length - 1;
+
+    const updateCarousel = () => {
+      textCards.forEach(card => card.classList.remove('text-active'));
+      imgCards.forEach((card, index) => {
+        card.classList.remove(
+          'section-collection-info__content__img-container__img-box--front',
+          'section-collection-info__content__img-container__img-box--middle',
+          'section-collection-info__content__img-container__img-box--back',
+        );
+        if (index === counter) {
+          card.classList.add(
+            'section-collection-info__content__img-container__img-box--front',
+          );
+        } else if (index === (counter + 1) % imgCards.length) {
+          card.classList.add(
+            'section-collection-info__content__img-container__img-box--back',
+          );
+        } else if (index === (counter + 2) % imgCards.length) {
+          card.classList.add(
+            'section-collection-info__content__img-container__img-box--middle',
+          );
+        }
+      });
+
+      textCards[counter].classList.add('text-active');
+      counter = (counter - 1) % imgCards.length;
+
+      if (counter < 0) counter = imgCards.length - 1;
+    };
+
+    setInterval(updateCarousel, 5000);
+    updateCarousel();
+  }
+
   _generateMarkup() {
     return `
           <div class="homepage">
@@ -57,7 +103,7 @@ class HomeView extends View {
               <div class="section-collection-info__content">
                 <div class="section-collection-info__content__text">
                   <ul>
-                    <li class="section-collection-info__content__text__text-box">
+                    <li class="section-collection-info__content__text__text-box text-active">
                       <h4 class="heading-4 mb-sm section-collection-info__content__text__text-box__heading">Create Your Own Collection</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         Browse through our vast collection of a variety of books and
@@ -72,7 +118,7 @@ class HomeView extends View {
                         tab in the bookmarks section.
                       </p>
                     </li>
-                    <li class="section-collection-info__content__text__text-box text-active">
+                    <li class="section-collection-info__content__text__text-box">
                       <h4 class="heading-4 mb-sm section-collection-info__content__text__text-box__heading">Share With Your Friends</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         You can use the share feature to share your collections
@@ -84,17 +130,20 @@ class HomeView extends View {
                 </div>
                 <div class="section-collection-info__content__img-container">
                   <ul>
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--1">
+                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--front">
                       <img class="section-collection-info__content__img-container__img-box__img" src="${homeCreatePlansImg}"/>
                     </li>
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--2">
+                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--middle">
                       <img class="section-collection-info__content__img-container__img-box__img" src="${homeSavePlansImg}"/>
                     </li>
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--3 img-active">
+                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--back">
                       <img class="section-collection-info__content__img-container__img-box__img" src="${homeSharePlansImg}"/>
                     </li>
                   </ul>
                 </div>
+              </div>
+              <div class="section-collection-info__progress">
+                <span class="section-collection-info__progress__fill"></span>
               </div>
             </section>
 
