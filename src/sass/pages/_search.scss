@@ -19,6 +19,10 @@
     background-position: center;
     backdrop-filter: blur(1.5rem);
 
+    @include respond(tab-port) {
+      padding: var(--space-2) var(--space-1);
+    }
+
     &::after {
       content: '';
       height: 100%;
@@ -33,6 +37,18 @@
 
     &__search {
       width: 50%;
+
+      @include respond(tab-land) {
+        width: 55%;
+      }
+
+      @include respond(tab-port) {
+        width: 60%;
+      }
+
+      @include respond(phone) {
+        width: 85%;
+      }
 
       &__search-bar-container {
         box-shadow: 0 0.3rem 0.5rem rgba(#030712, 0.2);
@@ -96,8 +112,13 @@
       flex-wrap: wrap;
       gap: 1rem;
 
+      @include respond(phone) {
+        margin: var(--space-3) auto 0;
+        gap: 0.5rem;
+      }
+
       &__btn {
-        padding: var(--space-1) var(--space-1);
+        padding: var(--space-1);
         flex-basis: 15rem;
         text-align: center;
         font-size: var(--font-size-s);
@@ -109,6 +130,10 @@
         background-color: var(--color-background-light);
         border-radius: 1rem;
         transition: all 0.2s;
+
+        @include respond(phone) {
+          flex-basis: 9rem;
+        }
 
         &:hover {
           transform: translateY(-0.15rem);
