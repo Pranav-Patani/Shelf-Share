@@ -6,6 +6,7 @@ import homeSharePlansImg from 'url:../../img/home_share-plans.webp';
 import sprite from 'url:../../img/sprite.svg';
 class HomeView extends View {
   _parentElement = document.querySelector('.container');
+  _count = 1;
 
   addHandlerCTALinks() {
     this._parentElement.addEventListener('click', e => {
@@ -27,7 +28,11 @@ class HomeView extends View {
       `.section-collection-info__content__img-container__img-box`,
     );
 
-    let counter = imgCards.length - 1;
+    const slideCounter = this._parentElement.querySelector(
+      `.section-collection-info__progress__count__text`,
+    );
+
+    let counter = 0;
 
     const updateCarousel = () => {
       textCards.forEach(card => card.classList.remove('text-active'));
@@ -52,10 +57,11 @@ class HomeView extends View {
         }
       });
 
+      slideCounter.textContent = `${counter + 1} / 3`;
       textCards[counter].classList.add('text-active');
-      counter = (counter - 1) % imgCards.length;
+      counter = (counter + 1) % imgCards.length;
 
-      if (counter < 0) counter = imgCards.length - 1;
+      if (counter > 3) counter = 0;
     };
 
     setInterval(updateCarousel, 5000);
@@ -63,7 +69,6 @@ class HomeView extends View {
   }
 
   _generateMarkup() {
-    console.log(sprite);
     return `
           <div class="homepage">
             <section class="hero mb-hg">
@@ -125,6 +130,14 @@ class HomeView extends View {
                       </p>
                     </li>
                   </ul>
+                  <div class="section-collection-info__progress">
+                    <div class="section-collection-info__progress__count">
+                      <p class="paragraph section-collection-info__progress__count__text"></p>
+                    </div>
+                    <div class="section-collection-info__progress__bar">
+                      <span class="section-collection-info__progress__bar__fill"></span>
+                    </div>
+                  </div>
                 </div>
                 <div class="section-collection-info__content__img-container">
                   <ul>
@@ -140,9 +153,7 @@ class HomeView extends View {
                   </ul>
                 </div>
               </div>
-              <div class="section-collection-info__progress">
-                <span class="section-collection-info__progress__fill"></span>
-              </div>
+
             </section>
 
             <section class="section-find-info">
