@@ -9,34 +9,17 @@
 .hero {
   display: flex;
   height: 60vh;
-  padding: var(--space-4) var(--space-10) var(--space-0);
-  background-image: linear-gradient(
-      60deg,
-      rgb(224 242 254 / 85%) 50%,
-      rgb(224 242 254 / 85%) 50%
-    ),
-    url('/src/img/background.webp');
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(1.5rem);
+  padding: calc(var(--space-header) + var(--space-4)) var(--space-10)
+    var(--space-0);
   position: relative;
   box-shadow: 0 2 0.4rem rgb(3 7 18 / 5%);
 
   @include respond(tab-port) {
-    padding: var(--space-4) var(--space-5) var(--space-0);
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-5)
+      var(--space-0);
   }
 
-  &::after {
-    content: '';
-    height: 60vh;
-    width: 100%;
-    z-index: var(--z-index-lvl-neg-1);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    backdrop-filter: blur(1.5rem);
-  }
+  @include bg-image;
 
   &__text {
     width: 50%;
@@ -308,15 +291,6 @@
 
 .section-find-info {
   padding: var(--space-8) var(--space-10) var(--space-7);
-  background-image: linear-gradient(
-      60deg,
-      rgb(224 242 254 / 85%) 50%,
-      rgb(224 242 254 / 85%) 50%
-    ),
-    url('/src/img/background.webp');
-  background-size: cover;
-  background-position: center;
-  backdrop-filter: blur(1.5rem);
   position: relative;
   box-shadow: 0 0 0.4rem rgb(3 7 18 / 10%);
 
@@ -324,17 +298,7 @@
     padding: var(--space-8) var(--space-2) var(--space-7);
   }
 
-  &::after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    z-index: var(--z-index-lvl-neg-1);
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    backdrop-filter: blur(1.5rem);
-  }
+  @include bg-image;
 
   &__heading {
     text-align: center;

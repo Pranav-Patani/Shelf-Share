@@ -1,6 +1,7 @@
 .section-collection {
   position: relative;
-  padding: var(--space-5) var(--space-4) var(--space-8);
+  padding: calc(var(--space-header) + var(--space-4)) var(--space-4)
+    var(--space-8);
   background-color: var(--color-background-light);
   min-height: 75vh;
   display: flex;
@@ -8,17 +9,21 @@
   align-items: center;
 
   @include respond(tab-port) {
-    padding: var(--space-4) var(--space-3) var(--space-8);
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-3)
+      var(--space-8);
   }
 
   @include respond(phone) {
-    padding: var(--space-4) var(--space-1) var(--space-8);
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-1)
+      var(--space-8);
   }
+
+  @include bg-image;
 
   &__share-btn {
     position: absolute;
-    top: 4rem;
-    right: 10rem;
+    top: 8rem;
+    right: 8rem;
 
     @include respond(tab-port) {
       right: 5rem;
