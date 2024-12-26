@@ -7,24 +7,12 @@ class HeaderView extends View {
 
   addHandlerNavigationLinks() {
     const checkBtn = document.querySelector('.header__check');
-    const container = document.querySelector('.header__btn-container');
-    container.addEventListener('click', e => {
+    this._parentElement.addEventListener('click', e => {
       const link = e.target.closest('.router-link');
       if (!link) return;
       e.preventDefault();
       Router.navigateTo(link.dataset.route);
       checkBtn.checked = false;
-    });
-  }
-
-  addHandlerActiveLink() {
-    const container = document.querySelector('.header__btn-container');
-    const links = document.querySelectorAll('.router-link');
-    container.addEventListener('click', function (e) {
-      const clicked = e.target.closest('.router-link');
-      if (!clicked) return;
-      links.forEach(link => link.classList.remove('nav-active'));
-      clicked.classList.add('nav-active');
     });
   }
 
@@ -39,13 +27,15 @@ class HeaderView extends View {
   _generateMarkup() {
     return `
      <nav class="header">
-        <div class="header__logo-container">
+      <div class="header__logo-container">
+        <a href="/" class="router-link header__logo-container__link" data-route="/">
           <img
             src="${logo}"
             alt="logo"
             class="header__logo-container__img"
           />
-        </div>
+        </a>
+      </div>
         
         <input type="checkbox" class="header__check" id="header-check" />
         <label for="header-check" class="header__hamburger-container">
@@ -60,7 +50,7 @@ class HeaderView extends View {
             <button class="header__btn-container__btn-link__btn">Create Collections</button>
           </a>
           
-          <a href="/" class="nav-active header__btn-container__btn-link router-link" data-route="/">
+          <a href="/" class="header__btn-container__btn-link router-link" data-route="/">
             <button class="header__btn-container__btn-link__btn">Home</button>
           </a>
           
