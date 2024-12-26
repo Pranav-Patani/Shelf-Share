@@ -51,7 +51,7 @@
   --space-8: 6.4rem;
   --space-10: 8rem;
   --space-12: 9.6rem;
-  --space-header: 6.8rem;
+  --space-header: 6.4rem;
 
   // Z-index
   --z-index-lvl-neg-1: -1;
@@ -61,8 +61,9 @@
   --z-index-lvl-4: 50;
 }
 
-@media (width <= 600px) {
+@media (width <= 37.5em) {
+  // 600px
   :root {
-    --space-header: 5rem;
+    --space-header: 5.6rem;
   }
 }

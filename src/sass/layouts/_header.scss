@@ -5,7 +5,7 @@
 .header {
   display: flex;
   z-index: var(--z-index-lvl-3);
-  height: 6.8rem;
+  height: 6.4rem;
   width: 100%;
   padding: var(--space-2) var(--space-5);
   box-shadow: 0.1rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0);
@@ -18,7 +18,7 @@
   left: 0;
 
   @include respond(phone) {
-    height: 4rem;
+    height: 5.6rem;
   }
 
   &--scrolled {
@@ -112,26 +112,19 @@
     cursor: pointer;
     background-color: var(--color-background);
     clip-path: circle(50% at 50% 50%);
-    padding: var(--space-4);
+    padding: var(--space-3);
     z-index: var(--z-index-lvl-4);
 
     @include respond(phone) {
       display: block;
-      padding: var(--space-3) var(--space-4);
-      clip-path: circle(42%, 50% 50%);
     }
 
     &__hamburger,
     &__hamburger::before,
     &__hamburger::after {
-      height: 2px;
-      width: 3.2rem;
+      height: 1.4px;
+      width: 2rem;
       background-color: var(--color-primary-dark);
-
-      @include respond(phone) {
-        height: 1.2px;
-        width: 2.6rem;
-      }
     }
 
     &__hamburger {
@@ -149,12 +142,12 @@
       }
 
       &::after {
-        top: 0.8rem;
+        top: 0.4rem;
         left: 0;
       }
 
       &::before {
-        top: -1rem;
+        top: -0.6rem;
         left: 0;
       }
     }
