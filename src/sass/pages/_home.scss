@@ -133,6 +133,11 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+    width: 90%;
+
+    @include respond(tab-land) {
+      width: 100%;
+    }
 
     @include respond(phone) {
       flex-direction: column-reverse;
@@ -141,6 +146,9 @@
     &__text {
       min-width: 20rem;
       width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
       @include respond(phone) {
         width: 60%;
@@ -149,17 +157,17 @@
       & > ul {
         list-style: none;
         position: relative;
-        height: 50vh;
+        height: 25vh;
 
         @include respond(phone) {
-          height: 30vh;
+          height: 25vh;
         }
       }
 
       &__text-box {
         position: absolute;
         top: 46%;
-        left: 45%;
+        left: 50%;
         width: 60%;
         transform: translate(-50%, -50%);
         opacity: 0;
@@ -182,6 +190,7 @@
       width: 50%;
 
       @include respond(phone) {
+        margin-bottom: var(--space-2);
         width: 60%;
       }
 
@@ -259,23 +268,40 @@
   }
 
   &__progress {
-    border: 2px solid var(--color-primary-light);
-    width: 6rem;
-    height: 0.6rem;
-    margin: 1rem auto 0;
-    border-radius: 10rem;
-    overflow: hidden;
+    align-self: center;
+    margin: var(--space-05) 0 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-05);
 
-    @include respond(phone) {
-      margin: 0 auto;
+    &__count {
+      &__text {
+        color: var(--color-primary-dark);
+        font-weight: bold;
+        font-size: var(--font-size-s);
+      }
     }
 
-    &__fill {
-      display: block;
+    &__bar {
+      border: 1px solid var(--color-primary-light);
       width: 6rem;
-      height: 0.4rem;
-      background-color: var(--color-primary-light);
-      animation: progress-bar 5s linear infinite;
+      height: 0.6rem;
+      border-radius: 10rem;
+      overflow: hidden;
+
+      @include respond(phone) {
+        margin: 0 auto;
+      }
+
+      &__fill {
+        display: block;
+        width: 6rem;
+        height: 0.4rem;
+        background-color: var(--color-primary-light);
+        animation: progress-bar 5s linear infinite;
+      }
     }
   }
 }
