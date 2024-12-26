@@ -1,4 +1,8 @@
 .section-bookmarks {
+  padding-top: var(--space-header);
+
+  @include bg-image;
+
   &__tab-container {
     display: flex;
     justify-content: center;

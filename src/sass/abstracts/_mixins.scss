@@ -36,3 +36,27 @@
     }
   }
 }
+
+@mixin bg-image {
+  background-image: linear-gradient(
+      60deg,
+      rgb(224 242 254 / 85%) 50%,
+      rgb(224 242 254 / 85%) 50%
+    ),
+    url('/src/img/background.webp');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(1.5rem);
+
+  &::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    z-index: var(--z-index-lvl-neg-1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    backdrop-filter: blur(1.5rem);
+  }
+}
