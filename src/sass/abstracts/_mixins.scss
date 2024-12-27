@@ -60,3 +60,19 @@
     backdrop-filter: blur(1.5rem);
   }
 }
+
+@mixin scroll-bar {
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+
+    &-track {
+      background: rgba(var(--color-gray-dark-rgb), 0.75);
+      border-radius: 2rem;
+    }
+
+    &-thumb {
+      background: rgba(var(--color-gray-light-rgb), 1);
+      border-radius: 2rem;
+    }
+  }
+}

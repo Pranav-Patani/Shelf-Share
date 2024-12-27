@@ -11,6 +11,7 @@ import HomeView from './views/homeView';
 import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
+import { debounce } from './helpers';
 
 //Pollifilling
 
@@ -114,6 +115,7 @@ const setUpSearchView = function (path) {
     SearchView.render('', true, 'collection-btn');
     CreateCollectionsView.addHandlerAddBook(controlAddToCollection);
     SearchView.addHandlerCreateCollection(controlCreateCollection);
+    SearchView.updateSelectedBooks(model.state.selectedBooks);
   } else if (path === 'findBooks') {
     SearchView.render();
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
@@ -122,7 +124,24 @@ const setUpSearchView = function (path) {
   SearchView.addHandlerSearch((query, category) =>
     controlSearchResults(path, query, category),
   );
+  SearchView.addHandlerDebounce(query => controlSearchDebounce(query));
 };
+
+const searchDebounceCallback = async function (query) {
+  try {
+    if (!query) {
+      return;
+    }
+    await model.loadSearchTitles(query);
+    SearchView.updateSuggestions(model.state.search.titles);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const debouncedSearch = debounce(searchDebounceCallback);
+
+const controlSearchDebounce = query => debouncedSearch(query);
 
 // Bookmarks
 

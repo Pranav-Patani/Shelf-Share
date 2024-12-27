@@ -7,6 +7,7 @@ export const state = {
     query: '',
     category: '',
     results: [],
+    titles: [],
   },
   bookmarks: [],
   collections: [], //array of objects
@@ -52,9 +53,8 @@ export const loadSearchResults = async function (query, category) {
     state.search.query = query;
     state.search.category = category;
     const url = `${API_URL}?q=${query && !category ? query : !query && category ? `''+subject:${category}` : query && category ? `${query}+subject:${category}` : ``}&maxResults=40&key=${API_KEY}`;
-    console.log(url);
     const data = await getJSON(url);
-    state.search.results = data.items.map(cur => ({
+    state.search.results = data.items?.map(cur => ({
       id: cur.id,
       rating: cur.volumeInfo?.averageRating || 0,
       image: cur.volumeInfo?.imageLinks?.thumbnail,
@@ -63,6 +63,18 @@ export const loadSearchResults = async function (query, category) {
       bookmarked: state.bookmarks.some(bookmark => bookmark.id === cur.id),
       selected: state.selectedBooks.some(book => book.id === cur.id),
     }));
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export const loadSearchTitles = async function (query) {
+  try {
+    const url = `${API_URL}?q=''+intitle:${query}&maxResults=40&key=${API_KEY}`;
+    const data = await getJSON(url);
+    console.log(data);
+    state.search.titles = data.items?.map(cur => cur.volumeInfo?.title);
   } catch (err) {
     console.error(err);
     throw err;
