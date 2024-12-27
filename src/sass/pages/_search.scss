@@ -1,7 +1,7 @@
 .section-search {
   margin: 0 auto;
   position: relative;
-  z-index: var(--z-index-lvl-1);
+  z-index: var(--z-index-lvl-1); // creating a stacking context
 
   &__user-options {
     display: flex;
