@@ -25,6 +25,7 @@ class CreateCollectionsView extends View {
   }
 
   _generateMarkupCards() {
+    if (!this._data) return `Sorry, No Results Match Your Search Query :(`;
     return this._data
       .map(result =>
         PreviewViewIndividual.render(result, false, 'add-collection-btn'),
@@ -36,7 +37,7 @@ class CreateCollectionsView extends View {
     const cards = this._generateMarkupCards();
     return `
       <p class="paragraph selected-books-count">
-      Selected Books: ${this._data.filter(book => book.selected).length}
+      Selected Books: ${this._data ? this._data.filter(book => book.selected).length : 0}
     </p>
     <div class="collection-cards-container">
         ${cards}

@@ -245,17 +245,7 @@
             padding: var(--space-0) var(--space-2);
           }
 
-          &::-webkit-scrollbar {
-            width: 0.8rem;
-
-            &-track {
-              background: rgba(var(--color-gray-dark-rgb), 0.75);
-            }
-
-            &-thumb {
-              background: rgba(var(--color-gray-light-rgb), 1);
-            }
-          }
+          @include scroll-bar;
         }
       }
 

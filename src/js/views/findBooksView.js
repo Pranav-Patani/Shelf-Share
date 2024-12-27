@@ -20,6 +20,7 @@ class FindBooksView extends View {
   }
 
   _generateMarkup() {
+    if (!this._data) return `Sorry, No Results Match Your Search Query :(`;
     return this._data
       .map(result =>
         PreviewViewIndividual.render(result, false, 'add-bookmark-btn'),
