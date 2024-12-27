@@ -11,7 +11,7 @@
     margin: 0 auto;
     padding: calc(var(--space-header) + var(--space-3)) var(--space-2)
       var(--space-3);
-    z-index: var(--z-index-lvl-2);
+    z-index: var(--z-index-lvl-2); // creating a stacking conte
     position: relative;
 
     @include respond(tab-port) {
