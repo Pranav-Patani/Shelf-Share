@@ -19,7 +19,7 @@
       var(--space-0);
   }
 
-  @include bg-image;
+  @include bg-image(top);
 
   &__text {
     width: 50%;
@@ -324,7 +324,7 @@
     padding: var(--space-8) var(--space-2) var(--space-7);
   }
 
-  @include bg-image;
+  @include bg-image(bottom);
 
   &__heading {
     text-align: center;

@@ -37,16 +37,30 @@
   }
 }
 
-@mixin bg-image {
-  background-image: linear-gradient(
-      60deg,
-      rgb(224 242 254 / 85%) 50%,
-      rgb(224 242 254 / 85%) 50%
-    ),
-    url('/src/img/background.webp');
+@mixin bg-image($direction) {
+  @if $direction == top {
+    background-image: linear-gradient(
+        to top,
+        rgba(var(--color-background-rgb), 0.85),
+        10%,
+        rgba(var(--color-background-light-rgb), 0.85)
+      ),
+      url('/src/img/background.webp');
+  }
+
+  @if $direction == bottom {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(var(--color-background-rgb), 0.85),
+        10%,
+        rgba(var(--color-background-light-rgb), 0.85)
+      ),
+      url('/src/img/background.webp');
+  }
+
   background-size: cover;
   background-position: center;
-  backdrop-filter: blur(1.5rem);
+  backdrop-filter: blur(1.2rem);
 
   &::after {
     content: '';

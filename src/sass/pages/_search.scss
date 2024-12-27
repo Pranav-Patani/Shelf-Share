@@ -19,7 +19,7 @@
         var(--space-2);
     }
 
-    @include bg-image;
+    @include bg-image(top);
 
     &__search {
       width: 50%;
