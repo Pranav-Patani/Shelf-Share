@@ -18,7 +18,7 @@
       var(--space-8);
   }
 
-  @include bg-image;
+  @include bg-image(top);
 
   &__share-btn {
     position: absolute;

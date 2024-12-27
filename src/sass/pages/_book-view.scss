@@ -11,7 +11,7 @@
       var(--space-0);
   }
 
-  @include bg-image;
+  @include bg-image(top);
 
   &__main-info-container {
     max-width: 80%;
@@ -23,6 +23,7 @@
     background-color: var(--color-background-light);
     padding: var(--space-5);
     border-radius: 4rem;
+    box-shadow: 0.4rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0.1);
 
     @include respond(tab-port) {
       min-width: 80%;
