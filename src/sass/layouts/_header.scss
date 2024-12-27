@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in-out;
   position: fixed;
   top: 0;
   left: 0;
@@ -24,11 +24,7 @@
   &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0.1);
     border-radius: 0 0 1rem 1rem;
-    background-image: linear-gradient(
-      60deg,
-      rgb(240 249 255 / 95%) 50%,
-      rgb(240 249 255 / 95%) 50%
-    );
+    background-color: rgba(var(--color-background-light-rgb), 0.95);
   }
 
   @include respond(tab-port) {
