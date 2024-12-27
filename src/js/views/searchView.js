@@ -86,14 +86,33 @@ class SearchView extends View {
 
   addHandlerDebounce(handler) {
     const searchBar = this._parentElement.querySelector('#search-bar');
+    const suggestionsContainer = this._parentElement.querySelector(
+      '.section-search__user-options__search__suggestions',
+    );
+    const form = this._parentElement.querySelector(`.search-form`);
+
     searchBar.addEventListener('input', () => {
       handler(searchBar.value);
       this._handleSuggestionContainer(searchBar.value);
     });
+
     searchBar.addEventListener(
       'keydown',
       throttle(e => this._handleCurrentSuggestion(e)),
     );
+
+    suggestionsContainer.addEventListener('click', e => {
+      const suggestion = e.target.closest(
+        `.section-search__user-options__search__suggestions__suggestion`,
+      );
+      if (!suggestion) return;
+
+      searchBar.value = suggestion.textContent;
+      form.dispatchEvent(new Event('submit'));
+      suggestionsContainer.classList.remove(
+        'section-search__user-options__search__suggestions--active',
+      );
+    });
   }
 
   _handleSuggestionContainer = value => {
@@ -124,13 +143,11 @@ class SearchView extends View {
     if (e.key === `ArrowDown`) {
       e.preventDefault();
       this._currentFocus = (this._currentFocus + 1) % suggestions.length;
-      console.log(this._currentFocus);
       this._setActiveSuggestion(suggestions);
     } else if (e.key === `ArrowUp`) {
       e.preventDefault();
       this._currentFocus =
         (this._currentFocus - 1 + suggestions.length) % suggestions.length;
-      console.log(this._currentFocus);
       this._setActiveSuggestion(suggestions);
     } else if (e.key === `Enter`) {
       form.dispatchEvent(new Event('submit'));
