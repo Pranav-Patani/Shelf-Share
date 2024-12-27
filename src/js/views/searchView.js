@@ -188,6 +188,7 @@ class SearchView extends View {
   }
 
   _handleModel(handler) {
+    console.log('entered');
     const model = this._parentElement.querySelector('.section-search__model');
     const form = this._parentElement.querySelector('.model-form');
     const msg = this._parentElement.querySelector('.model-msg');
@@ -231,7 +232,7 @@ class SearchView extends View {
         doneBtn.classList.add('collection-btn__disabled');
       } else {
         doneBtn.classList.remove('collection-btn__disabled');
-        doneBtn.setAttribute('disabled', 'false');
+        doneBtn.removeAttribute('disabled');
       }
     }
   }
@@ -253,7 +254,7 @@ class SearchView extends View {
 
   _generateSuggestionsMarkup() {
     if (!this._data)
-      return `<li class="section-search__user-options__search__suggestions__suggestion">Getting Suggestions...</li>`;
+      return `<li class="section-search__user-options__search__suggestions__suggestion-waiting">Getting Suggestions...</li>`;
     return this._data
       .map(
         (title, id) =>

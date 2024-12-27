@@ -107,7 +107,8 @@
           visibility: visible;
         }
 
-        &__suggestion {
+        &__suggestion,
+        &__suggestion-waiting {
           border-bottom: 1px solid rgba(var(--color-gray-light-rgb), 0.35);
           padding: var(--space-1) var(--space-2);
           cursor: pointer;
