@@ -1,5 +1,6 @@
 import { getJSON } from './helpers';
 import { API_URL, API_KEY } from './config';
+import coverFallback from 'url:../img/cover-fallback.webp';
 
 export const state = {
   book: {},
@@ -19,6 +20,7 @@ export const state = {
 export const loadBook = async function (id) {
   try {
     const data = await getJSON(`${API_URL}/${id}?key=${API_KEY}`);
+    console.log(data);
     state.book = {
       id: data.id,
       title: data.volumeInfo?.title || 'title not available',
@@ -32,7 +34,7 @@ export const loadBook = async function (id) {
       pageCount: data.volumeInfo?.pageCount || 'not available',
       categories: data.volumeInfo?.categories || ['others'],
       rating: data.volumeInfo?.averageRating || 'not available',
-      image: data.volumeInfo?.imageLinks.thumbnail || 'image not available',
+      image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
       language: data.volumeInfo?.language || 'not available',
       previewLink: data.volumeInfo?.previewLink || 'not available',
       embeddable: data.accessInfo?.embeddable,
@@ -57,7 +59,7 @@ export const loadSearchResults = async function (query, category) {
     state.search.results = data.items?.map(cur => ({
       id: cur.id,
       rating: cur.volumeInfo?.averageRating || 0,
-      image: cur.volumeInfo?.imageLinks?.thumbnail,
+      image: cur.volumeInfo?.imageLinks?.thumbnail || coverFallback,
       title: cur.volumeInfo?.title || 'title not available',
       authors: cur.volumeInfo?.authors || ['author not available'],
       bookmarked: state.bookmarks.some(bookmark => bookmark.id === cur.id),
