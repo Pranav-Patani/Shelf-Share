@@ -68,27 +68,60 @@ class HomeView extends View {
     updateCarousel();
   }
 
+  addHandlerSearch(handler) {
+    const searchBtn = this._parentElement.querySelector(
+      `.hero__text__center-container__search-btn`,
+    );
+
+    searchBtn.addEventListener(`click`, () => this._handleModal(handler));
+  }
+
+  _getQuery() {
+    const searchBar = this._parentElement.querySelector(`#modal__search-bar`);
+    if (!searchBar) return;
+    return searchBar.value;
+  }
+
+  _handleModal(handler) {
+    const modal = this._parentElement.querySelector(`.homepage__modal`);
+    const searchBar = this._parentElement.querySelector(`#modal__search-bar`);
+    const form = this._parentElement.querySelector(`#modal__search-form`);
+
+    modal.classList.add('homepage__modal--active');
+    setTimeout(() => searchBar.focus(), 300);
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.classList.remove('homepage__modal--active');
+        searchBar.blur();
+      }
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const query = this._getQuery();
+      handler(query);
+    });
+  }
+
   _generateMarkup() {
     return `
           <div class="homepage">
             <section class="hero mb-hg">
               <div class="hero__text">
               <div class="hero__text__center-container">
-                <div class="hero__text__heading">
-                    <div class="heading-1 hero__text__heading--main"><span class="hero__text__heading--main__top">explore books,</span><span class="hero__text__heading--main__top">plan your reading journey</span></div>
+                <div class="hero__text__center-container__heading">
+                    <div class="heading-1 hero__text__center-container__heading--main"><span class="hero__text__center-container__heading--main__top">explore books,</span><span class="hero__text__heading--main__top">plan your reading journey</span></div>
                     <div class="heading-4 hero__text__heading--sub"><span class="hero__text__heading--sub__top">discover, organize, and share</span><span class="hero__text__heading--sub__top">a world of stories</span></div>
-                  </div>
-                  <form class="hero__text__search-form">
-                    <input
-                    type="text"
-                    id="search-bar"
-                    placeholder="Search for books here"
-                    autocomplete="off" 
-                    class="hero__text__search-form__search-bar"
-                    />
-                    <button type="submit" class="hero__text__search-form__btn">Go</button>
-                  </form>
                 </div>
+                <button class="hero__text__center-container__search-btn">  
+                  
+                  <span class="hero__text__center-container__search-btn__text">Search for Books...</span>
+                  <svg class="hero__text__center-container__search-btn__svg">
+                      <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+                    </svg>
+                </button>
+              </div>
               </div>
               <div class="hero__img">
                 <svg
@@ -204,6 +237,25 @@ class HomeView extends View {
 
               </div>
             </section>
+            <div class="homepage__modal">
+              <div class="homepage__modal__content">
+                <form class="homepage__modal__content__search-form" id="modal__search-form">
+                  <div class="homepage__modal__content__search-form__search-bar-container">
+                    <input 
+                    class="homepage__modal__content__search-form__search-bar-container__search-bar"
+                    id="modal__search-bar"
+                    placeholder="Search for Books..."
+                    autocomplete="off"
+                    />
+                    <button class="homepage__modal__content__search-form__search-bar-container__search-btn">
+                    <svg class="homepage__modal__content__search-form__search-bar-container__search-btn__svg">
+                      <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+                    </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
     `;
   }
