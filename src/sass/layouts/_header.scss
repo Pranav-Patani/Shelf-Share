@@ -24,7 +24,7 @@
   &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0.1);
     border-radius: 0 0 1rem 1rem;
-    background-color: rgba(var(--color-background-light-rgb), 0.95);
+    background-color: #f4fbfe;
   }
 
   @include respond(tab-port) {

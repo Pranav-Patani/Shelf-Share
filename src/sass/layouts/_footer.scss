@@ -12,6 +12,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
+    z-index: var(--z-index-lvl-1);
   }
 
   &__heading {
