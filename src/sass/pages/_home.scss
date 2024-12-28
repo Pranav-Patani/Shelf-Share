@@ -1,5 +1,69 @@
 .homepage {
   background-color: var(--color-background-light);
+  position: relative;
+
+  &__modal {
+    @include modal-container;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: var(--space-12);
+
+    &__content {
+      background-color: var(--color-background-light);
+      width: 80%;
+      max-width: 70rem;
+      border-radius: 2rem;
+      overflow: hidden;
+
+      &__search-form {
+        &__search-bar-container {
+          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.2);
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          padding: var(--space-1) var(--space-3);
+
+          &__search-bar {
+            padding: var(--space-1);
+            border: none;
+            width: 100%;
+            transition: all 0.3s;
+            font-size: var(--font-size-xl);
+            color: var(--color-gray-dark);
+            font-family: var(--font-primary);
+            background-color: var(--color-background-light);
+
+            &::placeholder {
+              font-size: var(--font-size-l);
+              text-transform: capitalize;
+              color: var(--color-gray-light);
+              font-weight: bold;
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          &__search-btn {
+            border: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            background-color: var(--color-background-light);
+            padding: var(--space-1);
+
+            &__svg {
+              height: 2.6rem;
+              width: 2.6rem;
+              fill: rgba(var(--color-primary-light-rgb), 1);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // ------------------------
@@ -32,64 +96,51 @@
       width: 100%;
     }
 
-    &__heading {
-      &--main {
-        margin-bottom: var(--space-1);
+    &__center-container {
+      &__heading {
+        &--main {
+          margin-bottom: var(--space-1);
+          display: flex;
+          flex-direction: column;
+
+          &__top {
+            margin-top: var(--space-neg-1);
+          }
+        }
+
+        &--sub {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      &__search-btn {
         display: flex;
-        flex-direction: column;
-
-        &__top {
-          margin-top: var(--space-neg-1);
-        }
-      }
-
-      &--sub {
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    &__search-form {
-      margin-top: var(--space-4);
-      display: flex;
-      flex-direction: column-reverse;
-      position: relative;
-
-      &__search-bar {
-        padding: var(--space-2) var(--space-4);
-        outline: none;
-        border: 2px solid transparent;
-        border-radius: 10rem;
-        font-size: var(--font-size-l);
-        margin-right: 1rem;
-        transition: all 0.2s;
-        color: var(--color-gray-dark);
-
-        &::placeholder {
-          color: var(--color-gray-light);
-        }
-
-        &:focus {
-          border: 2px solid var(--color-primary-light);
-          box-shadow: 0 0.8rem 3rem rgba(#030712, 0.1);
-        }
-      }
-
-      &__btn {
-        position: absolute;
-        top: 0.1rem;
-        right: 0.9rem;
-        border-radius: 10rem;
-        font-size: var(--font-size-xl);
-        background-color: var(--color-primary-light);
-        padding: var(--space-2) var(--space-4);
-        border: none;
+        justify-content: space-around;
+        align-items: center;
+        border: 1px solid rgba(var(--color-primary-light-rgb), 0.4);
+        background-color: var(--color-white);
+        border-radius: 1rem;
+        padding: var(--space-1) var(--space-3);
         cursor: pointer;
-        color: var(--color-text-light);
-        transition: all 0.2s;
+        margin: var(--space-4) 0 0;
+        transition: all 0.1s;
 
         &:hover {
-          background-color: var(--color-primary);
+          border: 1px solid rgba(var(--color-primary-light-rgb), 0.6);
+        }
+
+        &__svg {
+          height: 2.6rem;
+          width: 2.6rem;
+          fill: rgba(var(--color-primary-light-rgb), 0.8);
+        }
+
+        &__text {
+          margin-right: var(--space-2);
+          font-size: var(--font-size-m);
+          color: var(--color-gray-light);
+          font-weight: bold;
         }
       }
     }

@@ -51,10 +51,18 @@ const setUpInitialView = function () {
   FooterView.render();
 };
 
+// Home View
+
 const setUpHomeView = function () {
   HomeView.render();
   HomeView.addHandlerCTALinks();
   HomeView.addHandlerCarousel();
+  HomeView.addHandlerSearch(controlHomeSearch);
+};
+
+const controlHomeSearch = function (query) {
+  Router.navigateTo('/findBooks');
+  controlSearchResults('findBooks', query);
 };
 
 // Individual Book View
