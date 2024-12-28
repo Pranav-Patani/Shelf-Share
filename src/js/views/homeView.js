@@ -87,20 +87,33 @@ class HomeView extends View {
     const searchBar = this._parentElement.querySelector(`#modal__search-bar`);
     const form = this._parentElement.querySelector(`#modal__search-form`);
 
+    const closeModal = () => {
+      modal.classList.remove('homepage__modal--active');
+      searchBar.value = '';
+      searchBar.blur();
+    };
+
     modal.classList.add('homepage__modal--active');
     setTimeout(() => searchBar.focus(), 300);
 
     modal.addEventListener('click', e => {
       if (e.target === modal) {
-        modal.classList.remove('homepage__modal--active');
-        searchBar.blur();
+        closeModal();
       }
     });
 
     form.addEventListener('submit', e => {
       e.preventDefault();
       const query = this._getQuery();
+      if (!query) {
+        return;
+      }
       handler(query);
+    });
+
+    searchBar.addEventListener('keydown', e => {
+      if (!(e.key === 'Escape')) return;
+      closeModal();
     });
   }
 
