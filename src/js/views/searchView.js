@@ -77,9 +77,9 @@ class SearchView extends View {
       e.preventDefault();
       this._parentElement.querySelector('.search-bar').blur();
       const category = this._getCategory();
-      console.log(category);
       const query = this._getQuery();
       handler(query, category);
+      this._closeSuggestions();
     });
   }
 

@@ -24,7 +24,7 @@ class BookView extends View {
         ),
       ),
     ];
-    return uniqueCategories;
+    return uniqueCategories.slice(0, 8);
   }
 
   addHandlerRender(handler) {
@@ -41,47 +41,47 @@ class BookView extends View {
 
   addHandlerTabHandler() {
     const tabContainer = document.querySelector(
-      `.section-book-view__overview__tab-container`,
+      `.section-book-view__detail__tab-container`,
     );
     const tabs = document.querySelectorAll(
-      `.section-book-view__overview__tab-container__tab`,
+      `.section-book-view__detail__tab-container__tab`,
     );
     const content = document.querySelectorAll(
-      `.section-book-view__overview__content`,
+      `.section-book-view__detail__content`,
     );
 
     tabContainer.addEventListener('click', e => {
       const tab = e.target.closest(
-        '.section-book-view__overview__tab-container__tab',
+        '.section-book-view__detail__tab-container__tab',
       );
       if (!tab) return;
       tabs.forEach(tab =>
         tab.classList.remove(
-          'section-book-view__overview__tab-container__tab--active',
+          'section-book-view__detail__tab-container__tab--active',
         ),
       );
       content.forEach(content =>
         content.classList.remove(
-          `section-book-view__overview__content--active`,
-          `section-book-view__overview__content--active-table`,
+          `section-book-view__detail__content--active`,
+          `section-book-view__detail__content--active-table`,
         ),
       );
 
       tab.classList.add(
-        'section-book-view__overview__tab-container__tab--active',
+        'section-book-view__detail__tab-container__tab--active',
       );
       if (tab.dataset.id == 2) {
         document
           .querySelector(
-            `.section-book-view__overview__content--${tab.dataset.id}`,
+            `.section-book-view__detail__content--${tab.dataset.id}`,
           )
-          .classList.add('section-book-view__overview__content--active-table');
+          .classList.add('section-book-view__detail__content--active-table');
       } else {
         document
           .querySelector(
-            `.section-book-view__overview__content--${tab.dataset.id}`,
+            `.section-book-view__detail__content--${tab.dataset.id}`,
           )
-          .classList.add('section-book-view__overview__content--active');
+          .classList.add('section-book-view__detail__content--active');
       }
     });
   }
@@ -101,7 +101,7 @@ class BookView extends View {
                 <h2
                   class="section-book-view__main-info-container__text--up__title heading-2"
                 >
-                  ${this._data.title} 
+                  ${this._data.title?.length <= 70 ? this._data.title : this._data.title?.substring(0, 70 + `...`)} 
                 </h2>
                 <h3
                   class="section-book-view__main-info-container__text--up__author heading-3"
@@ -147,28 +147,24 @@ class BookView extends View {
             </div>
           </div>
         
-        <div class="section-book-view__overview">
+        <div class="section-book-view__detail">
         
-          <div class="section-book-view__overview__tab-container">
-            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--1 section-book-view__overview__tab-container__tab--active" data-id="1">
+          <div class="section-book-view__detail__tab-container">
+            <button class="section-book-view__detail__tab-container__tab section-book-view__detail__tab-container__tab--1 section-book-view__detail__tab-container__tab--active" data-id="1">
                   Description
             </button>
-            <button class="section-book-view__overview__tab-container__tab section-book-view__overview__tab-container__tab--2" data-id=2>
-                  Details
+            <button class="section-book-view__detail__tab-container__tab section-book-view__detail__tab-container__tab--2" data-id=2>
+                  Overview
             </button>
           </div>
-          <div class="section-book-view__overview__content section-book-view__overview__content--1 section-book-view__overview__content--active">
-            <h3 class="section-book-view__overview__content--1__heading heading-3">
-              Description
-            </h3>
-            <p class="section-book-view__overview__content--1__text paragraph">
+          <div class="section-book-view__detail__content section-book-view__detail__content--1 section-book-view__detail__content--active">
+            <p class="section-book-view__detail__content--1__text paragraph">
              ${this._data.description}
             </p>
           </div>
 
-          <div class="section-book-view__overview__content section-book-view__overview__content--2">
-            <h3 class="section-book-view__overview__content--2__heading heading-3">Details</h3>
-            <table class="section-book-view__overview__content--2__table">
+          <div class="section-book-view__detail__content section-book-view__detail__content--2">
+            <table class="section-book-view__detail__content--2__table">
               <tbody>
                 <tr>
                   <th>Publisher</th>
