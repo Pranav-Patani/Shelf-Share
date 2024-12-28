@@ -11,7 +11,7 @@
     margin: 0 auto;
     padding: calc(var(--space-header) + var(--space-3)) var(--space-2)
       var(--space-3);
-    z-index: var(--z-index-lvl-2); // creating a stacking conte
+    z-index: var(--z-index-lvl-2); // creating a stacking context
     position: relative;
 
     @include respond(tab-port) {
@@ -24,6 +24,7 @@
     &__search {
       width: 50%;
       position: relative;
+      z-index: var(--z-index-lvl-2); // creating a stacking context
 
       @include respond(tab-land) {
         width: 55%;
@@ -91,41 +92,14 @@
       }
 
       &__suggestions {
-        opacity: 0;
-        visibility: hidden;
         position: absolute;
         width: 100%;
-        background-color: var(--color-background-light);
-        list-style: none;
-        box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
-        border-radius: 1rem;
-        transition: all 0.2s;
-        overflow: auto;
         max-height: 30vh;
+        border-radius: 1rem;
+        overflow: auto;
+        box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
 
         @include scroll-bar;
-
-        &--active {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        &__suggestion,
-        &__suggestion-waiting {
-          border-bottom: 1px solid rgba(var(--color-gray-light-rgb), 0.35);
-          padding: var(--space-1) var(--space-2);
-          cursor: pointer;
-          font-size: var(--font-size-m);
-          transition: all 0.15s;
-
-          &:hover {
-            background-color: rgba(var(--color-gray-light-rgb), 0.15);
-          }
-
-          &--active {
-            background-color: rgba(var(--color-gray-light-rgb), 0.15);
-          }
-        }
       }
     }
 
@@ -162,12 +136,12 @@
 
         &:hover {
           transform: translateY(-0.15rem);
-          box-shadow: 0 0.3rem 0.5rem rgba(#000, 0.1);
+          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
         }
 
         &:active {
           transform: translateY(-0.08rem);
-          box-shadow: 0 0.2rem 0.4rem rgba(#000, 0.1);
+          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
         }
 
         &--active {

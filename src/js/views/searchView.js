@@ -1,13 +1,12 @@
 import View from './View';
 import sprite from 'url:../../img/sprite.svg';
-import { throttle } from '../helpers';
 
 class SearchView extends View {
   _parentElement = document.querySelector('.container');
-  _currentFocus = -1;
+
   _getQuery() {
-    if (this._parentElement.querySelector('#search-bar'))
-      return this._parentElement.querySelector('#search-bar').value;
+    if (this._parentElement.querySelector('.search-bar'))
+      return this._parentElement.querySelector('.search-bar').value;
   }
 
   _getCategory() {
@@ -76,109 +75,12 @@ class SearchView extends View {
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      this._parentElement.querySelector('#search-bar').blur();
+      this._parentElement.querySelector('.search-bar').blur();
       const category = this._getCategory();
       console.log(category);
       const query = this._getQuery();
       handler(query, category);
     });
-  }
-
-  addHandlerDebounce(handler) {
-    const searchBar = this._parentElement.querySelector('#search-bar');
-    const suggestionsContainer = this._parentElement.querySelector(
-      '.section-search__user-options__search__suggestions',
-    );
-    const form = this._parentElement.querySelector(`.search-form`);
-
-    searchBar.addEventListener('input', () => {
-      handler(searchBar.value);
-      this._handleSuggestionContainer(searchBar.value);
-    });
-
-    searchBar.addEventListener(
-      'keydown',
-      throttle(e => this._handleCurrentSuggestion(e)),
-    );
-
-    suggestionsContainer.addEventListener('click', e => {
-      const suggestion = e.target.closest(
-        `.section-search__user-options__search__suggestions__suggestion`,
-      );
-      if (!suggestion) return;
-
-      searchBar.value = suggestion.textContent;
-      form.dispatchEvent(new Event('submit'));
-      suggestionsContainer.classList.remove(
-        'section-search__user-options__search__suggestions--active',
-      );
-    });
-  }
-
-  _handleSuggestionContainer = value => {
-    const suggestionsContainer = this._parentElement.querySelector(
-      `.section-search__user-options__search__suggestions`,
-    );
-
-    if (value) {
-      suggestionsContainer.classList.add(
-        `section-search__user-options__search__suggestions--active`,
-      );
-    } else {
-      suggestionsContainer.classList.remove(
-        `section-search__user-options__search__suggestions--active`,
-      );
-    }
-  };
-
-  _handleCurrentSuggestion = e => {
-    const suggestionsContainer = this._parentElement.querySelector(
-      `.section-search__user-options__search__suggestions`,
-    );
-    const suggestions = this._parentElement.querySelectorAll(
-      `.section-search__user-options__search__suggestions__suggestion`,
-    );
-    const form = this._parentElement.querySelector(`.search-form`);
-
-    if (e.key === `ArrowDown`) {
-      e.preventDefault();
-      this._currentFocus = (this._currentFocus + 1) % suggestions.length;
-      this._setActiveSuggestion(suggestions);
-    } else if (e.key === `ArrowUp`) {
-      e.preventDefault();
-      this._currentFocus =
-        (this._currentFocus - 1 + suggestions.length) % suggestions.length;
-      this._setActiveSuggestion(suggestions);
-    } else if (e.key === `Enter`) {
-      form.dispatchEvent(new Event('submit'));
-      suggestionsContainer.classList.remove(
-        `section-search__user-options__search__suggestions--active`,
-      );
-    }
-  };
-
-  _setActiveSuggestion(suggestions) {
-    const searchBar = this._parentElement.querySelector(`#search-bar`);
-
-    if (!suggestions) return;
-    suggestions.forEach(suggestion =>
-      suggestion.classList.remove(
-        'section-search__user-options__search__suggestions__suggestion--active',
-      ),
-    );
-
-    const activeSuggestion = suggestions[this._currentFocus];
-
-    activeSuggestion.classList.add(
-      `section-search__user-options__search__suggestions__suggestion--active`,
-    );
-
-    activeSuggestion.scrollIntoView({
-      behaviour: 'smooth',
-      block: 'nearest',
-    });
-
-    searchBar.value = suggestions[this._currentFocus].textContent;
   }
 
   addHandlerCreateCollection(handler) {
@@ -237,32 +139,6 @@ class SearchView extends View {
     }
   }
 
-  updateSuggestions(data) {
-    this._data = data;
-    const suggestionsContainer = this._parentElement.querySelector(
-      '.section-search__user-options__search__suggestions',
-    );
-    if (!suggestionsContainer) return;
-
-    suggestionsContainer.innerHTML = '';
-    this._currentFocus = -1;
-    if (data && data.length > 0) {
-      const suggestionsMarkup = this._generateSuggestionsMarkup();
-      suggestionsContainer.insertAdjacentHTML('afterbegin', suggestionsMarkup);
-    }
-  }
-
-  _generateSuggestionsMarkup() {
-    if (!this._data)
-      return `<li class="section-search__user-options__search__suggestions__suggestion-waiting">Getting Suggestions...</li>`;
-    return this._data
-      .map(
-        (title, id) =>
-          `<li key=${id} class="section-search__user-options__search__suggestions__suggestion">${title}</li>`,
-      )
-      .join('');
-  }
-
   _generateMarkup(markupClass) {
     const categories = [
       'Humorous',
@@ -275,7 +151,7 @@ class SearchView extends View {
       'Horror',
     ];
     return `
-          <section class="section-search">
+      <section class="section-search">
         <div class="section-search__user-options">
           <div class="section-search__user-options__search">
             <form
@@ -288,14 +164,14 @@ class SearchView extends View {
               </button>
               <input
                 type="text"
-                id="search-bar"
+                class="search-bar"
                 placeholder="Search for books here"
                 autocomplete="off"
               />
             </form>
-            <ul class="section-search__user-options__search__suggestions">
-              ${this._generateSuggestionsMarkup()} 
-            </ul>
+            <div class="section-search__user-options__search__suggestions">
+              ${this._generateSuggestionsContainerMarkup()} 
+            </div>
           </div>
           <div class="section-search__user-options__categories">
            ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__categories__btn">${category}</button>`).join('')}

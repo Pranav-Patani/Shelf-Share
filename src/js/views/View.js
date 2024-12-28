@@ -1,5 +1,8 @@
+import { throttle } from '../helpers';
+
 class View {
   _data;
+  _currentFocus = -1;
 
   _clear() {
     this._parentElement.innerHTML = '';
@@ -70,6 +73,148 @@ class View {
     } catch (err) {
       console.error(err);
     }
+  }
+
+  addHandlerDebounce(handler) {
+    const searchBar = this._parentElement.querySelector('.search-bar');
+    const suggestionsContainer =
+      this._parentElement.querySelector('.suggestions');
+    const form = this._parentElement.querySelector(`.search-form`);
+
+    searchBar.addEventListener('input', () => {
+      const value = searchBar.value.trim();
+
+      if (!value) {
+        this._closeSuggestions();
+        return;
+      }
+
+      handler(value);
+      this._handleSuggestionContainer(value);
+    });
+
+    searchBar.addEventListener(
+      'keydown',
+      throttle(e => this._handleCurrentSuggestion(e)),
+    );
+
+    suggestionsContainer.addEventListener('click', e => {
+      const suggestion = e.target.closest(`.suggestions__suggestion`);
+      if (!suggestion) return;
+
+      searchBar.value = suggestion.textContent;
+      form.dispatchEvent(new Event('submit'));
+      this._closeSuggestions();
+    });
+
+    this._parentElement.addEventListener('click', e => {
+      if (e.target.closest(`.suggestions`) || e.target.closest(`.suggestion`))
+        return;
+      this._closeSuggestions();
+    });
+  }
+
+  _closeSuggestions() {
+    const suggestionsContainer =
+      this._parentElement.querySelector(`.suggestions`);
+    suggestionsContainer.classList.remove(`suggestions--active`);
+    this._data = '';
+    this._currentFocus = -1;
+    suggestionsContainer.innerHTML = '';
+  }
+
+  _handleSuggestionContainer = value => {
+    const suggestionsContainer =
+      this._parentElement.querySelector(`.suggestions`);
+
+    if (value) {
+      suggestionsContainer.classList.add(`suggestions--active`);
+    } else {
+      this._closeSuggestions();
+    }
+  };
+
+  _handleCurrentSuggestion = e => {
+    const suggestions = this._parentElement.querySelectorAll(
+      `.suggestions__suggestion`,
+    );
+    const form = this._parentElement.querySelector(`.search-form`);
+
+    if (e.key === `ArrowDown`) {
+      e.preventDefault();
+      this._currentFocus = (this._currentFocus + 1) % suggestions.length;
+      this._setActiveSuggestion(suggestions);
+    } else if (e.key === `ArrowUp`) {
+      e.preventDefault();
+      this._currentFocus =
+        (this._currentFocus - 1 + suggestions.length) % suggestions.length;
+      this._setActiveSuggestion(suggestions);
+    } else if (e.key === `Enter`) {
+      form.dispatchEvent(new Event('submit'));
+      this._closeSuggestions();
+    }
+  };
+
+  _setActiveSuggestion(suggestions) {
+    if (!suggestions || suggestions.length === 0) return;
+    const searchBar = this._parentElement.querySelector(`.search-bar`);
+
+    if (!suggestions) return;
+    suggestions.forEach(suggestion =>
+      suggestion.classList.remove('suggestions__suggestion--active'),
+    );
+
+    const activeSuggestion = suggestions[this._currentFocus];
+
+    activeSuggestion.classList.add(`suggestions__suggestion--active`);
+
+    activeSuggestion.scrollIntoView({
+      behaviour: 'smooth',
+      block: 'nearest',
+    });
+
+    searchBar.value = suggestions[this._currentFocus].textContent;
+  }
+
+  updateSuggestions(data) {
+    this._data = data;
+    const suggestionsContainer =
+      this._parentElement.querySelector('.suggestions');
+    const searchBar = this._parentElement.querySelector('.search-bar');
+
+    if (!suggestionsContainer) return;
+    if (!searchBar.value.trim()) {
+      this._closeSuggestions();
+      return;
+    }
+
+    suggestionsContainer.innerHTML = '';
+    this._currentFocus = -1;
+    if (data && data.length > 0) {
+      const suggestionsMarkup = this._generateSuggestionsMarkup();
+      suggestionsContainer.insertAdjacentHTML('afterbegin', suggestionsMarkup);
+    }
+  }
+
+  _generateSuggestionsContainerMarkup() {
+    return `
+    <ul class="suggestions">
+     ${this._generateSuggestionsMarkup()}
+    </ul>
+  `;
+  }
+
+  _generateSuggestionsMarkup() {
+    return `${
+      this._data
+        ? this._data
+            .map(
+              (title, id) =>
+                `<li key=${id} class="suggestions__suggestion">${title}</li>`,
+            )
+            .join('')
+        : ``
+    }`;
   }
 }
 

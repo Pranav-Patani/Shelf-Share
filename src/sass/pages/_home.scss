@@ -11,15 +11,18 @@
     padding-top: var(--space-12);
 
     &__content {
+      position: relative;
       background-color: var(--color-background-light);
       width: 80%;
       max-width: 70rem;
       border-radius: 2rem;
       overflow: hidden;
+      transition: all 0.2s;
 
       &__search-form {
+        border-bottom: 1px solid rgba(var(--color-shadow-rgb), 0.2);
+
         &__search-bar-container {
-          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.2);
           display: flex;
           align-items: center;
           overflow: hidden;
@@ -61,6 +64,15 @@
             }
           }
         }
+      }
+
+      &__suggestions {
+        max-height: 50vh;
+        overflow: auto;
+        box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
+        transition: all 0.2s;
+
+        @include scroll-bar;
       }
     }
   }

@@ -1,0 +1,29 @@
+.suggestions {
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  background-color: var(--color-background-light);
+  list-style: none;
+  transition: all 0.2s;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__suggestion {
+    border-bottom: 1px solid rgba(var(--color-gray-light-rgb), 0.35);
+    padding: var(--space-1) var(--space-2);
+    cursor: pointer;
+    font-size: var(--font-size-m);
+    transition: all 0.15s;
+
+    &:hover {
+      background-color: rgba(var(--color-gray-light-rgb), 0.15);
+    }
+
+    &--active {
+      background-color: rgba(var(--color-gray-light-rgb), 0.15);
+    }
+  }
+}

@@ -77,20 +77,22 @@ class HomeView extends View {
   }
 
   _getQuery() {
-    const searchBar = this._parentElement.querySelector(`#modal__search-bar`);
+    const searchBar = this._parentElement.querySelector(`.search-bar`);
     if (!searchBar) return;
     return searchBar.value;
   }
 
   _handleModal(handler) {
     const modal = this._parentElement.querySelector(`.homepage__modal`);
-    const searchBar = this._parentElement.querySelector(`#modal__search-bar`);
-    const form = this._parentElement.querySelector(`#modal__search-form`);
+    const searchBar = this._parentElement.querySelector(`.search-bar`);
+    const form = this._parentElement.querySelector(`.search-form`);
 
     const closeModal = () => {
+      const searchBar = this._parentElement.querySelector(`.search-bar`);
       modal.classList.remove('homepage__modal--active');
       searchBar.value = '';
-      searchBar.blur();
+
+      this._closeSuggestions();
     };
 
     modal.classList.add('homepage__modal--active');
@@ -118,6 +120,7 @@ class HomeView extends View {
   }
 
   _generateMarkup() {
+    const suggestionsContainer = this._generateSuggestionsContainerMarkup();
     return `
           <div class="homepage">
             <section class="hero mb-hg">
@@ -252,11 +255,10 @@ class HomeView extends View {
             </section>
             <div class="homepage__modal">
               <div class="homepage__modal__content">
-                <form class="homepage__modal__content__search-form" id="modal__search-form">
+                <form class="homepage__modal__content__search-form search-form">
                   <div class="homepage__modal__content__search-form__search-bar-container">
                     <input 
-                    class="homepage__modal__content__search-form__search-bar-container__search-bar"
-                    id="modal__search-bar"
+                    class="homepage__modal__content__search-form__search-bar-container__search-bar search-bar"
                     placeholder="Search for Books..."
                     autocomplete="off"
                     />
@@ -267,6 +269,9 @@ class HomeView extends View {
                     </button>
                   </div>
                 </form>
+                <div class="homepage__modal__content__suggestions">
+                  ${suggestionsContainer}
+                </div>
               </div>
             </div>
           </div>

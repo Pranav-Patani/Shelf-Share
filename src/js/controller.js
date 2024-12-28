@@ -58,6 +58,7 @@ const setUpHomeView = function () {
   HomeView.addHandlerCTALinks();
   HomeView.addHandlerCarousel();
   HomeView.addHandlerSearch(controlHomeSearch);
+  HomeView.addHandlerDebounce(query => controlSearchDebounce(query));
 };
 
 const controlHomeSearch = function (query) {
@@ -142,6 +143,7 @@ const searchDebounceCallback = async function (query) {
     }
     await model.loadSearchTitles(query);
     SearchView.updateSuggestions(model.state.search.titles);
+    HomeView.updateSuggestions(model.state.search.titles);
   } catch (err) {
     console.error(err);
   }
