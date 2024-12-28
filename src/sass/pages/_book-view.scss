@@ -7,15 +7,15 @@
     var(--space-0);
 
   @include respond(phone) {
-    padding: calc(var(--space-header) + var(--space-5)) var(--space-0)
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-0)
       var(--space-0);
   }
 
   @include bg-image(top);
 
   &__main-info-container {
-    max-width: 80%;
-    min-width: 55%;
+    max-width: 85rem;
+    width: 60%;
     display: flex;
     flex-direction: row-reverse;
     align-self: center;
@@ -24,17 +24,23 @@
     padding: var(--space-5);
     border-radius: 4rem;
     box-shadow: 0.4rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0.1);
+    margin: 0 var(--space-5);
+
+    @include respond(tab-land) {
+      width: 70%;
+    }
 
     @include respond(tab-port) {
       min-width: 80%;
     }
 
     @include respond(phone) {
+      border-radius: 0;
       flex-wrap: wrap;
       min-width: none;
       padding: var(--space-5) var(--space-3);
-      width: 95%;
       max-width: none;
+      width: 100%;
     }
 
     &__img {
@@ -74,7 +80,7 @@
 
         @include respond(phone) {
           max-width: none;
-          width: 95%;
+          width: 100%;
         }
 
         &__category-heding {
@@ -151,15 +157,11 @@
     }
   }
 
-  &__overview {
+  &__detail {
     background-color: var(--color-background-light);
-    margin: var(--space-10) 0 0;
-    padding: 0 0 var(--space-8);
+    padding: 0 0 var(--space-12);
+    margin: var(--space-8) 0 0;
     width: 100%;
-
-    @include respond(tab-land) {
-      margin: var(--space-8) 0 0;
-    }
 
     @include respond(tab-port) {
       margin: var(--space-7) 0 0;
@@ -192,7 +194,7 @@
           content: '';
           height: 3px;
           width: 0%;
-          background-color: rgba(var(--color-gray-light-rgb), 0.35);
+          background-color: rgba(var(--color-primary-rgb), 0.55);
           position: absolute;
           bottom: -0.3rem;
           transition: all 0.3s;
@@ -214,66 +216,68 @@
 
     &__content {
       padding: var(--space-2) var(--space-8);
-      margin: var(--space-5) auto 0;
+      margin: var(--space-4) auto 0;
       width: 75%;
       display: none;
 
       @include respond(tab-port) {
         width: 80%;
-        padding: var(--space-2) var(--space-7);
+        padding: var(--space-2) var(--space-4);
       }
 
       @include respond(phone) {
+        padding: var(--space-1) var(--space-2);
         width: 100%;
       }
 
       &--1 {
-        &__heading {
-          text-align: center;
-          color: var(--color-primary-dark);
-        }
-
         &__text,
         & p {
-          display: block;
-          margin: var(--space-2) auto;
+          display: inline-block;
           padding: var(--space-0) var(--space-4);
-          max-height: 50vh;
-          overflow-y: auto;
 
           @include respond(phone) {
             width: 100%;
             padding: var(--space-0) var(--space-2);
           }
+        }
 
-          @include scroll-bar;
+        & b {
+          display: inline-block;
+          padding: 0;
+          margin: 0;
         }
       }
 
       &--2 {
-        &__heading {
-          text-align: center;
-          color: var(--color-primary-dark);
-        }
-
         &__table {
           width: 40%;
+          max-width: 30rem;
           border-collapse: collapse;
           font-size: var(--font-size-m);
           margin: var(--space-1) auto;
           display: table;
 
+          @include respond(tab-port) {
+            width: 50%;
+          }
+
+          @include respond(phone) {
+            width: 70%;
+          }
+
           & td {
             padding: var(--space-1);
-            margin: var(--space-12);
             border-bottom: 1px solid var(--color-gray-light);
             color: var(--color-gray-dark);
+            text-align: left;
           }
 
           & th {
             border-bottom: 1px solid var(--color-gray-light);
             color: var(--color-primary);
             padding: var(--space-1);
+            text-align: left;
           }
         }
       }
