@@ -1,7 +1,6 @@
 .section-search {
   margin: 0 auto;
   position: relative;
-  z-index: var(--z-index-lvl-1); // creating a stacking context
 
   &__user-options {
     display: flex;
@@ -206,33 +205,27 @@
     }
   }
 
-  &__model {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(var(--color-shadow-rgb), 0.7);
-    z-index: var(--z-index-lvl-3);
+  &__modal {
+    @include modal-container;
 
-    &--active {
-      visibility: visible;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: var(--color-gray-dark);
-      height: 50vh;
-      width: 50%;
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: var(--space-4);
+      width: 90%;
+      max-width: 60rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.2s;
+
+      @include bg-image(top);
 
       @include respond(phone) {
         height: 40vh;
@@ -241,30 +234,31 @@
 
       &__close-btn {
         position: absolute;
-        top: 2rem;
-        right: 2rem;
-        padding: var(--space-05) var(--space-1);
+        top: 1.8rem;
+        right: 1.8rem;
         border: none;
-        font-size: var(--font-size-2xl);
-        background-color: var(--color-primary-contrast);
-        color: var(--color-text-light);
-        font-weight: 900;
         cursor: pointer;
-        transition: all 0.1s;
+        transition: all 0.2s;
+        background-color: transparent;
+        border-radius: 0.6rem;
 
         &:hover {
-          transform: translateY(-0.15rem);
-          box-shadow: 0 1rem 2rem rgba(#030712, 0.2);
+          background-color: rgba(var(--color-gray-light-rgb), 0.25);
         }
 
         &:active {
-          transform: translateY(-0.02rem);
-          box-shadow: 0 0.8rem 1.8rem rgba(#030712, 0.2);
+          background-color: rgba(var(--color-gray-light-rgb), 0.15);
+        }
+
+        &__svg {
+          height: 2.5rem;
+          width: 2.5rem;
+          fill: var(--color-primary);
         }
       }
 
       &__heading {
-        color: var(--color-text-light);
+        color: var(--color-primary);
         margin-bottom: var(--space-4);
       }
 
@@ -272,7 +266,8 @@
       &__err-msg {
         font-size: var(--font-size-l);
         font-weight: 700;
-        margin-top: var(--space-1);
+        margin-bottom: var(--space-1);
+        height: 1rem;
       }
 
       &__err-msg {
@@ -293,8 +288,9 @@
           border-radius: 2rem;
           border: none;
           transition: box-shadow 0.2s;
-          background-color: var(--color-background-light);
+          background-color: var(--color-background);
           color: var(--color-gray-dark);
+          box-shadow: 0.1rem 0.2rem 1.2rem rgba(var(--color-shadow-rgb), 0.2);
 
           &::placeholder {
             font-size: var(--font-size-m);
@@ -304,14 +300,39 @@
 
           &:focus {
             outline: none;
-            box-shadow: 0 1.5rem 3rem rgba(#000, 0.2);
+            box-shadow: 0.1rem 0.4rem 1.6rem rgba(var(--color-shadow-rgb), 0.3);
           }
         }
 
         &__btn {
           align-self: center;
-          margin-top: var(--space-3);
-          font-size: var(--font-size-xl);
+          margin-top: var(--space-4);
+          font-size: var(--font-size-l);
+          visibility: visible;
+          opacity: 1;
+
+          &--hidden {
+            visibility: hidden;
+            opacity: 0;
+            height: 0;
+          }
+        }
+      }
+
+      &__choice-container {
+        display: flex;
+        justify-content: space-around;
+        width: 30rem;
+        visibility: hidden;
+        opacity: 0;
+
+        &--active {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        &__btn {
+          box-shadow: 0.1rem 0.4rem 1rem rgba(var(--color-shadow-rgb), 0.2);
         }
       }
     }

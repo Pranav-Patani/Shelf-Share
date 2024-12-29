@@ -25,7 +25,11 @@
 .svg-empty {
   fill: var(--color-background-light);
   stroke: var(--color-gray-light);
-  stroke-width: 0.15rem;
+  stroke-width: 0.12rem;
+}
+
+.svg-gray {
+  fill: var(--color-gray-light);
 }
 
 .message-container {

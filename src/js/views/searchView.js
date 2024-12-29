@@ -1,5 +1,6 @@
 import View from './View';
 import sprite from 'url:../../img/sprite.svg';
+import Router from '../router';
 
 class SearchView extends View {
   _parentElement = document.querySelector('.container');
@@ -107,27 +108,63 @@ class SearchView extends View {
   addHandlerCreateCollection(handler) {
     const doneBtn = this._parentElement.querySelector('.collection-btn');
     if (!doneBtn) return;
-    doneBtn.addEventListener('click', () => this._handleModel(handler));
+    doneBtn.addEventListener('click', () => this._handlemodal(handler));
   }
 
-  _handleModel(handler) {
-    console.log('entered');
-    const model = this._parentElement.querySelector('.section-search__model');
-    const form = this._parentElement.querySelector('.model-form');
-    const msg = this._parentElement.querySelector('.model-msg');
-    const errMsg = this._parentElement.querySelector('.model-err-msg');
-    const input = this._parentElement.querySelector('#model-input');
+  _handlemodal(handler) {
+    const modal = this._parentElement.querySelector('.section-search__modal');
+    const form = this._parentElement.querySelector('.modal-form');
+    const msg = this._parentElement.querySelector('.modal-msg');
+    const errMsg = this._parentElement.querySelector('.modal-err-msg');
+    const input = this._parentElement.querySelector('#modal-input');
     const closeBtn = this._parentElement.querySelector(
-      '.section-search__model__content__close-btn',
+      '.section-search__modal__content__close-btn',
     );
+    const submitBn = this._parentElement.querySelector(
+      `.section-search__modal__content__form__btn`,
+    );
+    const userChoice = this._parentElement.querySelector(
+      `.section-search__modal__content__choice-container`,
+    );
+    const createBtn = this._parentElement.querySelector(`.btn-create`);
+    const viewBtn = this._parentElement.querySelector(`.btn-view`);
 
-    model.classList.add('section-search__model--active');
+    const handleSubmit = () => {
+      submitBn.classList.add(
+        `section-search__modal__content__form__btn--hidden`,
+      );
+      userChoice.classList.add(
+        `section-search__modal__content__choice-container--active`,
+      );
+      createBtn.addEventListener('click', closeModal);
+      viewBtn.addEventListener('click', () => {
+        closeModal();
+        Router.navigateTo('/collections');
+      });
+    };
 
-    closeBtn.addEventListener('click', () => {
+    const openModal = () => {
+      modal.classList.add('section-search__modal--active');
+      submitBn.classList.remove(
+        `section-search__modal__content__form__btn--hidden`,
+      );
+      setTimeout(() => input.focus(), 50);
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('section-search__modal--active');
+      userChoice.classList.remove(
+        `section-search__modal__content__choice-container--active`,
+      );
       errMsg.textContent = '';
       msg.textContent = '';
-      model.classList.remove('section-search__model--active');
-    });
+      input.value = '';
+      input.blur();
+    };
+
+    openModal();
+
+    closeBtn.addEventListener('click', closeModal);
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -135,15 +172,13 @@ class SearchView extends View {
       if (!name.trim()) {
         errMsg.textContent = 'Name cannot be empty :(';
         input.value = '';
+        input.focus();
         return;
       }
       errMsg.textContent = '';
       msg.textContent = 'Collection Created Successfully.';
       handler(name);
-      setTimeout(
-        () => model.classList.remove('section-search__model--active'),
-        2000,
-      );
+      handleSubmit();
     });
   }
 
@@ -212,25 +247,33 @@ class SearchView extends View {
         </div>
 
         
-        <div class="section-search__model">
-            <div class="section-search__model__content">
+        <div class="section-search__modal">
+            <div class="section-search__modal__content">
 
-            <button class="section-search__model__content__close-btn">X</button>
+            <button class="section-search__modal__content__close-btn">
+              <svg class="section-search__modal__content__close-btn__svg">
+                <use xlink:href="${sprite}#icon-cross"></use>
+              </svg>
+            </button>
 
-            <h3 class="heading-3 section-search__model__content__heading">Enter Collection's Name</h3>
+            <h3 class="heading-3 section-search__modal__content__heading">Enter Collection's Name</h3>
                          
-              <form class="section-search__model__content__form model-form">
+              <form class="section-search__modal__content__form modal-form">
                 <input
                   type="text"
-                  id="model-input"
-                  class="section-search__model__content__form__input"
+                  id="modal-input"
+                  class="section-search__modal__content__form__input"
                   placeholder="collection name"
                   autocomplete="off"
                 />
-                <button class="btn-tertiary section-search__model__content__form__btn" type="submit">Create</button>
+                <button class="btn-tertiary section-search__modal__content__form__btn" type="submit">Create</button>
               </form>
-            <p class="section-search__model__content__msg model-msg"></p>
-            <p class="section-search__model__content__err-msg model-err-msg"></p>
+            <p class="section-search__modal__content__msg modal-msg"></p>
+            <p class="section-search__modal__content__err-msg modal-err-msg"></p>
+            <div class="section-search__modal__content__choice-container">
+              <button class="section-search__modal__content__choice-container__btn btn-create btn-tertiary">Create More</button>
+              <button class="section-search__modal__content__choice-container__btn btn-view btn-tertiary">View Collections</button>
+            </div>
             </div>
         </div>
       </section>
