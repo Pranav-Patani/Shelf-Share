@@ -72,6 +72,7 @@ const controlBooks = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
+    BookView.renderSpinner();
     await model.loadBook(id);
     BookView.render(model.state.book);
     BookView.addHandlerTabHandler();
@@ -89,10 +90,22 @@ const controlBooks = async function () {
 const controlSearchResults = async function (path, query, category) {
   try {
     if (!query && !category) return;
+
+    if (path === 'findBooks') {
+      FindBooksView.renderSpinner();
+    }
+    if (path === 'createCollections') {
+      CreateCollectionsView.renderSpinner();
+    }
+
     await model.loadSearchResults(query, category);
-    if (path === 'findBooks') FindBooksView.render(model.state.search.results);
-    if (path === 'createCollections')
+
+    if (path === 'findBooks') {
+      FindBooksView.render(model.state.search.results);
+    }
+    if (path === 'createCollections') {
       CreateCollectionsView.render(model.state.search.results);
+    }
   } catch (err) {
     console.error(err);
   }
@@ -129,7 +142,6 @@ const setUpSearchView = function (path) {
     SearchView.render();
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
   }
-
   SearchView.addHandlerSearch((query, category) =>
     controlSearchResults(path, query, category),
   );
@@ -172,6 +184,7 @@ const controlRemoveBookmark = function (bookId) {
 };
 
 const setUpBookmarksView = function () {
+  BookmarksView.renderSpinner();
   BookmarksView.render(model.state.bookmarks);
   BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
   BookmarksView.addHandlerLinks();
@@ -180,6 +193,7 @@ const setUpBookmarksView = function () {
 // Collections
 
 const setUpCollectionsView = function () {
+  CollectionsView.renderSpinner();
   CollectionsView.render(model.state.collections);
   CollectionsView.addHandlerViewCollection(controlCollectionView);
   CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
@@ -220,7 +234,6 @@ const controlDeleteCollection = function (collectionId) {
   model.deleteCollection(collectionId);
 
   // Find a more optimal way to achieve the below functionality
-
   CollectionsView.render(model.state.collections);
 
   CollectionsView.addHandlerViewCollection(controlCollectionView);
@@ -249,6 +262,7 @@ const controlIndividualCollectionShare = function () {
 
   if (data) {
     const collectionData = JSON.parse(decodeURIComponent(data));
+    IndividualCollectionView.renderSpinner();
     IndividualCollectionView.render(
       collectionData,
       true,
