@@ -7,20 +7,38 @@ class PreviewView extends View {
   _generateMarkup(markupClass) {
     return `<li class="card card--1">
               <a href="#${this._data.id}" class="card--1__link" ${markupClass === 'add-collection-btn' || markupClass === 'remove-collection-btn' || markupClass == 'shared-view' ? `target="_blank"` : ``}>
-                <div class="card--1__img-container">
+                <div class="card--1__link__img-container">
                   <img
                    src="${this._data.image}"
                     alt="${this._data.title}"
-                    class="card--1__img-container__img"
+                    class="card--1__link__img-container__img"
                   />
-                  <div class="card--1__img-container__shadow">
+                  <div class="card--1__link__img-container__shadow">
                     <span>View Details</span>
                   </div>
                 </div>
-              </a>
+            
              
-              <div class="card--1__text-container">
-                <button class="card--1__text-container__btn ${markupClass}" data-book-id="${this._data.id}">
+              <div class="card--1__link__text-container">
+                <p
+                  class="paragraph--big card--1__link__text-container__title"
+                >
+                  ${this._data.title?.length <= 12 ? this._data.title : this._data.title?.substring(0, 12) + '...'}
+                </p>
+                <p
+                  class="paragraph card--1__link__text-container__author"
+                >
+                  ${this._data.authors?.join(', ').length <= 20 ? this._data.authors?.join(', ') : this._data.authors?.join(', ')?.substring(0, 20) + '...'}
+                </p>
+                <p
+                  class="paragraph card--1__link__text-container__rating"
+                >
+                  ${this._data.rating} &#9733;
+                </p>
+              </div>
+            </a>
+
+              <button class="card--1__btn ${markupClass}" data-book-id="${this._data.id}">
                 ${
                   markupClass === 'add-collection-btn'
                     ? `<svg class="${this._data.selected ? 'svg-fill' : 'svg-empty'}">
@@ -37,23 +55,7 @@ class PreviewView extends View {
                     <use xlink:href="${sprite}#icon-bookmark"></use>
                   </svg>`
                 }
-                </button>
-                <p
-                  class="paragraph--big card--1__text-container__title"
-                >
-                  ${this._data.title?.length <= 12 ? this._data.title : this._data.title?.substring(0, 12) + '...'}
-                </p>
-                <p
-                  class="paragraph card--1__text-container__author"
-                >
-                  ${this._data.authors?.join(', ').length <= 20 ? this._data.authors?.join(', ') : this._data.authors?.join(', ')?.substring(0, 20) + '...'}
-                </p>
-                <p
-                  class="paragraph card--1__text-container__rating"
-                >
-                  ${this._data.rating} &#9733;
-                </p>
-              </div>
+              </button>
             </li>
     `;
   }

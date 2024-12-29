@@ -17,98 +17,117 @@
   }
 
   &--1 {
-    height: 38.5rem;
+    position: relative;
+    height: 36.5rem;
 
     &__link {
       text-decoration: none;
-    }
+      color: inherit;
 
-    &__img-container {
-      height: 25rem;
-      width: 100%;
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
-
-      &__img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        transition:
-          transform 0.2s,
-          filter 0.2s;
+      &:visited,
+      &:active {
+        text-decoration: none;
+        color: inherit;
       }
 
-      &__shadow {
-        position: absolute;
-        top: 0;
-        left: 0;
+      &__img-container {
+        height: 25rem;
         width: 100%;
-        height: 100%;
-        background-color: var(--color-shadow);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-text-light);
-        font-weight: bold;
-        font-size: var(--font-size-m);
-        opacity: 0;
-        transition: opacity 0.2s;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
 
-        & span {
-          color: inherit;
-          transition: color 0.1s;
+        &__img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transition:
+            transform 0.2s,
+            filter 0.2s;
+        }
 
-          &:hover {
-            color: var(--color-primary);
+        &__shadow {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--color-shadow);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-text-light);
+          font-weight: bold;
+          font-size: var(--font-size-m);
+          opacity: 0;
+          transition: opacity 0.2s;
+
+          & span {
+            color: inherit;
+            transition: color 0.1s;
+
+            &:hover {
+              color: var(--color-primary);
+            }
           }
+        }
+
+        &:hover &__shadow {
+          opacity: 0.8;
+        }
+
+        &:hover &__img {
+          transform: scale(1.1);
+          filter: blur(0.3rem);
         }
       }
 
-      &:hover &__shadow {
-        opacity: 0.8;
+      &:hover &__img-container {
+        &__shadow {
+          opacity: 0.8;
+        }
+
+        &__img {
+          transform: scale(1.1);
+          filter: blur(0.3rem);
+        }
       }
 
-      &:hover &__img {
-        transform: scale(1.1);
-        filter: blur(0.3rem);
+      &__text-container {
+        position: relative;
+        padding: var(--space-2);
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--space-1);
+
+        &__title {
+          font-weight: bold;
+          display: inline;
+        }
       }
     }
 
-    &__text-container {
-      padding: var(--space-2);
-      display: flex;
-      flex-direction: column;
-      margin-bottom: var(--space-1);
+    &__btn {
+      position: absolute;
+      top: 26.5rem;
+      right: 0.6rem;
+      border: none;
+      background-color: inherit;
+      margin-bottom: var(--space-05);
+      cursor: pointer;
 
-      &__title {
-        font-weight: bold;
-        display: inline;
-      }
+      & svg {
+        width: 4rem;
+        height: 3rem;
+        transition: transform 0.2s;
 
-      &__btn {
-        position: absolute;
-        align-self: flex-end;
-        display: inline-flex;
-        border: none;
-        background-color: inherit;
-        text-align: right;
-        margin-bottom: var(--space-05);
-        cursor: pointer;
+        &:hover {
+          transform: scale(1.1);
+        }
 
-        & svg {
-          width: 4rem;
-          height: 3rem;
-          transition: transform 0.2s;
-
-          &:hover {
-            transform: scale(1.1);
-          }
-
-          &:active {
-            transform: scale(1.02);
-          }
+        &:active {
+          transform: scale(1.02);
         }
       }
     }
