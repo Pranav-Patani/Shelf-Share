@@ -31,14 +31,11 @@
     fill: var(--color-text-light);
 
     &:hover {
-      background-color: var(--color-gray-light);
-      color: var(--color-primary-dark);
-      fill: var(--color-primary-dark);
+      background-color: rgba(var(--color-gray-light-rgb), 0.2);
     }
 
     &:active {
-      color: var(--color-primary);
-      fill: var(--color-primary);
+      background-color: rgba(var(--color-gray-light-rgb), 0.4);
     }
 
     &__text-box {
