@@ -33,32 +33,45 @@ class CollectionsView extends View {
       const btn = e.target.closest('.card--2__text-container__btn--delete');
       if (!btn) return;
       const collectionId = btn.dataset.collectionId;
-      this._handleModel(handler, collectionId);
+      this._handleModal(handler, collectionId);
     });
   }
 
-  _handleModel(handler, collectionId) {
-    const model = this._parentElement.querySelector(
-      '.section-bookmarks__model',
+  _handleModal(handler, collectionId) {
+    const modal = this._parentElement.querySelector(
+      '.section-bookmarks__modal',
     );
     const btnContainer = this._parentElement.querySelector(
-      '.section-bookmarks__model__content__btn-container',
+      '.section-bookmarks__modal__content__btn-container',
     );
-    model.classList.add('section-bookmarks__model--active');
+    modal.classList.add('section-bookmarks__modal--active');
+
+    const closeModal = () => {
+      document.removeEventListener('keydown', handleKeypress);
+      modal.classList.remove('section-bookmarks__modal--active');
+    };
 
     btnContainer.addEventListener('click', e => {
-      const btn = e.target.closest('.section-bookmarks__model__content__btn');
+      const btn = e.target.closest('.section-bookmarks__modal__content__btn');
       if (!btn) return;
       const choice = btn.dataset.choice;
       if (choice === 'yes') handler(collectionId);
-      model.classList.remove('section-bookmarks__model--active');
+      closeModal();
     });
+
+    const handleKeypress = e => {
+      e.preventDefault();
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeypress);
   }
 
   _generateMarkupCollectionCards() {
     return this._data
       .map(collection => {
-        console.log(collection);
         if (collection.books.length === 0) return;
         return `
       <li class="card card--2">
@@ -99,6 +112,7 @@ class CollectionsView extends View {
     const collectionCards = this._generateMarkupCollectionCards();
     return `
       <section class="section-bookmarks">
+      <div class="section-bookmarks__header-bg"></div>
         <div class="section-bookmarks__tab-container">
         <a class="section-bookmarks__tab-container__link router-link" href="/bookmarks" data-route="/bookmarks">
                  <button
@@ -128,13 +142,13 @@ class CollectionsView extends View {
           </div>
         </div>       
   
-        <div class="section-bookmarks__model">
-            <div class="section-bookmarks__model__content">
+        <div class="section-bookmarks__modal">
+            <div class="section-bookmarks__modal__content">
 
-            <h3 class="heading-3 section-bookmarks__model__content__heading">Delete Collection ?</h3>
-            <div class="section-bookmarks__model__content__btn-container">
-              <button class="btn-secondary section-bookmarks__model__content__btn section-bookmarks__model__content__btn--yes" data-choice="yes">Yes</button>
-              <button class="btn-secondary section-bookmarks__model__content__btn" data-choice="no">No</button>
+            <h3 class="heading-3 section-bookmarks__modal__content__heading">Delete Collection ?</h3>
+            <div class="section-bookmarks__modal__content__btn-container">
+              <button class="btn-secondary section-bookmarks__modal__content__btn section-bookmarks__modal__content__btn--yes" data-choice="yes">Yes</button>
+              <button class="btn-secondary section-bookmarks__modal__content__btn" data-choice="no">No</button>
             </div>
             </div>
         </div>

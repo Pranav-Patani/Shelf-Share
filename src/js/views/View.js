@@ -133,6 +133,7 @@ class View {
   _closeSuggestions() {
     const suggestionsContainer =
       this._parentElement.querySelector(`.suggestions`);
+    if (!suggestionsContainer) return;
     suggestionsContainer.classList.remove(`suggestions--active`);
     this._data = '';
     this._currentFocus = -1;
