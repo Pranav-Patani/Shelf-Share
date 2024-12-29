@@ -7,3 +7,33 @@
     width: 100%;
   }
 }
+
+@keyframes loader-up {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-0.2rem) scale(0.95);
+    opacity: 0.58;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes loader-down {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(0.2rem) scale(0.95);
+    opacity: 0.58;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

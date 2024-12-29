@@ -1,5 +1,5 @@
 import { throttle } from '../helpers';
-
+import sprite from 'url:../../img/sprite.svg';
 class View {
   _data;
   _currentFocus = -1;
@@ -39,6 +39,22 @@ class View {
           </svg>
         </div>
         <p>${message}</p>
+      </div>
+    `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderSpinner() {
+    console.log('rendering spinner');
+    const markup = `
+      <div class="spinner">
+        <svg class="spinner__svg-1">
+          <use xlink:href="${sprite}#icon-loader-1"></use>
+        </svg>
+        <svg class="spinner__svg-2">
+          <use xlink:href="${sprite}#icon-loader-2"></use>
+        </svg>
       </div>
     `;
     this._clear();
