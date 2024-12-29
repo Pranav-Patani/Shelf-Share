@@ -71,13 +71,34 @@ class SearchView extends View {
 
   addHandlerSearch(handler) {
     this._categorySearch(handler);
-    const form = this._parentElement.querySelector('.search-form');
+    const form = this._parentElement.querySelector(`.search-form`);
+    const submitBtn = this._parentElement.querySelector(`.submit-btn`);
+    const searchBar = this._parentElement.querySelector(`.search-bar`);
+
+    const addFoucs = () => {
+      form.classList.add('focused');
+      searchBar.focus();
+    };
+    const removeFoucs = () => {
+      form.classList.remove('focused');
+      searchBar.blur();
+    };
+
+    searchBar.addEventListener('focus', addFoucs);
+    searchBar.addEventListener('blur', removeFoucs);
+
+    submitBtn.addEventListener('click', () => {
+      const query = this._getQuery();
+      if (!query) addFoucs();
+    });
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      this._parentElement.querySelector('.search-bar').blur();
       const category = this._getCategory();
       const query = this._getQuery();
+      if (query) {
+        removeFoucs();
+      }
       handler(query, category);
       this._closeSuggestions();
     });
@@ -157,7 +178,7 @@ class SearchView extends View {
             <form
               class="section-search__user-options__search__search-bar-container search-form"
             >
-              <button type="submit">
+              <button class="submit-btn" type="submit">
                 <svg>
                   <use xlink:href="${sprite}#icon-magnifying-glass"></use>
                 </svg>
