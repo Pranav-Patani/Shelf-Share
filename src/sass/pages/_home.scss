@@ -413,7 +413,7 @@
         display: flex;
         flex-wrap: wrap;
         padding: var(--space-1) var(--space-2);
-        border: 2px solid var(--color-border-dark);
+        border: 2px solid rgba(var(--color-gray-light-rgb), 0.45);
         border-radius: 2rem;
         margin: 0 auto 0.5rem;
 
