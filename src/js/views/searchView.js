@@ -149,6 +149,12 @@ class SearchView extends View {
         `section-search__modal__content__form__btn--hidden`,
       );
       setTimeout(() => input.focus(), 50);
+      document.addEventListener('keydown', handleEscape);
+    };
+
+    const handleEscape = e => {
+      console.log(e.key);
+      if (e.key === 'Escape') closeModal();
     };
 
     const closeModal = () => {
@@ -156,6 +162,7 @@ class SearchView extends View {
       userChoice.classList.remove(
         `section-search__modal__content__choice-container--active`,
       );
+      document.removeEventListener('keydown', handleEscape);
       errMsg.textContent = '';
       msg.textContent = '';
       input.value = '';
