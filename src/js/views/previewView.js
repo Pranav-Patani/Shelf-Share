@@ -41,7 +41,7 @@ class PreviewView extends View {
               <button class="card--1__btn ${markupClass}" data-book-id="${this._data.id}">
                 ${
                   markupClass === 'add-collection-btn'
-                    ? `<svg class="${this._data.selected ? 'svg-fill' : 'svg-empty'}">
+                    ? `<svg class="${this._data.selected ? 'svg-fill' : 'svg-gray'}">
                     <use xlink:href="${sprite}#icon-circle-with-${this._data.selected ? 'minus' : 'plus'}"></use>
                   </svg>
                     `

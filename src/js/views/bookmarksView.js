@@ -40,6 +40,7 @@ class BookmarksView extends View {
     const bookmarkCards = this._generateMarkupBookmarkCards();
     return `
       <section class="section-bookmarks">
+      <div class="section-bookmarks__header-bg"></div>
         <div class="section-bookmarks__tab-container">
         <a class="router-link section-bookmarks__tab-container__link" href="/bookmarks" data-route="/bookmarks">
                  <button

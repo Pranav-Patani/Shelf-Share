@@ -1,7 +1,9 @@
 .section-bookmarks {
-  padding-top: var(--space-header);
+  &__header-bg {
+    @include bg-image(top);
 
-  @include bg-image(top);
+    padding-top: var(--space-header);
+  }
 
   &__tab-container {
     display: flex;
@@ -91,41 +93,30 @@
     }
   }
 
-  &__model {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: rgb(3 7 18 / 70%);
-    z-index: var(--z-index-lvl-3);
+  &__modal {
+    @include modal-container;
 
-    &--active {
-      visibility: visible;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: var(--color-gray-dark);
-      height: 40vh;
-      width: 40%;
+      position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       padding: var(--space-4);
+      width: 80%;
+      max-width: 40rem;
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.2s;
 
-      @include respond(phone) {
-        height: 40vh;
-        width: 80%;
-      }
+      @include bg-image(top);
 
       &__heading {
-        color: var(--color-text-light);
+        color: var(--color-gray-dark);
         margin-bottom: var(--space-4);
       }
 
