@@ -6,24 +6,27 @@
   position: relative;
 
   &__logo {
-    display: block;
-    height: 8rem;
-    top: -1.5rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    z-index: var(--z-index-lvl-1);
-  }
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
 
-  &__heading {
-    text-align: center;
-    margin-top: var(--space-05);
+    &--book {
+      height: 5rem;
+      width: 8rem;
+    }
+
+    &--text {
+      height: 4.5rem;
+      width: 18rem;
+    }
   }
 
   &__link {
     width: fit-content;
     text-decoration: none;
-    margin: var(--space-3) auto 0;
+    margin: var(--space-4) auto 0;
     transition: all 0.2s;
     padding: var(--space-05) var(--space-1);
     border-radius: 1rem;

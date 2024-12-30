@@ -36,12 +36,11 @@
   }
 
   &__logo-container {
-    max-width: var(--space-7);
-    margin-left: var(--space-05);
+    margin: auto 0;
 
-    &__img {
-      display: block;
-      max-width: 4.5rem;
+    &__logo {
+      height: 4rem;
+      width: 18rem;
       margin: auto;
     }
   }

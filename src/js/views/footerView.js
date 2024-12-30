@@ -1,6 +1,5 @@
 import View from './View';
 import sprite from 'url:../../img/sprite.svg';
-import logo from 'url:../../img/logo.webp';
 
 class FooterView extends View {
   _parentElement = document.querySelector('.footer');
@@ -8,8 +7,15 @@ class FooterView extends View {
   _generateMarkup() {
     return `
    <footer class="footer">
-    <img class="footer__logo" src="${logo}" alt="bookwise" />
-    <h2 class="heading-2--white footer__heading">BookWise</h2>
+   <div class="footer__logo">
+    <svg class="footer__logo--book">
+      <use xlink:href="${sprite}#icon-logo-book--white"></use>
+    </svg>
+     <svg class="footer__logo--text">
+      <use xlink:href="${sprite}#icon-logo-text--white"></use>
+    </svg>
+   </div>
+   
     <a href="https://github.com/Pranav-Patani/BookWise" target="_blank" class="footer__link">
       <div class="footer__link__text-box">
         <svg class="footer__link__text-box__svg">
