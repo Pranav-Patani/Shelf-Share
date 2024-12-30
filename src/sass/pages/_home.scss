@@ -88,10 +88,15 @@
   padding: calc(var(--space-header) + var(--space-4)) var(--space-10)
     var(--space-0);
   position: relative;
-  box-shadow: 0 2 0.4rem rgb(3 7 18 / 5%);
+  box-shadow: 0 2 0.4rem rgba(var(--color-shadow-rgb), 0.5);
 
   @include respond(tab-port) {
     padding: calc(var(--space-header) + var(--space-4)) var(--space-5)
+      var(--space-0);
+  }
+
+  @include respond(phone) {
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-3)
       var(--space-0);
   }
 
@@ -183,7 +188,11 @@
   padding: var(--space-0) var(--space-10);
 
   @include respond(tab-port) {
-    padding: var(--space-0) var(--space-6);
+    padding: var(--space-0) var(--space-5);
+  }
+
+  @include respond(phone) {
+    padding: var(--space-0) var(--space-3);
   }
 
   &__heading {
