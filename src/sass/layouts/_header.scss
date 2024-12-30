@@ -22,11 +22,11 @@
   }
 
   @include respond(tab-port) {
-    padding: var(--space-3) var(--space-5);
+    padding: var(--space-2) var(--space-5);
   }
 
   @include respond(phone) {
-    padding: var(--space-3);
+    padding: var(--space-2) var(--space-3);
   }
 
   &--scrolled {
@@ -38,10 +38,19 @@
   &__logo-container {
     margin: auto 0;
 
-    &__logo {
-      height: 4rem;
-      width: 18rem;
-      margin: auto;
+    &__link {
+      margin: auto 0;
+      text-decoration: none;
+      display: block;
+
+      &__logo {
+        height: 4rem;
+        width: 18rem;
+
+        @include respond(phone) {
+          width: 16rem;
+        }
+      }
     }
   }
 

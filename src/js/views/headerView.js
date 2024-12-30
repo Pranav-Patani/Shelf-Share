@@ -30,7 +30,7 @@ class HeaderView extends View {
      <nav class="header">
       <div class="header__logo-container">
         <a href="/" class="router-link header__logo-container__link" data-route="/">
-          <svg class="header__logo-container__logo">
+          <svg class="header__logo-container__link__logo">
             <use xlink:href="${sprite}#icon-logo"></use>
           </svg>
         </a>
