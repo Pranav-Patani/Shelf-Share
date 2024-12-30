@@ -45,16 +45,19 @@ class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderSpinner() {
+  renderLoader() {
     console.log('rendering spinner');
     const markup = `
-      <div class="spinner">
-        <svg class="spinner__svg-1">
-          <use xlink:href="${sprite}#icon-loader-1"></use>
+      <div class="loader">
+        <svg class="loader__svg loader__svg--1">
+          <use xlink:href="${sprite}#icon-loader"></use>
         </svg>
-        <svg class="spinner__svg-2">
-          <use xlink:href="${sprite}#icon-loader-2"></use>
-        </svg>
+        <svg class="loader__svg loader__svg--2">
+          <use xlink:href="${sprite}#icon-loader"></use>
+        </svg>        
+        <svg class="loader__svg loader__svg--3">
+          <use xlink:href="${sprite}#icon-loader"></use>
+        </svg>        
       </div>
     `;
     this._clear();
