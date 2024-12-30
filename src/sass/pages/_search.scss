@@ -199,7 +199,6 @@
       }
 
       @include respond(phone) {
-        gap: var(--space-3);
         width: 100%;
       }
     }
@@ -348,18 +347,39 @@
 
 .collection-btn {
   display: block;
-  position: fixed;
-  bottom: 10rem;
-  right: 5rem;
-  z-index: var(--z-index-lvl-1);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+  z-index: var(--z-index-lvl-4);
   font-size: var(--font-size-m);
 
+  &:hover {
+    bottom: 12%;
+    transform: translateX(-50%);
+  }
+
+  &__bg {
+    position: fixed;
+    bottom: 4.4rem;
+    right: 2rem;
+    background-color: var(--color-background-light);
+    box-shadow: 0.1rem 0.4rem 1.6rem rgba(var(--color-shadow-rgb), 0.4);
+    border-radius: 1rem;
+    width: 20rem;
+    height: 10rem;
+    z-index: var(--z-index-lvl-4);
+
+    &__disappear {
+      display: none;
+    }
+  }
+
   &__disabled {
-    background-color: var(--color-gray-light);
+    background-color: rgba(var(--color-primary-light-rgb), 0.6);
     cursor: not-allowed;
 
     &:hover {
-      transform: translate(0, 0);
       box-shadow: none;
     }
   }
@@ -371,9 +391,10 @@
 
 .selected-books-count {
   position: fixed;
-  right: 5rem;
-  bottom: 6rem;
-  z-index: var(--z-index-lvl-1);
-  background-color: var(--color-background-light);
+  right: 6.8rem;
+  bottom: 10rem;
+  border-radius: 1rem;
+  z-index: var(--z-index-lvl-4);
   padding: var(--space-05) var(--space-1);
+  font-size: var(--font-size-s);
 }
