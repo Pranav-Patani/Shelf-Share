@@ -60,15 +60,19 @@
   &__container {
     width: 100%;
     background-color: var(--color-background-light);
+    padding: var(--space-5) var(--space-4) var(--space-8);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include respond(tab-port) {
+      padding: var(--space-2) var(--space-2) var(--space-5);
+    }
   }
 
   &__content {
     display: none;
     min-height: 75vh;
-    padding: var(--space-7) var(--space-5);
     align-self: center;
 
     @include respond(tab-port) {
