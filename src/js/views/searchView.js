@@ -242,7 +242,9 @@ class SearchView extends View {
         </div>
       
         <div class="section-search__results">
-        <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disappear'}">Done</button>
+        <div class="${markupClass ? `collection-btn__bg` : `collection-btn__bg__disappear`}">
+          <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disappear'}">Done</button>
+        </div>
           <ul class="section-search__results__results-container results-container">
             ${
               !this._getQuery()
