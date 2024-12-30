@@ -55,7 +55,7 @@ class HeaderView extends View {
           </a>
           
           <a href="/bookmarks" class="header__btn-container__btn-link router-link" data-route="/bookmarks">
-            <button class="header__btn-container__btn-link__btn header__btn-container__btn-link__btn-bm">Bookmarks</button>
+            <button class="header__btn-container__btn-link__btn header__btn-container__btn-link__btn-bm">Book Shelf</button>
           </a>
         </div>
       </nav>
