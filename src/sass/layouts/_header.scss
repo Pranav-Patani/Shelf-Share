@@ -17,10 +17,6 @@
   top: 0;
   left: 0;
 
-  @include respond(phone) {
-    height: 5.6rem;
-  }
-
   &--scrolled {
     box-shadow: 0.1rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0.1);
     border-radius: 0 0 1rem 1rem;

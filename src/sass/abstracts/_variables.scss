@@ -63,10 +63,3 @@
   --z-index-lvl-3: 10;
   --z-index-lvl-4: 50;
 }
-
-@media (width <= 37.5em) {
-  // 600px
-  :root {
-    --space-header: 5.6rem;
-  }
-}
