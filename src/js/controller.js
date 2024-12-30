@@ -72,7 +72,7 @@ const controlBooks = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
-    BookView.renderSpinner();
+    BookView.renderLoader();
     await model.loadBook(id);
     BookView.render(model.state.book);
     BookView.addHandlerTabHandler();
@@ -92,10 +92,10 @@ const controlSearchResults = async function (path, query, category) {
     if (!query && !category) return;
 
     if (path === 'findBooks') {
-      FindBooksView.renderSpinner();
+      FindBooksView.renderLoader();
     }
     if (path === 'createCollections') {
-      CreateCollectionsView.renderSpinner();
+      CreateCollectionsView.renderLoader();
     }
 
     await model.loadSearchResults(query, category);
@@ -184,7 +184,7 @@ const controlRemoveBookmark = function (bookId) {
 };
 
 const setUpBookmarksView = function () {
-  BookmarksView.renderSpinner();
+  BookmarksView.renderLoader();
   BookmarksView.render(model.state.bookmarks);
   BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
   BookmarksView.addHandlerLinks();
@@ -193,7 +193,7 @@ const setUpBookmarksView = function () {
 // Collections
 
 const setUpCollectionsView = function () {
-  CollectionsView.renderSpinner();
+  CollectionsView.renderLoader();
   CollectionsView.render(model.state.collections);
   CollectionsView.addHandlerViewCollection(controlCollectionView);
   CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
@@ -262,7 +262,7 @@ const controlIndividualCollectionShare = function () {
 
   if (data) {
     const collectionData = JSON.parse(decodeURIComponent(data));
-    IndividualCollectionView.renderSpinner();
+    IndividualCollectionView.renderLoader();
     IndividualCollectionView.render(
       collectionData,
       true,
