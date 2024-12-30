@@ -1,6 +1,7 @@
 import View from './View';
 import Router from '../router';
 import logo from 'url:../../img/logo.webp';
+import sprite from 'url:../../img/sprite.svg';
 
 class HeaderView extends View {
   _parentElement = document.querySelector('.navigation');
@@ -29,11 +30,9 @@ class HeaderView extends View {
      <nav class="header">
       <div class="header__logo-container">
         <a href="/" class="router-link header__logo-container__link" data-route="/">
-          <img
-            src="${logo}"
-            alt="logo"
-            class="header__logo-container__img"
-          />
+          <svg class="header__logo-container__logo">
+            <use xlink:href="${sprite}#icon-logo"></use>
+          </svg>
         </a>
       </div>
         
@@ -64,3 +63,8 @@ class HeaderView extends View {
 }
 
 export default new HeaderView();
+`<img
+src="${logo}"
+alt="logo"
+class="header__logo-container__img"
+/>`;
