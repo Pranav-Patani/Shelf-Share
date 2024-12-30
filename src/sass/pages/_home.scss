@@ -84,7 +84,7 @@
 
 .hero {
   display: flex;
-  height: 60vh;
+  height: 70vh;
   padding: calc(var(--space-header) + var(--space-4)) var(--space-10)
     var(--space-0);
   position: relative;
@@ -188,58 +188,70 @@
 
   &__heading {
     text-align: center;
+    margin-bottom: var(--space-7);
+
+    @include respond(phone) {
+      margin: 0;
+    }
   }
 
   &__content {
     display: flex;
-    flex-flow: row-reverse wrap;
-    justify-content: center;
+    flex-direction: row-reverse;
     align-items: center;
-    margin: auto;
-    width: 90%;
+    gap: var(--space-12);
+    padding: var(--space-4);
 
-    @include respond(tab-land) {
-      width: 100%;
+    @include respond(tab-port) {
+      padding: var(--space-4) var(--space-4) var(--space-0);
     }
 
     @include respond(phone) {
       flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-10);
     }
 
     &__text {
-      min-width: 20rem;
-      width: 50%;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       @include respond(phone) {
-        width: 60%;
+        width: 100%;
+        margin: auto;
+        padding: var(--space-3) var(--space-4);
       }
 
       & > ul {
         list-style: none;
         position: relative;
-        height: 25vh;
+        height: 30rem;
 
         @include respond(phone) {
-          height: 25vh;
+          height: 20rem;
         }
       }
 
       &__text-box {
+        flex: 1;
         position: absolute;
-        top: 46%;
-        left: 50%;
-        width: 60%;
-        transform: translate(-50%, -50%);
-        opacity: 0;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
         visibility: hidden;
-        transition: all 0.2s ease-in-out;
+        opacity: 0;
+        width: 100%;
+        max-width: 45rem;
+        min-width: 25rem;
 
         @include respond(phone) {
+          width: 80%;
+          max-width: none;
           left: 50%;
-          width: 100%;
+          transform: translateX(-50%);
         }
 
         &__heading {
@@ -249,71 +261,69 @@
     }
 
     &__img-container {
-      min-width: 20rem;
-      width: 50%;
+      flex: 1;
+      position: relative;
+      height: 30rem;
+      list-style: none;
 
       @include respond(phone) {
-        margin-bottom: var(--space-2);
-        width: 60%;
-      }
-
-      & > ul {
-        list-style: none;
-        position: relative;
-        height: 50vh;
-
-        @include respond(phone) {
-          height: 30vh;
-        }
+        width: 100%;
+        height: auto;
+        margin: auto;
+        padding: var(--space-3) var(--space-4);
       }
 
       &__img-box {
+        width: 40rem;
+        height: auto;
         position: absolute;
         top: 50%;
-        left: 55%;
-        transform: translate(-50%, -50%);
-        width: 60%;
-        filter: blur(0.3rem);
+        right: 0;
+        transform: translateY(-50%);
+        transform-origin: center;
         border-radius: 2rem;
         overflow: hidden;
+        filter: blur(0.3rem);
         transition: all 0.2s;
-        transform-origin: center;
+
+        @include respond(tab-port) {
+          width: 35rem;
+        }
 
         @include respond(phone) {
-          left: 50%;
-          width: 100%;
+          right: 50%;
+          top: 0;
+          transform: translateX(50%);
+          width: 30rem;
         }
 
         &--front {
           filter: blur(0);
           z-index: var(--z-index-lvl-1);
-          box-shadow: 0 0.4rem 2rem rgba(#030712, 0.3);
+          box-shadow: 0 0.4rem 2rem rgba(var(--color-shadow-rgb), 0.3);
         }
 
         &--middle {
-          transform: translate(-50%, -80%) scale(0.9);
+          top: 70%;
+          transform: translateY(-50%) scale(0.9);
         }
 
         &--back {
-          transform: translate(-50%, -20%) scale(0.9);
+          top: 30%;
+          transform: translateY(-50%) scale(0.9);
         }
 
         @include respond(phone) {
           &--front {
-            filter: blur(0);
-            z-index: var(--z-index-lvl-1);
             visibility: visible;
             opacity: 1;
           }
 
-          &--middle {
-            transform: translate(-50%, -50%) scale(0.6);
-            visibility: hidden;
-            opacity: 0;
-          }
-
+          &--middle,
           &--back {
-            transform: translate(-50%, -50%) scale(0.6);
+            right: 50%;
+            top: 0;
+            transform: translateX(50%);
             visibility: hidden;
             opacity: 0;
           }
@@ -321,23 +331,28 @@
 
         &__img {
           display: block;
-          height: 25rem;
+          height: 100%;
           width: 100%;
-          object-fit: cover;
-          object-position: center;
         }
       }
     }
   }
 
   &__progress {
-    align-self: center;
+    align-self: flex-start;
+    transform: translateY(-40%);
     margin: var(--space-05) 0 0;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
     gap: var(--space-05);
+
+    @include respond(phone) {
+      align-self: center;
+      transform: translateY(140%);
+      margin: var(--space-1) 0 0;
+    }
 
     &__count {
       &__text {
@@ -447,7 +462,7 @@
           text-transform: capitalize;
           letter-spacing: 0.08rem;
           word-spacing: 0.1rem;
-          color: var(--color-primary-dark);
+          color: var(--color-text-dark);
           font-weight: bold;
         }
       }
@@ -470,6 +485,7 @@
 
             @include respond(phone) {
               height: 20rem;
+              margin-bottom: -0.65rem;
             }
           }
         }
