@@ -151,7 +151,7 @@ class HomeView extends View {
             </section>
 
             <section class="section-collection-info mb-hg">
-              <h2 class="heading-2 mb-lg section-collection-info__heading">Create Collections</h2>
+              <h2 class="heading-2 section-collection-info__heading">Create Collections</h2>
               <div class="section-collection-info__content">
                 <div class="section-collection-info__content__text">
                   <ul>
@@ -188,8 +188,7 @@ class HomeView extends View {
                     </div>
                   </div>
                 </div>
-                <div class="section-collection-info__content__img-container">
-                  <ul>
+                <ul class="section-collection-info__content__img-container">
                     <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--front">
                       <img class="section-collection-info__content__img-container__img-box__img" src="${homeCreatePlansImg}"/>
                     </li>
@@ -199,8 +198,7 @@ class HomeView extends View {
                     <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--back">
                       <img class="section-collection-info__content__img-container__img-box__img" src="${homeSharePlansImg}"/>
                     </li>
-                  </ul>
-                </div>
+                </ul>
               </div>
 
             </section>
