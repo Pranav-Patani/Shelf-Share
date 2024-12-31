@@ -414,11 +414,13 @@
           box-shadow: 0.1rem 0.4rem 1rem rgba(var(--color-shadow-rgb), 0.2);
           width: 50%;
           padding: var(--space-2) var(--space-1);
+          border: 1px solid transparent;
 
           &--create-more {
             background-color: var(--color-background-light);
             color: var(--color-primary);
             font-weight: normal;
+            border: 2px solid var(--color-primary-light);
           }
         }
       }
