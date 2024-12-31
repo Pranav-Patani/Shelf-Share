@@ -318,7 +318,7 @@ class SearchView extends View {
             <p class="section-search__modal__content__msg modal-msg"></p>
             <p class="section-search__modal__content__err-msg modal-err-msg"></p>
             <div class="section-search__modal__content__choice-container">
-              <button class="section-search__modal__content__choice-container__btn btn-create btn-tertiary">Create More</button>
+              <button class="section-search__modal__content__choice-container__btn section-search__modal__content__choice-container__btn--create-more btn-create btn-tertiary">Create More</button>
               <button class="section-search__modal__content__choice-container__btn btn-view btn-tertiary">View Collections</button>
             </div>
             </div>

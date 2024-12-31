@@ -297,16 +297,17 @@
       justify-content: center;
       padding: var(--space-4);
       width: 90%;
-      max-width: 60rem;
+      max-width: 40rem;
       border-radius: 2rem;
       overflow: hidden;
       transition: all 0.2s;
+      gap: var(--space-05);
 
       @include bg-image(top);
 
       @include respond(phone) {
-        height: 40vh;
         width: 80%;
+        padding: var(--space-3);
       }
 
       &__close-btn {
@@ -328,6 +329,7 @@
         }
 
         &__svg {
+          display: block;
           height: 2.5rem;
           width: 2.5rem;
           fill: var(--color-primary);
@@ -336,7 +338,7 @@
 
       &__heading {
         color: var(--color-primary);
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-3);
       }
 
       &__msg,
@@ -344,7 +346,6 @@
         font-size: var(--font-size-l);
         font-weight: 700;
         margin-bottom: var(--space-1);
-        height: 1rem;
       }
 
       &__err-msg {
@@ -397,19 +398,28 @@
       }
 
       &__choice-container {
-        display: flex;
-        justify-content: space-around;
-        width: 30rem;
-        visibility: hidden;
-        opacity: 0;
+        display: none;
+        padding: 0 var(--space-1);
+        flex-grow: 4;
+        justify-content: space-between;
+        width: 100%;
+        gap: var(--space-2);
 
         &--active {
-          visibility: visible;
-          opacity: 1;
+          display: flex;
         }
 
         &__btn {
+          text-align: center;
           box-shadow: 0.1rem 0.4rem 1rem rgba(var(--color-shadow-rgb), 0.2);
+          width: 50%;
+          padding: var(--space-2) var(--space-1);
+
+          &--create-more {
+            background-color: var(--color-background-light);
+            color: var(--color-primary);
+            font-weight: normal;
+          }
         }
       }
     }
