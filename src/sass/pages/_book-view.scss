@@ -72,7 +72,23 @@
 
       &--up {
         &__rating {
+          display: flex;
           margin-top: var(--space-1);
+          align-items: center;
+
+          & span {
+            display: inline-block;
+            margin-left: var(--space-1);
+            font-size: var(--font-size-m);
+          }
+
+          &__svg {
+            display: inline-block;
+            fill: var(--color-primary-dark);
+            height: 1.6rem;
+            width: 1.6rem;
+            margin-left: var(--space-05);
+          }
         }
       }
 

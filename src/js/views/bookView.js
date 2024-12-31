@@ -111,7 +111,16 @@ class BookView extends View {
                 <p
                   class="section-book-view__main-info-container__text--up__rating paragraph--big"
                 >
-                  Rating: ${this._data.rating} &#9733;
+                  Rating: ${
+                    this._data.rating
+                      ? `<span>${this._data.rating} </span>
+                  <svg class="section-book-view__main-info-container__text--up__rating__svg">
+                    <use xlink:href="${sprite}#icon-star"></use>
+                  </svg>
+                    `
+                      : `Unavailable`
+                  } 
+                  
                 </p>
               </div>
               <div class="section-book-view__main-info-container__text--down">

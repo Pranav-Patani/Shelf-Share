@@ -33,7 +33,7 @@ export const loadBook = async function (id) {
         : 'not available',
       pageCount: data.volumeInfo?.pageCount || 'not available',
       categories: data.volumeInfo?.categories || ['others'],
-      rating: data.volumeInfo?.averageRating || 'not available',
+      rating: data.volumeInfo?.averageRating || '',
       image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
       language: data.volumeInfo?.language || 'not available',
       previewLink: data.volumeInfo?.previewLink || 'not available',
