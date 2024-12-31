@@ -26,7 +26,7 @@ export const loadBook = async function (id) {
       authors: data.volumeInfo?.authors || ['author not available'],
       publisher: data.volumeInfo?.publisher || 'not available',
       publishedDate: data.volumeInfo?.publishedDate || 'not available',
-      description: data.volumeInfo?.description || 'description not available',
+      description: data.volumeInfo?.description || '',
       isbn: data.volumeInfo?.industryIdentifiers
         ? data.volumeInfo?.industryIdentifiers[1].identifier
         : 'not available',

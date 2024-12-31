@@ -249,21 +249,26 @@
       }
 
       &--1 {
-        &__text,
-        & p {
-          display: inline-block;
-          padding: var(--space-0) var(--space-4);
+        &__text {
+          & p {
+            display: inline-block;
+            padding: var(--space-0) var(--space-4);
 
-          @include respond(phone) {
-            width: 100%;
-            padding: var(--space-0) var(--space-2);
+            @include respond(phone) {
+              width: 100%;
+              padding: var(--space-0) var(--space-2);
+            }
+          }
+
+          & b {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
           }
         }
 
-        & b {
-          display: inline-block;
-          padding: 0;
-          margin: 0;
+        &__text--unavailable {
+          text-align: center;
         }
       }
 

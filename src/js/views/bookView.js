@@ -178,9 +178,20 @@ class BookView extends View {
             </button>
           </div>
           <div class="section-book-view__detail__content section-book-view__detail__content--1 section-book-view__detail__content--active">
+          ${
+            this._data.description
+              ? `
             <p class="section-book-view__detail__content--1__text paragraph">
-             ${this._data.description}
+               ${this._data.description}
             </p>
+            `
+              : `
+            <p class="section-book-view__detail__content--1__text--unavailable paragraph--big">
+               Description Unavailable
+            </p>
+              `
+          }
+
           </div>
 
           <div class="section-book-view__detail__content section-book-view__detail__content--2">
