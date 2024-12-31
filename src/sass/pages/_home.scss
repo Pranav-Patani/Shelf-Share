@@ -163,8 +163,7 @@
         &__text {
           margin-right: var(--space-2);
           font-size: var(--font-size-m);
-          color: var(--color-gray-light);
-          font-weight: bold;
+          color: rgba(var(--color-gray-dark-rgb), 0.75);
         }
       }
     }
