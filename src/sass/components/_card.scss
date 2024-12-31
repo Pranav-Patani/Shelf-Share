@@ -1,5 +1,4 @@
 .card {
-  width: 20rem;
   background-color: var(--color-background);
   box-shadow: 0.2rem 0.4rem 1.2rem rgba(var(--color-shadow-rgb), 0.5);
   list-style: none;
@@ -7,6 +6,7 @@
   align-self: flex-start;
   border-radius: 1rem;
   overflow: hidden;
+  width: 20rem;
 
   @include respond(tab-land) {
     width: 18.5rem;

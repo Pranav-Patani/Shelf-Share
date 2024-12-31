@@ -37,7 +37,7 @@
         content: '';
         height: 3px;
         width: 0%;
-        background-color: rgba(var(--color-gray-light-rgb), 0.35);
+        background-color: rgba(var(--color-primary-rgb), 0.55);
         position: absolute;
         bottom: -0.3rem;
         transition: all 0.3s;
@@ -74,10 +74,7 @@
     display: none;
     min-height: 75vh;
     align-self: center;
-
-    @include respond(tab-port) {
-      padding: var(--space-4) var(--space-4);
-    }
+    padding: var(--space-4);
 
     @include respond(phone) {
       padding: var(--space-3) var(--space-0);
