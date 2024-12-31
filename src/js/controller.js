@@ -11,7 +11,7 @@ import HomeView from './views/homeView';
 import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
-import { debounce } from './helpers';
+import { debounce, copyToClipboard } from './helpers';
 
 //Pollifilling
 
@@ -68,6 +68,12 @@ const controlHomeSearch = function (query) {
 
 // Individual Book View
 
+const setUpBookViewHandlers = function () {
+  BookView.addHandlerTabHandler();
+  BookView.addHandlerShare(controlBookShare);
+  BookView.addHandlerAddBookmark(controlAddBookmark);
+};
+
 const controlBooks = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -75,13 +81,25 @@ const controlBooks = async function () {
     BookView.renderLoader();
     await model.loadBook(id);
     BookView.render(model.state.book);
-    BookView.addHandlerTabHandler();
+    setUpBookViewHandlers();
+
     window.scrollTo({
       top: 0,
       left: 0,
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+const controlBookShare = async function () {
+  try {
+    const path = `${window.location}`;
+    const message = await copyToClipboard(path);
+    BookView.renderToast(message, false);
+  } catch (err) {
+    console.error(err);
+    BookView.renderToast(`Couldn't copy the URL`, true);
   }
 };
 
@@ -284,32 +302,28 @@ const controlIndividualCollectionShare = function () {
   }
 };
 
-const constructIndividualCollectionShareUrl = function (collection, btn) {
-  const encodedData = encodeURIComponent(JSON.stringify(collection));
-  const shareableUrl = `${window.location.origin}?data=${encodedData}`;
+const constructIndividualCollectionShareUrl = async function (collection, btn) {
+  try {
+    const encodedData = encodeURIComponent(JSON.stringify(collection));
+    const shareableUrl = `${window.location.origin}?data=${encodedData}`;
 
-  window.history.pushState(model.state, '', shareableUrl);
-  if (!btn) {
-    controlIndividualCollectionShare();
-    return;
-  }
-  const copyToClipboard = async function () {
-    try {
-      await navigator.clipboard.writeText(shareableUrl);
-      IndividualCollectionView.renderAlter('Url copied to clipboard');
-    } catch (err) {
-      console.error(`Couldn't copy the URL. Error: ${err}`);
-      IndividualCollectionView.renderAlter(`Couldn't copy the URL`, true);
+    window.history.pushState(model.state, '', shareableUrl);
+    if (!btn) {
+      controlIndividualCollectionShare();
+      return;
     }
-  };
-  copyToClipboard();
+    const message = await copyToClipboard(shareableUrl);
+    IndividualCollectionView.renderToast(message, false);
+  } catch (err) {
+    console.error(err);
+    IndividualCollectionView.renderToast(`Couldn't copy the URL`, true);
+  }
 };
 
 const init = function () {
   setUpInitialView();
   controlRouter();
   BookView.addHandlerRender(controlBooks);
-  BookView.addHandlerAddBookmark(controlAddBookmark);
   IndividualCollectionView.addHandlerRenderShare(
     controlIndividualCollectionShare,
   );

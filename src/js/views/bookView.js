@@ -86,6 +86,12 @@ class BookView extends View {
     });
   }
 
+  addHandlerShare(handler) {
+    const shareBtn = this._parentElement.querySelector(`.btn--share`);
+    shareBtn.addEventListener('click', handler);
+    ``;
+  }
+
   _generateMarkup() {
     return `
       <section class="section-book-view">
@@ -147,9 +153,14 @@ class BookView extends View {
               >
                 Open in Google Books
               </a>
-              <button class="section-book-view__main-info-container__text--button-bookmark btn--bookmark">
+              <button class="section-book-view__main-info-container__text--button-icon btn--bookmark">
                <svg class="${this._data.bookmarked ? 'svg-fill' : 'svg-empty'}">
                   <use xlink:href="${sprite}#icon-bookmark"></use>
+              </svg>
+              </button>
+              <button class="section-book-view__main-info-container__text--button-icon btn--share">
+               <svg class="svg-fill">
+                  <use xlink:href="${sprite}#icon-share"></use>
               </svg>
               </button>
             </div>

@@ -45,8 +45,20 @@ class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+  renderToast(message, error) {
+    const alertBox = document.createElement('div');
+    alertBox.className = error ? 'custom-alert-red' : 'custom-alert';
+    alertBox.innerText = message;
+    document.body.appendChild(alertBox);
+
+    alertBox.classList.add('show-alert');
+    setTimeout(() => alertBox.classList.remove('show-alert'), 2000);
+    setTimeout(() => {
+      alertBox.remove();
+    }, 3000);
+  }
+
   renderLoader() {
-    console.log('rendering spinner');
     const markup = `
       <div class="loader">
         <svg class="loader__svg loader__svg--1">

@@ -20,6 +20,16 @@ export const getJSON = async url => {
   }
 };
 
+export const copyToClipboard = async function (url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    return `Url copied to clipboard`;
+  } catch (err) {
+    console.error(`Couldn't copy the URL. Error: ${err}`);
+    throw new Error(err);
+  }
+};
+
 export const debounce = (cb, delay = 300) => {
   let timeout;
   return (...args) => {

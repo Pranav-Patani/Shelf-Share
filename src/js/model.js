@@ -20,7 +20,6 @@ export const state = {
 export const loadBook = async function (id) {
   try {
     const data = await getJSON(`${API_URL}/${id}?key=${API_KEY}`);
-    console.log(data);
     state.book = {
       id: data.id,
       title: data.volumeInfo?.title || 'title not available',
