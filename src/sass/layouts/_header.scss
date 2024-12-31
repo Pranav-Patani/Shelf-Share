@@ -36,15 +36,11 @@
   }
 
   &__logo-container {
-    margin: auto 0;
-
     &__link {
-      margin: auto 0;
-      text-decoration: none;
-      display: block;
-
       &__logo {
-        height: 4rem;
+        display: block;
+        margin: auto;
+        height: 3.5rem;
         width: 18rem;
 
         @include respond(phone) {
