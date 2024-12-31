@@ -257,7 +257,7 @@ class HomeView extends View {
                   <div class="homepage__modal__content__search-form__search-bar-container">
                     <input 
                     class="homepage__modal__content__search-form__search-bar-container__search-bar search-bar"
-                    placeholder="Search for Books..."
+                    placeholder="Type 3 or more characters..."
                     autocomplete="off"
                     />
                     <button class="homepage__modal__content__search-form__search-bar-container__search-btn">

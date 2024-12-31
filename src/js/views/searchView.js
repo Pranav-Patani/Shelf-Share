@@ -260,7 +260,7 @@ class SearchView extends View {
               <input
                 type="text"
                 class="search-bar"
-                placeholder="Search for books here"
+                placeholder="Search for books..."
                 autocomplete="off"
               />
             </form>

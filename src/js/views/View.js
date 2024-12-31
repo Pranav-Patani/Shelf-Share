@@ -103,7 +103,7 @@ class View {
     searchBar.addEventListener('input', () => {
       const value = searchBar.value.trim();
 
-      if (!value) {
+      if (!value || value.length < 3) {
         this._closeSuggestions();
         return;
       }
