@@ -65,8 +65,8 @@
   border-radius: 1rem;
 
   &:hover {
-    box-shadow: 0 0.4rem 1.8rem rgb(3 7 18 / 20%);
-    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.8rem rgba(var(--color-shadow-rgb), 0.15);
+    transform: translateY(-0.15rem);
   }
 
   &:active {

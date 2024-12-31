@@ -15,15 +15,6 @@ class CreateCollectionsView extends View {
     });
   }
 
-  updateSelectedCount(count) {
-    const countElement = this._parentElement.querySelector(
-      '.selected-books-count',
-    );
-    if (countElement) {
-      countElement.textContent = `Selected Books: ${count}`;
-    }
-  }
-
   _generateMarkupCards() {
     if (!this._data) return `Sorry, No Results Match Your Search Query :(`;
     return this._data
@@ -36,9 +27,6 @@ class CreateCollectionsView extends View {
   _generateMarkup() {
     const cards = this._generateMarkupCards();
     return `
-      <p class="paragraph selected-books-count">
-      Selected Books: ${this._data ? this._data.filter(book => book.selected).length : 0}
-    </p>
     <div class="collection-cards-container">
         ${cards}
     </div>
