@@ -32,7 +32,7 @@
     }
 
     @include respond(tab-port) {
-      min-width: 80%;
+      min-width: 85%;
     }
 
     @include respond(phone) {
@@ -72,7 +72,23 @@
 
       &--up {
         &__rating {
+          display: flex;
           margin-top: var(--space-1);
+          align-items: center;
+
+          & span {
+            display: inline-block;
+            margin-left: var(--space-1);
+            font-size: var(--font-size-m);
+          }
+
+          &__svg {
+            display: inline-block;
+            fill: var(--color-primary-dark);
+            height: 1.6rem;
+            width: 1.6rem;
+            margin-left: var(--space-05);
+          }
         }
       }
 
@@ -114,27 +130,27 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        margin-top: var(--space-1);
+        gap: var(--space-1);
+        margin: var(--space-2) var(--space-1) 0 0;
       }
 
       &--button {
         display: block;
-        align-self: flex-start;
-        margin: var(--space-1) var(--space-2) var(--space-2) var(--space-0);
         text-decoration: none;
       }
 
-      &--button-bookmark {
-        display: block;
+      &--button-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         border: none;
-        border-radius: 10rem;
-        width: 5rem;
-        height: 5rem;
         transition: all 0.2s;
         background-color: inherit;
         box-shadow: 0 0.2rem 1rem rgba(var(--color-shadow-rgb), 0.2);
         margin-left: var(--space-2);
+        padding: var(--space-1);
+        border-radius: 1rem;
 
         @include respond(tab-port) {
           margin-left: var(--space-05);
@@ -151,8 +167,9 @@
         }
 
         & svg {
-          width: 3.2rem;
-          height: 2.6rem;
+          display: block;
+          width: 2.8rem;
+          height: 2.8rem;
         }
       }
     }
@@ -232,21 +249,26 @@
       }
 
       &--1 {
-        &__text,
-        & p {
-          display: inline-block;
-          padding: var(--space-0) var(--space-4);
+        &__text {
+          & p {
+            display: inline-block;
+            padding: var(--space-0) var(--space-4);
 
-          @include respond(phone) {
-            width: 100%;
-            padding: var(--space-0) var(--space-2);
+            @include respond(phone) {
+              width: 100%;
+              padding: var(--space-0) var(--space-2);
+            }
+          }
+
+          & b {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
           }
         }
 
-        & b {
-          display: inline-block;
-          padding: 0;
-          margin: 0;
+        &__text--unavailable {
+          text-align: center;
         }
       }
 

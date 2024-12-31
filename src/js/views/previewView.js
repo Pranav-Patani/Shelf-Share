@@ -33,7 +33,15 @@ class PreviewView extends View {
                 <p
                   class="paragraph card--1__link__text-container__rating"
                 >
-                  ${this._data.rating} &#9733;
+                    ${
+                      this._data.rating
+                        ? `<span class="card--1__link__text-container__rating__text">${this._data.rating} </span>
+                          <svg class="card--1__link__text-container__rating__svg">
+                            <use xlink:href="${sprite}#icon-star"></use>
+                          </svg>
+                        `
+                        : ``
+                    } 
                 </p>
               </div>
             </a>

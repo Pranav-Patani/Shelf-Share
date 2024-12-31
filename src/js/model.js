@@ -20,20 +20,19 @@ export const state = {
 export const loadBook = async function (id) {
   try {
     const data = await getJSON(`${API_URL}/${id}?key=${API_KEY}`);
-    console.log(data);
     state.book = {
       id: data.id,
       title: data.volumeInfo?.title || 'title not available',
       authors: data.volumeInfo?.authors || ['author not available'],
       publisher: data.volumeInfo?.publisher || 'not available',
       publishedDate: data.volumeInfo?.publishedDate || 'not available',
-      description: data.volumeInfo?.description || 'description not available',
+      description: data.volumeInfo?.description || '',
       isbn: data.volumeInfo?.industryIdentifiers
         ? data.volumeInfo?.industryIdentifiers[1].identifier
         : 'not available',
       pageCount: data.volumeInfo?.pageCount || 'not available',
       categories: data.volumeInfo?.categories || ['others'],
-      rating: data.volumeInfo?.averageRating || 'not available',
+      rating: data.volumeInfo?.averageRating || '',
       image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
       language: data.volumeInfo?.language || 'not available',
       previewLink: data.volumeInfo?.previewLink || 'not available',

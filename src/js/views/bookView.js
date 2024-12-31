@@ -86,6 +86,12 @@ class BookView extends View {
     });
   }
 
+  addHandlerShare(handler) {
+    const shareBtn = this._parentElement.querySelector(`.btn--share`);
+    shareBtn.addEventListener('click', handler);
+    ``;
+  }
+
   _generateMarkup() {
     return `
       <section class="section-book-view">
@@ -111,7 +117,16 @@ class BookView extends View {
                 <p
                   class="section-book-view__main-info-container__text--up__rating paragraph--big"
                 >
-                  Rating: ${this._data.rating} &#9733;
+                  Rating: ${
+                    this._data.rating
+                      ? `<span>${this._data.rating} </span>
+                  <svg class="section-book-view__main-info-container__text--up__rating__svg">
+                    <use xlink:href="${sprite}#icon-star"></use>
+                  </svg>
+                    `
+                      : `Unavailable`
+                  } 
+                  
                 </p>
               </div>
               <div class="section-book-view__main-info-container__text--down">
@@ -138,9 +153,14 @@ class BookView extends View {
               >
                 Open in Google Books
               </a>
-              <button class="section-book-view__main-info-container__text--button-bookmark btn--bookmark">
+              <button class="section-book-view__main-info-container__text--button-icon btn--bookmark">
                <svg class="${this._data.bookmarked ? 'svg-fill' : 'svg-empty'}">
                   <use xlink:href="${sprite}#icon-bookmark"></use>
+              </svg>
+              </button>
+              <button class="section-book-view__main-info-container__text--button-icon btn--share">
+               <svg class="svg-fill">
+                  <use xlink:href="${sprite}#icon-share"></use>
               </svg>
               </button>
             </div>
@@ -158,9 +178,20 @@ class BookView extends View {
             </button>
           </div>
           <div class="section-book-view__detail__content section-book-view__detail__content--1 section-book-view__detail__content--active">
+          ${
+            this._data.description
+              ? `
             <p class="section-book-view__detail__content--1__text paragraph">
-             ${this._data.description}
+               ${this._data.description}
             </p>
+            `
+              : `
+            <p class="section-book-view__detail__content--1__text--unavailable paragraph--big">
+               Description Unavailable
+            </p>
+              `
+          }
+
           </div>
 
           <div class="section-book-view__detail__content section-book-view__detail__content--2">

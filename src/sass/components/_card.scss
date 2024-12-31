@@ -105,6 +105,24 @@
           font-weight: bold;
           display: inline;
         }
+
+        &__rating {
+          display: flex;
+          align-items: center;
+
+          &__text {
+            display: inline-block;
+            font-size: var(--font-size-m);
+          }
+
+          &__svg {
+            display: inline-block;
+            fill: var(--color-primary-dark);
+            height: 1.6rem;
+            width: 1.6rem;
+            margin-left: var(--space-05);
+          }
+        }
       }
     }
 
