@@ -40,7 +40,6 @@
 
             &::placeholder {
               font-size: var(--font-size-l);
-              text-transform: capitalize;
               color: var(--color-gray-light);
               font-weight: bold;
             }
@@ -154,6 +153,7 @@
         }
 
         &__svg {
+          display: block;
           height: 2.6rem;
           width: 2.6rem;
           fill: rgba(var(--color-primary-light-rgb), 0.8);
