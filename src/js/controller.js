@@ -137,6 +137,7 @@ const setUpSearchView = function (path) {
     SearchView.render('', true, 'collection-btn');
     CreateCollectionsView.addHandlerAddBook(controlAddToCollection);
     SearchView.addHandlerCreateCollection(controlCreateCollection);
+    SearchView.addHandlerResetSelections(controlResetSelections);
     SearchView.updateSelectedBooks(model.state.selectedBooks);
   } else if (path === 'findBooks') {
     SearchView.render();
@@ -211,6 +212,12 @@ const controlAddToCollection = function (bookId) {
     SearchView.updateSelectedBooks(model.state.selectedBooks);
     CreateCollectionsView.update(model.state.search.results);
   }
+};
+
+const controlResetSelections = function () {
+  model.resetSelectedBooks();
+  SearchView.updateSelectedBooks(model.state.selectedBooks);
+  CreateCollectionsView.update(model.state.search.results);
 };
 
 const controlCreateCollection = function (collectionName) {

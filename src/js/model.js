@@ -11,7 +11,7 @@ export const state = {
     titles: [],
   },
   bookmarks: [],
-  collections: [], //array of objects
+  collections: [],
   selectedBooks: [],
 };
 
@@ -121,6 +121,11 @@ export const removeSelectedBook = bookId => {
   if (book) {
     book.selected = false;
   }
+};
+
+export const resetSelectedBooks = function () {
+  state.selectedBooks = [];
+  state.search.results.map(book => (book.selected = false));
 };
 
 export const createCollection = collectionName => {

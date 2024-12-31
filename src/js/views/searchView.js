@@ -106,9 +106,18 @@ class SearchView extends View {
   }
 
   addHandlerCreateCollection(handler) {
-    const doneBtn = this._parentElement.querySelector('.collection-btn');
+    const doneBtn = this._parentElement.querySelector(
+      '.section-search__results__collection-controller__btn-container__btn-done',
+    );
     if (!doneBtn) return;
     doneBtn.addEventListener('click', () => this._handlemodal(handler));
+  }
+
+  addHandlerResetSelections(handler) {
+    const resetBtn = document.querySelector(
+      `.section-search__results__collection-controller__btn-container__btn-reset`,
+    );
+    resetBtn.addEventListener(`click`, handler);
   }
 
   _handlemodal(handler) {
@@ -190,16 +199,39 @@ class SearchView extends View {
   }
 
   updateSelectedBooks(selectedBooks) {
-    const doneBtn = this._parentElement.querySelector('.collection-btn');
-    if (doneBtn) {
+    const selectedCountContainer = document.querySelector(
+      `.section-search__results__collection-controller__text-container__count-display`,
+    );
+    const doneBtn = this._parentElement.querySelector(
+      '.section-search__results__collection-controller__btn-container__btn-done',
+    );
+    const resetBtn = this._parentElement.querySelector(
+      `.section-search__results__collection-controller__btn-container__btn-reset`,
+    );
+
+    if (doneBtn && resetBtn) {
       if (selectedBooks.length === 0) {
         doneBtn.setAttribute('disabled', 'true');
-        doneBtn.classList.add('collection-btn__disabled');
+        resetBtn.setAttribute('disabled', 'true');
+        doneBtn.classList.add(
+          'section-search__results__collection-controller__btn-container__btn-done--disabled',
+        );
+        resetBtn.classList.add(
+          'section-search__results__collection-controller__btn-container__btn-reset--disabled',
+        );
       } else {
-        doneBtn.classList.remove('collection-btn__disabled');
+        doneBtn.classList.remove(
+          'section-search__results__collection-controller__btn-container__btn-done--disabled',
+        );
+        resetBtn.classList.remove(
+          'section-search__results__collection-controller__btn-container__btn-reset--disabled',
+        );
         doneBtn.removeAttribute('disabled');
+        resetBtn.removeAttribute('disabled');
       }
     }
+
+    selectedCountContainer.textContent = `Selected Books: ${selectedBooks.length}`;
   }
 
   _generateMarkup(markupClass) {
@@ -242,8 +274,14 @@ class SearchView extends View {
         </div>
       
         <div class="section-search__results">
-        <div class="${markupClass ? `collection-btn__bg` : `collection-btn__bg__disappear`}">
-          <button class="btn-tertiary ${markupClass ? markupClass : 'collection-btn__disappear'}">Done</button>
+        <div class="${markupClass ? `section-search__results__collection-controller` : `section-search__results__collection-controller--hidden`}">
+        <div class="section-search__results__collection-controller__text-container">
+          <p class="paragraph section-search__results__collection-controller__text-container__count-display">Selected Books: 0</p>
+        </div>
+          <div class="section-search__results__collection-controller__btn-container">
+            <button class="btn-tertiary section-search__results__collection-controller__btn-container__btn-done">Done</button>
+            <button class="btn-tertiary section-search__results__collection-controller__btn-container__btn-reset">Reset</button>
+          </div>
         </div>
           <ul class="section-search__results__results-container results-container">
             ${
