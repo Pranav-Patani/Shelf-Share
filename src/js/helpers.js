@@ -20,13 +20,38 @@ export const getJSON = async url => {
   }
 };
 
-export const copyToClipboard = async function (url) {
-  try {
-    await navigator.clipboard.writeText(url);
-    return `Url copied to clipboard`;
-  } catch (err) {
-    console.error(`Couldn't copy the URL. Error: ${err}`);
-    throw new Error(err);
+export const helperShare = async function (
+  url,
+  title = 'Checkout this book on bookwise!',
+) {
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: title,
+        text: 'Explore Books and Plan Your Reading Journey on Bookwise.',
+        url: url,
+      });
+      return ``;
+    } catch (err) {
+      console.error(`Couldn't copy the URL via navigator.share, Error: ${err}`);
+      try {
+        await navigator.clipboard.writeText(url);
+        return `Url copied to clipboard`;
+      } catch (err) {
+        console.error(
+          `Couldn't copy the URL via navigator.clipboard, Error: ${err}`,
+        );
+        throw new Error(err);
+      }
+    }
+  } else {
+    try {
+      await navigator.clipboard.writeText(url);
+      return `Url copied to clipboard`;
+    } catch (err) {
+      console.error(`Couldn't copy the URL. Error: ${err}`);
+      throw new Error(err);
+    }
   }
 };
 
