@@ -94,7 +94,7 @@ const controlBooks = async function () {
 
 const controlBookShare = async function () {
   try {
-    const path = `${window.location}`;
+    const path = window.origin + window.location.hash;
     const message = await copyToClipboard(path);
     BookView.renderToast(message, false);
   } catch (err) {
