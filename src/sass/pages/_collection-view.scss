@@ -20,23 +20,17 @@
 
   @include bg-image(top);
 
-  &__share-btn {
-    position: absolute;
-    top: 8rem;
-    right: 8rem;
-
-    @include respond(tab-port) {
-      right: 5rem;
-    }
-
-    @include respond(phone) {
-      right: 2.5rem;
-    }
-  }
-
   &__heading {
+    text-align: center;
+    max-width: 80%;
     text-transform: uppercase;
-    margin-bottom: var(--space-4);
+    margin: 0 auto var(--space-7);
+    color: var(--color-text-dark);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: rgba(var(--color-gray-light-rgb), 0.2);
+    padding: var(--space-0) var(--space-4);
+    border-radius: 0.8rem;
 
     @include respond(phone) {
       font-size: var(--font-size-3xl);
@@ -44,6 +38,7 @@
   }
 
   &__content {
+    margin-top: var(--space-2);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -51,9 +46,35 @@
     min-height: 75vh;
     list-style: none;
     gap: var(--space-5);
+    position: relative;
+    padding: var(--space-2) var(--space-4);
 
     @include respond(phone) {
       gap: var(--space-3);
+      padding: 0;
+    }
+
+    &__share-btn {
+      background: rgba(var(--color-gray-light-rgb), 0.1);
+      position: absolute;
+      top: -6rem;
+      right: 6rem;
+      box-shadow: 0 0.1rem 0.4rem rgba(var(--color-shadow-rgb), 0.15);
+
+      @include respond(tab-port) {
+        right: 5rem;
+      }
+
+      @include respond(phone) {
+        right: 1.5rem;
+      }
+
+      &__svg {
+        fill: var(--color-primary-dark);
+        display: block;
+        height: 2rem;
+        width: 2rem;
+      }
     }
   }
 }

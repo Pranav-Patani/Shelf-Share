@@ -191,7 +191,7 @@
       box-shadow: 0.1rem 0.4rem 1.6rem rgba(var(--color-shadow-rgb), 0.4);
       border-radius: 1rem;
       padding: var(--space-1) var(--space-2);
-      z-index: var(--z-index-lvl-4);
+      z-index: var(--z-index-lvl-2);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -297,7 +297,7 @@
       justify-content: center;
       padding: var(--space-4);
       width: 90%;
-      max-width: 40rem;
+      max-width: 50rem;
       border-radius: 2rem;
       overflow: hidden;
       transition: all 0.2s;
@@ -306,7 +306,6 @@
       @include bg-image(top);
 
       @include respond(phone) {
-        width: 80%;
         padding: var(--space-3);
       }
 
@@ -357,11 +356,13 @@
       }
 
       &__form {
+        position: relative;
         display: flex;
         flex-direction: column;
 
         &__input {
-          padding: var(--space-2) var(--space-4);
+          display: block;
+          padding: var(--space-2) var(--space-8) var(--space-2) var(--space-4);
           font-size: var(--font-size-l);
           border-radius: 2rem;
           border: none;
@@ -380,6 +381,15 @@
             outline: none;
             box-shadow: 0.1rem 0.4rem 1.6rem rgba(var(--color-shadow-rgb), 0.3);
           }
+        }
+
+        &__input-count {
+          display: inline-block;
+          position: absolute;
+          top: 13%;
+          right: 5%;
+          font-size: var(--font-size-s);
+          color: var(--color-gray-light);
         }
 
         &__btn {

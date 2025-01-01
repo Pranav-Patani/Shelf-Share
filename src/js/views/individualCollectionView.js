@@ -1,5 +1,6 @@
 import View from './View';
 import PreviewViewIndividual from './previewView';
+import sprite from 'url:../../img/sprite.svg';
 
 class individualCollectionView extends View {
   _parentElement = document.querySelector(`.container`);
@@ -24,7 +25,9 @@ class individualCollectionView extends View {
   }
 
   addHandlerShare(handler) {
-    const btn = document.querySelector('.section-collection__share-btn');
+    const btn = document.querySelector(
+      '.section-collection__content__share-btn',
+    );
     if (!btn) return;
     btn.addEventListener('click', () => {
       handler(this._data, true);
@@ -50,18 +53,21 @@ class individualCollectionView extends View {
     return this._data.books
       ? `
       <section class="section-collection">
-        
-        ${
-          markupClass === 'shared-view'
-            ? ''
-            : `
-        <button class="btn-tertiary section-collection__share-btn" data-collection-id="${this._data.id}">Share</button>
-          `
-        }
         <h2 class="heading-3 section-collection__heading">${this._data.name}</h2>
         <div
           class="section-collection__content"
         >
+        ${
+          markupClass === 'shared-view'
+            ? ''
+            : `
+        <button class="btn-tertiary section-collection__content__share-btn" data-collection-id="${this._data.id}">
+        <svg class="section-collection__content__share-btn__svg">
+          <use xlink:href="${sprite}#icon-share"></use>
+        </svg>
+        </button>
+          `
+        }
           ${collectionCards}
         </div>
     

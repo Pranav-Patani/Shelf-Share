@@ -162,7 +162,6 @@ class SearchView extends View {
     };
 
     const handleEscape = e => {
-      console.log(e.key);
       if (e.key === 'Escape') closeModal();
     };
 
@@ -181,6 +180,19 @@ class SearchView extends View {
     openModal();
 
     closeBtn.addEventListener('click', closeModal);
+
+    input.addEventListener('input', e => {
+      const inputCounter = this._parentElement.querySelector(
+        `.section-search__modal__content__form__input-count`,
+      );
+      if (e.target.value.length > 50) {
+        errMsg.textContent = 'Name cannot be longer than 40 characters :(';
+        input.value = input.value.slice(0, 50);
+      } else {
+        errMsg.textContent = '';
+        inputCounter.textContent = `${input.value.length}/50`;
+      }
+    });
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -313,6 +325,7 @@ class SearchView extends View {
                   placeholder="collection name"
                   autocomplete="off"
                 />
+                <span class="section-search__modal__content__form__input-count">0/50</span>
                 <button class="btn-tertiary section-search__modal__content__form__btn" type="submit">Create</button>
               </form>
             <p class="section-search__modal__content__msg modal-msg"></p>
