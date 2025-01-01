@@ -6,8 +6,12 @@ import sprite from 'url:../../img/sprite.svg';
 class HeaderView extends View {
   _parentElement = document.querySelector('.navigation');
 
-  addHandlerNavigationLinks() {
+  addHandlerCloseMenu() {
     const checkBtn = document.querySelector('.header__check');
+    const container = document.querySelector(`.container`);
+
+    container.addEventListener('click', () => (checkBtn.checked = false));
+
     this._parentElement.addEventListener('click', e => {
       const link = e.target.closest('.router-link');
       if (!link) return;

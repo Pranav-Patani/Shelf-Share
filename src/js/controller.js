@@ -46,8 +46,8 @@ const controlRouter = function () {
 
 const setUpInitialView = function () {
   HeaderView.render();
-  HeaderView.addHandlerNavigationLinks();
   HeaderView.addHandlerNavbarPosition();
+  HeaderView.addHandlerCloseMenu();
   FooterView.render();
 };
 
