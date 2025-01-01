@@ -11,7 +11,7 @@ import HomeView from './views/homeView';
 import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
-import { debounce, copyToClipboard } from './helpers';
+import { debounce, helperShare } from './helpers';
 
 //Pollifilling
 
@@ -92,10 +92,11 @@ const controlBooks = async function () {
   }
 };
 
-const controlBookShare = async function () {
+const controlBookShare = async function (title) {
   try {
     const path = window.origin + window.location.hash;
-    const message = await copyToClipboard(path);
+    const message = await helperShare(path, title);
+    if (!message) return;
     BookView.renderToast(message, false);
   } catch (err) {
     console.error(err);
@@ -312,7 +313,7 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
       controlIndividualCollectionShare();
       return;
     }
-    const message = await copyToClipboard(shareableUrl);
+    const message = await helperShare(shareableUrl);
     IndividualCollectionView.renderToast(message, false);
   } catch (err) {
     console.error(err);

@@ -88,7 +88,9 @@ class BookView extends View {
 
   addHandlerShare(handler) {
     const shareBtn = this._parentElement.querySelector(`.btn--share`);
-    shareBtn.addEventListener('click', handler);
+    shareBtn.addEventListener('click', () => {
+      handler(this._data.title ? this._data.title : '');
+    });
     ``;
   }
 
