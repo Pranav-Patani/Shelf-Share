@@ -131,7 +131,7 @@ class HomeView extends View {
                     <div class="heading-4 hero__text__heading--sub">discover, organize, and share a world of stories</div>
                 </div>
                 <button class="hero__text__center-container__search-btn">  
-                  
+                   
                   <span class="hero__text__center-container__search-btn__text">Search for Books...</span>
                   <svg class="hero__text__center-container__search-btn__svg">
                       <use xlink:href="${sprite}#icon-magnifying-glass"></use>

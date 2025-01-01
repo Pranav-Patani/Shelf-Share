@@ -1,6 +1,5 @@
 import View from './View';
 import Router from '../router';
-import logo from 'url:../../img/logo.webp';
 import sprite from 'url:../../img/sprite.svg';
 
 class HeaderView extends View {
@@ -67,8 +66,3 @@ class HeaderView extends View {
 }
 
 export default new HeaderView();
-`<img
-src="${logo}"
-alt="logo"
-class="header__logo-container__img"
-/>`;
