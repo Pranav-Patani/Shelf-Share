@@ -90,10 +90,12 @@ class CollectionsView extends View {
             .join('')}
         </div>
         <div class="card--2__text-container">
+
+          <p class="paragraph--big card--2__text-container__title">${collection.name.length <= 15 ? collection.name : collection.name.slice(0, 15) + '...'}</p>
+
           <p class="paragraph--big card--2__text-container__books">
             Total Books: ${collection.books.length}
           </p>
-          <p class="paragraph--big card--2__text-container__title">${collection.name}</p>
  
           <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--view" data-collection-id="${collection.id}">
             View Collection

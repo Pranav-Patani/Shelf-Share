@@ -185,7 +185,12 @@ const init = function () {
 init();
 
 // const clearBookmarks = function () {
-//   localStorage.clear("bookmarks");
+//   localStorage.clear('bookmarks');
+// };
+
+// const clearCollections = function () {
+//   localStorage.clear('collections');
 // };
 
 // clearBookmarks();
+// clearCollections();

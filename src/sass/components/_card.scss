@@ -203,32 +203,39 @@
       align-items: center;
       text-align: center;
 
-      &__books {
+      &__title {
+        width: 100%;
+        font-weight: bold;
         margin: var(--space-1) 0 0 0;
+        color: var(--color-text-light);
+        background-color: var(--color-primary-dark);
+        margin-bottom: var(--space-05);
+      }
+
+      &__books {
         color: var(--color-gray-dark);
       }
 
-      &__title {
-        margin: var(--space-1) 0;
-        background-color: var(--color-primary-dark);
-        width: 100%;
-        color: var(--color-text-light);
-        font-weight: bold;
-      }
-
       &__btn {
+        width: 94%;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+
         &--view-link {
           text-decoration: none;
           color: var(--color-text-light);
         }
 
         &--view {
+          background-color: rgba(var(--color-primary-light-rgb), 0.9);
           margin-bottom: var(--space-1);
           text-decoration: none;
         }
 
         &--delete {
-          background-color: var(--color-red);
+          background-color: rgba(var(--color-gray-light-rgb), 0.1);
+          color: var(--color-red);
+          border: 1px solid var(--color-red);
         }
       }
     }
