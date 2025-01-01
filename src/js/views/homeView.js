@@ -128,7 +128,7 @@ class HomeView extends View {
               <div class="hero__text__center-container">
                 <div class="hero__text__center-container__heading">
                     <div class="heading-1 hero__text__center-container__heading--main"><span class="hero__text__center-container__heading--main__top">explore books,</span><span class="hero__text__heading--main__top">plan your reading journey</span></div>
-                    <div class="heading-4 hero__text__heading--sub"><span class="hero__text__heading--sub__top">discover, organize, and share</span><span class="hero__text__heading--sub__top">a world of stories</span></div>
+                    <div class="heading-4 hero__text__heading--sub">discover, organize, and share a world of stories</div>
                 </div>
                 <button class="hero__text__center-container__search-btn">  
                   
