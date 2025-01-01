@@ -64,7 +64,7 @@ class HomeView extends View {
       if (counter > 3) counter = 0;
     };
 
-    setInterval(updateCarousel, 5000);
+    setInterval(updateCarousel, 6000);
     updateCarousel();
   }
 
@@ -166,8 +166,7 @@ class HomeView extends View {
                       <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Save Your Collections</h4>
                       <p class="paragraph--big section-collection-info__content__text__text-box__para">
                         Bookmark your collections to access them in future.
-                        Once you bookmark a collection, it will be available under a separate
-                        tab in the bookmarks section.
+                        Once you bookmark a collection or a book, you can access them under the Book Shelf.
                       </p>
                     </li>
                     <li class="section-collection-info__content__text__text-box">
