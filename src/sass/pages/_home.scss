@@ -237,7 +237,7 @@
       @include respond(phone) {
         width: 100%;
         margin: auto;
-        padding: var(--space-3) var(--space-4);
+        padding: var(--space-3);
       }
 
       & > ul {
@@ -284,7 +284,7 @@
       @include respond(phone) {
         width: 100%;
         height: auto;
-        margin: auto;
+        margin: var(--space-1) auto;
         padding: var(--space-3) var(--space-4);
       }
 
@@ -337,10 +337,15 @@
           &--middle,
           &--back {
             right: 50%;
-            top: 0;
-            transform: translateX(50%);
-            visibility: hidden;
-            opacity: 0;
+            transform: translateX(50%) scale(0.9);
+          }
+
+          &--middle {
+            top: 60%;
+          }
+
+          &--back {
+            top: -60%;
           }
         }
 
