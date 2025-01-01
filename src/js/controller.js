@@ -314,6 +314,7 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
       return;
     }
     const message = await helperShare(shareableUrl);
+    if (!message) return;
     IndividualCollectionView.renderToast(message, false);
   } catch (err) {
     console.error(err);
