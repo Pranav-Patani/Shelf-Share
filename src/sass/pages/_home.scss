@@ -138,10 +138,19 @@
         border: 1px solid rgba(var(--color-primary-light-rgb), 0.4);
         background-color: var(--color-white);
         border-radius: 1rem;
-        padding: var(--space-1) var(--space-3);
+        padding: var(--space-1) var(--space-2);
+        width: 50%;
         cursor: pointer;
         margin: var(--space-4) 0 0;
         transition: all 0.1s;
+
+        @include respond(tab-land) {
+          width: 60%;
+        }
+
+        @include respond(tab-land) {
+          width: 65%;
+        }
 
         @include respond(phone) {
           width: 100%;
