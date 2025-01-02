@@ -259,7 +259,6 @@ const controlCollectionView = function (collectionId) {
 const controlDeleteCollection = function (collectionId) {
   model.deleteCollection(collectionId);
 
-  // Find a more optimal way to achieve the below functionality
   CollectionsView.render(model.state.collections);
 
   CollectionsView.addHandlerViewCollection(controlCollectionView);
@@ -272,13 +271,11 @@ const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
-  if (collection)
-    constructIndividualCollectionShareUrl(
-      model.state.collections.find(
-        collection => collection.id === Number(collectionId),
-      ),
-    );
-  else CollectionsView.render(model.state.collections);
+  if (collection) {
+    constructIndividualCollectionShareUrl(collection);
+  } else {
+    Router.navigateTo('/collections');
+  }
 };
 
 const controlIndividualCollectionShare = function () {
