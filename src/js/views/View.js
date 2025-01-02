@@ -62,14 +62,17 @@ class View {
     const markup = `
       <div class="loader">
         <svg class="loader__svg loader__svg--1">
-          <use xlink:href="${sprite}#icon-loader"></use>
+          <use xlink:href="${sprite}#icon-loader-book-2"></use>
         </svg>
         <svg class="loader__svg loader__svg--2">
-          <use xlink:href="${sprite}#icon-loader"></use>
+          <use xlink:href="${sprite}#icon-loader-book-4"></use>
         </svg>        
         <svg class="loader__svg loader__svg--3">
-          <use xlink:href="${sprite}#icon-loader"></use>
-        </svg>        
+          <use xlink:href="${sprite}#icon-loader-book-3"></use>
+        </svg>       
+        <svg class="loader__svg loader__svg--4">
+          <use xlink:href="${sprite}#icon-loader-book-1"></use>
+        </svg> 
       </div>
     `;
     this._clear();
