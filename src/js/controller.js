@@ -11,7 +11,7 @@ import HomeView from './views/homeView';
 import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import bookView from './views/bookView';
-import { debounce, helperShare } from './helpers';
+import { debounce, helperShare, getUrlData, setUrlData } from './helpers';
 
 //Pollifilling
 
@@ -29,13 +29,17 @@ if (module.hot) {
 const controlRouter = function () {
   const routes = [
     { path: '/', callback: () => setUpHomeView() },
-    { path: '/findBooks', callback: () => setUpSearchView('findBooks') },
+    {
+      path: '/find-books',
+      callback: () => setUpSearchView(window.location.pathname),
+    },
     { path: '/bookmarks', callback: () => setUpBookmarksView() },
     { path: '/collections', callback: () => setUpCollectionsView() },
     {
-      path: '/createCollections',
-      callback: () => setUpSearchView('createCollections'),
+      path: '/create-collections',
+      callback: () => setUpSearchView(window.location.pathname),
     },
+    { path: '/book', callback: () => controlBooks('/book') },
   ];
 
   Router.setRoutes(routes);
@@ -62,8 +66,8 @@ const setUpHomeView = function () {
 };
 
 const controlHomeSearch = function (query) {
-  Router.navigateTo('/findBooks');
-  controlSearchResults('findBooks', query);
+  Router.navigateTo('/find-books');
+  controlSearchResults('find-books', query);
 };
 
 // Individual Book View
@@ -74,10 +78,15 @@ const setUpBookViewHandlers = function () {
   BookView.addHandlerAddBookmark(controlAddBookmark);
 };
 
-const controlBooks = async function () {
+const controlBooks = async function (path) {
   try {
-    const id = window.location.hash.slice(1);
-    if (!id) return;
+    if (path === '/book') {
+      BookView.renderMessage('Please Choose a Book First!');
+    }
+    const id = getUrlData('book-id');
+    if (!id) {
+      return;
+    }
     BookView.renderLoader();
     await model.loadBook(id);
     BookView.render(model.state.book);
@@ -94,7 +103,8 @@ const controlBooks = async function () {
 
 const controlBookShare = async function (title) {
   try {
-    const path = window.origin + window.location.hash;
+    const path = window.location.href;
+    console.log(path);
     const message = await helperShare(path, title);
     if (!message) return;
     BookView.renderToast(message, false);
@@ -104,30 +114,51 @@ const controlBookShare = async function (title) {
   }
 };
 
+const controlBookUrlCreation = function (route, id) {
+  setUrlData(route, id, 'book-id');
+  controlBooks();
+};
+
 // Search Results View
 
 const controlSearchResults = async function (path, query, category) {
   try {
     if (!query && !category) return;
+    controlSearchUrlCreation(query, category, path);
 
-    if (path === 'findBooks') {
+    if (path === '/find-books') {
       FindBooksView.renderLoader();
     }
-    if (path === 'createCollections') {
+    if (path === '/create-collections') {
       CreateCollectionsView.renderLoader();
     }
 
     await model.loadSearchResults(query, category);
 
-    if (path === 'findBooks') {
+    if (path === '/find-books') {
       FindBooksView.render(model.state.search.results);
     }
-    if (path === 'createCollections') {
+    if (path === '/create-collections') {
       CreateCollectionsView.render(model.state.search.results);
     }
   } catch (err) {
     console.error(err);
   }
+};
+
+const controlSearchUrlCreation = function (query, category, path) {
+  const searchParameters = { query, category, path };
+  setUrlData(window.location.pathname, searchParameters, 'search-params');
+};
+
+const controlUrlSearchResultsLoad = function () {
+  const searchParams = getUrlData('search-params');
+  if (!searchParams) return;
+  controlSearchResults(
+    searchParams.path,
+    searchParams.query,
+    searchParams.category,
+  );
 };
 
 const controlSearchResultBookmark = async function (bookId) {
@@ -152,13 +183,13 @@ const controlSearchResultBookmark = async function (bookId) {
 };
 
 const setUpSearchView = function (path) {
-  if (path === 'createCollections') {
+  if (path === '/create-collections') {
     SearchView.render('', true, 'collection-btn');
     CreateCollectionsView.addHandlerAddBook(controlAddToCollection);
     SearchView.addHandlerCreateCollection(controlCreateCollection);
     SearchView.addHandlerResetSelections(controlResetSelections);
     SearchView.updateSelectedBooks(model.state.selectedBooks);
-  } else if (path === 'findBooks') {
+  } else if (path === '/find-books') {
     SearchView.render();
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
   }
@@ -166,6 +197,10 @@ const setUpSearchView = function (path) {
     controlSearchResults(path, query, category),
   );
   SearchView.addHandlerDebounce(query => controlSearchDebounce(query));
+  SearchView.addHandlerBookRoutes((route, id) =>
+    controlBookUrlCreation(route, id),
+  );
+  controlUrlSearchResultsLoad();
 };
 
 const searchDebounceCallback = async function (query) {
@@ -208,6 +243,9 @@ const setUpBookmarksView = function () {
   BookmarksView.render(model.state.bookmarks);
   BookmarksView.addHandlerRemoveBookmark(controlRemoveBookmark);
   BookmarksView.addHandlerLinks();
+  BookmarksView.addHandlerBookRoutes((route, id) =>
+    controlBookUrlCreation(route, id),
+  );
 };
 
 // Collections
@@ -252,7 +290,6 @@ const controlCollectionView = function (collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
-  // IndividualCollectionView.render(collection, true, 'remove-collection-btn');
   constructIndividualCollectionShareUrl(collection);
 };
 
@@ -279,33 +316,33 @@ const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
 };
 
 const controlIndividualCollectionShare = function () {
-  const keys = window.location.search;
-  const urlParams = new URLSearchParams(keys);
-  const data = urlParams.get('data');
-
-  if (data) {
-    const collectionData = JSON.parse(decodeURIComponent(data));
-    IndividualCollectionView.renderLoader();
-    IndividualCollectionView.render(
-      collectionData,
-      true,
-      'remove-collection-btn',
-    );
-    IndividualCollectionView.addHandlerShare(
-      constructIndividualCollectionShareUrl,
-    );
-    IndividualCollectionView.addHandlerRemoveBook(
-      controlIndividualCollectionRemoveBook,
-    );
-  }
+  const collectionData = getUrlData('data');
+  if (!collectionData) return;
+  IndividualCollectionView.renderLoader();
+  IndividualCollectionView.render(
+    collectionData,
+    true,
+    'remove-collection-btn',
+  );
+  IndividualCollectionView.addHandlerShare(
+    constructIndividualCollectionShareUrl,
+  );
+  IndividualCollectionView.addHandlerRemoveBook(
+    controlIndividualCollectionRemoveBook,
+  );
+  IndividualCollectionView.addHandlerBookRoutes((route, id) =>
+    controlBookUrlCreation(route, id),
+  );
+  window.scrollTo({
+    top: 0,
+    left: 0,
+  });
 };
 
 const constructIndividualCollectionShareUrl = async function (collection, btn) {
   try {
-    const encodedData = encodeURIComponent(JSON.stringify(collection));
-    const shareableUrl = `${window.location.origin}?data=${encodedData}`;
+    const shareableUrl = setUrlData(window.location.origin, collection, 'data');
 
-    window.history.pushState(model.state, '', shareableUrl);
     if (!btn) {
       controlIndividualCollectionShare();
       return;

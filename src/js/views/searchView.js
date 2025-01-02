@@ -49,8 +49,6 @@ class SearchView extends View {
         btn.classList.remove(
           `section-search__user-options__categories__btn--active`,
         );
-        console.log('calling handler with no category');
-        console.log(handler);
         handler(this._getQuery(), '');
         return;
       }
@@ -102,6 +100,17 @@ class SearchView extends View {
       }
       handler(query, category);
       this._closeSuggestions();
+    });
+  }
+
+  addHandlerBookRoutes(handler) {
+    const resultsContainer =
+      this._parentElement.querySelector(`.results-container`);
+    resultsContainer.addEventListener('click', e => {
+      const card = e.target.closest('.router-link');
+      if (!card) return;
+      e.preventDefault();
+      handler(card.dataset.route, card.dataset.id);
     });
   }
 
@@ -211,8 +220,8 @@ class SearchView extends View {
   }
 
   updateSelectedBooks(selectedBooks) {
-    const selectedCountContainer = document.querySelector(
-      `.section-search__results__collection-controller__text-container__count-display`,
+    const selectedCount = document.querySelector(
+      `.section-search__results__collection-controller__text-container__count-display--count`,
     );
     const doneBtn = this._parentElement.querySelector(
       '.section-search__results__collection-controller__btn-container__btn-done',
@@ -243,7 +252,7 @@ class SearchView extends View {
       }
     }
 
-    selectedCountContainer.textContent = `Selected Books: ${selectedBooks.length}`;
+    selectedCount.textContent = selectedBooks.length;
   }
 
   _generateMarkup(markupClass) {
@@ -288,7 +297,7 @@ class SearchView extends View {
         <div class="section-search__results">
         <div class="${markupClass ? `section-search__results__collection-controller` : `section-search__results__collection-controller--hidden`}">
         <div class="section-search__results__collection-controller__text-container">
-          <p class="paragraph section-search__results__collection-controller__text-container__count-display">Selected Books: 0</p>
+          <p class="paragraph section-search__results__collection-controller__text-container__count-display">Selected Books: <span class="section-search__results__collection-controller__text-container__count-display--count">0</span></p>
         </div>
           <div class="section-search__results__collection-controller__btn-container">
             <button class="btn-tertiary section-search__results__collection-controller__btn-container__btn-done">Done</button>

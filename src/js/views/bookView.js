@@ -28,7 +28,7 @@ class BookView extends View {
   }
 
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    window.addEventListener('load', handler);
   }
 
   addHandlerAddBookmark(handler) {

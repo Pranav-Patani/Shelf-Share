@@ -7,6 +7,18 @@ class BookmarksView extends View {
   _errorMessage = 'No bookmarks yet. Find a nice book and bookmark it ;)';
   _message = '';
 
+  addHandlerBookRoutes(handler) {
+    const resultsContainer = this._parentElement.querySelector(
+      `.section-bookmarks__content`,
+    );
+    resultsContainer.addEventListener('click', e => {
+      const card = e.target.closest('.router-link');
+      if (!card) return;
+      e.preventDefault();
+      handler(card.dataset.route, card.dataset.id);
+    });
+  }
+
   addHandlerLinks() {
     const links = document.querySelectorAll(
       '.section-bookmarks__tab-container__link',

@@ -88,3 +88,18 @@ export const throttle = (cb, delay = 200) => {
     setTimeout(timeoutFunc, delay);
   };
 };
+
+export const getUrlData = function (data) {
+  const keys = window.location.search;
+  const urlParams = new URLSearchParams(keys);
+  const searchData = urlParams.get(data);
+  if (!data) return;
+  return JSON.parse(decodeURIComponent(searchData));
+};
+
+export const setUrlData = function (path, data, keyName) {
+  const encodedData = encodeURIComponent(JSON.stringify(data));
+  const urlPath = `${path}?${keyName}=${encodedData}`;
+  window.history.pushState('', '', urlPath);
+  return urlPath;
+};

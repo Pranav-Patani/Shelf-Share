@@ -28,7 +28,7 @@
     color: var(--color-text-dark);
     word-wrap: break-word;
     overflow-wrap: break-word;
-    background-color: rgba(var(--color-gray-light-rgb), 0.2);
+    background-color: rgba(var(--color-white-rgb), 0.4);
     padding: var(--space-0) var(--space-4);
     border-radius: 0.8rem;
 
@@ -55,7 +55,7 @@
     }
 
     &__share-btn {
-      background: rgba(var(--color-gray-light-rgb), 0.1);
+      background-color: rgba(var(--color-white-rgb), 0.4);
       position: absolute;
       top: -6rem;
       right: 6rem;

@@ -44,11 +44,11 @@ class HeaderView extends View {
           <div class="header__hamburger-container__hamburger"></div>
         </label>
         <div class="header__btn-container">
-          <a href="/findBooks" class="header__btn-container__btn-link router-link" data-route="/findBooks">
+          <a href="/find-books" class="header__btn-container__btn-link router-link" data-route="/find-books">
             <button class="header__btn-container__btn-link__btn">Find Books</button>
           </a>
           
-          <a href="/createCollections" class="header__btn-container__btn-link router-link" data-route="/createCollections">
+          <a href="/create-collections" class="header__btn-container__btn-link router-link" data-route="/create-collections">
             <button class="header__btn-container__btn-link__btn">Create Collections</button>
           </a>
           

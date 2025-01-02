@@ -16,28 +16,9 @@ class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderError(message = this._errorMessage) {
-    const markup = `
-    <div class="container">
-    <div class="message-container">
-        <div class="message-container__content">
-       <p class="paragraph--big">${message}</p>
-        </div>
-      </div>
-    </div>
-    `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
   renderMessage(message = this._message) {
     const markup = `
-      <div class="message">
-        <div>
-          <svg>
-            
-          </svg>
-        </div>
+      <div class="absolute-center message">
         <p>${message}</p>
       </div>
     `;
@@ -62,14 +43,17 @@ class View {
     const markup = `
       <div class="loader">
         <svg class="loader__svg loader__svg--1">
-          <use xlink:href="${sprite}#icon-loader"></use>
+          <use xlink:href="${sprite}#icon-loader-book-2"></use>
         </svg>
         <svg class="loader__svg loader__svg--2">
-          <use xlink:href="${sprite}#icon-loader"></use>
+          <use xlink:href="${sprite}#icon-loader-book-4"></use>
         </svg>        
         <svg class="loader__svg loader__svg--3">
-          <use xlink:href="${sprite}#icon-loader"></use>
-        </svg>        
+          <use xlink:href="${sprite}#icon-loader-book-3"></use>
+        </svg>       
+        <svg class="loader__svg loader__svg--4">
+          <use xlink:href="${sprite}#icon-loader-book-1"></use>
+        </svg> 
       </div>
     `;
     this._clear();

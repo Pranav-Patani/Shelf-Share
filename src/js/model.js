@@ -156,7 +156,6 @@ export const deleteIndividualCollectionBook = (bookId, collectionId) => {
       const bookIndex = collection.books.findIndex(book => book.id === bookId);
       if (bookIndex === -1) return;
       collection.books.splice(bookIndex, 1);
-      console.log(collection.books.length);
       if (collection.books.length === 0) {
         deleteCollection(collectionId);
       }
