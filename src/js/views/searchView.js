@@ -211,8 +211,8 @@ class SearchView extends View {
   }
 
   updateSelectedBooks(selectedBooks) {
-    const selectedCountContainer = document.querySelector(
-      `.section-search__results__collection-controller__text-container__count-display`,
+    const selectedCount = document.querySelector(
+      `.section-search__results__collection-controller__text-container__count-display--count`,
     );
     const doneBtn = this._parentElement.querySelector(
       '.section-search__results__collection-controller__btn-container__btn-done',
@@ -243,7 +243,7 @@ class SearchView extends View {
       }
     }
 
-    selectedCountContainer.textContent = `Selected Books: ${selectedBooks.length}`;
+    selectedCount.textContent = selectedBooks.length;
   }
 
   _generateMarkup(markupClass) {
@@ -288,7 +288,7 @@ class SearchView extends View {
         <div class="section-search__results">
         <div class="${markupClass ? `section-search__results__collection-controller` : `section-search__results__collection-controller--hidden`}">
         <div class="section-search__results__collection-controller__text-container">
-          <p class="paragraph section-search__results__collection-controller__text-container__count-display">Selected Books: 0</p>
+          <p class="paragraph section-search__results__collection-controller__text-container__count-display">Selected Books: <span class="section-search__results__collection-controller__text-container__count-display--count">0</span></p>
         </div>
           <div class="section-search__results__collection-controller__btn-container">
             <button class="btn-tertiary section-search__results__collection-controller__btn-container__btn-done">Done</button>
