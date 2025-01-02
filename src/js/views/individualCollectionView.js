@@ -15,6 +15,18 @@ class individualCollectionView extends View {
     this._id = id;
   }
 
+  addHandlerBookRoutes(handler) {
+    const resultsContainer = this._parentElement.querySelector(
+      `.section-collection__content`,
+    );
+    resultsContainer.addEventListener('click', e => {
+      const card = e.target.closest('.router-link');
+      if (!card) return;
+      e.preventDefault();
+      handler(card.dataset.route, card.dataset.id);
+    });
+  }
+
   addHandlerRemoveBook(handler) {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.remove-collection-btn');
@@ -35,7 +47,9 @@ class individualCollectionView extends View {
   }
 
   addHandlerRenderShare(handler) {
-    window.addEventListener('load', handler);
+    ['load', 'popstate'].forEach(event =>
+      window.addEventListener(event, handler),
+    );
   }
 
   _generateMarkupCollectionCards(markupClass) {

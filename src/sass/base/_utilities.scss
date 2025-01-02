@@ -58,3 +58,15 @@
   position: relative;
   z-index: 0;
 }
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.message {
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-dark);
+}

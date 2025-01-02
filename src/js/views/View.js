@@ -16,28 +16,9 @@ class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderError(message = this._errorMessage) {
-    const markup = `
-    <div class="container">
-    <div class="message-container">
-        <div class="message-container__content">
-       <p class="paragraph--big">${message}</p>
-        </div>
-      </div>
-    </div>
-    `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
-  }
-
   renderMessage(message = this._message) {
     const markup = `
-      <div class="message">
-        <div>
-          <svg>
-            
-          </svg>
-        </div>
+      <div class="absolute-center message">
         <p>${message}</p>
       </div>
     `;

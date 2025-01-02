@@ -49,8 +49,6 @@ class SearchView extends View {
         btn.classList.remove(
           `section-search__user-options__categories__btn--active`,
         );
-        console.log('calling handler with no category');
-        console.log(handler);
         handler(this._getQuery(), '');
         return;
       }
@@ -102,6 +100,17 @@ class SearchView extends View {
       }
       handler(query, category);
       this._closeSuggestions();
+    });
+  }
+
+  addHandlerBookRoutes(handler) {
+    const resultsContainer =
+      this._parentElement.querySelector(`.results-container`);
+    resultsContainer.addEventListener('click', e => {
+      const card = e.target.closest('.router-link');
+      if (!card) return;
+      e.preventDefault();
+      handler(card.dataset.route, card.dataset.id);
     });
   }
 
