@@ -233,7 +233,7 @@
         }
 
         &--delete {
-          background-color: rgba(var(--color-gray-light-rgb), 0.1);
+          background-color: var(--color-background-light);
           color: var(--color-red);
           border: 1px solid var(--color-red);
         }
