@@ -39,7 +39,7 @@ const controlRouter = function () {
       path: '/create-collections',
       callback: () => setUpSearchView(window.location.pathname),
     },
-    { path: '/book', callback: () => controlBooks('/book') },
+    { path: '/book', callback: () => controlBooks() },
   ];
 
   Router.setRoutes(routes);
@@ -78,11 +78,8 @@ const setUpBookViewHandlers = function () {
   BookView.addHandlerAddBookmark(controlAddBookmark);
 };
 
-const controlBooks = async function (path) {
+const controlBooks = async function () {
   try {
-    if (path === '/book') {
-      BookView.renderMessage('Please Choose a Book First!');
-    }
     const id = getUrlData('book-id');
     if (!id) {
       return;
