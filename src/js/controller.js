@@ -252,7 +252,6 @@ const controlCollectionView = function (collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
-  // IndividualCollectionView.render(collection, true, 'remove-collection-btn');
   constructIndividualCollectionShareUrl(collection);
 };
 
@@ -297,6 +296,10 @@ const controlIndividualCollectionShare = function () {
     IndividualCollectionView.addHandlerRemoveBook(
       controlIndividualCollectionRemoveBook,
     );
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
   }
 };
 
