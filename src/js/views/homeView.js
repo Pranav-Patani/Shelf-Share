@@ -112,133 +112,138 @@ class HomeView extends View {
   _generateMarkup() {
     const suggestionsContainer = this._generateSuggestionsContainerMarkup();
     return `
-          <div class="homepage">
-            <section class="hero mb-hg">
-              <div class="hero__text">
-              <div class="hero__text__center-container">
-                <div class="hero__text__center-container__heading">
-                    <div class="heading-1 hero__text__center-container__heading--main"><span class="hero__text__center-container__heading--main__top">explore books,</span><span class="hero__text__heading--main__top">plan your reading journey</span></div>
-                    <div class="heading-4 hero__text__heading--sub">discover, organize, and share a world of stories</div>
+      <div class="homepage">
+        <section class="hero mb-hg">
+          <div class="max-width-container hero__max-width-container">
+            <div class="hero__max-width-container__text">
+                <div class="hero__max-width-container__text__center-container">
+                  <div class="hero__max-width-container__text__center-container__heading">
+                      <div class="heading-1 hero__max-width-container__text__center-container__heading--main"><span class="hero__max-width-container__text__center-container__heading--main__top">explore books,</span><span class="hero__max-width-container__text__heading--main__top">plan your reading journey</span></div>
+                      <div class="heading-4 hero__max-width-container__text__heading--sub">discover, organize, and share a world of stories</div>
+                  </div>
+                  <button class="hero__max-width-container__text__center-container__search-btn">  
+                    
+                    <span class="hero__max-width-container__text__center-container__search-btn__text">Search for Books...</span>
+                    <svg class="hero__max-width-container__text__center-container__search-btn__svg">
+                        <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+                      </svg>
+                  </button>
                 </div>
-                <button class="hero__text__center-container__search-btn">  
-                   
-                  <span class="hero__text__center-container__search-btn__text">Search for Books...</span>
-                  <svg class="hero__text__center-container__search-btn__svg">
-                      <use xlink:href="${sprite}#icon-magnifying-glass"></use>
-                    </svg>
-                </button>
-              </div>
-              </div>
-              <div class="hero__img">
-                <svg
-                  class="hero__img__svg"
-                >
-                  <use
-                    xlink:href="${sprite}#icon-hero"
-                  ></use>
-                </svg>
-              </div>
-            </section>
+                </div>
+                <div class="hero__max-width-container__img">
+                  <svg
+                    class="hero__max-width-container__img__svg"
+                  >
+                    <use
+                      xlink:href="${sprite}#icon-hero"
+                    ></use>
+                  </svg>
+                </div>
+            </div>
+        </section>
 
             <section class="section-collection-info mb-hg">
-              <h2 class="heading-2 section-collection-info__heading">Create Collections</h2>
-              <div class="section-collection-info__content">
-                <div class="section-collection-info__content__text">
+            <div class="section-collection-info__max-width-container">
+              <h2 class="heading-2 section-collection-info__max-width-container__heading">Create Collections</h2>
+              <div class="section-collection-info__max-width-container__content">
+                <div class="section-collection-info__max-width-container__content__text">
                   <ul>
-                    <li class="section-collection-info__content__text__text-box text-active">
-                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Create Your Own Collection</h4>
-                      <p class="paragraph--big section-collection-info__content__text__text-box__para">
+                    <li class="section-collection-info__max-width-container__content__text__text-box text-active">
+                      <h4 class="heading-4 section-collection-info__max-width-container__content__text__text-box__heading">Create Your Own Collection</h4>
+                      <p class="paragraph--big section-collection-info__max-width-container__content__text__text-box__para">
                         Browse through our vast collection of a variety of books and
                         handpick them for your personalized collections.
                       </p>
                     </li>
-                    <li class="section-collection-info__content__text__text-box">
-                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Save Your Collections</h4>
-                      <p class="paragraph--big section-collection-info__content__text__text-box__para">
+                    <li class="section-collection-info__max-width-container__content__text__text-box">
+                      <h4 class="heading-4 section-collection-info__max-width-container__content__text__text-box__heading">Save Your Collections</h4>
+                      <p class="paragraph--big section-collection-info__max-width-container__content__text__text-box__para">
                         Bookmark your collections to access them in future.
                         Once you bookmark a collection or a book, you can access them under the Book Shelf.
                       </p>
                     </li>
-                    <li class="section-collection-info__content__text__text-box">
-                      <h4 class="heading-4 section-collection-info__content__text__text-box__heading">Share With Your Friends</h4>
-                      <p class="paragraph--big section-collection-info__content__text__text-box__para">
+                    <li class="section-collection-info__max-width-container__content__text__text-box">
+                      <h4 class="heading-4 section-collection-info__max-width-container__content__text__text-box__heading">Share With Your Friends</h4>
+                      <p class="paragraph--big section-collection-info__max-width-container__content__text__text-box__para">
                         You can use the share feature to share your collections
                         with your peers. You get a unique URL for each of your
                         collection that you can share with anyone!
                       </p>
                     </li>
                   </ul>
-                  <div class="section-collection-info__progress">
-                    <div class="section-collection-info__progress__count">
-                      <p class="paragraph section-collection-info__progress__count__text"></p>
+                  <div class="section-collection-info__max-width-container__progress">
+                    <div class="section-collection-info__max-width-container__progress__count">
+                      <p class="paragraph section-collection-info__max-width-container__progress__count__text"></p>
                     </div>
-                    <div class="section-collection-info__progress__bar">
-                      <span class="section-collection-info__progress__bar__fill"></span>
+                    <div class="section-collection-info__max-width-container__progress__bar">
+                      <span class="section-collection-info__max-width-container__progress__bar__fill"></span>
                     </div>
                   </div>
                 </div>
-                <ul class="section-collection-info__content__img-container">
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--front">
-                      <img class="section-collection-info__content__img-container__img-box__img" src="${homeCreatePlansImg}"/>
+                <ul class="section-collection-info__max-width-container__content__img-container">
+                    <li class="section-collection-info__max-width-container__content__img-container__img-box section-collection-info__max-width-container__content__img-container__img-box--front">
+                      <img class="section-collection-info__max-width-container__content__img-container__img-box__img" src="${homeCreatePlansImg}"/>
                     </li>
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--middle">
-                      <img class="section-collection-info__content__img-container__img-box__img" src="${homeSavePlansImg}"/>
+                    <li class="section-collection-info__max-width-container__content__img-container__img-box section-collection-info__max-width-container__content__img-container__img-box--middle">
+                      <img class="section-collection-info__max-width-container__content__img-container__img-box__img" src="${homeSavePlansImg}"/>
                     </li>
-                    <li class="section-collection-info__content__img-container__img-box section-collection-info__content__img-container__img-box--back">
-                      <img class="section-collection-info__content__img-container__img-box__img" src="${homeSharePlansImg}"/>
+                    <li class="section-collection-info__max-width-container__content__img-container__img-box section-collection-info__max-width-container__content__img-container__img-box--back">
+                      <img class="section-collection-info__max-width-container__content__img-container__img-box__img" src="${homeSharePlansImg}"/>
                     </li>
                 </ul>
               </div>
-
+            </div>
             </section>
 
             <section class="section-find-info">
-              <h2 class="heading-2 mb-lg section-find-info__heading">Find Books</h2>
+            <div class ="section-find-info__max-width-container">
+              <h2 class="heading-2 mb-lg section-find-info__max-width-container__heading">Find Books</h2>
               
-              <div class="section-find-info__content">
-                <div class="section-find-info__content__info-box">
-                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--1">
-                    <svg class="section-find-info__content__info-box__text-box__svg">
+              <div class="section-find-info__max-width-container__content">
+                <div class="section-find-info__max-width-container__content__info-box">
+                  <div class="section-find-info__max-width-container__content__info-box__text-box section-find-info__max-width-container__content__info-box__text-box--1">
+                    <svg class="section-find-info__max-width-container__content__info-box__text-box__svg">
                       <use xlink:href="${sprite}#icon-magnifying-glass"></use>
                     </svg>
-                    <div class="section-find-info__content__info-box__text-box__text">search from a variety of books</div>
+                    <div class="section-find-info__max-width-container__content__info-box__text-box__text">search from a variety of books</div>
                   </div>
-                  <div class="section-find-info__content__info-box__img-box">
-                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--1">
+                  <div class="section-find-info__max-width-container__content__info-box__img-box">
+                     <svg class="section-find-info__max-width-container__content__info-box__img-box__svg section-find-info__max-width-container__content__info-box__img-box__svg--1">
                         <use xlink:href="${sprite}#icon-right-facing"></use>
                     </svg>
                   </div>
                 </div>
                 
-                <div class="section-find-info__content__info-box">
-                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--2">
-                   <svg class="section-find-info__content__info-box__text-box__svg">
+                <div class="section-find-info__max-width-container__content__info-box">
+                  <div class="section-find-info__max-width-container__content__info-box__text-box section-find-info__max-width-container__content__info-box__text-box--2">
+                   <svg class="section-find-info__max-width-container__content__info-box__text-box__svg">
                       <use xlink:href="${sprite}#icon-bookmark"></use>
                     </svg>
-                    <div class="section-find-info__content__info-box__text-box__text">bookmark your favorite books</div>
+                    <div class="section-find-info__max-width-container__content__info-box__text-box__text">bookmark your favorite books</div>
                   </div>
-                  <div class="section-find-info__content__info-box__img-box">
-                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--2">
+                  <div class="section-find-info__max-width-container__content__info-box__img-box">
+                     <svg class="section-find-info__max-width-container__content__info-box__img-box__svg section-find-info__max-width-container__content__info-box__img-box__svg--2">
                         <use xlink:href="${sprite}#icon-center-facing"></use>
                     </svg>
                   </div>
                 </div>
 
-                <div class="section-find-info__content__info-box">
-                  <div class="section-find-info__content__info-box__text-box section-find-info__content__info-box__text-box--3">
-                    <svg class="section-find-info__content__info-box__text-box__svg">
+                <div class="section-find-info__max-width-container__content__info-box">
+                  <div class="section-find-info__max-width-container__content__info-box__text-box section-find-info__max-width-container__content__info-box__text-box--3">
+                    <svg class="section-find-info__max-width-container__content__info-box__text-box__svg">
                       <use xlink:href="${sprite}#icon-share"></use>
                     </svg>
-                    <div class="section-find-info__content__info-box__text-box__text">share a book with your friends</div>
+                    <div class="section-find-info__max-width-container__content__info-box__text-box__text">share a book with your friends</div>
                   </div>
-                  <div class="section-find-info__content__info-box__img-box">
-                     <svg class="section-find-info__content__info-box__img-box__svg section-find-info__content__info-box__img-box__svg--3">
+                  <div class="section-find-info__max-width-container__content__info-box__img-box">
+                     <svg class="section-find-info__max-width-container__content__info-box__img-box__svg section-find-info__max-width-container__content__info-box__img-box__svg--3">
                         <use xlink:href="${sprite}#icon-left-facing"></use>
                     </svg>
                   </div>
                 </div>
 
               </div>
+            </div>
             </section>
             <div class="homepage__modal">
               <div class="homepage__modal__content">
