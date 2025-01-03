@@ -239,7 +239,7 @@
       margin-bottom: var(--space-7);
 
       @include respond(phone) {
-        margin: 0;
+        margin-bottom: var(--space-4);
       }
     }
 
@@ -485,7 +485,7 @@
       margin-top: var(--space-12);
 
       @include respond(phone) {
-        margin-top: var(--space-8);
+        margin-top: var(--space-4);
         gap: var(--space-1);
       }
 
