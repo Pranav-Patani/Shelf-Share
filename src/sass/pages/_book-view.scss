@@ -1,6 +1,7 @@
 .section-book-view {
   position: relative;
   display: flex;
+  height: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -11,6 +12,8 @@
     padding: calc(var(--space-header) + var(--space-4)) var(--space-0)
       var(--space-0);
   }
+
+  background-color: var(--color-background-light);
 
   @include bg-image(top);
 
@@ -233,6 +236,7 @@
     }
 
     &__content {
+      max-width: 120rem;
       padding: var(--space-2) var(--space-8);
       margin: var(--space-4) auto 0;
       width: 75%;
