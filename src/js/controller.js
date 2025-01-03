@@ -39,6 +39,7 @@ const controlRouter = function () {
       path: '/create-collections',
       callback: () => setUpSearchView(window.location.pathname),
     },
+    { path: '/book', callback: () => controlBooks() },
   ];
 
   Router.setRoutes(routes);
