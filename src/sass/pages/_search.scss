@@ -175,6 +175,7 @@
   }
 
   &__results {
+    min-height: 75vh;
     padding: var(--space-7) var(--space-2) var(--space-10);
     background-color: var(--color-background-light);
     width: 100%;
