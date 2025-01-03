@@ -9,17 +9,17 @@ class HomeView extends View {
 
   addHandlerCarousel() {
     const carousel = this._parentElement.querySelector(
-      `.section-collection-info__content`,
+      `.section-collection-info__max-width-container__content`,
     );
     const textCards = carousel.querySelectorAll(
-      `.section-collection-info__content__text__text-box`,
+      `.section-collection-info__max-width-container__content__text__text-box`,
     );
     const imgCards = carousel.querySelectorAll(
-      `.section-collection-info__content__img-container__img-box`,
+      `.section-collection-info__max-width-container__content__img-container__img-box`,
     );
 
     const slideCounter = this._parentElement.querySelector(
-      `.section-collection-info__progress__count__text`,
+      `.section-collection-info__max-width-container__progress__count__text`,
     );
 
     let counter = 0;
@@ -28,21 +28,21 @@ class HomeView extends View {
       textCards.forEach(card => card.classList.remove('text-active'));
       imgCards.forEach((card, index) => {
         card.classList.remove(
-          'section-collection-info__content__img-container__img-box--front',
-          'section-collection-info__content__img-container__img-box--middle',
-          'section-collection-info__content__img-container__img-box--back',
+          'section-collection-info__max-width-container__content__img-container__img-box--front',
+          'section-collection-info__max-width-container__content__img-container__img-box--middle',
+          'section-collection-info__max-width-container__content__img-container__img-box--back',
         );
         if (index === counter) {
           card.classList.add(
-            'section-collection-info__content__img-container__img-box--front',
+            'section-collection-info__max-width-container__content__img-container__img-box--front',
           );
         } else if (index === (counter + 1) % imgCards.length) {
           card.classList.add(
-            'section-collection-info__content__img-container__img-box--back',
+            'section-collection-info__max-width-container__content__img-container__img-box--back',
           );
         } else if (index === (counter + 2) % imgCards.length) {
           card.classList.add(
-            'section-collection-info__content__img-container__img-box--middle',
+            'section-collection-info__max-width-container__content__img-container__img-box--middle',
           );
         }
       });
@@ -60,7 +60,7 @@ class HomeView extends View {
 
   addHandlerSearch(handler) {
     const searchBtn = this._parentElement.querySelector(
-      `.hero__text__center-container__search-btn`,
+      `.hero__max-width-container__text__center-container__search-btn`,
     );
 
     searchBtn.addEventListener(`click`, () => this._handleModal(handler));

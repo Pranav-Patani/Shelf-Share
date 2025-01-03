@@ -6,7 +6,9 @@ class HeaderView extends View {
   _parentElement = document.querySelector('.navigation');
 
   addHandlerCloseMenu() {
-    const checkBtn = document.querySelector('.header__check');
+    const checkBtn = document.querySelector(
+      '.header__max-width-container__check',
+    );
     const container = document.querySelector(`.container`);
 
     container.addEventListener('click', () => (checkBtn.checked = false));
