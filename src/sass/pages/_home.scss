@@ -459,7 +459,7 @@
         position: relative;
         flex-wrap: wrap;
         padding: var(--space-1) var(--space-2);
-        background-color: rgba(var(--color-gray-light-rgb), 0.15);
+        background-color: rgba(var(--color-white-rgb), 0.65);
         border-radius: 2rem;
         margin: 0 auto var(--space-3);
 
@@ -471,7 +471,7 @@
           display: block;
           content: '';
           position: absolute;
-          background-color: rgba(var(--color-gray-light-rgb), 0.15);
+          background-color: rgba(var(--color-white-rgb), 0.65);
           height: 2rem;
           width: 2rem;
           top: 100%;
