@@ -28,7 +28,11 @@ class Router {
   navigateTo(path) {
     window.history.pushState({}, '', path);
     const pathNameSplit = path.split('/');
-    const pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
+    let pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
+    if (pathSegs[0].includes('?')) {
+      const filterPathSegs = pathSegs[0].split('?');
+      pathSegs = filterPathSegs.slice(0, 1);
+    }
     this._loadRoute(...pathSegs);
     window.scrollTo({
       top: 0,

@@ -95,6 +95,8 @@ class BookView extends View {
   }
 
   _generateMarkup() {
+    const xShareText = `Check out ${this._data.title} book on bookwise.`;
+    const xShareUrl = `${window.location.href}`;
     return `
       <section class="section-book-view">
       <div class="section-book-view__temp"></div>
@@ -165,6 +167,13 @@ class BookView extends View {
                   <use xlink:href="${sprite}#icon-share"></use>
               </svg>
               </button>
+              <a href="https://twitter.com/intent/tweet?text=${xShareText}&url=${xShareUrl}" target="_blank" class="section-book-view__main-info-container__text--button-icon__link">
+                <button class="section-book-view__main-info-container__text--button-icon btn--x-share">
+                  <svg class="svg-fill">
+                    <use xlink:href="${sprite}#icon-x"></use>
+                  </svg>
+              </button>
+              </a>
             </div>
             </div>
           </div>
