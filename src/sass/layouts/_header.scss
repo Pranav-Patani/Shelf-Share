@@ -165,14 +165,16 @@
     &__check {
       display: none;
 
-      &:checked + .header__hamburger-container + .header__btn-container {
+      &:checked
+        + .header__max-width-container__hamburger-container
+        + .header__max-width-container__btn-container {
         left: 40%;
         visibility: visible;
       }
 
       &:checked
-        + .header__hamburger-container
-        .header__hamburger-container__hamburger {
+        + .header__max-width-container__hamburger-container
+        .header__max-width-container__hamburger-container__hamburger {
         visibility: hidden;
         transition: all 0s;
 
