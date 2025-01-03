@@ -1,5 +1,4 @@
 import View from './View';
-import Router from '../router';
 import homeCreatePlansImg from 'url:../../img/home_create-plans.webp';
 import homeSavePlansImg from 'url:../../img/home_save-plans.webp';
 import homeSharePlansImg from 'url:../../img/home_share-plans.webp';
@@ -7,15 +6,6 @@ import sprite from 'url:../../img/sprite.svg';
 class HomeView extends View {
   _parentElement = document.querySelector('.container');
   _count = 1;
-
-  addHandlerCTALinks() {
-    this._parentElement.addEventListener('click', e => {
-      const link = e.target.closest('.router-link');
-      if (!link) return;
-      e.preventDefault();
-      Router.navigateTo(link.dataset.route);
-    });
-  }
 
   addHandlerCarousel() {
     const carousel = this._parentElement.querySelector(
