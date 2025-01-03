@@ -65,7 +65,7 @@ const setUpHomeView = function () {
 
 const controlHomeSearch = function (query) {
   Router.navigateTo('/find-books');
-  controlSearchResults('find-books', query);
+  controlSearchResults('/find-books', query);
 };
 
 // Individual Book View

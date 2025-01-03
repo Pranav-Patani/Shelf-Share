@@ -20,7 +20,7 @@ class individualCollectionView extends View {
       `.section-collection__content`,
     );
     resultsContainer.addEventListener('click', e => {
-      const card = e.target.closest('.router-link');
+      const card = e.target.closest('.book-link');
       if (!card) return;
       e.preventDefault();
       handler(card.dataset.route, card.dataset.id);
