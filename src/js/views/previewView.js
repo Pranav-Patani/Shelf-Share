@@ -6,7 +6,7 @@ class PreviewView extends View {
 
   _generateMarkup(markupClass) {
     return `<li class="card card--1">
-              <a href="" data-route="/book" data-id="${this._data.id}" class="card--1__link router-link">
+              <a href="" data-route="/book" data-id="${this._data.id}" class="card--1__link book-link">
                 <div class="card--1__link__img-container">
                   <img
                    src="${this._data.image}"

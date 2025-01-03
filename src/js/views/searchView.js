@@ -107,7 +107,7 @@ class SearchView extends View {
     const resultsContainer =
       this._parentElement.querySelector(`.results-container`);
     resultsContainer.addEventListener('click', e => {
-      const card = e.target.closest('.router-link');
+      const card = e.target.closest('.book-link');
       if (!card) return;
       e.preventDefault();
       handler(card.dataset.route, card.dataset.id);

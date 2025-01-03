@@ -39,7 +39,6 @@ const controlRouter = function () {
       path: '/create-collections',
       callback: () => setUpSearchView(window.location.pathname),
     },
-    { path: '/book', callback: () => controlBooks() },
   ];
 
   Router.setRoutes(routes);
@@ -59,7 +58,6 @@ const setUpInitialView = function () {
 
 const setUpHomeView = function () {
   HomeView.render();
-  HomeView.addHandlerCTALinks();
   HomeView.addHandlerCarousel();
   HomeView.addHandlerSearch(controlHomeSearch);
   HomeView.addHandlerDebounce(query => controlSearchDebounce(query));
@@ -67,7 +65,7 @@ const setUpHomeView = function () {
 
 const controlHomeSearch = function (query) {
   Router.navigateTo('/find-books');
-  controlSearchResults('find-books', query);
+  controlSearchResults('/find-books', query);
 };
 
 // Individual Book View
