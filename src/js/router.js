@@ -40,7 +40,7 @@ class Router {
 
   _activeNavigationLinkHandler = path => {
     const navBtns = document.querySelectorAll(
-      `.header__btn-container__btn-link`,
+      `.header__max-width-container__btn-container__btn-link`,
     );
     navBtns.forEach(btn => btn.classList.remove('nav-active'));
     const activePath =

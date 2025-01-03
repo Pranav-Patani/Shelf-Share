@@ -58,9 +58,11 @@
   }
 
   &__container {
+    max-width: 120rem;
+    margin: auto;
     width: 100%;
     background-color: var(--color-background-light);
-    padding: var(--space-5) var(--space-4) var(--space-8);
+    padding: var(--space-5) var(--space-0) var(--space-8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +76,6 @@
     display: none;
     min-height: 75vh;
     align-self: center;
-    padding: var(--space-4);
 
     @include respond(phone) {
       padding: var(--space-3) var(--space-0);

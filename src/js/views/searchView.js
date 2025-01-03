@@ -13,12 +13,12 @@ class SearchView extends View {
   _getCategory() {
     let category = '';
     const btns = document.querySelectorAll(
-      `.section-search__user-options__categories__btn`,
+      `.section-search__user-options__max-width-container__categories__btn`,
     );
     btns.forEach(btn => {
       if (
         btn.classList.contains(
-          `section-search__user-options__categories__btn--active`,
+          `section-search__user-options__max-width-container__categories__btn--active`,
         )
       ) {
         category = btn.textContent;
@@ -29,25 +29,25 @@ class SearchView extends View {
 
   _categorySearch = handler => {
     const btnContainer = document.querySelector(
-      `.section-search__user-options__categories`,
+      `.section-search__user-options__max-width-container__categories`,
     );
     const btns = document.querySelectorAll(
-      `.section-search__user-options__categories__btn`,
+      `.section-search__user-options__max-width-container__categories__btn`,
     );
 
     btnContainer.addEventListener('click', e => {
       const btn = e.target.closest(
-        `.section-search__user-options__categories__btn`,
+        `.section-search__user-options__max-width-container__categories__btn`,
       );
       if (!btn) return;
 
       if (
         btn.classList.contains(
-          `section-search__user-options__categories__btn--active`,
+          `section-search__user-options__max-width-container__categories__btn--active`,
         )
       ) {
         btn.classList.remove(
-          `section-search__user-options__categories__btn--active`,
+          `section-search__user-options__max-width-container__categories__btn--active`,
         );
         handler(this._getQuery(), '');
         return;
@@ -55,12 +55,12 @@ class SearchView extends View {
 
       btns.forEach(btn =>
         btn.classList.remove(
-          `section-search__user-options__categories__btn--active`,
+          `section-search__user-options__max-width-container__categories__btn--active`,
         ),
       );
 
       btn.classList.add(
-        `section-search__user-options__categories__btn--active`,
+        `section-search__user-options__max-width-container__categories__btn--active`,
       );
 
       const category = btn.textContent;
@@ -269,9 +269,10 @@ class SearchView extends View {
     return `
       <section class="section-search">
         <div class="section-search__user-options">
-          <div class="section-search__user-options__search">
+        <div class="section-search__user-options__max-width-container">
+                    <div class="section-search__user-options__max-width-container__search">
             <form
-              class="section-search__user-options__search__search-bar-container search-form"
+              class="section-search__user-options__max-width-container__search__search-bar-container search-form"
             >
               <button class="submit-btn" type="submit">
                 <svg>
@@ -285,13 +286,14 @@ class SearchView extends View {
                 autocomplete="off"
               />
             </form>
-            <div class="section-search__user-options__search__suggestions">
+            <div class="section-search__user-options__max-width-container__search__suggestions">
               ${this._generateSuggestionsContainerMarkup()} 
             </div>
           </div>
-          <div class="section-search__user-options__categories">
-           ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__categories__btn">${category}</button>`).join('')}
+          <div class="section-search__user-options__max-width-container__categories">
+           ${categories.map((category, id) => `<button key=${id} class="section-search__user-options__max-width-container__categories__btn">${category}</button>`).join('')}
           </div>
+        </div>
         </div>
       
         <div class="section-search__results">

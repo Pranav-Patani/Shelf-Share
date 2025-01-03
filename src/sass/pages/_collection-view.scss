@@ -38,6 +38,7 @@
   }
 
   &__content {
+    max-width: 120rem;
     margin-top: var(--space-2);
     display: flex;
     justify-content: center;
@@ -47,7 +48,7 @@
     list-style: none;
     gap: var(--space-5);
     position: relative;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-2) var(--space-0);
 
     @include respond(phone) {
       gap: var(--space-3);
