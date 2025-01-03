@@ -1,6 +1,7 @@
 .section-search {
   margin: 0 auto;
   position: relative;
+  background-color: var(--color-background-light);
 
   &__user-options {
     display: flex;
@@ -20,155 +21,165 @@
 
     @include bg-image(top);
 
-    &__search {
-      width: 50%;
-      position: relative;
-      z-index: var(--z-index-lvl-2); // creating a stacking context
-
-      @include respond(tab-land) {
-        width: 55%;
-      }
-
-      @include respond(tab-port) {
-        width: 60%;
-      }
-
-      @include respond(phone) {
-        width: 85%;
-      }
-
-      &__search-bar-container {
-        box-shadow: 0 0 1rem rgba(var(--color-shadow-rgb), 0.1);
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        margin: 0 auto var(--space-1);
-        border-radius: 1rem;
-        overflow: hidden;
-
-        &::after {
-          display: block;
-          content: '';
-          height: 0.2rem;
-          position: absolute;
-          top: 3.85rem;
-          left: 0.5rem;
-          border-radius: 0 0 2rem 2rem;
-          width: 0;
-          background-color: rgba(var(--color-primary-rgb), 0.4);
-          visibility: hidden;
-          transition: all 0.3s;
-          opacity: 0;
-        }
-
-        &.focused::after {
-          width: 98.8%;
-          visibility: visible;
-          opacity: 1;
-        }
-
-        & input {
-          border: none;
-          padding: 0 var(--space-3);
-          height: 4rem;
-          width: 100%;
-          margin-left: auto;
-          transition: all 0.3s;
-          font-size: var(--font-size-xl);
-          color: var(--color-gray-dark);
-          font-family: var(--font-primary);
-          background-color: var(--color-white);
-
-          @include respond(phone) {
-            width: 100%;
-          }
-
-          &::placeholder {
-            font-size: var(--font-size-l);
-            color: var(--color-gray-light);
-          }
-
-          &:focus {
-            outline: none;
-          }
-        }
-
-        & button {
-          border: none;
-          transition: all 0.2s;
-          cursor: pointer;
-          background-color: var(--color-white);
-          margin-right: auto;
-          padding-right: var(--space-2);
-          height: 4rem;
-
-          & svg {
-            display: block;
-            height: 2.6rem;
-            width: 2.6rem;
-            fill: var(--color-primary);
-          }
-        }
-      }
-
-      &__suggestions {
-        position: absolute;
-        width: 100%;
-        max-height: 30vh;
-        border-radius: 1rem;
-        overflow: auto;
-        box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
-
-        @include scroll-bar;
-      }
-    }
-
-    &__categories {
-      margin: var(--space-4) auto 0;
+    &__max-width-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      justify-content: center;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 120rem;
 
-      @include respond(phone) {
-        margin: var(--space-3) auto 0;
-        gap: 0.5rem;
-      }
+      &__search {
+        width: 50%;
+        position: relative;
+        z-index: var(--z-index-lvl-2); // creating a stacking context
 
-      &__btn {
-        padding: var(--space-1);
-        flex-basis: 12rem;
-        text-align: center;
-        font-size: var(--font-size-s);
-        cursor: pointer;
-        margin-bottom: var(--space-2);
-        color: var(--color-primary-dark);
-        border: 1px solid rgba(var(--color-primary-light-rgb), 0.8);
-        background-color: var(--color-background-light);
-        border-radius: 1rem;
-        transition: all 0.2s;
+        @include respond(tab-land) {
+          width: 55%;
+        }
+
+        @include respond(tab-port) {
+          width: 60%;
+        }
 
         @include respond(phone) {
-          flex-basis: 9rem;
+          width: 85%;
         }
 
-        &:hover {
-          transform: translateY(-0.15rem);
-          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
+        &__search-bar-container {
+          box-shadow: 0 0 1rem rgba(var(--color-shadow-rgb), 0.1);
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: center;
+          margin: 0 auto var(--space-1);
+          border-radius: 1rem;
+          overflow: hidden;
+
+          &::after {
+            display: block;
+            content: '';
+            height: 0.2rem;
+            position: absolute;
+            top: 3.85rem;
+            left: 0.5rem;
+            border-radius: 0 0 2rem 2rem;
+            width: 0;
+            background-color: rgba(var(--color-primary-rgb), 0.4);
+            visibility: hidden;
+            transition: all 0.3s;
+            opacity: 0;
+          }
+
+          &.focused::after {
+            width: 98.8%;
+            visibility: visible;
+            opacity: 1;
+          }
+
+          & input {
+            border: none;
+            padding: 0 var(--space-3);
+            height: 4rem;
+            width: 100%;
+            margin-left: auto;
+            transition: all 0.3s;
+            font-size: var(--font-size-xl);
+            color: var(--color-gray-dark);
+            font-family: var(--font-primary);
+            background-color: var(--color-white);
+
+            @include respond(phone) {
+              width: 100%;
+            }
+
+            &::placeholder {
+              font-size: var(--font-size-l);
+              color: var(--color-gray-light);
+            }
+
+            &:focus {
+              outline: none;
+            }
+          }
+
+          & button {
+            border: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            background-color: var(--color-white);
+            margin-right: auto;
+            padding-right: var(--space-2);
+            height: 4rem;
+
+            & svg {
+              display: block;
+              height: 2.6rem;
+              width: 2.6rem;
+              fill: var(--color-primary);
+            }
+          }
         }
 
-        &:active {
-          transform: translateY(-0.08rem);
-          box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
+        &__suggestions {
+          position: absolute;
+          width: 100%;
+          max-height: 30vh;
+          border-radius: 1rem;
+          overflow: auto;
+          box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
+
+          @include scroll-bar;
+        }
+      }
+
+      &__categories {
+        margin: var(--space-4) auto 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @include respond(phone) {
+          margin: var(--space-3) auto 0;
+          gap: 0.5rem;
         }
 
-        &--active {
-          border: none;
-          color: var(--color-text-light);
-          background-color: var(--color-primary);
-          transform: translateY(-0.15rem);
-          font-weight: bold;
+        &__btn {
+          padding: var(--space-1);
+          flex-basis: 12rem;
+          text-align: center;
+          font-size: var(--font-size-s);
+          cursor: pointer;
+          margin-bottom: var(--space-2);
+          color: var(--color-primary-dark);
+          border: 1px solid rgba(var(--color-primary-light-rgb), 0.8);
+          background-color: var(--color-background-light);
+          border-radius: 1rem;
+          transition: all 0.2s;
+
+          @include respond(phone) {
+            flex-basis: 9rem;
+          }
+
+          &:hover {
+            transform: translateY(-0.15rem);
+            box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
+          }
+
+          &:active {
+            transform: translateY(-0.08rem);
+            box-shadow: 0 0.3rem 0.5rem rgba(var(--color-shadow-rgb), 0.1);
+          }
+
+          &--active {
+            border: none;
+            color: var(--color-text-light);
+            background-color: var(--color-primary);
+            transform: translateY(-0.15rem);
+            font-weight: bold;
+          }
         }
       }
     }
@@ -176,9 +187,11 @@
 
   &__results {
     min-height: 75vh;
-    padding: var(--space-7) var(--space-2) var(--space-10);
+    padding: var(--space-7) var(--space-0) var(--space-10);
     background-color: var(--color-background-light);
     width: 100%;
+    max-width: 120rem;
+    margin: auto;
 
     @include respond(tab-port) {
       padding: var(--space-5) var(--space-0) var(--space-8);
@@ -268,7 +281,7 @@
 
     &__results-container {
       position: relative;
-      width: 90%;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
