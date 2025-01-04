@@ -75,7 +75,6 @@ const setUpBookViewHandlers = function () {
   BookView.addHandlerTabHandler();
   BookView.addHandlerShare(controlBookShare);
   BookView.addHandlerAddBookmark(controlAddBookmark);
-  console.log('handlers added');
 };
 
 const controlBooks = async function () {
@@ -112,7 +111,7 @@ const controlBookShare = async function (title) {
 };
 
 const controlBookUrlCreation = function (route, id) {
-  Router.navigateTo(setUrlData(route, id, 'book-id'));
+  Router.navigateTo(setUrlData(route, id, 'book-id', false));
 };
 
 // Search Results View

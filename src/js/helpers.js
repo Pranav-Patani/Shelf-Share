@@ -97,9 +97,11 @@ export const getUrlData = function (data) {
   return JSON.parse(decodeURIComponent(searchData));
 };
 
-export const setUrlData = function (path, data, keyName) {
+export const setUrlData = function (path, data, keyName, set = true) {
   const encodedData = encodeURIComponent(JSON.stringify(data));
   const urlPath = `${path}?${keyName}=${encodedData}`;
-  window.history.pushState('', '', urlPath);
+  if (set) {
+    window.history.pushState('', '', urlPath);
+  }
   return urlPath;
 };
