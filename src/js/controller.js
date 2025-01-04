@@ -336,12 +336,18 @@ const controlIndividualCollectionShare = function () {
 
 const constructIndividualCollectionShareUrl = async function (collection, btn) {
   try {
-    const shareableUrl = setUrlData(window.location.origin, collection, 'data');
-
     if (!btn) {
+      const updatedCollectionUrl = setUrlData(
+        window.location.origin,
+        collection,
+        'data',
+        false,
+      );
+      window.history.replaceState('', '', updatedCollectionUrl);
       controlIndividualCollectionShare();
       return;
     }
+    const shareableUrl = setUrlData(window.location.origin, collection, 'data');
     const message = await helperShare(shareableUrl);
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);
