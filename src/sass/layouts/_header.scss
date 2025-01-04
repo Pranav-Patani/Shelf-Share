@@ -41,7 +41,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 120rem;
-    margin: auto;
+    margin: 0 auto;
     background-color: transparent;
 
     &__logo-container {
@@ -91,7 +91,7 @@
         &__btn {
           font-family: var(--font-family);
           border: none;
-          padding: var(--space-1) var(--space-1);
+          padding: var(--space-0) var(--space-1);
           background-color: inherit;
           font-size: var(--font-size-l);
           color: inherit;
