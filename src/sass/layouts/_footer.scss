@@ -6,27 +6,46 @@
   position: relative;
 
   &__logo {
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
 
     &--book {
-      height: 5rem;
+      height: 4.5rem;
       width: 8rem;
     }
 
     &--text {
-      height: 4.5rem;
+      height: 3.8rem;
       width: 18rem;
+    }
+  }
+
+  &__sub-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    margin: 0 auto;
+    font-size: var(--font-size-l);
+
+    &__svg {
+      display: inline-block;
+      height: 1.8rem;
+      width: 1.8rem;
+      fill: var(--color-white);
+      stroke-width: 0.1rem;
+      stroke: var(--color-white);
+      margin-left: var(--space-05);
     }
   }
 
   &__link {
     width: fit-content;
     text-decoration: none;
-    margin: var(--space-4) auto 0;
+    margin: var(--space-2) auto 0;
     transition: all 0.2s;
     padding: var(--space-05) var(--space-1);
     border-radius: 1rem;

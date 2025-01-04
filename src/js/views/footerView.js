@@ -15,14 +15,20 @@ class FooterView extends View {
       <use xlink:href="${sprite}#icon-logo-text--white"></use>
     </svg>
    </div>
+
+   <p class="paragraph footer__sub-text">Self Care with Shelf Share
+    <svg class="footer__sub-text__svg">
+      <use xlink:href="${sprite}#icon-winking-face"></use>
+    </svg>
+   </p>
    
-    <a href="https://github.com/Pranav-Patani/BookWise" target="_blank" class="footer__link">
+    <a href="https://github.com/Pranav-Patani/Shelf-Share" target="_blank" class="footer__link">
       <div class="footer__link__text-box">
         <svg class="footer__link__text-box__svg">
           <use xlink:href="${sprite}#icon-github"></use>
         </svg>
         <p class="paragraph--big footer__link__text-box__text">
-          Pranav-Patani/BookWise
+          Pranav-Patani/Shelf-Share
         </p>
       </div>
     </a>

@@ -22,13 +22,13 @@ export const getJSON = async url => {
 
 export const helperShare = async function (
   url,
-  title = 'Checkout this book on bookwise!',
+  title = 'Checkout this book on shelf share!',
 ) {
   if (navigator.share) {
     try {
       await navigator.share({
         title: title,
-        text: 'Explore Books and Plan Your Reading Journey on Bookwise.',
+        text: 'Explore Books and Plan Your Reading Journey on shelf share.',
         url: url,
       });
       return ``;
