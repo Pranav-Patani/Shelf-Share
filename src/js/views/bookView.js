@@ -95,7 +95,7 @@ class BookView extends View {
   }
 
   _generateMarkup() {
-    const xShareText = `Check out ${this._data.title} book on bookwise.`;
+    const xShareText = `Check out the book ${this._data.title} on shelf share.`;
     const xShareUrl = `${window.location.href}`;
     return `
       <section class="section-book-view">
