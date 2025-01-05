@@ -31,11 +31,11 @@
     margin: 0 var(--space-5);
 
     @include respond(tab-land) {
-      width: 70%;
+      width: 80%;
     }
 
     @include respond(tab-port) {
-      min-width: 85%;
+      min-width: 95%;
     }
 
     @include respond(phone) {
@@ -114,18 +114,12 @@
             var(--color-gray-light)
           );
           color: var(--color-text-light);
-          font-weight: 900;
-          font-size: var(--font-size-m);
+          font-weight: 600;
+          font-size: var(--font-size-s);
           display: inline-block;
-          padding: var(--space-05) var(--space-1);
+          padding: 0 var(--space-1);
           margin: var(--space-05) var(--space-0);
           border-radius: 1rem;
-
-          @include respond(phone) {
-            font-size: var(--font-size-s);
-            padding: var(--space-05) var(--space-1);
-            margin: var(--space-05) var(--space-0);
-          }
         }
       }
 
@@ -140,6 +134,10 @@
       &--button {
         display: block;
         text-decoration: none;
+
+        @include respond(phone) {
+          padding: var(--space-2) var(--space-3);
+        }
       }
 
       &--button-icon {
@@ -173,6 +171,11 @@
           display: block;
           width: 2.8rem;
           height: 2.8rem;
+
+          @include respond(phone) {
+            width: 2.5rem;
+            height: 2.5rem;
+          }
         }
       }
     }

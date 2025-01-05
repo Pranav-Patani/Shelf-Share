@@ -26,6 +26,7 @@
   &__sub-text {
     display: flex;
     justify-content: center;
+    text-transform: lowercase;
     align-items: center;
     color: var(--color-white);
     margin: 0 auto;
