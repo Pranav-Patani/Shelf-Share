@@ -206,6 +206,9 @@ class SearchView extends View {
     form.addEventListener('submit', e => {
       e.preventDefault();
       const name = input.value;
+      const selectedCount = document.querySelector(
+        `.section-search__results__collection-controller__text-container__count-display--count`,
+      ).textContent;
       if (!name.trim()) {
         errMsg.textContent = 'Name cannot be empty :(';
         input.value = '';
@@ -214,7 +217,7 @@ class SearchView extends View {
       }
       errMsg.textContent = '';
       msg.textContent = 'Collection Created Successfully.';
-      handler(name);
+      handler(name, selectedCount);
       handleSubmit();
     });
   }
