@@ -3,8 +3,9 @@ import 'dotenv/config';
 export const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 /* eslint-disable-next-line no-undef */
 export const API_KEY = process.env.API_KEY;
+/* eslint-disable-next-line no-undef */
+export const MIXPANEL_TOKEN = process.env.MIXPANEL_TOKEN;
 export const TIMEOUT_SEC = 10;
-export const MIXPANEL_TOKEN = '0bad90a36e89ab813f9fd1703894a627';
 export const MIXPANEL_EVENTS = {
   CLICKED_SHARE: 'Clicked Share',
   CLICKED_SEARCH: 'Clicked Search',

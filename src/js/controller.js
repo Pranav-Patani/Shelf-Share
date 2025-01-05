@@ -408,16 +408,16 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
 };
 
 const init = function () {
-  setUpInitialView();
-  controlRouter();
-  IndividualCollectionView.addHandlerRenderShare(
-    controlIndividualCollectionShare,
-  );
   mixpanel.init(MIXPANEL_TOKEN, {
     debug: true,
     track_pageview: true,
     persistence: 'localStorage',
   });
+  setUpInitialView();
+  controlRouter();
+  IndividualCollectionView.addHandlerRenderShare(
+    controlIndividualCollectionShare,
+  );
 };
 
 init();
