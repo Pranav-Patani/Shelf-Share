@@ -94,6 +94,15 @@ class BookView extends View {
     ``;
   }
 
+  addHandlerXShare(handler) {
+    const btn = this._parentElement.querySelector(`.link-x`);
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      handler(this._data.title, window.location.href);
+    });
+  }
+
   _generateMarkup() {
     const xShareText = `Check out the book ${this._data.title} on shelf share.`;
     const xShareUrl = `${window.location.href}`;
@@ -167,7 +176,7 @@ class BookView extends View {
                   <use xlink:href="${sprite}#icon-share"></use>
               </svg>
               </button>
-              <a href="https://twitter.com/intent/tweet?text=${xShareText}&url=${xShareUrl}" target="_blank" class="section-book-view__main-info-container__text--button-icon__link">
+              <a href="https://twitter.com/intent/tweet?text=${xShareText}&url=${xShareUrl}" target="_blank" class="link-x section-book-view__main-info-container__text--button-icon__link">
                 <button class="section-book-view__main-info-container__text--button-icon btn--x-share">
                   <svg class="svg-fill">
                     <use xlink:href="${sprite}#icon-x"></use>
