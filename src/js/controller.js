@@ -409,7 +409,7 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
 
 const init = function () {
   mixpanel.init(MIXPANEL_TOKEN, {
-    debug: true,
+    debug: false,
     track_pageview: true,
     persistence: 'localStorage',
   });
