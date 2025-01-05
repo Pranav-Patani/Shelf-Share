@@ -16,10 +16,10 @@ class FooterView extends View {
     </svg>
    </div>
 
-   <p class="paragraph footer__sub-text">Self Care with Shelf Share
+   <p class="paragraph footer__sub-text">"Self Care with Shelf Share
     <svg class="footer__sub-text__svg">
       <use xlink:href="${sprite}#icon-winking-face"></use>
-    </svg>
+    </svg>"
    </p>
    
     <a href="https://github.com/Pranav-Patani/Shelf-Share" target="_blank" class="footer__link">
