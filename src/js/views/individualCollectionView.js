@@ -19,6 +19,7 @@ class individualCollectionView extends View {
     const resultsContainer = this._parentElement.querySelector(
       `.section-collection__content`,
     );
+    if (!resultsContainer) return;
     resultsContainer.addEventListener('click', e => {
       const card = e.target.closest('.book-link');
       if (!card) return;
@@ -54,7 +55,7 @@ class individualCollectionView extends View {
 
   _generateMarkupCollectionCards(markupClass) {
     return this._data.books
-      .map(bookmark =>
+      ?.map(bookmark =>
         PreviewViewIndividual.render(bookmark, false, markupClass),
       )
       .join('');
@@ -67,7 +68,7 @@ class individualCollectionView extends View {
     return this._data.books
       ? `
       <section class="section-collection">
-        <h2 class="heading-3 section-collection__heading">${this._data.name}</h2>
+        <h2 class="heading-3 section-collection__heading">${this._data.collectionName}</h2>
         <div
           class="section-collection__content"
         >

@@ -86,7 +86,7 @@ const setUpBookViewHandlers = function () {
 
 const controlBooks = async function () {
   try {
-    const id = getUrlData('book-id');
+    const { id } = getUrlData('book-id');
     if (!id) {
       return;
     }
@@ -107,7 +107,6 @@ const controlBooks = async function () {
 const controlBookShare = async function (title) {
   try {
     const path = window.location.href;
-    console.log(path);
     const message = await helperShare(path, title);
     if (!message) return;
     BookView.renderToast(message, false);
@@ -132,7 +131,7 @@ const controlXShare = function (title, url) {
 };
 
 const controlBookUrlCreation = function (route, id) {
-  Router.navigateTo(setUrlData(route, id, 'book-id', false));
+  Router.navigateTo(setUrlData(route, { id }, false));
 };
 
 // Search Results View
@@ -159,7 +158,6 @@ const controlSearchResults = async function (path, query, category) {
         from: 'Create Collections Page',
       });
     }
-
     await model.loadSearchResults(query, category);
 
     if (path === '/find-books') {
@@ -175,11 +173,11 @@ const controlSearchResults = async function (path, query, category) {
 
 const controlSearchUrlCreation = function (query, category, path) {
   const searchParameters = { query, category, path };
-  setUrlData(window.location.pathname, searchParameters, 'search-params');
+  setUrlData(window.location.pathname, searchParameters);
 };
 
 const controlUrlSearchResultsLoad = function () {
-  const searchParams = getUrlData('search-params');
+  const searchParams = getUrlData();
   if (!searchParams) return;
   controlSearchResults(
     searchParams.path,
@@ -356,8 +354,11 @@ const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
 };
 
 const controlIndividualCollectionShare = function () {
-  const collectionData = getUrlData('data');
-  if (!collectionData) return;
+  const collectionData = getUrlData();
+  if (!collectionData.collectionName) return;
+
+  collectionData.books = JSON.parse(decodeURIComponent(collectionData.books));
+
   IndividualCollectionView.renderLoader();
   IndividualCollectionView.render(
     collectionData,
@@ -386,14 +387,13 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
       const updatedCollectionUrl = setUrlData(
         window.location.origin,
         collection,
-        'data',
         false,
       );
       window.history.replaceState('', '', updatedCollectionUrl);
       controlIndividualCollectionShare();
       return;
     }
-    const shareableUrl = setUrlData(window.location.origin, collection, 'data');
+    const shareableUrl = setUrlData(window.location.origin, collection);
     const message = await helperShare(shareableUrl);
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);

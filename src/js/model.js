@@ -130,7 +130,7 @@ export const resetSelectedBooks = function () {
 export const createCollection = collectionName => {
   const newCollection = {
     id: Date.now(),
-    name: collectionName,
+    collectionName: collectionName,
     books: [...state.selectedBooks],
   };
   state.collections.push(newCollection);
