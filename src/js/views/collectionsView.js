@@ -91,7 +91,7 @@ class CollectionsView extends View {
         </div>
         <div class="card--2__text-container">
 
-          <p class="paragraph--big card--2__text-container__title">${collection.name.length <= 15 ? collection.name : collection.name.slice(0, 15) + '...'}</p>
+          <p class="paragraph--big card--2__text-container__title">${collection.collectionName.length <= 15 ? collection.collectionName : collection.collectionName.slice(0, 15) + '...'}</p>
 
           <p class="paragraph--big card--2__text-container__books">
             Total Books: ${collection.books.length}

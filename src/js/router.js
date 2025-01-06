@@ -10,7 +10,10 @@ class Router {
 
   _matchedURL(urlSegs) {
     const path = '/' + urlSegs.join('/');
-    return this.routes.find(route => route.path === path);
+    return this.routes.find(route => {
+      const [routePath] = route.path.split('?');
+      return routePath === path;
+    });
   }
 
   _loadInitialRoute() {

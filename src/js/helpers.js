@@ -89,19 +89,26 @@ export const throttle = (cb, delay = 200) => {
   };
 };
 
-export const getUrlData = function (data) {
+export const getUrlData = function () {
   const keys = window.location.search;
   const urlParams = new URLSearchParams(keys);
-  const searchData = urlParams.get(data);
-  if (!data) return;
-  return JSON.parse(decodeURIComponent(searchData));
+  const data = {};
+  urlParams.forEach((val, key) => (data[key] = val));
+  return data;
 };
 
-export const setUrlData = function (path, data, keyName, set = true) {
-  const encodedData = encodeURIComponent(JSON.stringify(data));
-  const urlPath = `${path}?${keyName}=${encodedData}`;
+export const setUrlData = function (path, data, set = true) {
+  const url = new URL(path, window.location.origin);
+  Object.entries(data).forEach(([key, val]) => {
+    url.searchParams.set(
+      key,
+      Array.isArray(val) ? encodeURIComponent(JSON.stringify(val)) : val,
+    );
+  });
+
+  const pathname = `${url.pathname}?${url.searchParams}`;
   if (set) {
-    window.history.pushState('', '', urlPath);
+    window.history.pushState('', '', pathname);
   }
-  return urlPath;
+  return pathname;
 };
