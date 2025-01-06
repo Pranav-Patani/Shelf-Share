@@ -64,10 +64,11 @@
       justify-content: space-between;
       align-items: center;
       list-style: none;
+      gap: var(--space-3);
 
       @include respond(phone) {
         flex-direction: column;
-        gap: var(--space-1);
+        gap: var(--space-2);
         justify-content: center;
         height: 100vh;
         width: 60%;
@@ -83,10 +84,27 @@
       &__btn-link {
         text-decoration: none;
         color: var(--color-primary);
-        margin-left: var(--space-3);
+        position: relative;
 
-        &.nav-active {
-          color: var(--color-indigo);
+        &::after {
+          display: block;
+          content: '';
+          width: 0;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 0.15rem;
+          border-radius: 2rem;
+          background-color: var(--color-primary-dark);
+          transition: all 0.2s;
+        }
+
+        &--active {
+          font-weight: 600;
+
+          &::after {
+            width: 90%;
+          }
         }
 
         &__btn {
@@ -98,10 +116,10 @@
           color: inherit;
           cursor: pointer;
           transition: all 0.2s;
+          font-weight: inherit;
 
           @include respond(phone) {
             position: relative;
-            margin-bottom: var(--space-2);
           }
 
           &:active {

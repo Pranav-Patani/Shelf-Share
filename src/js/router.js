@@ -49,7 +49,11 @@ class Router {
     const navBtns = document.querySelectorAll(
       `.header__max-width-container__btn-container__btn-link`,
     );
-    navBtns.forEach(btn => btn.classList.remove('nav-active'));
+    navBtns.forEach(btn =>
+      btn.classList.remove(
+        'header__max-width-container__btn-container__btn-link--active',
+      ),
+    );
     const activePath =
       path === '/'
         ? 'home'
@@ -62,7 +66,9 @@ class Router {
           ? 'home'
           : btn.dataset.route.split('/')[1].toLowerCase();
       if (curBtn === activePath) {
-        btn.classList.add(`nav-active`);
+        btn.classList.add(
+          `header__max-width-container__btn-container__btn-link--active`,
+        );
       }
     });
   };
