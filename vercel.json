@@ -4,5 +4,6 @@
       "source": "/:path*",
       "destination": "/"
     }
-  ]
+  ],
+  "ignoreFiles": ["/docs/**"]
 }
