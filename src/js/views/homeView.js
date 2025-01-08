@@ -123,7 +123,7 @@ class HomeView extends View {
                   </div>
                   <button class="hero__max-width-container__text__center-container__search-btn">  
                     
-                    <span class="hero__max-width-container__text__center-container__search-btn__text">Search for Books...</span>
+                    <span class="hero__max-width-container__text__center-container__search-btn__text">Search Books</span>
                     <svg class="hero__max-width-container__text__center-container__search-btn__svg">
                         <use xlink:href="${sprite}#icon-magnifying-glass"></use>
                       </svg>
