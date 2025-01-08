@@ -1,5 +1,7 @@
 <p align=center>
+<a href="https://shelfshare.vercel.app">
     <img style="width: 350px" src="./src/img/logo.svg" alt="shelf share" />
+</a>
     <br/>
     <br/>
    <img src="https://deploy-badge.vercel.app/vercel/shelfshare" alt="Vercel Status" />
@@ -7,7 +9,7 @@
 <br/>
 <hr/>
 <br/>
-A web application that lets you search for books, create collections of books and share them. 📚
+A <a href="https://shelfshare.vercel.app">web application</a> that lets you search for books, create collections of books and share them. 📚
 
 ## 🎦 DEMO
 
@@ -28,6 +30,9 @@ A web application that lets you search for books, create collections of books an
 </a>&nbsp;&nbsp;
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="html5"/>
+</a>&nbsp;&nbsp;
+<a href="https://www.figma.com/">
+  <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="html5"/>
 </a>
 
 ## API Used
@@ -75,6 +80,7 @@ A web application that lets you search for books, create collections of books an
 <a href="https://x.com/Prnv_Ptn">
 <img src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" /> &nbsp;&nbsp;
 </a>
+
 <a href="https://www.linkedin.com/in/pranavpatani/">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
