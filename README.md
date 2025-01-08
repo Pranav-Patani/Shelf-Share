@@ -13,9 +13,7 @@ A <a href="https://shelfshare.vercel.app">web application</a> that lets you sear
 
 ## 🎦 DEMO
 
-<p align=center>
-    <a href="./docs/shelf-share-promo .mp4"> <img src="./docs/promo-preview.png" alt="Vercel Status" /></a>
-</p>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lASfxIo_W3Y/0.jpg)](https://www.youtube.com/watch?v=lASfxIo_W3Y)
 
 ## 🧑‍💻 Technology Stack
 
