@@ -1,5 +1,5 @@
 <p align=center>
-<a href="https://shelfshare.vercel.app">
+<a style="text-decoration: none" href="https://shelfshare.vercel.app">
     <img style="width: 350px" src="./src/img/logo.svg" alt="shelf share" />
 </a>
     <br/>
@@ -17,25 +17,25 @@ A <a href="https://shelfshare.vercel.app">web application</a> that lets you sear
 
 ## 🧑‍💻 Technology Stack
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
+<a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
   <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="javascript"/>
-</a>
-<a href="https://sass-lang.com">
+</a>&nbsp;&nbsp;
+<a style="text-decoration: none" href="https://sass-lang.com">
   <img src="https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white" alt="sass"/>
-</a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
+</a>&nbsp;&nbsp;
+<a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/CSS">
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="css3"/>
-</a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
+</a>&nbsp;&nbsp;
+<a style="text-decoration: none" href="https://developer.mozilla.org/en-US/docs/Web/HTML">
   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="html5"/>
-</a>
-<a href="https://www.figma.com/">
+</a>&nbsp;&nbsp;
+<a style="text-decoration: none" href="https://www.figma.com/">
   <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="html5"/>
 </a>
 
 ## API Used
 
-<a href="https://books.google.co.in/">
+<a style="text-decoration: none" href="https://books.google.co.in/">
   <img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white" />
 </a>
 </a>
@@ -75,10 +75,10 @@ A <a href="https://shelfshare.vercel.app">web application</a> that lets you sear
 
 ## 🧑‍💼 Author
 
-<a href="https://x.com/Prnv_Ptn">
+<a style="text-decoration: none" href="https://x.com/Prnv_Ptn">
 <img src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" />
 </a>
 <br/>
-<a href="https://www.linkedin.com/in/pranavpatani/">
+<a style="text-decoration: none" href="https://www.linkedin.com/in/pranavpatani/">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
