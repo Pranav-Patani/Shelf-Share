@@ -1,6 +1,7 @@
 import View from './View';
 import sprite from 'url:../../img/sprite.svg';
 import Router from '../router';
+import poweredByImg from '../../img/poweredbygoogle.png';
 
 class SearchView extends View {
   _parentElement = document.querySelector('.container');
@@ -273,22 +274,24 @@ class SearchView extends View {
       <section class="section-search">
         <div class="section-search__user-options">
         <div class="section-search__user-options__max-width-container">
-                    <div class="section-search__user-options__max-width-container__search">
+          <div class="section-search__user-options__max-width-container__search">
             <form
               class="section-search__user-options__max-width-container__search__search-bar-container search-form"
             >
               <button class="submit-btn" type="submit">
-                <svg>
-                  <use xlink:href="${sprite}#icon-magnifying-glass"></use>
-                </svg>
+               Search
               </button>
               <input
                 type="text"
                 class="search-bar"
-                placeholder="Search for books..."
+                placeholder="Search Books"
                 autocomplete="off"
               />
             </form>
+           <a href="https://www.google.com" class="section-search__user-options__max-width-container__search__search-bar-container__powered-by">
+              <img class="section-search__user-options__max-width-container__search__search-bar-container__powered-by--img" src=${poweredByImg} />
+            </a>
+
             <div class="section-search__user-options__max-width-container__search__suggestions">
               ${this._generateSuggestionsContainerMarkup()} 
             </div>
@@ -310,12 +313,8 @@ class SearchView extends View {
           </div>
         </div>
           <ul class="section-search__results__results-container results-container">
-            ${
-              !this._getQuery()
-                ? ` ${markupClass ? '<p class="paragraph--big center-element">Search books and select them to create a collection ;)</p>' : '<p class="paragraph--big center-element">Explore books by searching above ;)</p>'}
-              `
-                : ''
-            }
+            ${` ${markupClass ? '<p class="paragraph--big center-element">Search books and select them to create a collection ;)</p>' : '<p class="paragraph--big center-element">Explore books by searching above ;)</p>'}
+              `}
           </ul>
         </div>
 

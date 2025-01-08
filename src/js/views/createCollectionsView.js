@@ -27,9 +27,12 @@ class CreateCollectionsView extends View {
   _generateMarkup() {
     const cards = this._generateMarkupCards();
     return `
-    <div class="collection-cards-container">
-        ${cards}
-    </div>
+    <div class="section-search__results__results-container__card-container">
+      <p class="section-search__results__results-container__card-container__text">Google Books search results: <span class="section-search__results__results-container__card-container__text--count"> ${this._data.length} </span> books found</p>
+      <div class="collection-cards-container">
+          ${cards}
+      </div>
+    </div
     `;
   }
 }

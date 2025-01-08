@@ -134,6 +134,7 @@
       &--button {
         display: block;
         text-decoration: none;
+        text-transform: none;
 
         @include respond(phone) {
           padding: var(--space-2) var(--space-3);

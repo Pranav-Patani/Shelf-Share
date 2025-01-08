@@ -32,8 +32,8 @@
 
       &__search {
         width: 50%;
-        position: relative;
         z-index: var(--z-index-lvl-2); // creating a stacking context
+        position: relative;
 
         @include respond(tab-land) {
           width: 55%;
@@ -45,6 +45,7 @@
 
         @include respond(phone) {
           width: 85%;
+          margin-top: var(--space-3);
         }
 
         &__search-bar-container {
@@ -104,19 +105,59 @@
           }
 
           & button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border: none;
             transition: all 0.2s;
             cursor: pointer;
             background-color: var(--color-white);
+            border-left: 1px solid rgba(var(--color-gray-light-rgb), 0.2);
+            color: var(--color-primary-dark);
             margin-right: auto;
-            padding-right: var(--space-2);
+            padding: var(--space-2);
             height: 4rem;
+            font-size: var(--font-size-s);
 
-            & svg {
+            &:hover {
+              background-color: var(--color-background-light);
+            }
+
+            &:active {
+              background-color: var(--color-white);
+            }
+          }
+
+          &__powered-by {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -14%;
+            text-decoration: none;
+
+            @include respond(tab-land) {
+              right: -16%;
+            }
+
+            @include respond(tab-port) {
+              right: -18.5%;
+            }
+
+            @include respond(phone) {
+              top: -40%;
+              right: 0;
+            }
+
+            &--img {
               display: block;
-              height: 2.6rem;
-              width: 2.6rem;
-              fill: var(--color-primary);
+
+              @include respond(tab-port) {
+                height: 3.5rem;
+              }
+
+              @include respond(phone) {
+                height: 2.8rem;
+              }
             }
           }
         }
@@ -280,22 +321,45 @@
     }
 
     &__results-container {
-      position: relative;
-      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      margin: 0 auto;
+      width: 100%;
       min-height: 50vh;
-      gap: var(--space-5);
 
-      @include respond(tab-port) {
-        gap: var(--space-4);
-      }
+      &__card-container {
+        display: flex;
+        flex-direction: column;
 
-      @include respond(phone) {
-        width: 100%;
+        &__text {
+          padding: var(--space-0) var(--space-4) var(--space-3);
+          color: var(--color-gray-light);
+          margin-left: var(--space-neg-1);
+          align-self: flex-end;
+
+          &--count {
+            color: var(--color-text-dark);
+          }
+        }
+
+        &__cards {
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 0 auto;
+          gap: var(--space-5);
+
+          @include respond(tab-port) {
+            gap: var(--space-4);
+          }
+
+          @include respond(phone) {
+            width: 100%;
+          }
+        }
       }
     }
   }
