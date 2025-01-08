@@ -76,8 +76,9 @@ A <a href="https://shelfshare.vercel.app">web application</a> that lets you sear
 ## 🧑‍💼 Author
 
 <a href="https://x.com/Prnv_Ptn">
-<img src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" /> &nbsp;&nbsp;
+<img src="https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=X&logoColor=white" />
 </a>
+<br/>
 <br/>
 <a href="https://www.linkedin.com/in/pranavpatani/">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" />
