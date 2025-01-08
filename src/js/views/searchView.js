@@ -288,7 +288,7 @@ class SearchView extends View {
                 autocomplete="off"
               />
             </form>
-           <a href="https://www.google.com" class="section-search__user-options__max-width-container__search__search-bar-container__powered-by">
+           <a href="https://www.google.com" target="_blank" class="section-search__user-options__max-width-container__search__search-bar-container__powered-by">
               <img class="section-search__user-options__max-width-container__search__search-bar-container__powered-by--img" src=${poweredByImg} />
             </a>
 
