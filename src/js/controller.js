@@ -64,15 +64,19 @@ const setUpHomeView = function () {
   HomeView.addHandlerCarousel();
   HomeView.addHandlerSearch(controlHomeSearch);
   HomeView.addHandlerDebounce(query => controlSearchDebounce(query));
-  mixpanel.track(MIXPANEL_EVENTS.VIEWED_HOME_PAGE);
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.VIEWED_HOME_PAGE);
+  }
 };
 
 const controlHomeSearch = function (query) {
   Router.navigateTo('/find-books');
   controlSearchResults('/find-books', query);
-  mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
-    from: 'Home Page',
-  });
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
+      from: 'Home Page',
+    });
+  }
 };
 
 // Individual Book View
@@ -110,10 +114,12 @@ const controlBookShare = async function (title) {
     const message = await helperShare(path, title);
     if (!message) return;
     BookView.renderToast(message, false);
-    mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
-      type: 'Default',
-      item: 'Book',
-    });
+    if (MIXPANEL_TOKEN) {
+      mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
+        type: 'Default',
+        item: 'Book',
+      });
+    }
   } catch (err) {
     console.error(err);
     BookView.renderToast(`Couldn't copy the URL`, true);
@@ -124,10 +130,12 @@ const controlXShare = function (title, url) {
   const text = `Check out the book ${title} on shelf share.`;
   const xUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
   window.open(xUrl, '_blank');
-  mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
-    type: 'X',
-    item: 'Book',
-  });
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
+      type: 'X',
+      item: 'Book',
+    });
+  }
 };
 
 const controlBookUrlCreation = function (route, id) {
@@ -141,22 +149,28 @@ const controlSearchResults = async function (path, query, category) {
     if (!query && !category) return;
     controlSearchUrlCreation(query, category, path);
     if (category) {
-      mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH_FILTER, {
-        type: category,
-      });
+      if (MIXPANEL_TOKEN) {
+        mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH_FILTER, {
+          type: category,
+        });
+      }
     }
 
     if (path === '/find-books') {
       FindBooksView.renderLoader();
-      mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
-        from: 'Find Books Page',
-      });
+      if (MIXPANEL_TOKEN) {
+        mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
+          from: 'Find Books Page',
+        });
+      }
     }
     if (path === '/create-collections') {
       CreateCollectionsView.renderLoader();
-      mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
-        from: 'Create Collections Page',
-      });
+      if (MIXPANEL_TOKEN) {
+        mixpanel.track(MIXPANEL_EVENTS.CLICKED_SEARCH, {
+          from: 'Create Collections Page',
+        });
+      }
     }
     await model.loadSearchResults(query, category);
 
@@ -214,11 +228,15 @@ const setUpSearchView = function (path) {
     SearchView.addHandlerCreateCollection(controlCreateCollection);
     SearchView.addHandlerResetSelections(controlResetSelections);
     SearchView.updateSelectedBooks(model.state.selectedBooks);
-    mixpanel.track(MIXPANEL_EVENTS.VIEWED_CREATE_COLLECTIONS_PAGE);
+    if (MIXPANEL_TOKEN) {
+      mixpanel.track(MIXPANEL_EVENTS.VIEWED_CREATE_COLLECTIONS_PAGE);
+    }
   } else if (path === '/find-books') {
     SearchView.render();
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
-    mixpanel.track(MIXPANEL_EVENTS.VIEWED_FIND_BOOKS_PAGE);
+    if (MIXPANEL_TOKEN) {
+      mixpanel.track(MIXPANEL_EVENTS.VIEWED_FIND_BOOKS_PAGE);
+    }
   }
   SearchView.addHandlerSearch((query, category) =>
     controlSearchResults(path, query, category),
@@ -252,10 +270,12 @@ const controlSearchDebounce = query => debouncedSearch(query);
 const controlAddBookmark = function () {
   if (!model.state.book.bookmarked) {
     model.addBookmark(model.state.book);
-    mixpanel.track(MIXPANEL_EVENTS.CLICKED_BOOKMARK, {
-      title: model.state.book.title,
-      authors: model.state.book.authors.join(`, `),
-    });
+    if (MIXPANEL_TOKEN) {
+      mixpanel.track(MIXPANEL_EVENTS.CLICKED_BOOKMARK, {
+        title: model.state.book.title,
+        authors: model.state.book.authors.join(`, `),
+      });
+    }
   } else model.deleteBookmark(model.state.book.id);
   bookView.update(model.state.book);
 };
@@ -278,7 +298,9 @@ const setUpBookmarksView = function () {
   BookmarksView.addHandlerBookRoutes((route, id) =>
     controlBookUrlCreation(route, id),
   );
-  mixpanel.track(MIXPANEL_EVENTS.VIEWED_SHELF);
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.VIEWED_SHELF);
+  }
 };
 
 // Collections
@@ -316,10 +338,12 @@ const controlCreateCollection = function (collectionName, totalBooks) {
   model.createCollection(collectionName);
   SearchView.updateSelectedBooks(model.state.selectedBooks);
   CreateCollectionsView.update(model.state.search.results);
-  mixpanel.track(MIXPANEL_EVENTS.CREATED_COLLECTION, {
-    name: collectionName,
-    totalBooks: totalBooks,
-  });
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.CREATED_COLLECTION, {
+      name: collectionName,
+      totalBooks: totalBooks,
+    });
+  }
 };
 
 // Individual Collection
@@ -378,7 +402,9 @@ const controlIndividualCollectionShare = function () {
     top: 0,
     left: 0,
   });
-  mixpanel.track(MIXPANEL_EVENTS.VIEWED_COLLECTION);
+  if (MIXPANEL_TOKEN) {
+    mixpanel.track(MIXPANEL_EVENTS.VIEWED_COLLECTION);
+  }
 };
 
 const constructIndividualCollectionShareUrl = async function (collection, btn) {
@@ -397,10 +423,12 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
     const message = await helperShare(shareableUrl);
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);
-    mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
-      type: 'Default',
-      item: 'Collection',
-    });
+    if (MIXPANEL_TOKEN) {
+      mixpanel.track(MIXPANEL_EVENTS.CLICKED_SHARE, {
+        type: 'Default',
+        item: 'Collection',
+      });
+    }
   } catch (err) {
     console.error(err);
     IndividualCollectionView.renderToast(`Couldn't copy the URL`, true);
@@ -408,11 +436,13 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
 };
 
 const init = function () {
-  mixpanel.init(MIXPANEL_TOKEN, {
-    debug: false,
-    track_pageview: true,
-    persistence: 'localStorage',
-  });
+  if (MIXPANEL_TOKEN) {
+    mixpanel.init(MIXPANEL_TOKEN, {
+      debug: false,
+      persistence: 'localStorage',
+    });
+  }
+
   setUpInitialView();
   controlRouter();
   IndividualCollectionView.addHandlerRenderShare(

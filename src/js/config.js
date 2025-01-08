@@ -4,7 +4,10 @@ export const API_URL = 'https://www.googleapis.com/books/v1/volumes';
 /* eslint-disable-next-line no-undef */
 export const API_KEY = process.env.API_KEY;
 /* eslint-disable-next-line no-undef */
-export const MIXPANEL_TOKEN = process.env.MIXPANEL_TOKEN;
+export const MIXPANEL_TOKEN = process.env.MIXPANEL_TOKEN
+  ? /* eslint-disable-next-line no-undef */
+    process.env.MIXPANEL_TOKEN
+  : '';
 export const TIMEOUT_SEC = 10;
 export const MIXPANEL_EVENTS = {
   CLICKED_SHARE: 'Clicked Share',
