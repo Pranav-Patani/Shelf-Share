@@ -416,7 +416,6 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
         false,
         true,
       );
-      console.log(updatedCollectionUrl);
       window.history.replaceState('', '', updatedCollectionUrl);
       controlIndividualCollectionShare();
       return;

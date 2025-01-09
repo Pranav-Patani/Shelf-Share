@@ -330,13 +330,22 @@
     }
 
     &__results-container {
-      // position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
 
-      // min-height: 50vh;
+      @include respond(tab-land) {
+        padding: var(--space-2) var(--space-10);
+      }
+
+      @include respond(tab-port) {
+        padding: var(--space-2) var(--space-5);
+      }
+
+      @include respond(phone) {
+        padding: var(--space-2) var(--space-1);
+      }
 
       &__card-container {
         display: flex;
