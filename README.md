@@ -1,5 +1,5 @@
 <p align=center>
-<a target="_blank" style="text-decoration: none" href="https://shelfshare.vercel.app">
+<a target="_blank" style="text-decoration: none" href="https://shelfshare.vercel.app/?utm_source=github&utm_content=logo">
     <img style="width: 350px" src="./src/img/logo.svg" alt="shelf share" />
 </a>
     <br/>
@@ -9,7 +9,7 @@
 <br/>
 <hr/>
 <br/>
-A <a target="_blank" href="https://shelfshare.vercel.app">web application</a> that lets you search for books, create collections of books and share them. 📚
+A <a target="_blank" href="https://shelfshare.vercel.app/?utm_source=github&utm_content=textlink">web application</a> that lets you search for books, create collections of books and share them. 📚
 
 ## 🎦 DEMO
 
