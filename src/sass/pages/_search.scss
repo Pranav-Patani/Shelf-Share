@@ -334,19 +334,19 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: var(--space-2) var(--space-12);
+      padding: var(--space-2) var(--space-4);
 
       @include respond(large-screen) {
         padding: var(--space-2) var(--space-0);
       }
 
-      @include respond(tab-land) {
-        padding: var(--space-2) var(--space-10);
-      }
+      // @include respond(tab-land) {
+      //   padding: var(--space-2) var(--space-10);
+      // }
 
-      @include respond(tab-port) {
-        padding: var(--space-2) var(--space-5);
-      }
+      // @include respond(tab-port) {
+      //   padding: var(--space-2) var(--space-5);
+      // }
 
       @include respond(phone) {
         padding: var(--space-2) var(--space-1);
@@ -375,7 +375,7 @@
           justify-content: center;
           flex-wrap: wrap;
           margin: 0 auto;
-          gap: var(--space-5);
+          gap: var(--space-4);
 
           @include respond(tab-land) {
             gap: var(--space-3);

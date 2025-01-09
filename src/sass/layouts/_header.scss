@@ -8,7 +8,7 @@
   z-index: var(--z-index-lvl-3);
   height: 6.4rem;
   width: 100%;
-  padding: var(--space-2) var(--space-12);
+  padding: var(--space-2) var(--space-4);
   box-shadow: 0.1rem 0.2rem 1.6rem rgba(var(--color-shadow-rgb), 0);
   justify-content: space-between;
   background-color: transparent;
@@ -17,13 +17,13 @@
   top: 0;
   left: 0;
 
-  @include respond(tab-land) {
-    padding: var(--space-2) var(--space-10);
-  }
+  // @include respond(tab-land) {
+  //   padding: var(--space-2) var(--space-10);
+  // }
 
-  @include respond(tab-port) {
-    padding: var(--space-2) var(--space-5);
-  }
+  // @include respond(tab-port) {
+  //   padding: var(--space-2) var(--space-5);
+  // }
 
   @include respond(phone) {
     padding: var(--space-2) var(--space-2);

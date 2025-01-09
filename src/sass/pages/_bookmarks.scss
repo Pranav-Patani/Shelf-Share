@@ -62,12 +62,20 @@
     margin: auto;
     width: 100%;
     background-color: var(--color-background-light);
-    padding: var(--space-5) var(--space-0) var(--space-8);
+    padding: var(--space-5) var(--space-4) var(--space-8);
     display: flex;
     justify-content: center;
     align-items: center;
 
     @include respond(tab-port) {
+      padding: var(--space-2) var(--space-0) var(--space-5);
+    }
+
+    @include respond(tab-port) {
+      padding: var(--space-2) var(--space-3) var(--space-5);
+    }
+
+    @include respond(phone) {
       padding: var(--space-2) var(--space-2) var(--space-5);
     }
   }
@@ -87,10 +95,10 @@
       list-style: none;
       justify-content: center;
       align-items: flex-start;
-      gap: var(--space-5);
+      gap: var(--space-4);
 
       @include respond(phone) {
-        gap: var(--space-3);
+        gap: var(--space-2);
       }
     }
   }
