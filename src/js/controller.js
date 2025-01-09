@@ -414,12 +414,19 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
         window.location.origin,
         collection,
         false,
+        true,
       );
+      console.log(updatedCollectionUrl);
       window.history.replaceState('', '', updatedCollectionUrl);
       controlIndividualCollectionShare();
       return;
     }
-    const shareableUrl = setUrlData(window.location.origin, collection);
+    const shareableUrl = setUrlData(
+      window.location.origin,
+      collection,
+      true,
+      true,
+    );
     const message = await helperShare(shareableUrl);
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);

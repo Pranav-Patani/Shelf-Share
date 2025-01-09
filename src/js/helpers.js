@@ -97,18 +97,25 @@ export const getUrlData = function () {
   return data;
 };
 
-export const setUrlData = function (path, data, set = true) {
-  const url = new URL(path, window.location.origin);
+export const setUrlData = function (
+  path,
+  data,
+  set = true,
+  collection = false,
+) {
+  const urlObject = new URL(path, window.location.origin);
   Object.entries(data).forEach(([key, val]) => {
-    url.searchParams.set(
+    urlObject.searchParams.set(
       key,
       Array.isArray(val) ? encodeURIComponent(JSON.stringify(val)) : val,
     );
   });
 
-  const pathname = `${url.pathname}?${url.searchParams}`;
+  let url = urlObject.pathname;
+  if (collection) url = urlObject.origin;
+  const finalUrl = `${url}?${urlObject.searchParams}`;
   if (set) {
-    window.history.pushState('', '', pathname);
+    window.history.pushState('', '', finalUrl);
   }
-  return pathname;
+  return finalUrl;
 };
