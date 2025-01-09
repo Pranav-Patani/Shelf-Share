@@ -145,7 +145,7 @@
   }
 
   @include respond(phone) {
-    padding: calc(var(--space-header) + var(--space-4)) var(--space-3)
+    padding: calc(var(--space-header) + var(--space-4)) var(--space-2)
       var(--space-0);
   }
 
