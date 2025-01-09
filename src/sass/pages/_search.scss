@@ -112,7 +112,6 @@
             transition: all 0.2s;
             cursor: pointer;
             background-color: var(--color-white);
-            border-left: 1px solid rgba(var(--color-gray-light-rgb), 0.2);
             color: var(--color-primary-dark);
             margin-right: auto;
             padding: var(--space-2);
@@ -126,21 +125,31 @@
             &:active {
               background-color: var(--color-white);
             }
+
+            & svg {
+              fill: var(--color-primary);
+              height: 2rem;
+              width: 2rem;
+            }
           }
 
           &__powered-by {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            right: -14%;
+            right: -7rem;
             text-decoration: none;
 
+            @include respond(large-screen) {
+              right: -6rem;
+            }
+
             @include respond(tab-land) {
-              right: -16%;
+              right: -8rem;
             }
 
             @include respond(tab-port) {
-              right: -18.5%;
+              right: -8.2rem;
             }
 
             @include respond(phone) {
@@ -321,11 +330,13 @@
     }
 
     &__results-container {
+      // position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      min-height: 50vh;
+
+      // min-height: 50vh;
 
       &__card-container {
         display: flex;
@@ -335,7 +346,7 @@
           padding: var(--space-0) var(--space-4) var(--space-3);
           color: var(--color-gray-light);
           margin-left: var(--space-neg-1);
-          align-self: flex-end;
+          align-self: flex-start;
 
           &--count {
             color: var(--color-text-dark);

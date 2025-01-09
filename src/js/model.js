@@ -35,7 +35,7 @@ export const loadBook = async function (id) {
       rating: data.volumeInfo?.averageRating || '',
       image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
       language: data.volumeInfo?.language || 'not available',
-      previewLink: data.volumeInfo?.previewLink || 'not available',
+      previewLink: `https://www.google.co.in/books/edition/_/${data.id}?hl=en`,
       embeddable: data.accessInfo?.embeddable,
     };
 

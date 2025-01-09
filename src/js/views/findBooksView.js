@@ -1,5 +1,5 @@
 import View from './View';
-import PreviewViewIndividual from './previewView';
+import PreviewView from './previewView';
 
 class FindBooksView extends View {
   get _parentElement() {
@@ -21,9 +21,7 @@ class FindBooksView extends View {
 
   _generateMarkup() {
     const cards = this._data
-      .map(result =>
-        PreviewViewIndividual.render(result, false, 'add-bookmark-btn'),
-      )
+      ?.map(result => PreviewView.render(result, false, 'add-bookmark-btn'))
       .join('');
     if (!this._data) return `Sorry, No Results Match Your Search Query :(`;
     return `

@@ -35,14 +35,10 @@ A <a target="_blank" href="https://shelfshare.vercel.app">web application</a> th
 
 ## API Used
 
-<a target="_blank" style="text-decoration: none" href="https://books.google.co.in/">
-  <img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white" />
-</a>
-</a>
-<br/>
-<br/>
-
-- To fetch books: [Google Books API](https://developers.google.com/books/docs/overview)
+- To fetch books: [Google Books API Family](https://developers.google.com/books) &nbsp;
+  <a target="_blank" style="text-decoration: none" href="https://www.google.com">
+  <img style="width:50px" src="./src/img/poweredbygoogle.png" />
+  </a>
 
 ## 🔧 Prerequisites
 

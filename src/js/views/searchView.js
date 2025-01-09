@@ -279,7 +279,9 @@ class SearchView extends View {
               class="section-search__user-options__max-width-container__search__search-bar-container search-form"
             >
               <button class="submit-btn" type="submit">
-               Search
+               <svg>
+                <use xlink:href="${sprite}#icon-magnifying-glass"></use>
+               </svg>
               </button>
               <input
                 type="text"
@@ -290,7 +292,7 @@ class SearchView extends View {
             </form>
            <a href="https://www.google.com" target="_blank" class="section-search__user-options__max-width-container__search__search-bar-container__powered-by">
               <img class="section-search__user-options__max-width-container__search__search-bar-container__powered-by--img" src=${poweredByImg} />
-            </a>
+          </a>
 
             <div class="section-search__user-options__max-width-container__search__suggestions">
               ${this._generateSuggestionsContainerMarkup()} 

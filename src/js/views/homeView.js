@@ -3,6 +3,7 @@ import homeCreatePlansImg from 'url:../../img/home_create-plans.webp';
 import homeSavePlansImg from 'url:../../img/home_save-plans.webp';
 import homeSharePlansImg from 'url:../../img/home_share-plans.webp';
 import sprite from 'url:../../img/sprite.svg';
+import poweredByImg from 'url:../../img/poweredbygoogle.png';
 class HomeView extends View {
   _parentElement = document.querySelector('.container');
   _count = 1;
@@ -246,25 +247,30 @@ class HomeView extends View {
             </div>
             </section>
             <div class="homepage__modal">
-              <div class="homepage__modal__content">
-                <form class="homepage__modal__content__search-form search-form">
-                  <div class="homepage__modal__content__search-form__search-bar-container">
+            <div class="homepage__modal__wrapper">
+              <div class="homepage__modal__wrapper__content">
+                <form class="homepage__modal__wrapper__content__search-form search-form">
+                  <div class="homepage__modal__wrapper__content__search-form__search-bar-container">
                     <input 
-                    class="homepage__modal__content__search-form__search-bar-container__search-bar search-bar"
+                    class="homepage__modal__wrapper__content__search-form__search-bar-container__search-bar search-bar"
                     placeholder="Type 3 or more characters..."
                     autocomplete="off"
                     />
-                    <button class="homepage__modal__content__search-form__search-bar-container__search-btn">
-                    <svg class="homepage__modal__content__search-form__search-bar-container__search-btn__svg">
+                    <button class="homepage__modal__wrapper__content__search-form__search-bar-container__search-btn">
+                    <svg class="homepage__modal__wrapper__content__search-form__search-bar-container__search-btn__svg">
                       <use xlink:href="${sprite}#icon-magnifying-glass"></use>
                     </svg>
                     </button>
                   </div>
                 </form>
-                <div class="homepage__modal__content__suggestions">
+                <div class="homepage__modal__wrapper__content__suggestions">
                   ${suggestionsContainer}
                 </div>
               </div>
+              <a href="https://www.google.com" target="_blank" class="homepage__modal__wrapper__powered-by">
+                <img class="homepage__modal__wrapper__powered-by--img" src=${poweredByImg} />
+              </a>
+            </div>
             </div>
           </div>
     `;

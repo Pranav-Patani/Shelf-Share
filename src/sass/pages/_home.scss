@@ -10,68 +10,117 @@
     align-items: flex-start;
     padding-top: var(--space-12);
 
-    &__content {
+    &__wrapper {
       position: relative;
-      background-color: var(--color-background-light);
       width: 90%;
       max-width: 70rem;
-      border-radius: 2rem;
-      overflow: hidden;
-      transition: all 0.2s;
 
-      &__search-form {
-        border-bottom: 1px solid rgba(var(--color-shadow-rgb), 0.2);
+      @include respond(tab-port) {
+        width: 70%;
+      }
 
-        &__search-bar-container {
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-          padding: var(--space-1) var(--space-3);
+      @include respond(phone) {
+        width: 90%;
+      }
 
-          &__search-bar {
-            padding: var(--space-1);
-            border: none;
-            width: 100%;
-            transition: all 0.3s;
-            font-size: var(--font-size-xl);
-            color: var(--color-gray-dark);
-            font-family: var(--font-primary);
-            background-color: var(--color-background-light);
+      &__content {
+        position: relative;
+        background-color: var(--color-background-light);
+        border-radius: 2rem;
+        overflow: hidden;
+        transition: all 0.2s;
 
-            &::placeholder {
-              font-size: var(--font-size-l);
-              color: var(--color-gray-light);
+        &__search-form {
+          border-bottom: 1px solid rgba(var(--color-shadow-rgb), 0.2);
+
+          &__search-bar-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: var(--space-1) var(--space-3);
+
+            &__search-bar {
+              padding: var(--space-1);
+              border: none;
+              width: 100%;
+              transition: all 0.3s;
+              font-size: var(--font-size-xl);
+              color: var(--color-gray-dark);
+              font-family: var(--font-primary);
+              background-color: var(--color-background-light);
+
+              &::placeholder {
+                font-size: var(--font-size-l);
+                color: var(--color-gray-light);
+              }
+
+              &:focus {
+                outline: none;
+              }
             }
 
-            &:focus {
-              outline: none;
-            }
-          }
+            &__search-btn {
+              border: none;
+              transition: all 0.2s;
+              cursor: pointer;
+              background-color: var(--color-background-light);
+              padding: var(--space-1);
 
-          &__search-btn {
-            border: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            background-color: var(--color-background-light);
-            padding: var(--space-1);
-
-            &__svg {
-              display: block;
-              height: 2.6rem;
-              width: 2.6rem;
-              fill: rgba(var(--color-primary-light-rgb), 1);
+              &__svg {
+                display: block;
+                height: 2.6rem;
+                width: 2.6rem;
+                fill: rgba(var(--color-primary-light-rgb), 1);
+              }
             }
           }
         }
+
+        &__suggestions {
+          max-height: 50vh;
+          overflow: auto;
+          box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
+          transition: all 0.2s;
+
+          @include scroll-bar;
+        }
       }
 
-      &__suggestions {
-        max-height: 50vh;
-        overflow: auto;
-        box-shadow: 0 0.3rem 1rem rgba(var(--color-shadow-rgb), 0.15);
-        transition: all 0.2s;
+      &__powered-by {
+        position: absolute;
+        top: 55%;
+        right: -7rem;
+        transform: translateY(-45%);
+        text-decoration: none;
 
-        @include scroll-bar;
+        @include respond(large-screen) {
+          right: -6rem;
+        }
+
+        @include respond(tab-land) {
+          right: -8rem;
+        }
+
+        @include respond(tab-port) {
+          right: -8.8rem;
+        }
+
+        @include respond(phone) {
+          top: -40%;
+          right: 0;
+        }
+
+        &--img {
+          display: block;
+
+          @include respond(tab-port) {
+            height: 3.5rem;
+          }
+
+          @include respond(phone) {
+            height: 2.8rem;
+          }
+        }
       }
     }
   }
@@ -109,11 +158,16 @@
     max-width: 120rem;
 
     &__text {
-      width: 50%;
+      margin: auto;
+      width: 45%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      @include respond(tab-land) {
+        width: 50%;
+      }
 
       @include respond(phone) {
         width: 100%;
@@ -185,9 +239,13 @@
     }
 
     &__img {
-      width: 50%;
-      text-align: center;
+      width: 45%;
+      text-align: right;
       margin: auto;
+
+      @include respond(tab-land) {
+        width: 50%;
+      }
 
       @include respond(phone) {
         display: none;
