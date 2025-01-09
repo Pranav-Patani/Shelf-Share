@@ -99,13 +99,14 @@ class BookView extends View {
     if (!btn) return;
     btn.addEventListener('click', e => {
       e.preventDefault();
-      handler(this._data.title, window.location.href);
+      const url = `${window.location.href}&utm_source=X`;
+      handler(this._data.title, url);
     });
   }
 
   _generateMarkup() {
     const xShareText = `Check out the book ${this._data.title} on shelf share.`;
-    const xShareUrl = `${window.location.href}`;
+    const xShareUrl = `${window.location.href}&utm_source=X`;
     return `
       <section class="section-book-view">
       <div class="section-book-view__temp"></div>

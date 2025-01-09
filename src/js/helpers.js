@@ -1,4 +1,5 @@
-import { TIMEOUT_SEC } from './config';
+import { MIXPANEL_TOKEN, TIMEOUT_SEC } from './config';
+import mixpanel from 'mixpanel-browser';
 
 const timeout = s =>
   new Promise(function (_, reject) {
@@ -90,7 +91,8 @@ export const throttle = (cb, delay = 200) => {
 };
 
 export const getUrlData = function () {
-  const keys = window.location.search;
+  const keys = decodeURIComponent(window.location.search);
+  console.log(keys);
   const urlParams = new URLSearchParams(keys);
   const data = {};
   urlParams.forEach((val, key) => (data[key] = val));
@@ -113,9 +115,22 @@ export const setUrlData = function (
 
   let url = urlObject.pathname;
   if (collection) url = urlObject.origin;
-  const finalUrl = `${url}?${urlObject.searchParams}`;
+  const finalUrl = encodeURI(`${url}?${urlObject.searchParams}`);
   if (set) {
     window.history.pushState('', '', finalUrl);
   }
   return finalUrl;
+};
+
+export const mixPanelTrack = function (event, properties = '') {
+  if (!MIXPANEL_TOKEN) return;
+  mixpanel.track(event, properties);
+};
+
+export const checkUtm = function () {
+  const data = getUrlData();
+  const utm = { utm_source: data.utm_source, utm_content: data.utm_content };
+  if (!utm.utm_source) utm.utm_source = null;
+  if (!utm.utm_content) utm.utm_content = null;
+  return utm;
 };
