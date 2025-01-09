@@ -20,4 +20,5 @@ export const MIXPANEL_EVENTS = {
   VIEWED_CREATE_COLLECTIONS_PAGE: 'Viewed Create Collections Page',
   VIEWED_SHELF: 'Viewed Shelf',
   VIEWED_COLLECTION: 'Viewed Collection',
+  VIEWED_BOOK: 'Viewed Book',
 };
