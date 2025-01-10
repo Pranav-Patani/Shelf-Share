@@ -241,7 +241,6 @@
   }
 
   &__results {
-    min-height: 75vh;
     padding: var(--space-4) var(--space-4) var(--space-10);
     background-color: var(--color-background-light);
     width: 100%;
@@ -344,6 +343,7 @@
       align-items: center;
       justify-content: center;
       width: 100%;
+      min-height: 75vh;
 
       &__card-container {
         display: flex;
