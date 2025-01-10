@@ -136,6 +136,9 @@ class SearchView extends View {
     const msg = this._parentElement.querySelector('.modal-msg');
     const errMsg = this._parentElement.querySelector('.modal-err-msg');
     const input = this._parentElement.querySelector('#modal-input');
+    const inputContainer = this._parentElement.querySelector(
+      `.section-search__modal__content__form__input-container`,
+    );
     const closeBtn = this._parentElement.querySelector(
       '.section-search__modal__content__close-btn',
     );
@@ -162,12 +165,22 @@ class SearchView extends View {
       });
     };
 
+    const addFoucs = () => {
+      inputContainer.classList.add('focused');
+      input.focus();
+    };
+
+    const removeFoucs = () => {
+      inputContainer.classList.remove('focused');
+      input.blur();
+    };
+
     const openModal = () => {
       modal.classList.add('section-search__modal--active');
       submitBn.classList.remove(
         `section-search__modal__content__form__btn--hidden`,
       );
-      setTimeout(() => input.focus(), 50);
+      setTimeout(addFoucs, 50);
       document.addEventListener('keydown', handleEscape);
     };
 
@@ -184,19 +197,22 @@ class SearchView extends View {
       errMsg.textContent = '';
       msg.textContent = '';
       input.value = '';
-      input.blur();
+      removeFoucs();
     };
 
     openModal();
+
+    input.addEventListener('focus', addFoucs);
+    input.addEventListener('blur', removeFoucs);
 
     closeBtn.addEventListener('click', closeModal);
 
     input.addEventListener('input', e => {
       const inputCounter = this._parentElement.querySelector(
-        `.section-search__modal__content__form__input-count`,
+        `.section-search__modal__content__form__input-container__input-count`,
       );
       if (e.target.value.length > 50) {
-        errMsg.textContent = 'Name cannot be longer than 40 characters :(';
+        errMsg.textContent = 'Name cannot be longer than 50 characters :(';
         input.value = input.value.slice(0, 50);
       } else {
         errMsg.textContent = '';
@@ -333,14 +349,17 @@ class SearchView extends View {
             <h3 class="heading-3 section-search__modal__content__heading">Enter Collection's Name</h3>
                          
               <form class="section-search__modal__content__form modal-form">
+              <div class="section-search__modal__content__form__input-container">
                 <input
                   type="text"
                   id="modal-input"
-                  class="section-search__modal__content__form__input"
+                  class="section-search__modal__content__form__input-container__input"
                   placeholder="collection name"
                   autocomplete="off"
                 />
-                <span class="section-search__modal__content__form__input-count">0/50</span>
+                <span class="section-search__modal__content__form__input-container__input-count">0/50</span>
+              </div>
+
                 <button class="btn-tertiary section-search__modal__content__form__btn" type="submit">Create</button>
               </form>
             <p class="section-search__modal__content__msg modal-msg"></p>

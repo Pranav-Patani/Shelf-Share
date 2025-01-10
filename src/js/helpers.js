@@ -91,7 +91,6 @@ export const throttle = (cb, delay = 200) => {
 
 export const getUrlData = function () {
   const keys = decodeURIComponent(window.location.search);
-  console.log(keys);
   const urlParams = new URLSearchParams(keys);
   const data = {};
   urlParams.forEach((val, key) => (data[key] = val));
