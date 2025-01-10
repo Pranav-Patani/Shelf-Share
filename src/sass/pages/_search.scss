@@ -10,13 +10,13 @@
     justify-content: center;
     margin: 0 auto;
     padding: calc(var(--space-header) + var(--space-3)) var(--space-0)
-      var(--space-3);
+      var(--space-4);
     z-index: var(--z-index-lvl-2); // creating a stacking context
     position: relative;
 
     @include respond(tab-port) {
       padding: calc(var(--space-header) + var(--space-2)) var(--space-0)
-        var(--space-2);
+        var(--space-4);
     }
 
     @include bg-image(top);
@@ -242,17 +242,13 @@
 
   &__results {
     min-height: 75vh;
-    padding: var(--space-7) var(--space-4) var(--space-10);
+    padding: var(--space-4) var(--space-4) var(--space-10);
     background-color: var(--color-background-light);
     width: 100%;
     max-width: 120rem;
     margin: auto;
 
     @include respond(tab-land) {
-      padding: var(--space-4) var(--space-4) var(--space-8);
-    }
-
-    @include respond(tab-port) {
       padding: var(--space-4) var(--space-4) var(--space-8);
     }
 
@@ -354,7 +350,7 @@
 
         &__text {
           color: var(--color-gray-light);
-          align-self: flex-start;
+          align-self: center;
           margin-bottom: var(--space-4);
 
           @include respond(phone) {
