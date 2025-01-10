@@ -57,9 +57,11 @@ class PreviewView extends View {
                       ? `<svg class="svg-fill">
                     <use xlink:href="${sprite}#icon-circle-with-minus"></use>
                   </svg>`
-                      : markupClass == 'shared-view'
+                      : markupClass === 'shared-view'
                         ? ''
-                        : `<svg class="${this._data.bookmarked ? 'svg-fill' : 'svg-empty'}">
+                        : markupClass === 'no-button'
+                          ? ``
+                          : `<svg class="${this._data.bookmarked ? 'svg-fill' : 'svg-empty'}">
                     <use xlink:href="${sprite}#icon-bookmark"></use>
                   </svg>`
                 }

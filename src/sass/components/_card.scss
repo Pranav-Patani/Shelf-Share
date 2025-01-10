@@ -170,27 +170,24 @@
         position: absolute;
         margin: auto;
         transition: all 0.2s;
-        box-shadow: 0 0.5rem 1rem rgba(#030712, 0.3);
+        box-shadow: 0 0.5rem 1rem rgba(var(--color-shadow-rgb), 0.3);
 
         &--1 {
-          // top: 0;
           left: -0.1rem;
         }
 
         &--2 {
-          // top: 0;
           left: 4rem;
         }
 
         &--3 {
-          // top: 0;
           left: 9rem;
         }
 
         &:hover {
           outline: 0.2rem solid var(--color-gray-light);
           transform: scale(1.01) translateY(-0.2rem);
-          box-shadow: 0 2.5rem 4rem rgba(#030712, 0.5);
+          box-shadow: 0 2.5rem 4rem rgba(var(--color-shadow-rgb), 0.5);
           z-index: 20;
         }
       }

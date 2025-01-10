@@ -33,6 +33,7 @@ class BookView extends View {
 
   addHandlerAddBookmark(handler) {
     this._parentElement.addEventListener('click', function (e) {
+      e.stopImmediatePropagation();
       const btn = e.target.closest('.btn--bookmark');
       if (!btn) return;
       handler();

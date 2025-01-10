@@ -49,6 +49,7 @@ const controlRouter = function () {
       callback: () => setUpSearchView(window.location.pathname),
     },
     { path: '/book', callback: () => controlBooks() },
+    { path: '/collection', callback: () => controlIndividualCollection() },
     { path: '/error', callback: () => setUpErrorView() },
   ];
 
@@ -249,7 +250,6 @@ const setUpSearchView = function (path) {
   } else if (path === '/find-books') {
     SearchView.render();
     FindBooksView.addHandlerBookmark(controlSearchResultBookmark);
-
     mixPanelTrack(MIXPANEL_EVENTS.VIEWED_FIND_BOOKS_PAGE);
   }
   SearchView.addHandlerSearch((query, category) =>
@@ -375,6 +375,7 @@ const controlCollectionView = function (collectionId) {
   const collection = model.state.collections.find(
     collection => collection.id === Number(collectionId),
   );
+  Router.navigateTo('/collection');
   constructIndividualCollectionShareUrl(collection);
 };
 
@@ -388,6 +389,8 @@ const controlDeleteCollection = function (collectionId) {
   CollectionsView.addHandlerLinks();
 };
 
+// Not in use currently
+
 const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
   model.deleteIndividualCollectionBook(bookId, collectionId);
   const collection = model.state.collections.find(
@@ -400,6 +403,12 @@ const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
   }
 };
 
+const controlIndividualCollection = function () {
+  IndividualCollectionView.addHandlerRenderShare(
+    controlIndividualCollectionShare,
+  );
+};
+
 const controlIndividualCollectionShare = function () {
   const collectionData = getUrlData();
   if (!collectionData.collectionName) return;
@@ -407,11 +416,7 @@ const controlIndividualCollectionShare = function () {
   collectionData.books = JSON.parse(decodeURIComponent(collectionData.books));
 
   IndividualCollectionView.renderLoader();
-  IndividualCollectionView.render(
-    collectionData,
-    true,
-    'remove-collection-btn',
-  );
+  IndividualCollectionView.render(collectionData, true, 'no-button');
   IndividualCollectionView.addHandlerShare(
     constructIndividualCollectionShareUrl,
   );
@@ -428,29 +433,24 @@ const controlIndividualCollectionShare = function () {
   mixPanelTrack(MIXPANEL_EVENTS.VIEWED_COLLECTION);
 };
 
-const constructIndividualCollectionShareUrl = async function (collection, btn) {
+const constructIndividualCollectionShareUrl = async function (
+  collection,
+  share,
+) {
   try {
-    if (!btn) {
+    if (!share) {
       const updatedCollectionUrl = setUrlData(
-        window.location.origin,
+        window.location.pathname,
         collection,
         false,
-        true,
       );
       window.history.replaceState('', '', updatedCollectionUrl);
       controlIndividualCollectionShare();
       return;
     }
-    const shareableUrl = setUrlData(
-      window.location.origin,
-      collection,
-      true,
-      true,
-    );
     const message = await helperShare(
-      shareableUrl,
+      window.location.href,
       collection.collectionName,
-      true,
     );
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);
@@ -475,9 +475,6 @@ const init = function () {
 
   setUpInitialView();
   controlRouter();
-  IndividualCollectionView.addHandlerRenderShare(
-    controlIndividualCollectionShare,
-  );
 };
 
 init();

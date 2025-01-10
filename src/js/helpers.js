@@ -97,12 +97,7 @@ export const getUrlData = function () {
   return data;
 };
 
-export const setUrlData = function (
-  path,
-  data,
-  set = true,
-  collection = false,
-) {
+export const setUrlData = function (path, data, set = true) {
   const urlObject = new URL(path, window.location.origin);
   Object.entries(data).forEach(([key, val]) => {
     urlObject.searchParams.set(
@@ -112,7 +107,6 @@ export const setUrlData = function (
   });
 
   let url = urlObject.pathname;
-  if (collection) url = urlObject.origin;
   const finalUrl = encodeURI(`${url}?${urlObject.searchParams}`);
   if (set) {
     window.history.pushState('', '', finalUrl);

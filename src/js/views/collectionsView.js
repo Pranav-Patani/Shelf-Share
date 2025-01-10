@@ -98,10 +98,10 @@ class CollectionsView extends View {
           </p>
  
           <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--view" data-collection-id="${collection.id}">
-            View Collection
+            View
           </button>
           <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--delete" data-collection-id="${collection.id}">
-            Delete Collection
+            Delete
           </button>
         </div>
       </li>
