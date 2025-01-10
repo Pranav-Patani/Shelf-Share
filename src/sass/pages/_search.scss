@@ -9,13 +9,13 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    padding: calc(var(--space-header) + var(--space-3)) var(--space-2)
+    padding: calc(var(--space-header) + var(--space-3)) var(--space-0)
       var(--space-3);
     z-index: var(--z-index-lvl-2); // creating a stacking context
     position: relative;
 
     @include respond(tab-port) {
-      padding: calc(var(--space-header) + var(--space-2)) var(--space-1)
+      padding: calc(var(--space-header) + var(--space-2)) var(--space-0)
         var(--space-2);
     }
 
@@ -29,6 +29,10 @@
       margin: 0 auto;
       width: 100%;
       max-width: 120rem;
+
+      @include respond(phone) {
+        padding: 0 var(--space-2);
+      }
 
       &__search {
         width: 50%;
@@ -44,7 +48,7 @@
         }
 
         @include respond(phone) {
-          width: 85%;
+          width: 100%;
           margin-top: var(--space-3);
         }
 
@@ -194,6 +198,7 @@
         @include respond(phone) {
           margin: var(--space-3) auto 0;
           gap: 0.5rem;
+          width: 100%;
         }
 
         &__btn {
@@ -237,14 +242,22 @@
 
   &__results {
     min-height: 75vh;
-    padding: var(--space-7) var(--space-0) var(--space-10);
+    padding: var(--space-7) var(--space-4) var(--space-10);
     background-color: var(--color-background-light);
     width: 100%;
     max-width: 120rem;
     margin: auto;
 
+    @include respond(tab-land) {
+      padding: var(--space-4) var(--space-4) var(--space-8);
+    }
+
     @include respond(tab-port) {
-      padding: var(--space-5) var(--space-0) var(--space-8);
+      padding: var(--space-4) var(--space-4) var(--space-8);
+    }
+
+    @include respond(phone) {
+      padding: var(--space-4) var(--space-2) var(--space-8);
     }
 
     &__collection-controller {
@@ -334,33 +347,19 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: var(--space-2) var(--space-4);
-
-      @include respond(large-screen) {
-        padding: var(--space-2) var(--space-0);
-      }
-
-      // @include respond(tab-land) {
-      //   padding: var(--space-2) var(--space-10);
-      // }
-
-      // @include respond(tab-port) {
-      //   padding: var(--space-2) var(--space-5);
-      // }
-
-      @include respond(phone) {
-        padding: var(--space-2) var(--space-1);
-      }
 
       &__card-container {
         display: flex;
         flex-direction: column;
 
         &__text {
-          padding: var(--space-0) var(--space-4) var(--space-3);
           color: var(--color-gray-light);
-          margin-left: var(--space-neg-1);
           align-self: flex-start;
+          margin-bottom: var(--space-4);
+
+          @include respond(phone) {
+            margin-left: 0;
+          }
 
           &--count {
             color: var(--color-text-dark);
@@ -376,10 +375,6 @@
           flex-wrap: wrap;
           margin: 0 auto;
           gap: var(--space-4);
-
-          @include respond(tab-land) {
-            gap: var(--space-3);
-          }
 
           @include respond(tab-port) {
             gap: var(--space-2);
@@ -458,7 +453,7 @@
       &__err-msg {
         font-size: var(--font-size-l);
         font-weight: 700;
-        margin-bottom: var(--space-1);
+        margin: var(--space-1) 0;
       }
 
       &__err-msg {
@@ -510,13 +505,9 @@
           align-self: center;
           margin-top: var(--space-4);
           font-size: var(--font-size-l);
-          visibility: visible;
-          opacity: 1;
 
           &--hidden {
-            visibility: hidden;
-            opacity: 0;
-            height: 0;
+            display: none;
           }
         }
       }
