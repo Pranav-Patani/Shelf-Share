@@ -76,7 +76,7 @@ const setUpHomeView = function () {
   HomeView.render();
   HomeView.addHandlerCarousel();
   HomeView.addHandlerSearch(controlHomeSearch);
-  HomeView.addHandlerDebounce(query => controlSearchDebounce(query));
+  HomeView.addHandlerDebounce(query => controlSearchDebounce(query, 'home'));
   const properties = checkUtm();
   mixPanelTrack(MIXPANEL_EVENTS.VIEWED_HOME_PAGE, properties);
 };
@@ -255,29 +255,41 @@ const setUpSearchView = function (path) {
   SearchView.addHandlerSearch((query, category) =>
     controlSearchResults(path, query, category),
   );
-  SearchView.addHandlerDebounce(query => controlSearchDebounce(query));
+  SearchView.addHandlerDebounce(query =>
+    controlSearchDebounce(query, 'search'),
+  );
   SearchView.addHandlerBookRoutes((route, id) =>
     controlBookUrlCreation(route, id),
   );
   controlUrlSearchResultsLoad();
 };
 
-const searchDebounceCallback = async function (query) {
+const searchDebounceCallback = async function (query, path) {
   try {
     if (!query) {
       return;
     }
     await model.loadSearchTitles(query);
-    SearchView.updateSuggestions(model.state.search.titles);
-    HomeView.updateSuggestions(model.state.search.titles);
+    if (path === 'home') {
+      HomeView.updateSuggestions(model.state.search.titles);
+    }
+    if (path === 'search') {
+      SearchView.updateSuggestions(model.state.search.titles);
+    }
   } catch (err) {
     console.error(err);
+    if (path === 'home') {
+      HomeView.renderAlert();
+    }
+    if (path === 'search') {
+      SearchView.renderAlert();
+    }
   }
 };
 
 const debouncedSearch = debounce(searchDebounceCallback);
 
-const controlSearchDebounce = query => debouncedSearch(query);
+const controlSearchDebounce = (query, path) => debouncedSearch(query, path);
 
 // Bookmarks
 

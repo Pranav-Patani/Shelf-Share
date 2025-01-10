@@ -42,6 +42,7 @@ export const loadBook = async function (id) {
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.book.bookmarked = true;
     else state.book.bookmarked = false;
+    throw new Error('error');
   } catch (err) {
     console.error(err);
   }
@@ -64,6 +65,7 @@ export const loadSearchResults = async function (query, category) {
       bookmarked: state.bookmarks.some(bookmark => bookmark.id === cur.id),
       selected: state.selectedBooks.some(book => book.id === cur.id),
     }));
+    throw new Error('error');
   } catch (err) {
     console.error(err);
     throw err;
@@ -75,6 +77,7 @@ export const loadSearchTitles = async function (query) {
     const url = `${API_URL}?q=''+intitle:${query}&maxResults=40&key=${API_KEY}`;
     const data = await getJSON(url);
     state.search.titles = data.items?.map(cur => cur.volumeInfo?.title);
+    throw new Error('error');
   } catch (err) {
     console.error(err);
     throw err;

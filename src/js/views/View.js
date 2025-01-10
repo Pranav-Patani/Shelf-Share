@@ -13,10 +13,18 @@ class View {
     const modal = document.querySelector(`.alert-modal`);
     const loader = document.querySelector(`.loader`);
     const btn = document.querySelector(`.alert-modal__content__btn`);
-    btn.addEventListener('click', () => {
+    const otherModal = document.querySelector(`.homepage__modal`);
+    const closeModal = () => {
       modal.remove();
       if (loader) loader.remove();
+      if (otherModal) otherModal.classList.remove(`homepage__modal--active`);
+    };
+    modal.addEventListener('click', e => {
+      if (!e.target.closest('.alert-modal__content')) {
+        closeModal();
+      }
     });
+    btn.addEventListener('click', closeModal);
   }
 
   render(data, render = true, markupClass = '') {
@@ -38,7 +46,7 @@ class View {
   }
 
   renderAlert(
-    alert = 'Opps! Something went wrong. <p class="alert-modal__content__alert-message--sub">We are working on it, please check back later.</p>',
+    alert = 'Opps! Something went wrong. <p class="alert-modal__content__alert-message--sub paragraph">We are working on it, please check back later.</p>',
   ) {
     const markup = `
       <div class="alert-modal">
@@ -47,7 +55,7 @@ class View {
          <img class="alert-modal__content__gif-container__gif" src=${errorGif} alt="error"/>
         </div>
           <h4 class="heading-4 alert-modal__content__alert-message">${alert}</h4>
-          <p class=alert-modal__content__alert-message__contact>If required, please contact us on <a href="mailto: connectshelfshare@gmail.com" class="alert-modal__content__alert-message__contact--link">connectshelfshare@gmail.com</a></p>
+          <p class=alert-modal__content__alert-message__contact paragraph>If required, please contact us on <a href="mailto: connectshelfshare@gmail.com" class="alert-modal__content__alert-message__contact--link">connectshelfshare@gmail.com</a></p>
           <button class="alert-modal__content__btn btn-tertiary">Close</button>
         </div>
       </div>
