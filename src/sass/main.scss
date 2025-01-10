@@ -17,6 +17,7 @@
 @import 'components/card';
 @import 'components/suggestions';
 @import 'components/loader';
+@import 'components/alert-modal';
 
 // Pages
 @import 'pages/home';
@@ -24,3 +25,4 @@
 @import 'pages/search';
 @import 'pages/bookmarks';
 @import 'pages/collection-view';
+@import 'pages/error-view';
