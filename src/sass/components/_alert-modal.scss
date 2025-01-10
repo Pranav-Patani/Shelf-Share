@@ -4,8 +4,12 @@
   z-index: var(--z-index-lvl-4);
   visibility: visible;
   opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &__content {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,6 +17,11 @@
     background-color: var(--color-background-light);
     padding: var(--space-3);
     border-radius: 1rem;
+
+    @include respond(phone) {
+      width: 100%;
+      margin: var(--space-0) var(--space-7);
+    }
 
     &__gif-container {
       width: 20rem;
@@ -31,11 +40,19 @@
       font-weight: normal;
       color: var(--color-red);
 
+      @include respond(phone) {
+        margin: 0 auto;
+      }
+
       &--sub {
         color: var(--color-gray-dark);
       }
 
       &__contact {
+        @include respond(phone) {
+          margin: 0 auto;
+        }
+
         &--link {
           text-decoration: underline;
           color: var(--color-primary-dark);
