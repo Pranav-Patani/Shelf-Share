@@ -158,6 +158,7 @@ class SearchView extends View {
       userChoice.classList.add(
         `section-search__modal__content__choice-container--active`,
       );
+      input.setAttribute('disabled', 'true');
       createBtn.addEventListener('click', closeModal);
       viewBtn.addEventListener('click', () => {
         closeModal();
@@ -180,6 +181,7 @@ class SearchView extends View {
       submitBn.classList.remove(
         `section-search__modal__content__form__btn--hidden`,
       );
+      input.removeAttribute(`disabled`);
       setTimeout(addFoucs, 50);
       document.addEventListener('keydown', handleEscape);
     };
@@ -346,7 +348,7 @@ class SearchView extends View {
               </svg>
             </button>
 
-            <h3 class="heading-3 section-search__modal__content__heading">Enter Collection's Name</h3>
+            <h3 class="heading-3 section-search__modal__content__heading">Create Collection</h3>
                          
               <form class="section-search__modal__content__form modal-form">
               <div class="section-search__modal__content__form__input-container">
