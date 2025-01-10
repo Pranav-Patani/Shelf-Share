@@ -75,6 +75,7 @@ export const loadSearchTitles = async function (query) {
     const url = `${API_URL}?q=''+intitle:${query}&maxResults=40&key=${API_KEY}`;
     const data = await getJSON(url);
     state.search.titles = data.items?.map(cur => cur.volumeInfo?.title);
+    throw new Error('err');
   } catch (err) {
     console.error(err);
     throw err;

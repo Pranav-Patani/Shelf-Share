@@ -19,7 +19,10 @@ class View {
       modal.remove();
       if (loader) loader.remove();
       if (otherModal) otherModal.classList.remove(`homepage__modal--active`);
-      if (searchBar) searchBar.value = '';
+      if (searchBar) {
+        searchBar.value = '';
+        searchBar.removeAttribute('disabled');
+      }
     };
     modal.addEventListener('click', e => {
       if (!e.target.closest('.alert-modal__content')) {
@@ -62,6 +65,10 @@ class View {
         </div>
       </div>
     `;
+    const modal = document.querySelector('.alert-modal');
+    const searchBar = document.querySelector(`.search-bar`);
+    if (searchBar) searchBar.setAttribute('disabled', 'true');
+    if (modal) modal.remove();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
     this._clearAlert();
   }
