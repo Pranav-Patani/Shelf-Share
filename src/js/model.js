@@ -42,7 +42,6 @@ export const loadBook = async function (id) {
     if (state.bookmarks.some(bookmark => bookmark.id === id))
       state.book.bookmarked = true;
     else state.book.bookmarked = false;
-    throw new Error('error');
   } catch (err) {
     console.error(err);
   }
@@ -65,7 +64,6 @@ export const loadSearchResults = async function (query, category) {
       bookmarked: state.bookmarks.some(bookmark => bookmark.id === cur.id),
       selected: state.selectedBooks.some(book => book.id === cur.id),
     }));
-    throw new Error('error');
   } catch (err) {
     console.error(err);
     throw err;
