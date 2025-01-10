@@ -447,7 +447,11 @@ const constructIndividualCollectionShareUrl = async function (collection, btn) {
       true,
       true,
     );
-    const message = await helperShare(shareableUrl);
+    const message = await helperShare(
+      shareableUrl,
+      collection.collectionName,
+      true,
+    );
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);
 

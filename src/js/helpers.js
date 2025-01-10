@@ -21,15 +21,14 @@ export const getJSON = async url => {
   }
 };
 
-export const helperShare = async function (
-  url,
-  title = 'Checkout this book on shelf share!',
-) {
+export const helperShare = async function (url, name, collection = false) {
+  const text = collection
+    ? `Check out my collection ${name} on shelf share.`
+    : `Check out the book ${name} on shelf share.`;
   if (navigator.share) {
     try {
       await navigator.share({
-        title: title,
-        text: 'Explore Books and Plan Your Reading Journey on shelf share.',
+        title: text,
         url: url,
       });
       return ``;
@@ -47,7 +46,7 @@ export const helperShare = async function (
     }
   } else {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(`${text}\n${url}`);
       return `Url copied to clipboard`;
     } catch (err) {
       console.error(`Couldn't copy the URL. Error: ${err}`);
