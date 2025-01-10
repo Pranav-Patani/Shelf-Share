@@ -17,32 +17,31 @@ export const state = {
 
 // Individual Book
 
-export const loadBook = async function () {
+export const loadBook = async function (id) {
   try {
-    // const data = await getJSON(`${API_URL}/${id}?key=${API_KEY}`);
-    // state.book = {
-    //   id: data.id,
-    //   title: data.volumeInfo?.title || 'title not available',
-    //   authors: data.volumeInfo?.authors || ['author not available'],
-    //   publisher: data.volumeInfo?.publisher || 'not available',
-    //   publishedDate: data.volumeInfo?.publishedDate || 'not available',
-    //   description: data.volumeInfo?.description || '',
-    //   isbn: data.volumeInfo?.industryIdentifiers
-    //     ? data.volumeInfo?.industryIdentifiers[1].identifier
-    //     : 'not available',
-    //   pageCount: data.volumeInfo?.pageCount || 'not available',
-    //   categories: data.volumeInfo?.categories || ['others'],
-    //   rating: data.volumeInfo?.averageRating || '',
-    //   image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
-    //   language: data.volumeInfo?.language || 'not available',
-    //   previewLink: `https://www.google.co.in/books/edition/_/${data.id}?hl=en`,
-    //   embeddable: data.accessInfo?.embeddable,
-    // };
+    const data = await getJSON(`${API_URL}/${id}?key=${API_KEY}`);
+    state.book = {
+      id: data.id,
+      title: data.volumeInfo?.title || 'title not available',
+      authors: data.volumeInfo?.authors || ['author not available'],
+      publisher: data.volumeInfo?.publisher || 'not available',
+      publishedDate: data.volumeInfo?.publishedDate || 'not available',
+      description: data.volumeInfo?.description || '',
+      isbn: data.volumeInfo?.industryIdentifiers
+        ? data.volumeInfo?.industryIdentifiers[1].identifier
+        : 'not available',
+      pageCount: data.volumeInfo?.pageCount || 'not available',
+      categories: data.volumeInfo?.categories || ['others'],
+      rating: data.volumeInfo?.averageRating || '',
+      image: data.volumeInfo?.imageLinks?.thumbnail || coverFallback,
+      language: data.volumeInfo?.language || 'not available',
+      previewLink: `https://www.google.co.in/books/edition/_/${data.id}?hl=en`,
+      embeddable: data.accessInfo?.embeddable,
+    };
 
-    // if (state.bookmarks.some(bookmark => bookmark.id === id))
-    //   state.book.bookmarked = true;
-    // else state.book.bookmarked = false;
-    throw new Error('error');
+    if (state.bookmarks.some(bookmark => bookmark.id === id))
+      state.book.bookmarked = true;
+    else state.book.bookmarked = false;
   } catch (err) {
     console.error(err);
   }
@@ -65,7 +64,6 @@ export const loadSearchResults = async function (query, category) {
       bookmarked: state.bookmarks.some(bookmark => bookmark.id === cur.id),
       selected: state.selectedBooks.some(book => book.id === cur.id),
     }));
-    throw new Error('error');
   } catch (err) {
     console.error(err);
     throw err;
@@ -77,7 +75,6 @@ export const loadSearchTitles = async function (query) {
     const url = `${API_URL}?q=''+intitle:${query}&maxResults=40&key=${API_KEY}`;
     const data = await getJSON(url);
     state.search.titles = data.items?.map(cur => cur.volumeInfo?.title);
-    throw new Error('error');
   } catch (err) {
     console.error(err);
     throw err;

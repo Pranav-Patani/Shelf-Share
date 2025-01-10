@@ -6,7 +6,7 @@ class ErrorView extends View {
   _generateMarkup() {
     return `
         <section class="error-view">
-        <div class="error-view__content absolute-center">
+        <div class="error-view__content">
         <div class="error-view__content__gif-container">
             <img class="error-view__content__gif-container__gif" src=${errorGif} alt="error"/>
         </div>

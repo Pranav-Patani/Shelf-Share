@@ -79,6 +79,7 @@ class HomeView extends View {
     const form = this._parentElement.querySelector(`.search-form`);
 
     const closeModal = () => {
+      const modal = this._parentElement.querySelector(`.homepage__modal`);
       const searchBar = this._parentElement.querySelector(`.search-bar`);
       modal.classList.remove('homepage__modal--active');
       searchBar.value = '';

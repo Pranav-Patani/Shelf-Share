@@ -1,4 +1,9 @@
 .error-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -8,9 +13,14 @@
     padding: var(--space-3);
     border-radius: 1rem;
 
+    @include respond(phone) {
+      width: 100%;
+      margin: var(--space-0) var(--space-7);
+    }
+
     &__gif-container {
       width: 20rem;
-      margin: auto;
+      margin: 0 auto;
       border-radius: 2rem;
       overflow: hidden;
 
@@ -21,17 +31,22 @@
     }
 
     &__alert-message {
-      text-transform: capitalize;
+      text-transform: none;
       font-weight: normal;
       color: var(--color-red);
 
+      @include respond(phone) {
+        margin: 0 auto;
+      }
+
       &--sub {
-        font-size: var(--font-size-xl);
         color: var(--color-gray-dark);
       }
 
       &__contact {
-        color: var(--color-primary-dark);
+        @include respond(phone) {
+          margin: 0 auto;
+        }
 
         &--link {
           text-decoration: underline;

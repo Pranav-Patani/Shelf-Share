@@ -14,10 +14,12 @@ class View {
     const loader = document.querySelector(`.loader`);
     const btn = document.querySelector(`.alert-modal__content__btn`);
     const otherModal = document.querySelector(`.homepage__modal`);
+    const searchBar = document.querySelector(`.search-bar`);
     const closeModal = () => {
       modal.remove();
       if (loader) loader.remove();
       if (otherModal) otherModal.classList.remove(`homepage__modal--active`);
+      if (searchBar) searchBar.value = '';
     };
     modal.addEventListener('click', e => {
       if (!e.target.closest('.alert-modal__content')) {
@@ -50,7 +52,7 @@ class View {
   ) {
     const markup = `
       <div class="alert-modal">
-        <div class="alert-modal__content absolute-center">
+        <div class="alert-modal__content">
         <div class="alert-modal__content__gif-container">
          <img class="alert-modal__content__gif-container__gif" src=${errorGif} alt="error"/>
         </div>
