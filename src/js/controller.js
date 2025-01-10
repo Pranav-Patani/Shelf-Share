@@ -10,7 +10,7 @@ import Router from './router';
 import HomeView from './views/homeView';
 import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
-import bookView from './views/bookView';
+import ErrorView from './views/errorView';
 import {
   debounce,
   helperShare,
@@ -49,6 +49,7 @@ const controlRouter = function () {
       callback: () => setUpSearchView(window.location.pathname),
     },
     { path: '/book', callback: () => controlBooks() },
+    { path: '/error', callback: () => setUpErrorView() },
   ];
 
   Router.setRoutes(routes);
@@ -62,6 +63,11 @@ const setUpInitialView = function () {
   HeaderView.addHandlerNavbarPosition();
   HeaderView.addHandlerCloseMenu();
   FooterView.render();
+};
+
+// Error View
+const setUpErrorView = function () {
+  ErrorView.render();
 };
 
 // Home View
@@ -115,6 +121,7 @@ const controlBooks = async function () {
     });
   } catch (err) {
     console.log(err);
+    Router.navigateTo('/error');
   }
 };
 
@@ -164,7 +171,6 @@ const controlSearchResults = async function (path, query, category) {
 
     if (path === '/find-books') {
       FindBooksView.renderLoader();
-
       mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SEARCH, {
         from: 'Find Books Page',
       });
@@ -186,6 +192,12 @@ const controlSearchResults = async function (path, query, category) {
     }
   } catch (err) {
     console.error(err);
+    if (path === '/find-books') {
+      FindBooksView.renderAlert();
+    }
+    if (path === '/create-collections') {
+      CreateCollectionsView.renderAlert();
+    }
   }
 };
 
@@ -278,7 +290,7 @@ const controlAddBookmark = function () {
       authors: model.state.book.authors.join(`, `),
     });
   } else model.deleteBookmark(model.state.book.id);
-  bookView.update(model.state.book);
+  BookView.update(model.state.book);
 };
 
 const controlRemoveBookmark = function (bookId) {

@@ -1,11 +1,22 @@
 import { throttle } from '../helpers';
 import sprite from 'url:../../img/sprite.svg';
+import errorGif from 'url:../../img/error.gif';
 class View {
   _data;
   _currentFocus = -1;
 
   _clear() {
     this._parentElement.innerHTML = '';
+  }
+
+  _clearAlert() {
+    const modal = document.querySelector(`.alert-modal`);
+    const loader = document.querySelector(`.loader`);
+    const btn = document.querySelector(`.alert-modal__content__btn`);
+    btn.addEventListener('click', () => {
+      modal.remove();
+      if (loader) loader.remove();
+    });
   }
 
   render(data, render = true, markupClass = '') {
@@ -24,6 +35,25 @@ class View {
     `;
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderAlert(
+    alert = 'Opps! Something went wrong. <p class="alert-modal__content__alert-message--sub">We are working on it, please check back later.</p>',
+  ) {
+    const markup = `
+      <div class="alert-modal">
+        <div class="alert-modal__content absolute-center">
+        <div class="alert-modal__content__gif-container">
+         <img class="alert-modal__content__gif-container__gif" src=${errorGif} alt="error"/>
+        </div>
+          <h4 class="heading-4 alert-modal__content__alert-message">${alert}</h4>
+          <p class=alert-modal__content__alert-message__contact>If required, please contact us on <a href="mailto: connectshelfshare@gmail.com" class="alert-modal__content__alert-message__contact--link">connectshelfshare@gmail.com</a></p>
+          <button class="alert-modal__content__btn btn-tertiary">Close</button>
+        </div>
+      </div>
+    `;
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._clearAlert();
   }
 
   renderToast(message, error) {

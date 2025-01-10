@@ -397,9 +397,11 @@
   &__modal {
     @include modal-container;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    &--active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     &__content {
       position: relative;
