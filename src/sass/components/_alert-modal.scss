@@ -1,6 +1,7 @@
 .alert-modal {
   @include modal-container;
 
+  z-index: var(--z-index-lvl-4);
   visibility: visible;
   opacity: 1;
 
@@ -26,18 +27,15 @@
     }
 
     &__alert-message {
-      text-transform: capitalize;
+      text-transform: none;
       font-weight: normal;
       color: var(--color-red);
 
       &--sub {
-        font-size: var(--font-size-xl);
         color: var(--color-gray-dark);
       }
 
       &__contact {
-        color: var(--color-primary-dark);
-
         &--link {
           text-decoration: underline;
           color: var(--color-primary-dark);
