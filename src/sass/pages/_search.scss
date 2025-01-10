@@ -31,7 +31,7 @@
       max-width: 120rem;
 
       @include respond(phone) {
-        padding: 0 var(--space-2);
+        padding: 0 var(--space-3);
       }
 
       &__search {
@@ -253,7 +253,7 @@
     }
 
     @include respond(phone) {
-      padding: var(--space-4) var(--space-2) var(--space-8);
+      padding: var(--space-4) var(--space-3) var(--space-8);
     }
 
     &__collection-controller {
