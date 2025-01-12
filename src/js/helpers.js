@@ -23,8 +23,8 @@ export const getJSON = async url => {
 
 export const helperShare = async function (link, name, collection = false) {
   const text = collection
-    ? `Check out my collection ${name} on shelf share.\n`
-    : `Check out the book ${name} on shelf share.\n`;
+    ? `Check out my collection ${name} on shelf share.`
+    : `Check out the book ${name} on shelf share.`;
   const url = link.trim();
   if (navigator.share) {
     try {
