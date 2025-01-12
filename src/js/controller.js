@@ -451,6 +451,7 @@ const constructIndividualCollectionShareUrl = async function (
     const message = await helperShare(
       window.location.href,
       collection.collectionName,
+      true,
     );
     if (!message) return;
     IndividualCollectionView.renderToast(message, false);

@@ -28,7 +28,8 @@ export const helperShare = async function (url, name, collection = false) {
   if (navigator.share) {
     try {
       await navigator.share({
-        title: text,
+        title: `${collection ? 'Collection' : 'Book'} Recommendation`,
+        text: text,
         url: url,
       });
       return ``;
