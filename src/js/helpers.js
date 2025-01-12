@@ -23,8 +23,8 @@ export const getJSON = async url => {
 
 export const helperShare = async function (url, name, collection = false) {
   const text = collection
-    ? `Check out my collection ${name} on shelf share.`
-    : `Check out the book ${name} on shelf share.`;
+    ? `Check out my collection ${name} on shelf share\n.`
+    : `Check out the book ${name} on shelf share.\n`;
   if (navigator.share) {
     try {
       await navigator.share({
@@ -36,7 +36,7 @@ export const helperShare = async function (url, name, collection = false) {
     } catch (err) {
       console.error(`Couldn't copy the URL via navigator.share, Error: ${err}`);
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(text + url);
         return `Url copied to clipboard`;
       } catch (err) {
         console.error(
@@ -47,7 +47,7 @@ export const helperShare = async function (url, name, collection = false) {
     }
   } else {
     try {
-      await navigator.clipboard.writeText(`${text}\n${url}`);
+      await navigator.clipboard.writeText(text + url);
       return `Url copied to clipboard`;
     } catch (err) {
       console.error(`Couldn't copy the URL. Error: ${err}`);
