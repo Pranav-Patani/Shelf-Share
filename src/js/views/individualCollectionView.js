@@ -47,12 +47,6 @@ class individualCollectionView extends View {
     });
   }
 
-  addHandlerRenderShare(handler) {
-    ['load', 'popstate'].forEach(event =>
-      window.addEventListener(event, handler),
-    );
-  }
-
   _generateMarkupCollectionCards(markupClass) {
     return this._data.books
       ?.map(bookmark =>
