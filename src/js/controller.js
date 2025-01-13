@@ -399,9 +399,9 @@ const controlIndividualCollectionViewButton = async function (collectionId) {
     const collection = model.state.collections.find(
       collection => collection.id === Number(collectionId),
     );
-    controlRenderIndividualCollection(collection);
-    const shortUrlId = await createShortUrlId(collection);
 
+    const shortUrlId = await createShortUrlId(collection);
+    controlRenderIndividualCollection(collection);
     setUrlData('/collection', { sId: shortUrlId });
   } catch (e) {
     console.error(e);
