@@ -336,6 +336,7 @@ const setUpBookmarksView = function () {
 
 const setUpCollectionsView = function () {
   CollectionsView.renderLoader();
+  console.log(model.state.collections);
   CollectionsView.render(model.state.collections);
   CollectionsView.addHandlerViewCollection(
     controlIndividualCollectionViewButton,
@@ -381,7 +382,7 @@ const controlCreateCollection = function (collectionName, totalBooks) {
 const controlRenderIndividualCollection = function (collection) {
   IndividualCollectionView.render(collection, true, 'no-button');
   IndividualCollectionView.addHandlerShare(() =>
-    controlIndividualCollectionShare(collection.collectionName),
+    controlIndividualCollectionShare(collection),
   );
   IndividualCollectionView.addHandlerBookRoutes((route, id) =>
     controlBookUrlCreation(route, id),
@@ -394,19 +395,14 @@ const controlRenderIndividualCollection = function (collection) {
 };
 
 const controlIndividualCollectionViewButton = async function (collectionId) {
-  try {
-    IndividualCollectionView.renderLoader();
-    const collection = model.state.collections.find(
-      collection => collection.id === Number(collectionId),
-    );
-
-    const shortUrlId = await createShortUrlId(collection);
-    controlRenderIndividualCollection(collection);
-    setUrlData('/collection', { sId: shortUrlId });
-  } catch (e) {
-    console.error(e);
-    IndividualCollectionView.renderAlert();
-  }
+  IndividualCollectionView.renderLoader();
+  const collection = model.state.collections.find(
+    collection => collection.collectionId === Number(collectionId),
+  );
+  if (!collection) IndividualCollectionView.renderAlert();
+  controlRenderIndividualCollection(collection);
+  const shortId = await createShortUrlId(collection);
+  window.history.pushState('', '', `/collection$sId=${shortId}`);
 };
 
 const controlIndividualCollectionRoute = async function () {
@@ -421,11 +417,12 @@ const controlIndividualCollectionRoute = async function () {
   }
 };
 
-const controlIndividualCollectionShare = async function (collectionName) {
+const controlIndividualCollectionShare = async function (collection) {
   try {
+    const shortUrlId = await createShortUrlId(collection);
     const message = await helperShare(
-      window.location.href,
-      collectionName,
+      `${window.location.origin}/collection?sId=${shortUrlId}`,
+      collection.collectionName,
       true,
     );
     if (!message) throw new Error(`Error copying URL`);
@@ -464,7 +461,7 @@ const controlDeleteCollection = function (collectionId) {
 // const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
 //   model.deleteIndividualCollectionBook(bookId, collectionId);
 //   const collection = model.state.collections.find(
-//     collection => collection.id === Number(collectionId),
+//     collection => collection.collectionId === Number(collectionId),
 //   );
 //   if (collection) {
 //     controlRenderIndividualCollection(collection);

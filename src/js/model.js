@@ -129,7 +129,7 @@ export const resetSelectedBooks = function () {
 
 export const createCollection = collectionName => {
   const newCollection = {
-    id: Date.now(),
+    collectionId: Date.now(),
     collectionName: collectionName,
     books: [...state.selectedBooks],
   };
@@ -143,7 +143,7 @@ export const createCollection = collectionName => {
 
 export const deleteCollection = collectionId => {
   const index = state.collections.findIndex(
-    collection => collection.id === Number(collectionId),
+    collection => collection.collectionId === Number(collectionId),
   );
   if (index === -1) return;
   state.collections.splice(index, 1);
@@ -152,7 +152,7 @@ export const deleteCollection = collectionId => {
 
 export const deleteIndividualCollectionBook = (bookId, collectionId) => {
   state.collections.map(collection => {
-    if (collection.id === Number(collectionId)) {
+    if (collection.collectionId === Number(collectionId)) {
       const bookIndex = collection.books.findIndex(book => book.id === bookId);
       if (bookIndex === -1) return;
       collection.books.splice(bookIndex, 1);

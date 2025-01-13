@@ -10,12 +10,16 @@ function generateShortId() {
   return crypto.randomUUID().replace(/-/g, '').slice(0, 7);
 }
 
-export async function createShortUrlId({ id, collectionName, books }) {
+export async function createShortUrlId({
+  collectionId,
+  collectionName,
+  books,
+}) {
   try {
     const { data: existingUrl, error: queryError } = await supabase
       .from('url_mappings')
       .select('*')
-      .eq('collection_id', id)
+      .eq('collection_id', collectionId)
       .single();
 
     if (queryError && queryError.code !== 'PGRST116') {
@@ -32,7 +36,7 @@ export async function createShortUrlId({ id, collectionName, books }) {
       .from('url_mappings')
       .insert({
         short_id: shortId,
-        collection_id: id,
+        collection_id: collectionId,
         collection_name: collectionName,
         books: books,
       })

@@ -57,7 +57,7 @@ class individualCollectionView extends View {
 
   _generateMarkup(markupClass) {
     const collectionCards = this._generateMarkupCollectionCards(markupClass);
-    this.id = this._data.id;
+    this.id = this._data.collectionId;
 
     return this._data.books
       ? `
@@ -70,7 +70,7 @@ class individualCollectionView extends View {
           markupClass === 'shared-view'
             ? ''
             : `
-        <button class="btn-tertiary section-collection__content__share-btn" data-collection-id="${this._data.id}">
+        <button class="btn-tertiary section-collection__content__share-btn" data-collection-id="${this._data.collectionId}">
         <svg class="section-collection__content__share-btn__svg">
           <use xlink:href="${sprite}#icon-share"></use>
         </svg>
