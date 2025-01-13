@@ -4,7 +4,7 @@
   "description": "A book search and recommendation plan creator web app",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist && cp -r public/* dist/",
+    "build": "parcel build index.html",
     "reset": "npm-run-all build start",
     "prepare": "husky",
     "lint-staged": "lint-staged",
@@ -25,6 +25,7 @@
     "globals": "^15.8.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
+    "npm-run-all": "^4.1.5",
     "os-browserify": "^0.3.0",
     "parcel": "^2.12.0",
     "path-browserify": "^1.0.1",
@@ -40,8 +41,7 @@
     "stylelint-selector-bem-pattern": "^4.0.0",
     "svgo": "^3.3.2",
     "url": "^0.11.4",
-    "vm-browserify": "^1.1.2",
-    "npm-run-all": "^4.1.5"
+    "vm-browserify": "^1.1.2"
   },
   "lint-staged": {
     "*.js": [
@@ -57,6 +57,7 @@
     ]
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.47.12",
     "core-js": "^3.39.0",
     "dotenv": "^16.4.5",
     "mixpanel-browser": "^2.58.0",

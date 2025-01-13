@@ -8,6 +8,10 @@ export const MIXPANEL_TOKEN = process.env.MIXPANEL_TOKEN
   ? /* eslint-disable-next-line no-undef */
     process.env.MIXPANEL_TOKEN
   : '';
+/* eslint-disable-next-line no-undef */
+export const SUPABASE_TOKEN = process.env.SUPABASE_TOKEN;
+/* eslint-disable-next-line no-undef */
+export const SUPABASE_URL = process.env.SUPABASE_URL;
 export const TIMEOUT_SEC = 10;
 export const MIXPANEL_EVENTS = {
   CLICKED_SHARE: 'Clicked Share',

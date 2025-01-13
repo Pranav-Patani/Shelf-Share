@@ -12,6 +12,11 @@ import HeaderView from './views/headerView';
 import FooterView from './views/footerView';
 import ErrorView from './views/errorView';
 import {
+  createShortUrlId,
+  getOriginalUrlParams,
+  deleteSupabseRow,
+} from './shortUrlUtils';
+import {
   debounce,
   helperShare,
   getUrlData,
@@ -49,7 +54,7 @@ const controlRouter = function () {
       callback: () => setUpSearchView(window.location.pathname),
     },
     { path: '/book', callback: () => controlBooks() },
-    { path: '/collection', callback: () => controlIndividualCollection() },
+    { path: '/collection', callback: () => controlIndividualCollectionRoute() },
     { path: '/error', callback: () => setUpErrorView() },
   ];
 
@@ -332,7 +337,9 @@ const setUpBookmarksView = function () {
 const setUpCollectionsView = function () {
   CollectionsView.renderLoader();
   CollectionsView.render(model.state.collections);
-  CollectionsView.addHandlerViewCollection(controlCollectionView);
+  CollectionsView.addHandlerViewCollection(
+    controlIndividualCollectionViewButton,
+  );
   CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
   CollectionsView.addHandlerLinks();
 };
@@ -371,57 +378,10 @@ const controlCreateCollection = function (collectionName, totalBooks) {
 
 // Individual Collection
 
-const controlCollectionView = function (collectionId) {
-  const collection = model.state.collections.find(
-    collection => collection.id === Number(collectionId),
-  );
-  Router.navigateTo('/collection');
-  constructIndividualCollectionShareUrl(collection);
-};
-
-const controlDeleteCollection = function (collectionId) {
-  model.deleteCollection(collectionId);
-
-  CollectionsView.render(model.state.collections);
-
-  CollectionsView.addHandlerViewCollection(controlCollectionView);
-  CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
-  CollectionsView.addHandlerLinks();
-};
-
-// Not in use currently
-
-const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
-  model.deleteIndividualCollectionBook(bookId, collectionId);
-  const collection = model.state.collections.find(
-    collection => collection.id === Number(collectionId),
-  );
-  if (collection) {
-    constructIndividualCollectionShareUrl(collection);
-  } else {
-    Router.navigateTo('/collections');
-  }
-};
-
-const controlIndividualCollection = function () {
-  IndividualCollectionView.addHandlerRenderShare(
-    controlIndividualCollectionShare,
-  );
-};
-
-const controlIndividualCollectionShare = function () {
-  const collectionData = getUrlData();
-  if (!collectionData.collectionName) return;
-
-  collectionData.books = JSON.parse(decodeURIComponent(collectionData.books));
-
-  IndividualCollectionView.renderLoader();
-  IndividualCollectionView.render(collectionData, true, 'no-button');
-  IndividualCollectionView.addHandlerShare(
-    constructIndividualCollectionShareUrl,
-  );
-  IndividualCollectionView.addHandlerRemoveBook(
-    controlIndividualCollectionRemoveBook,
+const controlRenderIndividualCollection = function (collection) {
+  IndividualCollectionView.render(collection, true, 'no-button');
+  IndividualCollectionView.addHandlerShare(() =>
+    controlIndividualCollectionShare(collection.collectionName),
   );
   IndividualCollectionView.addHandlerBookRoutes((route, id) =>
     controlBookUrlCreation(route, id),
@@ -433,27 +393,43 @@ const controlIndividualCollectionShare = function () {
   mixPanelTrack(MIXPANEL_EVENTS.VIEWED_COLLECTION);
 };
 
-const constructIndividualCollectionShareUrl = async function (
-  collection,
-  share,
-) {
+const controlIndividualCollectionViewButton = async function (collectionId) {
   try {
-    if (!share) {
-      const updatedCollectionUrl = setUrlData(
-        window.location.pathname,
-        collection,
-        false,
-      );
-      window.history.replaceState('', '', updatedCollectionUrl);
-      controlIndividualCollectionShare();
-      return;
-    }
+    IndividualCollectionView.renderLoader();
+    const collection = model.state.collections.find(
+      collection => collection.id === Number(collectionId),
+    );
+    controlRenderIndividualCollection(collection);
+    const shortUrlId = await createShortUrlId(collection);
+
+    setUrlData('/collection', { sId: shortUrlId });
+  } catch (e) {
+    console.error(e);
+    IndividualCollectionView.renderAlert();
+  }
+};
+
+const controlIndividualCollectionRoute = async function () {
+  try {
+    IndividualCollectionView.renderLoader();
+    const { sId } = getUrlData();
+    const collection = await getOriginalUrlParams(sId);
+    controlRenderIndividualCollection(collection);
+  } catch (e) {
+    console.error(e);
+    Router.navigateTo('/error');
+  }
+};
+
+const controlIndividualCollectionShare = async function (collectionName) {
+  try {
     const message = await helperShare(
       window.location.href,
-      collection.collectionName,
+      collectionName,
       true,
     );
-    if (!message) return;
+    if (!message) throw new Error(`Error copying URL`);
+
     IndividualCollectionView.renderToast(message, false);
 
     mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SHARE, {
@@ -465,6 +441,37 @@ const constructIndividualCollectionShareUrl = async function (
     IndividualCollectionView.renderToast(`Couldn't copy the URL`, true);
   }
 };
+
+const deleteCollectionFromSupabase = function (collectionId) {
+  deleteSupabseRow(collectionId);
+};
+
+const controlDeleteCollection = function (collectionId) {
+  model.deleteCollection(collectionId);
+
+  CollectionsView.render(model.state.collections);
+
+  CollectionsView.addHandlerViewCollection(
+    controlIndividualCollectionViewButton,
+  );
+  CollectionsView.addHandlerDeleteCollection(controlDeleteCollection);
+  CollectionsView.addHandlerLinks();
+  deleteCollectionFromSupabase(collectionId);
+};
+
+// Not in use currently
+
+// const controlIndividualCollectionRemoveBook = function (bookId, collectionId) {
+//   model.deleteIndividualCollectionBook(bookId, collectionId);
+//   const collection = model.state.collections.find(
+//     collection => collection.id === Number(collectionId),
+//   );
+//   if (collection) {
+//     controlRenderIndividualCollection(collection);
+//   } else {
+//     Router.navigateTo('/collections');
+//   }
+// };
 
 const init = function () {
   if (MIXPANEL_TOKEN) {
