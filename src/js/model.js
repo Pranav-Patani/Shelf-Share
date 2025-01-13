@@ -143,7 +143,9 @@ export const createCollection = collectionName => {
 
 export const deleteCollection = collectionId => {
   const index = state.collections.findIndex(
-    collection => collection.collectionId === Number(collectionId),
+    collection =>
+      collection.collectionId === Number(collectionId) ||
+      collection.id === Number(collectionId),
   );
   if (index === -1) return;
   state.collections.splice(index, 1);

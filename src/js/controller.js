@@ -397,12 +397,14 @@ const controlRenderIndividualCollection = function (collection) {
 const controlIndividualCollectionViewButton = async function (collectionId) {
   IndividualCollectionView.renderLoader();
   const collection = model.state.collections.find(
-    collection => collection.collectionId === Number(collectionId),
+    collection =>
+      collection.collectionId === Number(collectionId) ||
+      collection.id === Number(collectionId),
   );
   if (!collection) IndividualCollectionView.renderAlert();
   controlRenderIndividualCollection(collection);
   const shortId = await createShortUrlId(collection);
-  window.history.pushState('', '', `/collection$sId=${shortId}`);
+  window.history.pushState('', '', `/collection?sId=${shortId}`);
 };
 
 const controlIndividualCollectionRoute = async function () {
