@@ -97,10 +97,10 @@ class CollectionsView extends View {
             Total Books: ${collection.books.length}
           </p>
  
-          <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--view" data-collection-id="${collection.collectionId}">
+          <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--view" data-collection-id="${collection.id ? collection.id : collection.collectionId}">
             View
           </button>
-          <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--delete" data-collection-id="${collection.collectionId}">
+          <button class="btn-tertiary card--2__text-container__btn card--2__text-container__btn--delete" data-collection-id="${collection.id ? collection.id : collection.collectionId}">
             Delete
           </button>
         </div>

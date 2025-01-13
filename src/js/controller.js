@@ -336,7 +336,6 @@ const setUpBookmarksView = function () {
 
 const setUpCollectionsView = function () {
   CollectionsView.renderLoader();
-  console.log(model.state.collections);
   CollectionsView.render(model.state.collections);
   CollectionsView.addHandlerViewCollection(
     controlIndividualCollectionViewButton,
