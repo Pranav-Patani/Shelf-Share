@@ -477,8 +477,9 @@ const init = function () {
       debug: false,
       persistence: 'localStorage',
     });
+    const uniqueId = mixpanel.get_distinct_id();
+    mixpanel.identify(uniqueId);
   }
-
   setUpInitialView();
   controlRouter();
 };
