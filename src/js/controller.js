@@ -89,7 +89,7 @@ const setUpHomeView = function () {
 
 const controlHomeSearch = function (query) {
   Router.navigateTo('/find-books');
-  controlSearchResults('/find-books', query);
+  controlSearchResults('/find-books', query, '');
 
   mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SEARCH, {
     from: 'Home Page',
