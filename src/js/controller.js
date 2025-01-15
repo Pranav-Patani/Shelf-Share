@@ -88,11 +88,13 @@ const setUpHomeView = function () {
 };
 
 const controlHomeSearch = function (query) {
+  if (!query) return;
   Router.navigateTo('/find-books');
   controlSearchResults('/find-books', query, '');
 
   mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SEARCH, {
     from: 'Home Page',
+    searchedValue: query,
   });
 };
 
@@ -179,6 +181,7 @@ const controlSearchResults = async function (path, query, category) {
       FindBooksView.renderLoader();
       mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SEARCH, {
         from: 'Find Books Page',
+        searchedValue: query,
       });
     }
     if (path === '/create-collections') {
@@ -186,6 +189,7 @@ const controlSearchResults = async function (path, query, category) {
 
       mixPanelTrack(MIXPANEL_EVENTS.CLICKED_SEARCH, {
         from: 'Create Collections Page',
+        searchedValue: query,
       });
     }
     await model.loadSearchResults(query, category);
