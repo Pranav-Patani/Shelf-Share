@@ -88,9 +88,10 @@
 
       &__powered-by {
         position: absolute;
-        top: 55%;
+        top: 1.5rem;
         right: -7rem;
-        transform: translateY(-45%);
+
+        // transform: translateY(-45%);
         text-decoration: none;
 
         @include respond(large-screen) {
@@ -106,7 +107,7 @@
         }
 
         @include respond(phone) {
-          top: -40%;
+          top: -3rem;
           right: 0;
         }
 
