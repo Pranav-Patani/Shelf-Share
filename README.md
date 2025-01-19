@@ -13,7 +13,7 @@ A <a target="_blank" href="https://shelfshare.vercel.app/?utm_source=github&utm_
 
 ## 🎦 DEMO
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lASfxIo_W3Y/0.jpg)](https://www.youtube.com/watch?v=lASfxIo_W3Y)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/t4Y6qzJ2oro/0.jpg)](https://youtu.be/t4Y6qzJ2oro)
 
 ## 🧑‍💻 Technology Stack
 
