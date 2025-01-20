@@ -1,11 +1,15 @@
 class Router {
   constructor() {
-    this.routes = [];
+    this._routes = [];
   }
 
-  setRoutes(routes) {
-    this.routes = routes;
+  set routes(routes) {
+    this._routes = routes;
     this._loadInitialRoute();
+  }
+
+  get routes() {
+    return this._routes;
   }
 
   _matchedURL(urlSegs) {

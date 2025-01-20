@@ -58,7 +58,7 @@ const controlRouter = function () {
     { path: '/error', callback: () => setUpErrorView() },
   ];
 
-  Router.setRoutes(routes);
+  Router.routes = routes;
   Router.addHandlerRouter();
 };
 
