@@ -12,35 +12,28 @@ class Router {
     return this._routes;
   }
 
-  _matchedURL(urlSegs) {
-    const path = '/' + urlSegs.join('/');
-    return this.routes.find(route => {
-      const [routePath] = route.path.split('?');
-      return routePath === path;
-    });
+  _matchedURL(path) {
+    return this.routes.find(route => route.path === path);
   }
 
   _loadInitialRoute() {
-    const pathNameSplit = window.location.pathname.split('/');
-    const pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
-    this._loadRoute(...pathSegs);
+    const path = window.location.pathname;
+    this._loadRoute(path);
   }
 
-  _loadRoute(...urlSegs) {
-    const matchedRoute = this._matchedURL(urlSegs);
+  _loadRoute(path) {
+    const matchedRoute = this._matchedURL(path);
     if (!matchedRoute) throw new Error('Route Not Found');
     matchedRoute.callback();
   }
 
   navigateTo(path) {
-    window.history.pushState({}, '', path);
-    const pathNameSplit = path.split('/');
-    let pathSegs = pathNameSplit.length > 1 ? pathNameSplit.slice(1) : [''];
-    if (pathSegs[0].includes('?')) {
-      const filterPathSegs = pathSegs[0].split('?');
-      pathSegs = filterPathSegs.slice(0, 1);
+    window.history.pushState('', '', path);
+    const splitPath = path.split('?');
+    if (splitPath.length > 1) {
+      path = splitPath[0];
     }
-    this._loadRoute(...pathSegs);
+    this._loadRoute(path);
     window.scrollTo({
       top: 0,
       left: 0,
