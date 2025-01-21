@@ -22,9 +22,14 @@ class Router {
   }
 
   _loadRoute(path) {
-    const matchedRoute = this._matchedURL(path);
-    if (!matchedRoute) throw new Error('Route Not Found');
-    matchedRoute.callback();
+    try {
+      const matchedRoute = this._matchedURL(path);
+      if (!matchedRoute) throw new Error('Route Not Found');
+      matchedRoute.callback();
+    } catch (err) {
+      console.error(err);
+      this.navigateTo('/page-not-found');
+    }
   }
 
   navigateTo(path) {
