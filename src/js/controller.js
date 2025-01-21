@@ -56,6 +56,7 @@ const controlRouter = function () {
     { path: '/book', callback: () => controlBooks() },
     { path: '/collection', callback: () => controlIndividualCollectionRoute() },
     { path: '/error', callback: () => setUpErrorView() },
+    { path: '/page-not-found', callback: () => setUpPageNotFoundView() },
   ];
 
   Router.routes = routes;
@@ -74,6 +75,11 @@ const setUpInitialView = function () {
 // Error View
 const setUpErrorView = function () {
   ErrorView.render();
+};
+
+// Page Not Found View
+const setUpPageNotFoundView = function () {
+  ErrorView.render('pageNotFound');
 };
 
 // Home View
