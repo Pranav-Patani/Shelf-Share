@@ -157,7 +157,7 @@ const controlBookShare = async function (title) {
 };
 
 const controlXShare = function (title, url) {
-  const text = `Check out the book ${title} on shelf share.`;
+  const text = `Check out the book "${title}" on shelf share.`;
   const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
   window.open(xUrl, '_blank');
 
