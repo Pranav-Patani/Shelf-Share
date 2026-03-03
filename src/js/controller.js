@@ -292,13 +292,7 @@ const searchDebounceCallback = async function (query, path) {
       SearchView.updateSuggestions(model.state.search.titles);
     }
   } catch (err) {
-    console.error(err);
-    if (path === 'home') {
-      HomeView.renderAlert();
-    }
-    if (path === 'search') {
-      SearchView.renderAlert();
-    }
+    console.warn('Suggestions unavailable:', err.message);
   }
 };
 
